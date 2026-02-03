@@ -14,6 +14,9 @@ add_rules("mode.debug", "mode.releasedbg")
 includes("lib/commonlib-shared")
 includes("xmake-rules.lua")
 
+-- override runtime count
+add_defines("COMMONLIB_RUNTIMECOUNT=3")
+
 -- define targets
 target("commonlibf4", function()
     -- set target kind

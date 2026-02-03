@@ -727,10 +727,10 @@ namespace RE::ID
 	{
 		namespace BSReadWriteLock
 		{
-			inline constexpr REL::ID lock_read{ 2267897 };
-			inline constexpr REL::ID lock_write{ 2267898 };
-			inline constexpr REL::ID try_lock_read{ 2267901 };
-			inline constexpr REL::ID try_lock_write{ 2267902 };
+			inline constexpr REL::ID lock_read{ 1573164, 2267897 };
+			inline constexpr REL::ID lock_write{ 336186, 2267898 };
+			inline constexpr REL::ID try_lock_read{ 1372435, 2267901 };
+			inline constexpr REL::ID try_lock_write{ 1279453, 2267902 };
 		}
 
 		inline constexpr REL::ID lock{ 2192245 };
@@ -1859,12 +1859,12 @@ namespace RE::ID
 	namespace TESForm
 	{
 		inline constexpr REL::ID FormSortFunc{ 0 };  // 705530 - inlined?
-		inline constexpr REL::ID AddCompileIndex{ 2193152 };
-		inline constexpr REL::ID AllForms{ 4796465 };
-		inline constexpr REL::ID AllFormsMapLock{ 4796476 };
+		inline constexpr REL::ID AddCompileIndex{ 1315637, 2193152 };
+		inline constexpr REL::ID AllForms{ 422985, 2689178, 4796465 };
+		inline constexpr REL::ID AllFormsMapLock{ 691815, 2689189, 4796476 };
 		inline constexpr REL::ID AllFormsByEditorID{ 4796466 };
 		inline constexpr REL::ID AllFormsEditorIDMapLock{ 4796477 };
-		inline constexpr REL::ID GetFile{ 2193103 };
+		inline constexpr REL::ID GetFile{ 1376557, 2193103 };
 		inline constexpr REL::ID GetFormByNumericID{ 2193092 };
 		inline constexpr REL::ID GetFormEnumString{ 1309967 };
 		inline constexpr REL::ID GetFormTypeFromString{ 2193108 };
