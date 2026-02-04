@@ -23,7 +23,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetCurrentFireLocation{ 2231167 };
 		inline constexpr REL::ID GetDesiredSpeed{ 2230410 };
 		inline constexpr REL::ID GetGhost{ 2229668 };
-		inline constexpr REL::ID GetHostileToActor{ 2229968 };
+		inline constexpr REL::ID GetHostileToActor{ 1148686, 2229968 };
 		inline constexpr REL::ID GetMountHandle{ 2231230 };
 		inline constexpr REL::ID GetLevel{ 2229734 };
 		inline constexpr REL::ID GetPerkRank{ 2230125 };
@@ -1037,7 +1037,7 @@ namespace RE::ID
 			inline constexpr REL::ID SendEventToObjectAndRelated{ 2251344 };
 		}
 
-		inline constexpr REL::ID LogFormError{ 2251028 };
+		inline constexpr REL::ID LogFormError{ 1081933, 2251028 };
 		inline constexpr REL::ID BindCObject{ 2249771 };
 	}
 
