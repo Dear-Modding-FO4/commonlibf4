@@ -870,9 +870,9 @@ namespace RE::ID
 
 	namespace ConsoleLog
 	{
-		inline constexpr REL::ID Singleton{ 4797437 };
-		inline constexpr REL::ID AddString{ 2248593 };
-		inline constexpr REL::ID Print{ 2248591 };
+		inline constexpr REL::ID Singleton{ 689441, 2690148, 4797437 };
+		inline constexpr REL::ID AddString{ 764, 2248593 };
+		inline constexpr REL::ID Print{ 799546, 2248591 };
 	}
 
 	namespace ContainerMenu
@@ -1823,7 +1823,7 @@ namespace RE::ID
 
 	namespace TESDataHandler
 	{
-		inline constexpr REL::ID Singleton{ 4796135 };
+		inline constexpr REL::ID Singleton{ 711558, 2688883, 4796135 };
 		inline constexpr REL::ID AddFormToDataHandler{ 2192271 };
 		inline constexpr REL::ID CheckModsLoaded{ 2192323 };
 		inline constexpr REL::ID CreateReferenceAtLocation{ 2192301 };
