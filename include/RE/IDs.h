@@ -1691,12 +1691,12 @@ namespace RE::ID
 	{
 		namespace INISettingCollection
 		{
-			inline constexpr REL::ID Singleton{ 2704108 };
+			inline constexpr REL::ID Singleton{ 791183, 2704108 };
 		}
 
 		namespace INIPrefSettingCollection
 		{
-			inline constexpr REL::ID Singleton{ 2703234 };
+			inline constexpr REL::ID Singleton{ 767844, 2703234 };
 		}
 
 		namespace GameSettingCollection
