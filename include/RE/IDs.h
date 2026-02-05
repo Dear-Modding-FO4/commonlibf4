@@ -70,7 +70,7 @@ namespace RE::ID
 
 	namespace ActorEquipManager
 	{
-		inline constexpr REL::ID Singleton{ 4798287 };
+		inline constexpr REL::ID Singleton{ 0, 2690994, 4798287 };
 		inline constexpr REL::ID EquipObject{ 2231392 };
 		inline constexpr REL::ID UnequipObject{ 2231395 };
 		inline constexpr REL::ID UnequipItem{ 2231399 };
@@ -176,7 +176,7 @@ namespace RE::ID
 
 	namespace BGSDefaultObject
 	{
-		inline constexpr REL::ID Singleton{ 4797762 };
+		inline constexpr REL::ID Singleton{ 0, 2690473, 4797762 };
 		inline constexpr REL::ID ctor{ 2197003 };
 	}
 
@@ -187,7 +187,7 @@ namespace RE::ID
 
 	namespace BGSDynamicPersistenceManager
 	{
-		inline constexpr REL::ID Singleton{ 4796312 };
+		inline constexpr REL::ID Singleton{ 109630, 0, 4796312 };
 		inline constexpr REL::ID PromoteReference{ 2193819 };
 		inline constexpr REL::ID DemoteReference{ 2193820 };
 	}
@@ -204,7 +204,7 @@ namespace RE::ID
 
 	namespace BGSInventoryInterface
 	{
-		inline constexpr REL::ID Singleton{ 4796586 };
+		inline constexpr REL::ID Singleton{ 0, 2689299, 4796586 };
 		inline constexpr REL::ID RequestInventoryItem{ 2194009 };
 		inline constexpr REL::ID ForceMergeStacks{ 2194032 };
 	}
@@ -239,13 +239,13 @@ namespace RE::ID
 
 	namespace BGSKeyword
 	{
-		inline constexpr REL::ID TypedKeywords{ 4799330 };
+		inline constexpr REL::ID TypedKeywords{ 1095775, 4799330 };
 	}
 
 	namespace BGSKeywordForm
 	{
-		inline constexpr REL::ID AddKeyword{ 2192766 };
-		inline constexpr REL::ID RemoveKeyword{ 2192767 };
+		inline constexpr REL::ID AddKeyword{ 762999, 2192766 };
+		inline constexpr REL::ID RemoveKeyword{ 921694, 2192767 };
 	}
 
 	namespace BGSListForm
@@ -260,7 +260,7 @@ namespace RE::ID
 
 	namespace BGSLocalizedStringDL
 	{
-		inline constexpr REL::ID GetText{ 2194238 };
+		inline constexpr REL::ID GetText{ 472297, 2194238 };
 	}
 
 	namespace BGSMessage
@@ -333,8 +333,8 @@ namespace RE::ID
 
 	namespace BGSPerkRankArray
 	{
-		inline constexpr REL::ID AllocatePerkRankArray{ 2192837 };
-		inline constexpr REL::ID ClearPerks{ 2192836 };
+		inline constexpr REL::ID AllocatePerkRankArray{ 888419, 2192837 };
+		inline constexpr REL::ID ClearPerks{ 1247917, 2192836 };
 	}
 
 	namespace BGSPickLockEvent
@@ -392,13 +392,13 @@ namespace RE::ID
 
 	namespace BGSStoryEventManager
 	{
-		inline constexpr REL::ID Singleton{ 4800796 };
+		inline constexpr REL::ID Singleton{ 0, 2693504, 4800796 };
 		inline constexpr REL::ID AddEvent{ 2214088 };
 	}
 
 	namespace BGSSynchronizedAnimationManager
 	{
-		inline constexpr REL::ID Singleton{ 4798289 };
+		inline constexpr REL::ID Singleton{ 0, 2690996, 4798289 };
 		inline constexpr REL::ID IsReferenceInSynchronizedScene{ 2214437 };
 	}
 
@@ -540,7 +540,7 @@ namespace RE::ID
 
 	namespace BSInputDeviceManager
 	{
-		inline constexpr REL::ID Singleton{ 4807767 };
+		inline constexpr REL::ID Singleton{ 1284221, 4807767 };
 	}
 
 	namespace BSInputEnableLayer
@@ -550,31 +550,31 @@ namespace RE::ID
 
 	namespace BSInputEnableManager
 	{
-		inline constexpr REL::ID Singleton{ 4796297 };
-		inline constexpr REL::ID AllocateNewLayer{ 2268244 };
-		inline constexpr REL::ID EnableUserEvent{ 2268263 };
-		inline constexpr REL::ID EnableOtherEvent{ 2268265 };
+		inline constexpr REL::ID Singleton{ 781703, 0, 4796297 };
+		inline constexpr REL::ID AllocateNewLayer{ 537494, 2268244 };
+		inline constexpr REL::ID EnableUserEvent{ 1432984, 2268263 };
+		inline constexpr REL::ID EnableOtherEvent{ 1419268, 2268265 };
 	}
 
 	namespace BSModelDB
 	{
-		inline constexpr REL::ID Demand1{ 2275153 };
-		inline constexpr REL::ID Demand2{ 2275154 };
+		inline constexpr REL::ID Demand1{ 1066398, 2275153 };
+		inline constexpr REL::ID Demand2{ 1225688, 2275154 };
 	}
 
 	namespace BSPointerHandle
 	{
 		namespace BSPointerHandleManagerInterface
 		{
-			inline constexpr REL::ID CreateHandle{ 2188375 };
-			inline constexpr REL::ID GetHandle{ 2188676 };
-			inline constexpr REL::ID GetSmartPointer{ 2188681 };
+			inline constexpr REL::ID CreateHandle{ 224532, 2188375 };
+			inline constexpr REL::ID GetHandle{ 901626, 2188676 };
+			inline constexpr REL::ID GetSmartPointer{ 967277, 2188681 };
 		}
 	}
 
 	namespace BSRandom
 	{
-		inline constexpr REL::ID UnsignedInt{ 2267950 };
+		inline constexpr REL::ID UnsignedInt{ 694400, 2267950 };
 		inline constexpr REL::ID Float{ 2267953 };
 		inline constexpr REL::ID Float0To1{ 2267954 };
 		inline constexpr REL::ID Int{ 2267952 };
@@ -619,7 +619,7 @@ namespace RE::ID
 
 	namespace BSResource
 	{
-		inline constexpr REL::ID RegisterLocation{ 2269481 };
+		inline constexpr REL::ID RegisterLocation{ 918408, 2269481 };
 		inline constexpr REL::ID GetOrCreateStream{ 2269490 };
 
 		namespace ID
@@ -741,26 +741,26 @@ namespace RE::ID
 	{
 		namespace Entry
 		{
-			inline constexpr REL::ID Release{ 2268720 };
+			inline constexpr REL::ID Release{ 1204430, 2268720 };
 		}
 
-		inline constexpr REL::ID GetEntry_char{ 2268729 };
-		inline constexpr REL::ID GetEntry_wchar{ 2268730 };
+		inline constexpr REL::ID GetEntry_char{ 507142, 2268729 };
+		inline constexpr REL::ID GetEntry_wchar{ 345043, 2268730 };
 	}
 
 	namespace BSStringT
 	{
-		inline constexpr REL::ID Set{ 4471693 };
+		inline constexpr REL::ID Set{ 0, 2189084, 4471693 };
 	}
 
 	namespace BSSystemFileStreamer
 	{
-		inline constexpr REL::ID UncacheAll{ 2268797 };
+		inline constexpr REL::ID UncacheAll{ 40925, 2268797 };
 	}
 
 	namespace BSTempEffectDebris
 	{
-		inline constexpr REL::ID ctor{ 2212059 };
+		inline constexpr REL::ID ctor{ 1075623, 2212059 };
 	}
 
 	namespace BSTempEffectWeaponBlood
@@ -772,13 +772,13 @@ namespace RE::ID
 	{
 		namespace BSTGlobalEvent
 		{
-			inline constexpr REL::ID Singleton{ 4796078 };
+			inline constexpr REL::ID Singleton{ 0, 2688814, 4796078 };
 		}
 	}
 
 	namespace BSThreadEvent
 	{
-		inline constexpr REL::ID InitSDM{ 2268180 };
+		inline constexpr REL::ID InitSDM{ 1425097, 2268180 };
 	}
 
 	namespace BSTimer
@@ -807,23 +807,23 @@ namespace RE::ID
 
 	namespace Calendar
 	{
-		inline constexpr REL::ID Singleton{ 4796378 };
+		inline constexpr REL::ID Singleton{ 0, 2689092, 4796378 };
 		inline constexpr REL::ID GetDaysPassed{ 2228563 };
 	}
 
 	namespace CanDisplayNextHUDMessage
 	{
-		inline constexpr REL::ID GetEventSource{ 4802332 };
+		inline constexpr REL::ID GetEventSource{ 344866, 4802332 };
 	}
 
 	namespace CellAttachDetachEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 2192250 };
+		inline constexpr REL::ID GetEventSource{ 862142, 2192250 };
 	}
 
 	namespace ColorUpdateEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 4802831 };
+		inline constexpr REL::ID GetEventSource{ 1226590, 4802831 };
 	}
 
 	namespace CombatBehaviorFindObject
@@ -833,10 +833,10 @@ namespace RE::ID
 
 	namespace CombatFormulas
 	{
-		inline constexpr REL::ID GetWeaponDisplayAccuracy{ 2209049 };
-		inline constexpr REL::ID GetWeaponDisplayDamage{ 2209046 };
-		inline constexpr REL::ID GetWeaponDisplayRange{ 2209047 };
-		inline constexpr REL::ID GetWeaponDisplayRateOfFire{ 2209048 };
+		inline constexpr REL::ID GetWeaponDisplayAccuracy{ 1137654, 2209049 };
+		inline constexpr REL::ID GetWeaponDisplayDamage{ 1431014, 2209046 };
+		inline constexpr REL::ID GetWeaponDisplayRange{ 1324037, 2209047 };
+		inline constexpr REL::ID GetWeaponDisplayRateOfFire{ 1403591, 2209048 };
 		inline constexpr REL::ID CalcTargetedLimbDamage{ 2209033 };
 		inline constexpr REL::ID CalcWeaponDamage{ 2209001 };
 		inline constexpr REL::ID GetNumCrippledAttackConditions{ 2209041 };
@@ -890,7 +890,7 @@ namespace RE::ID
 
 	namespace ControlMap
 	{
-		inline constexpr REL::ID Singleton{ 4799307 };
+		inline constexpr REL::ID Singleton{ 0, 2692014, 4799307 };
 		inline constexpr REL::ID PopInputContext{ 2268336 };
 		inline constexpr REL::ID PushInputContext{ 2268335 };
 		inline constexpr REL::ID RemapButton{ 2268330 };
@@ -900,7 +900,7 @@ namespace RE::ID
 
 	namespace CurrentRadiationSourceCount
 	{
-		inline constexpr REL::ID GetEventSource{ 4803487 };
+		inline constexpr REL::ID GetEventSource{ 0, 2696196, 4803487 };
 	}
 
 	namespace DEFAULT_OBJECT_DATA
@@ -922,12 +922,12 @@ namespace RE::ID
 
 	namespace DoBeforeNewOrLoadCompletedEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 4802833 };
+		inline constexpr REL::ID GetEventSource{ 787908, 4802833 };
 	}
 
 	namespace EffectItem
 	{
-		inline constexpr REL::ID GetDescription{ 2189612 };
+		inline constexpr REL::ID GetDescription{ 523613, 2189612 };
 	}
 
 	namespace EquippedWeaponData
@@ -947,7 +947,7 @@ namespace RE::ID
 
 	namespace ExteriorCellSingleton
 	{
-		inline constexpr REL::ID Singleton{ 4796370 };
+		inline constexpr REL::ID Singleton{ 0, 2689084, 4796370 };
 	}
 
 	namespace ExtraDataList
@@ -975,7 +975,7 @@ namespace RE::ID
 
 	namespace FavoritesManager
 	{
-		inline constexpr REL::ID Singleton{ 4801690 };
+		inline constexpr REL::ID Singleton{ 0, 2694399, 4801690 };
 		inline constexpr REL::ID IsComponentFavorite{ 2248752 };
 		inline constexpr REL::ID UseQuickkeyItem{ 2248744 };
 		inline constexpr REL::ID HandleEvent{ 2248740 };
@@ -985,7 +985,7 @@ namespace RE::ID
 
 	namespace FlatScreenModel
 	{
-		inline constexpr REL::ID Singleton{ 4801718 };
+		inline constexpr REL::ID Singleton{ 847741, 4801718 };
 	}
 
 	namespace GameMenuBase
@@ -1031,7 +1031,7 @@ namespace RE::ID
 
 		namespace GameVM
 		{
-			inline constexpr REL::ID Singleton{ 4796420 };
+			inline constexpr REL::ID Singleton{ 0, 2689134, 4796420 };
 			inline constexpr REL::ID QueuePostRenderCall{ 2251314 };
 			inline constexpr REL::ID RegisterForAllGameEvents{ 2251353 };
 			inline constexpr REL::ID SendEventToObjectAndRelated{ 2251344 };
@@ -1043,7 +1043,7 @@ namespace RE::ID
 
 	namespace GameUIModel
 	{
-		inline constexpr REL::ID Singleton{ 4802814 };
+		inline constexpr REL::ID Singleton{ 17419, 4802814 };
 		inline constexpr REL::ID SetGameColors{ 2220911 };
 		inline constexpr REL::ID UpdateDataModels{ 2220905 };
 	}
@@ -1078,7 +1078,7 @@ namespace RE::ID
 
 	namespace HUDModeEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 4801988 };
+		inline constexpr REL::ID GetEventSource{ 683142, 4801988 };
 	}
 
 	namespace IAnimationGraphManagerHolder
@@ -1091,7 +1091,7 @@ namespace RE::ID
 
 	namespace IFormFactory
 	{
-		inline constexpr REL::ID Factories{ 4796464 };
+		inline constexpr REL::ID Factories{ 0, 2689177, 4796464 };
 	}
 
 	namespace ImageSpaceEffectFullScreenBlur
@@ -1106,7 +1106,7 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectHDR
 	{
-		inline constexpr REL::ID UsePipboyScreenMask{ 4784697 };
+		inline constexpr REL::ID UsePipboyScreenMask{ 0, 2678029, 4784697 };
 	}
 
 	namespace ImageSpaceEffectPipboyScreen
@@ -1250,26 +1250,26 @@ namespace RE::ID
 	{
 		namespace AutoScrapBuffer
 		{
-			inline constexpr REL::ID ctor{ 2267865 };
-			inline constexpr REL::ID dtor{ 2267867 };
+			inline constexpr REL::ID ctor{ 1571567, 2267865 };
+			inline constexpr REL::ID dtor{ 68625, 2267867 };
 		}
 
-		inline constexpr REL::ID Singleton{ 4471522 };
-		inline constexpr REL::ID Allocate{ 2267872 };
-		inline constexpr REL::ID Deallocate{ 2267874 };
-		inline constexpr REL::ID GetThreadScrapHeap{ 2267850 };
-		inline constexpr REL::ID Reallocate{ 2267873 };
-		inline constexpr REL::ID RegisterMemoryManager{ 2228356 };
+		inline constexpr REL::ID Singleton{ 343176, 2193197, 4471522 };
+		inline constexpr REL::ID Allocate{ 652767, 2267872 };
+		inline constexpr REL::ID Deallocate{ 1582181, 2267874 };
+		inline constexpr REL::ID GetThreadScrapHeap{ 1495205, 2267850 };
+		inline constexpr REL::ID Reallocate{ 1502917, 2267873 };
+		inline constexpr REL::ID RegisterMemoryManager{ 453212, 2228356 };
 	}
 
 	namespace MenuControls
 	{
-		inline constexpr REL::ID Singleton{ 4796375 };
+		inline constexpr REL::ID Singleton{ 0, 2689089, 4796375 };
 	}
 
 	namespace MenuCursor
 	{
-		inline constexpr REL::ID Singleton{ 4803837 };
+		inline constexpr REL::ID Singleton{ 0, 2696546, 4803837 };
 		inline constexpr REL::ID CenterCursor{ 2287473 };
 		inline constexpr REL::ID RegisterCursor{ 2287475 };
 		inline constexpr REL::ID SetCursorConstraintsRaw{ 2287480 };
@@ -1286,7 +1286,7 @@ namespace RE::ID
 
 	namespace MenuTopicManager
 	{
-		inline constexpr REL::ID Singleton{ 4796375 };
+		inline constexpr REL::ID Singleton{ 0, 2689089, 4796375 };
 	}
 
 	namespace MessageBoxMenu
@@ -1296,7 +1296,7 @@ namespace RE::ID
 
 	namespace MessageMenuManager
 	{
-		inline constexpr REL::ID Singleton{ 4796373 };
+		inline constexpr REL::ID Singleton{ 0, 2689087, 4796373 };
 		inline constexpr REL::ID Create{ 2249456 };
 	}
 
@@ -1393,7 +1393,7 @@ namespace RE::ID
 
 	namespace PerkPointIncreaseEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 4804734 };
+		inline constexpr REL::ID GetEventSource{ 685859, 2697359, 4804734 };
 	}
 
 	namespace PerkUtilities
@@ -1403,7 +1403,7 @@ namespace RE::ID
 
 	namespace PipboyDataManager
 	{
-		inline constexpr REL::ID Singleton{ 4796372 };
+		inline constexpr REL::ID Singleton{ 0, 2689086, 4796372 };
 	}
 
 	namespace PipboyDataGroup
@@ -1437,7 +1437,7 @@ namespace RE::ID
 
 	namespace PipboyLightEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 4803571 };
+		inline constexpr REL::ID GetEventSource{ 1140080, 2696280, 4803571 };
 	}
 
 	namespace PipboyLogMenu
@@ -1447,7 +1447,7 @@ namespace RE::ID
 
 	namespace PipboyManager
 	{
-		inline constexpr REL::ID Singleton{ 4799238 };
+		inline constexpr REL::ID Singleton{ 0, 2691945, 4799238 };
 		inline constexpr REL::ID AddMenuToPipboy{ 2225453 };
 		inline constexpr REL::ID ClosedownPipboy{ 2225480 };
 		inline constexpr REL::ID EnablePipboyShader{ 2225484 };
@@ -1555,7 +1555,7 @@ namespace RE::ID
 
 	namespace PlayerCamera
 	{
-		inline constexpr REL::ID Singleton{ 4796065 };
+		inline constexpr REL::ID Singleton{ 0, 2688801, 4796065 };
 		inline constexpr REL::ID PopState{ 2248424 };
 		inline constexpr REL::ID PushState{ 2248422 };
 		inline constexpr REL::ID ToggleFreeCameraMode{ 2248368 };
@@ -1574,7 +1574,7 @@ namespace RE::ID
 			inline constexpr REL::ID dtor{ 2233293 };
 		}
 
-		inline constexpr REL::ID Singleton{ 4798212 };
+		inline constexpr REL::ID Singleton{ 0, 2690919, 4798212 };
 		inline constexpr REL::ID GetPlayerHandle{ 2698072 };
 		inline constexpr REL::ID GetDifficultyLevel{ 2233056 };
 		inline constexpr REL::ID IsGodMode{ 2232986 };
@@ -1600,7 +1600,7 @@ namespace RE::ID
 
 	namespace PlayerControls
 	{
-		inline constexpr REL::ID Singleton{ 4799306 };
+		inline constexpr REL::ID Singleton{ 0, 2692013, 4799306 };
 		inline constexpr REL::ID DoAction{ 2234796 };
 		inline constexpr REL::ID DoRegisterHandler{ 2234822 };
 	}
@@ -1623,14 +1623,14 @@ namespace RE::ID
 
 	namespace PowerArmorGeometry
 	{
-		inline constexpr REL::ID Singleton{ 4801732 };
+		inline constexpr REL::ID Singleton{ 1365745, 0, 4801732 };
 		inline constexpr REL::ID HidePipboyPAGeometry{ 2248877 };
 		inline constexpr REL::ID ShowPipboyPAGeometry{ 2248876 };
 	}
 
 	namespace PowerArmorLightData
 	{
-		inline constexpr REL::ID GetEventSource{ 2701547 };
+		inline constexpr REL::ID GetEventSource{ 120809, 2701547 };
 	}
 
 	namespace PowerArmorModMenu
@@ -1640,7 +1640,7 @@ namespace RE::ID
 
 	namespace ProcessLists
 	{
-		inline constexpr REL::ID Singleton{ 4796160 };
+		inline constexpr REL::ID Singleton{ 0, 2688869, 4796160 };
 		inline constexpr REL::ID AreHostileActorsNear{ 2234105 };
 		inline constexpr REL::ID IsActorTargetingREFinPackage{ 2234033 };
 		inline constexpr REL::ID RequestHighestDetectionLevelAgainstActor{ 2234111 };
@@ -1660,8 +1660,8 @@ namespace RE::ID
 
 	namespace ScrapHeap
 	{
-		inline constexpr REL::ID Allocate{ 2267983 };
-		inline constexpr REL::ID Deallocate{ 2267984 };
+		inline constexpr REL::ID Allocate{ 1085394, 2267983 };
+		inline constexpr REL::ID Deallocate{ 923307, 2267984 };
 	}
 
 	namespace SCRIPT_FUNCTION
@@ -1701,7 +1701,7 @@ namespace RE::ID
 
 		namespace GameSettingCollection
 		{
-			inline constexpr REL::ID Singleton{ 4797590 };
+			inline constexpr REL::ID Singleton{ 0, 2690301, 4797590 };
 			inline constexpr REL::ID InitCollection{ 2188690 };
 		}
 	}
@@ -1755,7 +1755,7 @@ namespace RE::ID
 
 	namespace TerminalHacked
 	{
-		inline constexpr REL::ID GetEventSource{ 2233751 };
+		inline constexpr REL::ID GetEventSource{ 425579, 2233751 };
 	}
 
 	namespace TES
@@ -1770,7 +1770,7 @@ namespace RE::ID
 
 	namespace TESActorBaseData
 	{
-		inline constexpr REL::ID GetLevel{ 2192891 };
+		inline constexpr REL::ID GetLevel{ 151866, 2192891 };
 	}
 
 	namespace TESAmmo
@@ -1858,16 +1858,16 @@ namespace RE::ID
 
 	namespace TESForm
 	{
-		inline constexpr REL::ID FormSortFunc{ 0 };  // 705530 - inlined?
+		inline constexpr REL::ID FormSortFunc{ 705530, 0 };  // 705530 - inlined?
 		inline constexpr REL::ID AddCompileIndex{ 1315637, 2193152 };
 		inline constexpr REL::ID AllForms{ 422985, 2689178, 4796465 };
 		inline constexpr REL::ID AllFormsMapLock{ 691815, 2689189, 4796476 };
-		inline constexpr REL::ID AllFormsByEditorID{ 4796466 };
-		inline constexpr REL::ID AllFormsEditorIDMapLock{ 4796477 };
+		inline constexpr REL::ID AllFormsByEditorID{ 0, 2689179, 4796466 };
+		inline constexpr REL::ID AllFormsEditorIDMapLock{ 0, 2689190, 4796477 };
 		inline constexpr REL::ID GetFile{ 1376557, 2193103 };
 		inline constexpr REL::ID GetFormByNumericID{ 2193092 };
 		inline constexpr REL::ID GetFormEnumString{ 1309967 };
-		inline constexpr REL::ID GetFormTypeFromString{ 2193108 };
+		inline constexpr REL::ID GetFormTypeFromString{ 565203, 2193108 };
 		inline constexpr REL::ID SetTemporary{ 2193125 };
 	}
 
@@ -1878,7 +1878,7 @@ namespace RE::ID
 
 	namespace TESFullName
 	{
-		inline constexpr REL::ID SparseFullNameMap{ 2661402 };
+		inline constexpr REL::ID SparseFullNameMap{ 226372, 2661402 };
 	}
 
 	namespace TESFurniture
@@ -1898,7 +1898,7 @@ namespace RE::ID
 
 	namespace TESHealthForm
 	{
-		inline constexpr REL::ID GetFormHealth{ 2193227 };
+		inline constexpr REL::ID GetFormHealth{ 1515099, 2193227 };
 	}
 
 	namespace TESHitEvent
@@ -1913,11 +1913,11 @@ namespace RE::ID
 
 	namespace TESLeveledList
 	{
-		inline constexpr REL::ID AddLeveledObject{ 2193258 };
+		inline constexpr REL::ID AddLeveledObject{ 1163308, 2193258 };
 		inline constexpr REL::ID AddScriptAddedLeveledObject{ 2193269 };
-		inline constexpr REL::ID CalculateCurrentFormList{ 2193259 };
-		inline constexpr REL::ID CalculateCurrentFormListForRef{ 2193260 };
-		inline constexpr REL::ID GetUseAll{ 2193253 };
+		inline constexpr REL::ID CalculateCurrentFormList{ 507405, 2193259 };
+		inline constexpr REL::ID CalculateCurrentFormListForRef{ 507405, 2193260 };
+		inline constexpr REL::ID GetUseAll{ 233875, 2193253 };
 	}
 
 	namespace TESLoadGameEvent
@@ -1951,21 +1951,21 @@ namespace RE::ID
 
 	namespace TESObjectCELL
 	{
-		inline constexpr REL::ID GetbhkWorld{ 2200260 };
-		inline constexpr REL::ID GetCantWaitHere{ 2200287 };
-		inline constexpr REL::ID GetDataX{ 2200213 };
-		inline constexpr REL::ID GetDataY{ 2200214 };
-		inline constexpr REL::ID GetEncounterZone{ 2200242 };
-		inline constexpr REL::ID GetLocation{ 2200179 };
-		inline constexpr REL::ID GetOwner{ 2200236 };
-		inline constexpr REL::ID GetRegionList{ 2200265 };
-		inline constexpr REL::ID Pick{ 2200263 };
+		inline constexpr REL::ID GetbhkWorld{ 1326073, 2200260 };
+		inline constexpr REL::ID GetCantWaitHere{ 376940, 2200287 };
+		inline constexpr REL::ID GetDataX{ 445210, 2200213 };
+		inline constexpr REL::ID GetDataY{ 1322816, 2200214 };
+		inline constexpr REL::ID GetEncounterZone{ 1414637, 2200242 };
+		inline constexpr REL::ID GetLocation{ 868663, 2200179 };
+		inline constexpr REL::ID GetOwner{ 910422, 2200236 };
+		inline constexpr REL::ID GetRegionList{ 1565031, 2200265 };
+		inline constexpr REL::ID Pick{ 434717, 2200263 };
 		inline constexpr REL::ID SetCullCellMarkers{ 2192259 };
 		inline constexpr REL::ID UpdateAllRefsLoaded{ 2200415 };
 		inline constexpr REL::ID AttatchReference3D{ 2200620 };
 		inline constexpr REL::ID RemoveReference{ 2200299 };
 		inline constexpr REL::ID UpdateAllDecals{ 2200643 };
-		inline constexpr REL::ID DefaultWater{ 4799138 };
+		inline constexpr REL::ID DefaultWater{ 289864, 0, 4799138 };
 	}
 
 	namespace TESObjectLoadedEvent
@@ -2038,7 +2038,7 @@ namespace RE::ID
 
 	namespace TESSpellList
 	{
-		inline constexpr REL::ID AddSpell{ 2193395 };
+		inline constexpr REL::ID AddSpell{ 1312083, 2193395 };
 	}
 
 	namespace TESSwitchRaceCompleteEvent
@@ -2053,9 +2053,9 @@ namespace RE::ID
 
 	namespace TESTopicInfo
 	{
-		inline constexpr REL::ID GetParentInfoGroup{ 2208435 };
-		inline constexpr REL::ID GetChallengeLevel{ 2208441 };
-		inline constexpr REL::ID GetSuccessLevel{ 2208444 };
+		inline constexpr REL::ID GetParentInfoGroup{ 163538, 2208435 };
+		inline constexpr REL::ID GetChallengeLevel{ 0, 2208441 };
+		inline constexpr REL::ID GetSuccessLevel{ 1023955, 2208444 };
 		inline constexpr REL::ID StartSceneOnEnd{ 2208466 };
 		inline constexpr REL::ID GetScene{ 2208453 };
 		inline constexpr REL::ID StartScene{ 2208469 };
@@ -2064,7 +2064,7 @@ namespace RE::ID
 
 	namespace TESValueForm
 	{
-		inline constexpr REL::ID GetFormValue{ 2193435 };
+		inline constexpr REL::ID GetFormValue{ 885783, 2193435 };
 	}
 
 	namespace TESWaterDisplacement
@@ -2074,7 +2074,7 @@ namespace RE::ID
 
 	namespace TESWeightForm
 	{
-		inline constexpr REL::ID GetFormWeight{ 2193446 };
+		inline constexpr REL::ID GetFormWeight{ 1321341, 2193446 };
 	}
 
 	namespace TESWorldSpace
@@ -2085,7 +2085,7 @@ namespace RE::ID
 
 	namespace UI
 	{
-		inline constexpr REL::ID Singleton{ 4796314 };
+		inline constexpr REL::ID Singleton{ 0, 2689028, 4796314 };
 		inline constexpr REL::ID CustomRendererHasQuads{ 2284757 };
 		inline constexpr REL::ID GetMenuMapRWLock{ 2707105 };
 		inline constexpr REL::ID RefreshCursor{ 2284772 };
@@ -2095,28 +2095,28 @@ namespace RE::ID
 
 	namespace UIAdvanceMenusFunctionCompleteEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 4801719 };
+		inline constexpr REL::ID GetEventSource{ 1067039, 0, 4801719 };
 	}
 
 	namespace UIMessageQueue
 	{
-		inline constexpr REL::ID Singleton{ 4796377 };
+		inline constexpr REL::ID Singleton{ 0, 2689091, 4796377 };
 		inline constexpr REL::ID AddMessage{ 2284929 };
 	}
 
 	namespace UIUtils
 	{
-		inline constexpr REL::ID GetComparisonItems{ 0 };  // 593818 - inlined?
+		inline constexpr REL::ID GetComparisonItems{ 593818, 0 };  // 593818 - inlined?
 		inline constexpr REL::ID PlayPipboySound{ 2249706 };
 		inline constexpr REL::ID PlayMenuSound{ 2249707 };
-		inline constexpr REL::ID UpdateGamepadDependentButtonCodes{ 4483350 };
+		inline constexpr REL::ID UpdateGamepadDependentButtonCodes{ 190238, 0, 4483350 };	// FIXME: NG no ID
 		inline constexpr REL::ID ShowCraftingMenu{ 2249718 };
 		inline constexpr REL::ID HasRequiredInventoryForCraftingMenu{ 2249717 };
 	}
 
 	namespace VATS
 	{
-		inline constexpr REL::ID Singleton{ 4797733 };
+		inline constexpr REL::ID Singleton{ 570121, 2690444, 4797733 };
 		inline constexpr REL::ID CanActivateCriticals{ 2237208 };
 	}
 
@@ -2131,38 +2131,38 @@ namespace RE::ID
 	{
 		namespace PlacementItemData
 		{
-			inline constexpr REL::ID Set{ 2195643 };
+			inline constexpr REL::ID Set{ 1460935, 2195643 };
 		}
 
 		namespace WorkshopMenuNode
 		{
-			inline constexpr REL::ID FindAndSetSelectedNode{ 2195022 };
+			inline constexpr REL::ID FindAndSetSelectedNode{ 1309368, 2195022 };
 		}
 
-		inline constexpr REL::ID FindNearestValidWorkshop{ 2194970 };
-		inline constexpr REL::ID FreeBuild{ 2194924 };
-		inline constexpr REL::ID GetSelectedWorkshopMenuNode{ 2195024 };
-		inline constexpr REL::ID InitializePlacementReference{ 0 };  // 1577199 - inlined
-		inline constexpr REL::ID IsLocationWithinBuildableArea{ 2194956 };
-		inline constexpr REL::ID PlaceCurrentReference{ 2195155 };
-		inline constexpr REL::ID RegisterForItemDestroyed{ 2194930 };
-		inline constexpr REL::ID RegisterForItemMoved{ 2194932 };
-		inline constexpr REL::ID RegisterForItemPlaced{ 2194926 };
-		inline constexpr REL::ID RegisterForWorkshopModeEvent{ 2194946 };
-		inline constexpr REL::ID RequestExitWorkshop{ 2195135 };
-		inline constexpr REL::ID ScrapReference{ 2195125 };
-		inline constexpr REL::ID SetSelectedEditItem{ 2195119 };
-		inline constexpr REL::ID StartWorkshop{ 2195134 };
-		inline constexpr REL::ID ToggleEditMode{ 2195130 };
-		inline constexpr REL::ID UnregisterForItemDestroyed{ 2194931 };
-		inline constexpr REL::ID UnregisterForItemMoved{ 2194933 };
-		inline constexpr REL::ID UnregisterForItemPlaced{ 2194927 };
-		inline constexpr REL::ID UnregisterForWorkshopModeEvent{ 2194947 };
-		inline constexpr REL::ID UpdateActiveEdit{ 2195210 };
-		inline constexpr REL::ID WorkshopCanShowRecipe{ 2195115 };
-		inline constexpr REL::ID CurrentPlacementItemData{ 4797261 };
-		inline constexpr REL::ID CurrentRow{ 4797160 };
-		inline constexpr REL::ID PlacementItem{ 4797235 };
+		inline constexpr REL::ID FindNearestValidWorkshop{ 905705, 2194970 };
+		inline constexpr REL::ID FreeBuild{ 1583365, 2194924 };
+		inline constexpr REL::ID GetSelectedWorkshopMenuNode{ 763948, 2195024 };
+		inline constexpr REL::ID InitializePlacementReference{ 1577199, 0 };		// 1577199 - inlined
+		inline constexpr REL::ID IsLocationWithinBuildableArea{ 990965, 2194956 };
+		inline constexpr REL::ID PlaceCurrentReference{ 1058211, 2195155 };
+		inline constexpr REL::ID RegisterForItemDestroyed{ 1367004, 2194930 };
+		inline constexpr REL::ID RegisterForItemMoved{ 835323, 2194932 };
+		inline constexpr REL::ID RegisterForItemPlaced{ 849008, 2194926 };
+		inline constexpr REL::ID RegisterForWorkshopModeEvent{ 275798, 2194946 };
+		inline constexpr REL::ID RequestExitWorkshop{ 209891, 2195135 };
+		inline constexpr REL::ID ScrapReference{ 636327, 2195125 };
+		inline constexpr REL::ID SetSelectedEditItem{ 2562, 2195119 };
+		inline constexpr REL::ID StartWorkshop{ 171771, 2195134 };
+		inline constexpr REL::ID ToggleEditMode{ 1243386, 2195130 };
+		inline constexpr REL::ID UnregisterForItemDestroyed{ 1101379, 2194931 };
+		inline constexpr REL::ID UnregisterForItemMoved{ 569432, 2194933 };
+		inline constexpr REL::ID UnregisterForItemPlaced{ 583255, 2194927 };
+		inline constexpr REL::ID UnregisterForWorkshopModeEvent{ 9236, 2194947 };
+		inline constexpr REL::ID UpdateActiveEdit{ 69261, 2195210 };
+		inline constexpr REL::ID WorkshopCanShowRecipe{ 239190, 2195115 };
+		inline constexpr REL::ID CurrentPlacementItemData{ 1279207, 0, 4797261 };	// FIXME: NG no ID
+		inline constexpr REL::ID CurrentRow{ 833923, 0, 4797160 };					// FIXME: NG no ID
+		inline constexpr REL::ID PlacementItem{ 526727, 0, 4797235 };				// FIXME: NG no ID
 	}
 
 	namespace WorkshopMenu
@@ -2200,7 +2200,7 @@ namespace Scaleform::ID
 		inline constexpr REL::ID ObjectRelease{ 2286229 };
 		inline constexpr REL::ID HasMember{ 2286078 };
 		inline constexpr REL::ID GetArraySize{ 2285791 };
-		inline constexpr REL::ID GetMember{ 4494126 };
+		inline constexpr REL::ID GetMember{ 0, 2285936, 4494126 };
 		inline constexpr REL::ID GetElement{ 2285881 };
 		inline constexpr REL::ID SetElement{ 2286575 };
 		inline constexpr REL::ID SetMember{ 2286589 };
@@ -2219,7 +2219,7 @@ namespace Scaleform::ID
 
 	namespace SysAlloc
 	{
-		inline constexpr REL::ID InitHeapEngine{ 4493927 };
+		inline constexpr REL::ID InitHeapEngine{ 0, 2284532, 4493927 };
 		inline constexpr REL::ID ShutdownHeapEngine{ 2284536 };
 	}
 }
