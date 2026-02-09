@@ -8590,8 +8590,8 @@ namespace RE
 		inline constexpr REL::ID IMovementState{ 4848598 };
 		inline constexpr REL::ID IMovementTweenerAgent{ 4841058 };
 		inline constexpr REL::ID IMultiActivateUser{ 4847392 };
-		inline constexpr REL::ID INIPrefSettingCollection{ 4840508 };
-		inline constexpr REL::ID INISettingCollection{ 4839590 };
+		inline constexpr REL::ID INIPrefSettingCollection{ 828461, 2765215, 4840508 };
+		inline constexpr REL::ID INISettingCollection{ 611766, 2764335, 4839590 };
 		inline constexpr REL::ID INavmeshSearchFilterSet{ 4843722 };
 		inline constexpr REL::ID IOManager{ 4859451 };
 		inline constexpr REL::ID IOManagerThread{ 4859457 };
