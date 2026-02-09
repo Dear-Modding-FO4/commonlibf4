@@ -7410,7 +7410,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  NavMeshSearchMultipleGoals{ REL::ID(416767) };
 		inline constexpr std::array<REL::ID, 1>  NavMeshSearchSLPoint{ REL::ID(589969) };
 		inline constexpr std::array<REL::ID, 1>  NiAVObject{ REL::ID(1031341) };
-		inline constexpr std::array<REL::ID, 1>  NiAVObjectPalette{ REL::ID(1254852) };
+		inline constexpr std::array<REL::ID, 1>  NiAVObjectPalette{ REL::ID{ 1095860, 1254852 } };
 		inline constexpr std::array<REL::ID, 1>  NiAccumulator{ REL::ID(737123) };
 		inline constexpr std::array<REL::ID, 1>  NiAdditionalGeometryData{ REL::ID(1282505) };
 		inline constexpr std::array<REL::ID, 1>  NiAllocator{ REL::ID(1229985) };
