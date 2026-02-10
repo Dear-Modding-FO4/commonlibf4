@@ -1574,7 +1574,7 @@ namespace RE::ID
 			inline constexpr REL::ID dtor{ 2233293 };
 		}
 
-		inline constexpr REL::ID Singleton{ 0, 2690919, 4798212 };
+		inline constexpr REL::ID Singleton{ 303410, 2690919, 4798212 };
 		inline constexpr REL::ID GetPlayerHandle{ 2698072 };
 		inline constexpr REL::ID GetDifficultyLevel{ 2233056 };
 		inline constexpr REL::ID IsGodMode{ 2232986 };

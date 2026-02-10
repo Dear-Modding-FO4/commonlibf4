@@ -4812,7 +4812,7 @@ namespace RE
 		inline constexpr REL::ID BSTEventSink_TESActiveEffectApplyRemoveEvent_{ 4856586 };
 		inline constexpr REL::ID BSTEventSink_TESActorLocationChangeEvent_{ 4856588 };
 		inline constexpr REL::ID BSTEventSink_TESBookReadEvent_{ 4856590 };
-		inline constexpr REL::ID BSTEventSink_TESCellAttachDetachEvent_{ 4856592 };
+		inline constexpr REL::ID BSTEventSink_TESCellAttachDetachEvent_{ 1395474, 2768351, 4856592 };
 		inline constexpr REL::ID BSTEventSink_TESCellFullyLoadedEvent_{ 4856594 };
 		inline constexpr REL::ID BSTEventSink_TESCellReadyToApplyDecalsEvent_{ 4841732 };
 		inline constexpr REL::ID BSTEventSink_TESCombatEvent_{ 4856596 };
