@@ -2012,7 +2012,7 @@ namespace RE::ID
 		inline constexpr REL::ID SetScale{ 2200893 };
 		inline constexpr REL::ID IsMarker{ 2201157 };
 		inline constexpr REL::ID IsDecalRef{ 2200794 };
-		inline constexpr REL::ID UpdateDynamicNavmesh{ 2201206 };
+		inline constexpr REL::ID UpdateDynamicNavmesh{ 1518094, 2201206 };
 		inline constexpr REL::ID GetMapMarkerData{ 2202644 };
 		inline constexpr REL::ID GetRelevantWaterHeight{ 2201189 };
 	}
