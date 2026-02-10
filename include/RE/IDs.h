@@ -733,8 +733,8 @@ namespace RE::ID
 			inline constexpr REL::ID try_lock_write{ 1279453, 2267902 };
 		}
 
-		inline constexpr REL::ID lock{ 2192245 };
-		inline constexpr REL::ID try_lock{ 2267902 };
+		inline constexpr REL::ID lock{ 1425657, 2192245 };
+		inline constexpr REL::ID try_lock{ 267930, 2267902 };
 	}
 
 	namespace BSStringPool
