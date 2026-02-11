@@ -807,7 +807,7 @@ namespace RE::ID
 
 	namespace Calendar
 	{
-		inline constexpr REL::ID Singleton{ 0, 2689092, 4796378 };
+		inline constexpr REL::ID Singleton{ 1444952, 2689092, 4796378 };
 		inline constexpr REL::ID GetDaysPassed{ 2228563 };
 	}
 
