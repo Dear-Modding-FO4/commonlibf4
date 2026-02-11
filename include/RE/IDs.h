@@ -1847,13 +1847,13 @@ namespace RE::ID
 
 	namespace TESFile
 	{
-		inline constexpr REL::ID CloseTES{ 2192491 };
-		inline constexpr REL::ID GetChunkData{ 2192538 };
-		inline constexpr REL::ID GetTESChunk{ 2192536 };
-		inline constexpr REL::ID NextChunk{ 2192537 };
-		inline constexpr REL::ID NextForm{ 2192527 };
-		inline constexpr REL::ID NextGroup{ 2192522 };
-		inline constexpr REL::ID OpenTES{ 2192490 };
+		inline constexpr REL::ID CloseTES{ 766555, 2192491 };
+		inline constexpr REL::ID GetChunkData{ 188910, 2192538 };
+		inline constexpr REL::ID GetTESChunk{ 641361, 2192536 };
+		inline constexpr REL::ID NextChunk{ 1252764, 2192537 };
+		inline constexpr REL::ID NextForm{ 644374, 2192527 };
+		inline constexpr REL::ID NextGroup{ 339855, 2192522 };
+		inline constexpr REL::ID OpenTES{ 728465, 2192490 };
 	}
 
 	namespace TESForm
