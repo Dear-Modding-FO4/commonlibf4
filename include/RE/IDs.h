@@ -1701,8 +1701,8 @@ namespace RE::ID
 
 		namespace GameSettingCollection
 		{
-			inline constexpr REL::ID Singleton{ 0, 2690301, 4797590 };
-			inline constexpr REL::ID InitCollection{ 2188690 };
+			inline constexpr REL::ID Singleton{ 8308, 2690301, 4797590 };
+			inline constexpr REL::ID InitCollection{ 759563, 2188690 };
 		}
 	}
 
