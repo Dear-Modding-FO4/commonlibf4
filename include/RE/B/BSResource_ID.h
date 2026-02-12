@@ -8,6 +8,13 @@ namespace RE::BSResource
 		public FileID  // 0
 	{
 	public:
+		ID() = default;
+		ID(const ID&) noexcept = default;
+		ID(const char* a_path) noexcept
+		{
+			GenerateFromPath(a_path);
+		}
+
 		[[nodiscard]] bool operator==(const ID&) const noexcept = default;
 
 		void GenerateFromPath(const char* a_path)
