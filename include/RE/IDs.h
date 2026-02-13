@@ -1264,12 +1264,12 @@ namespace RE::ID
 
 	namespace MenuControls
 	{
-		inline constexpr REL::ID Singleton{ 0, 2689089, 4796375 };
+		inline constexpr REL::ID Singleton{ 520890, 2689089, 4796375 };
 	}
 
 	namespace MenuCursor
 	{
-		inline constexpr REL::ID Singleton{ 0, 2696546, 4803837 };
+		inline constexpr REL::ID Singleton{ 695696, 2696546, 4803837 };
 		inline constexpr REL::ID CenterCursor{ 2287473 };
 		inline constexpr REL::ID RegisterCursor{ 2287475 };
 		inline constexpr REL::ID SetCursorConstraintsRaw{ 2287480 };
