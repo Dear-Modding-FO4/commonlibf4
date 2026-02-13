@@ -1447,31 +1447,31 @@ namespace RE::ID
 
 	namespace PipboyManager
 	{
-		inline constexpr REL::ID Singleton{ 0, 2691945, 4799238 };
-		inline constexpr REL::ID AddMenuToPipboy{ 2225453 };
-		inline constexpr REL::ID ClosedownPipboy{ 2225480 };
-		inline constexpr REL::ID EnablePipboyShader{ 2225484 };
-		inline constexpr REL::ID InitPipboy{ 2225479 };
-		inline constexpr REL::ID LowerPipboy{ 2225454 };
-		inline constexpr REL::ID OnPipboyCloseAnim{ 2225457 };
-		inline constexpr REL::ID OnPipboyCloseAnimFailed{ 2225459 };
-		inline constexpr REL::ID OnPipboyClosed{ 2225458 };
-		inline constexpr REL::ID OnPipboyOpenAnim{ 2225448 };
-		inline constexpr REL::ID OnPipboyOpenAnimFailed{ 2225449 };
-		inline constexpr REL::ID OnPipboyOpened{ 2225450 };
-		inline constexpr REL::ID PlayItemAnimOnClose{ 2225461 };
-		inline constexpr REL::ID PlayPipboyCloseAnim{ 2225456 };
-		inline constexpr REL::ID PlayPipboyGenericOpenAnim{ 2225447 };
-		inline constexpr REL::ID PlayPipboyLoadHolotapeAnim{ 2225446 };
-		inline constexpr REL::ID PlayPipboyOpenAnim{ 2225444 };
-		inline constexpr REL::ID PlayPipboyOpenTerminalAnim{ 2225445 };
-		inline constexpr REL::ID ProcessLoweringReason{ 2225486 };
-		inline constexpr REL::ID QPipboyActive{ 2225460 };
-		inline constexpr REL::ID RaisePipboy{ 2225455 };
-		inline constexpr REL::ID RefreshPipboyRenderSurface{ 2225478 };
-		inline constexpr REL::ID StartAnimationGraphListening{ 2225490 };
-		inline constexpr REL::ID StopAnimationGraphListening{ 2225491 };
-		inline constexpr REL::ID UpdateCursorConstraint{ 2225488 };
+		inline constexpr REL::ID Singleton{ 553234, 2691945, 4799238 };
+		inline constexpr REL::ID AddMenuToPipboy{ 394568, 2225453 };
+		inline constexpr REL::ID ClosedownPipboy{ 731410, 2225480 };
+		inline constexpr REL::ID EnablePipboyShader{ 157921, 2225484 };
+		inline constexpr REL::ID InitPipboy{ 1477369, 2225479 };
+		inline constexpr REL::ID LowerPipboy{ 1444875, 2225454 };
+		inline constexpr REL::ID OnPipboyCloseAnim{ 1231000, 2225457 };
+		inline constexpr REL::ID OnPipboyCloseAnimFailed{ 1362084, 2225459 };
+		inline constexpr REL::ID OnPipboyClosed{ 592088, 2225458 };
+		inline constexpr REL::ID OnPipboyOpenAnim{ 1500318, 2225448 };
+		inline constexpr REL::ID OnPipboyOpenAnimFailed{ 702357, 2225449 };
+		inline constexpr REL::ID OnPipboyOpened{ 1299608, 2225450 };
+		inline constexpr REL::ID PlayItemAnimOnClose{ 377837, 2225461 };
+		inline constexpr REL::ID PlayPipboyCloseAnim{ 273927, 2225456 };
+		inline constexpr REL::ID PlayPipboyGenericOpenAnim{ 809076, 2225447 };
+		inline constexpr REL::ID PlayPipboyLoadHolotapeAnim{ 477096, 2225446 };
+		inline constexpr REL::ID PlayPipboyOpenAnim{ 663900, 2225444 };
+		inline constexpr REL::ID PlayPipboyOpenTerminalAnim{ 743427, 2225445 };
+		inline constexpr REL::ID ProcessLoweringReason{ 302903, 2225486 };
+		inline constexpr REL::ID QPipboyActive{ 470886, 2225460 };
+		inline constexpr REL::ID RaisePipboy{ 726763, 2225455 };
+		inline constexpr REL::ID RefreshPipboyRenderSurface{ 81339, 2225478 };
+		inline constexpr REL::ID StartAnimationGraphListening{ 714713, 2225490 };
+		inline constexpr REL::ID StopAnimationGraphListening{ 621144, 2225491 };
+		inline constexpr REL::ID UpdateCursorConstraint{ 900802, 2225488 };
 	}
 
 	namespace PipboyMapMenu
