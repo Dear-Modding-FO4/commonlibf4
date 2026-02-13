@@ -1121,12 +1121,12 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectTemporalAA
 	{
-		inline constexpr REL::ID MaskS{ 2713052 };
+		inline constexpr REL::ID MaskS{ 775377, 2713052 };
 	}
 
 	namespace ImageSpaceManager
 	{
-		inline constexpr REL::ID Singleton{ 2712627 };
+		inline constexpr REL::ID Singleton{ 161743, 2712627 };
 	}
 
 	namespace ImageSpaceModifierInstance
