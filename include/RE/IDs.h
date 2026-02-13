@@ -890,12 +890,12 @@ namespace RE::ID
 
 	namespace ControlMap
 	{
-		inline constexpr REL::ID Singleton{ 0, 2692014, 4799307 };
-		inline constexpr REL::ID PopInputContext{ 2268336 };
-		inline constexpr REL::ID PushInputContext{ 2268335 };
-		inline constexpr REL::ID RemapButton{ 2268330 };
-		inline constexpr REL::ID SaveRemappings{ 2268331 };
-		inline constexpr REL::ID SetTextEntryMode{ 4491359 };
+		inline constexpr REL::ID Singleton{ 325206, 2692014, 4799307 };
+		inline constexpr REL::ID PopInputContext{ 74587, 2268336 };
+		inline constexpr REL::ID PushInputContext{ 1404410, 2268335 };
+		inline constexpr REL::ID RemapButton{ 11351, 2268330 };
+		inline constexpr REL::ID SaveRemappings{ 1141541, 2268331 };
+		inline constexpr REL::ID SetTextEntryMode{ 1270079, 4491359 };
 	}
 
 	namespace CurrentRadiationSourceCount
