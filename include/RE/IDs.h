@@ -1270,10 +1270,10 @@ namespace RE::ID
 	namespace MenuCursor
 	{
 		inline constexpr REL::ID Singleton{ 695696, 2696546, 4803837 };
-		inline constexpr REL::ID CenterCursor{ 2287473 };
-		inline constexpr REL::ID RegisterCursor{ 2287475 };
-		inline constexpr REL::ID SetCursorConstraintsRaw{ 2287480 };
-		inline constexpr REL::ID UnregisterCursor{ 2287486 };
+		inline constexpr REL::ID CenterCursor{ 1107298, 2287473 };
+		inline constexpr REL::ID RegisterCursor{ 1318193, 2287475 };
+		inline constexpr REL::ID SetCursorConstraintsRaw{ 907092, 2287480 };
+		inline constexpr REL::ID UnregisterCursor{ 1225249, 2287486 };
 		inline constexpr REL::ID PipboyConstraintTLX{ 280077 };
 		inline constexpr REL::ID PipboyConstraintTLY{ 938173 };
 		inline constexpr REL::ID PipboyConstraintWidth{ 13663 };
