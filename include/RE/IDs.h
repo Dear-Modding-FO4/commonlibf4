@@ -848,7 +848,7 @@ namespace RE::ID
 		inline constexpr REL::ID CalculateProjectileLOS1{ 2240617 };
 		inline constexpr REL::ID CalculateProjectileLOS2{ 2240616 };
 		inline constexpr REL::ID CalculateProjectileTrajectory{ 2240611 };
-		inline constexpr REL::ID WorldGravity{ 2700340 };
+		inline constexpr REL::ID WorldGravity{ 1378547, 2700340 };
 		inline constexpr REL::ID IsActorUsingMelee{ 2240626 };
 		inline constexpr REL::ID IsActorUsingUnarmed{ 2240625 };
 	}
