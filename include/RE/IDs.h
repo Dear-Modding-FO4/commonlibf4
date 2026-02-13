@@ -985,7 +985,7 @@ namespace RE::ID
 
 	namespace FlatScreenModel
 	{
-		inline constexpr REL::ID Singleton{ 847741, 847741, 4801718 };
+		inline constexpr REL::ID Singleton{ 847741, 2694427, 4801718 };
 	}
 
 	namespace GameMenuBase
