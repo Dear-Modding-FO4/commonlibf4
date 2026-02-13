@@ -975,7 +975,7 @@ namespace RE::ID
 
 	namespace FavoritesManager
 	{
-		inline constexpr REL::ID Singleton{ 0, 2694399, 4801690 };
+		inline constexpr REL::ID Singleton{ 198281, 2694399, 4801690 };
 		inline constexpr REL::ID IsComponentFavorite{ 2248752 };
 		inline constexpr REL::ID UseQuickkeyItem{ 2248744 };
 		inline constexpr REL::ID HandleEvent{ 2248740 };
@@ -985,7 +985,7 @@ namespace RE::ID
 
 	namespace FlatScreenModel
 	{
-		inline constexpr REL::ID Singleton{ 847741, 4801718 };
+		inline constexpr REL::ID Singleton{ 847741, 847741, 4801718 };
 	}
 
 	namespace GameMenuBase
