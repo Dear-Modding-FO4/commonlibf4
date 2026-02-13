@@ -1096,7 +1096,7 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectFullScreenBlur
 	{
-		inline constexpr REL::ID Disable{ 2713225 };
+		inline constexpr REL::ID Disable{ 372489, 2713225 };
 	}
 
 	namespace ImageSpaceEffectGetHit
@@ -1116,7 +1116,7 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectRadialBlur
 	{
-		inline constexpr REL::ID Disable{ 2713225 };
+		inline constexpr REL::ID Disable{ 1500590, 2713225 };
 	}
 
 	namespace ImageSpaceEffectTemporalAA
