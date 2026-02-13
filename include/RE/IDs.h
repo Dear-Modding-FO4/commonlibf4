@@ -791,10 +791,10 @@ namespace RE::ID
 
 	namespace BSUIMessageData
 	{
-		inline constexpr REL::ID SendUIBoolMessage{ 2284981 };
-		inline constexpr REL::ID SendUIStringMessage{ 2284977 };
-		inline constexpr REL::ID SendUIPtrMessage{ 2284982 };
-		inline constexpr REL::ID SendUIStringUIntMessage{ 2284979 };
+		inline constexpr REL::ID SendUIBoolMessage{ 1388308, 2284981 };
+		inline constexpr REL::ID SendUIStringMessage{ 1270833, 2284977 };
+		inline constexpr REL::ID SendUIPtrMessage{ 1374542, 2284982 };
+		inline constexpr REL::ID SendUIStringUIntMessage{ 99795, 2284979 };
 	}
 
 	namespace BSUtilities
