@@ -1101,7 +1101,7 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectGetHit
 	{
-		inline constexpr REL::ID Disable{ 2713237 };
+		inline constexpr REL::ID Disable{ 1523708, 2713237 };
 	}
 
 	namespace ImageSpaceEffectHDR
