@@ -1111,7 +1111,7 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectPipboyScreen
 	{
-		inline constexpr REL::ID PowerArmorPipboy{ 2713203 };
+		inline constexpr REL::ID PowerArmorPipboy{ 1065542, 2713203 };
 	}
 
 	namespace ImageSpaceEffectRadialBlur
