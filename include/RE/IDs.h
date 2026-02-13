@@ -2085,12 +2085,12 @@ namespace RE::ID
 
 	namespace UI
 	{
-		inline constexpr REL::ID Singleton{ 0, 2689028, 4796314 };
-		inline constexpr REL::ID CustomRendererHasQuads{ 2284757 };
-		inline constexpr REL::ID GetMenuMapRWLock{ 2707105 };
-		inline constexpr REL::ID RefreshCursor{ 2284772 };
-		inline constexpr REL::ID RegisterMenu{ 2284766 };
-		inline constexpr REL::ID UpdateControllerType{ 2284768 };
+		inline constexpr REL::ID Singleton{ 548587, 2689028, 4796314 };
+		inline constexpr REL::ID CustomRendererHasQuads{ 1401451, 2284757 };
+		inline constexpr REL::ID GetMenuMapRWLock{ 578487, 2707105 };
+		inline constexpr REL::ID RefreshCursor{ 1436639, 2284772 };
+		inline constexpr REL::ID RegisterMenu{ 1519575, 2284766 };
+		inline constexpr REL::ID UpdateControllerType{ 175796, 2284768 };
 	}
 
 	namespace UIAdvanceMenusFunctionCompleteEvent
