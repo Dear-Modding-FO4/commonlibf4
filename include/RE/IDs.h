@@ -1668,7 +1668,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID ConsoleFunctions{ 901511 };
 		inline constexpr REL::ID ScriptFunctions{ 75173 };
-		inline constexpr REL::ID CompileFunction{ 2204343 };
+		inline constexpr REL::ID CompileFunction{ 638606, 2204343 };
 	}
 
 	namespace Script
