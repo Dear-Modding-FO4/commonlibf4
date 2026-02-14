@@ -8387,7 +8387,7 @@ namespace RE
 		inline constexpr REL::ID GameScript____WriteStackWrapper{ 4856138 };
 		inline constexpr REL::ID GameSettingCollection{ 4839594 };
 		inline constexpr REL::ID GameUIModel{ 4845814 };
-		inline constexpr REL::ID GameVM{ 4855346 };
+		inline constexpr REL::ID GameVM{ 214866, 2779965, 4855346 };
 		inline constexpr REL::ID GenericMenu{ 4847178 };
 		inline constexpr REL::ID GetBestAmmoFunctor{ 4841804 };
 		inline constexpr REL::ID GetBestArmorFunctor{ 4841806 };

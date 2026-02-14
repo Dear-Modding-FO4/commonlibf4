@@ -1019,22 +1019,22 @@ namespace RE::ID
 	{
 		namespace HandlePolicy
 		{
-			inline constexpr REL::ID DropSaveLoadRemapData{ 2249995 };
-			inline constexpr REL::ID GetInventoryObjFromHandle{ 2249989 };
-			inline constexpr REL::ID UpdatePersistence{ 2249991 };
+			inline constexpr REL::ID DropSaveLoadRemapData{ 647657, 2249995 };
+			inline constexpr REL::ID GetInventoryObjFromHandle{ 66597, 2249989 };
+			inline constexpr REL::ID UpdatePersistence{ 11020, 2249991 };
 		}
 
 		namespace ObjectBindPolicy
 		{
-			inline constexpr REL::ID EndSaveLoad{ 2250482 };
+			inline constexpr REL::ID EndSaveLoad{ 1558837, 2250482 };
 		}
 
 		namespace GameVM
 		{
-			inline constexpr REL::ID Singleton{ 0, 2689134, 4796420 };
-			inline constexpr REL::ID QueuePostRenderCall{ 2251314 };
-			inline constexpr REL::ID RegisterForAllGameEvents{ 2251353 };
-			inline constexpr REL::ID SendEventToObjectAndRelated{ 2251344 };
+			inline constexpr REL::ID Singleton{ 996227, 2689134, 4796420 };
+			inline constexpr REL::ID QueuePostRenderCall{ 34412, 2251314 };
+			inline constexpr REL::ID RegisterForAllGameEvents{ 680454, 2251353 };
+			inline constexpr REL::ID SendEventToObjectAndRelated{ 367992, 2251344 };
 		}
 
 		inline constexpr REL::ID LogFormError{ 1081933, 2251028 };
@@ -1673,10 +1673,10 @@ namespace RE::ID
 
 	namespace Script
 	{
-		inline constexpr REL::ID ParseParameters{ 2204298 };
-		inline constexpr REL::ID CompileAndRun{ 2204287 };
-		inline constexpr REL::ID GetProcessScripts{ 2204310 };
-		inline constexpr REL::ID SetProcessScripts{ 2204309 };
+		inline constexpr REL::ID ParseParameters{ 1607, 2204298 };
+		inline constexpr REL::ID CompileAndRun{ 526625, 2204287 };
+		inline constexpr REL::ID GetProcessScripts{ 44950, 2204310 };
+		inline constexpr REL::ID SetProcessScripts{ 1188642, 2204309 };
 	}
 
 	namespace SendHUDMessage
