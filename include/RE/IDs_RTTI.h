@@ -3014,7 +3014,7 @@ namespace RE
 		inline constexpr REL::ID BSScript__ITypeLinkedCallback{ 4862627 };
 		inline constexpr REL::ID BSScript__IVMDebugInterface{ 4862629 };
 		inline constexpr REL::ID BSScript__IVMObjectBindInterface{ 4862595 };
-		inline constexpr REL::ID BSScript__IVMSaveLoadInterface{ 4862623 };
+		inline constexpr REL::ID BSScript__IVMSaveLoadInterface{ 222545, 2786741, 4862623 };
 		inline constexpr REL::ID BSScript__IVirtualMachine{ 4862625 };
 		inline constexpr REL::ID BSScript__Internal__AutoPropGetFunction{ 4862837 };
 		inline constexpr REL::ID BSScript__Internal__AutoPropSetFunction{ 4862839 };
