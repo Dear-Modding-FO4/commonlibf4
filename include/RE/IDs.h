@@ -970,7 +970,7 @@ namespace RE::ID
 
 	namespace ExtraTextDisplayData
 	{
-		inline constexpr REL::ID GetDisplayName{ 2191318 };
+		inline constexpr REL::ID GetDisplayName{ 1523343, 2191318 };
 	}
 
 	namespace FavoritesManager
@@ -1368,7 +1368,7 @@ namespace RE::ID
 
 	namespace NiTexture
 	{
-		inline constexpr REL::ID SetAllowDegrade{ 2270148 };
+		inline constexpr REL::ID SetAllowDegrade{ 948181, 2270148 };
 	}
 
 	namespace nsHUDNotifications
@@ -1982,7 +1982,7 @@ namespace RE::ID
 		inline constexpr REL::ID ApplyArtObject{ 2205200 };
 		inline constexpr REL::ID ApplyEffectShader{ 2205201 };
 		inline constexpr REL::ID Enable{ 2201150 };
-		inline constexpr REL::ID FindReferenceFor3D{ 2201082 };
+		inline constexpr REL::ID FindReferenceFor3D{ 766937, 2201082 };
 		inline constexpr REL::ID GetCurrentLocation{ 2201163 };
 		inline constexpr REL::ID GetDisplayFullName{ 2201126 };
 		inline constexpr REL::ID GetEditorDead{ 2200781 };
