@@ -1,4 +1,4 @@
-local PLUGIN_FILE = [[
+local DEFAULT_PLUGIN_FILE = [[
 #include <F4SE/F4SE.h>
 F4SE_EXPORT constinit auto F4SEPlugin_Version = []() noexcept {
     F4SE::PluginVersionData v{};
@@ -14,7 +14,7 @@ F4SE_EXPORT constinit auto F4SEPlugin_Version = []() noexcept {
 }();
 ]]
 
-local PLUGIN_RC_FILE = [[
+local DEFAULT_PLUGIN_RC_FILE = [[
 #include <winres.h>
 
 1 VERSIONINFO
@@ -121,8 +121,22 @@ rule("commonlibf4.plugin")
             target:add("files", file_path)
         end
 
-        add_file("plugin.cpp", PLUGIN_FILE)
-        add_file("version.rc", PLUGIN_RC_FILE)
+        local plugin_data = DEFAULT_PLUGIN_FILE
+        local plugin_rc_data = DEFAULT_PLUGIN_RC_FILE
+
+        local plugin_file_data = conf.plugin_file_data
+        local plugin_rc_file_data = conf.plugin_rc_file_data
+        
+        if plugin_file_data then
+            plugin_data = plugin_file_data
+        end
+        
+        if plugin_rc_file_data then
+            plugin_rc_data = plugin_rc_file_data
+        end
+
+        add_file("plugin.cpp", plugin_data)
+        add_file("version.rc", plugin_rc_data)
     end)
 
     on_install(function(target)
