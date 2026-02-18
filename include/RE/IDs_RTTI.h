@@ -2979,7 +2979,7 @@ namespace RE
 		inline constexpr REL::ID BSResource____LooseFileAsyncChild{ 4858879 };
 		inline constexpr REL::ID BSResource____LooseFileAsyncStream{ 4858875 };
 		inline constexpr REL::ID BSResource____LooseFileStream{ 4858881 };
-		inline constexpr REL::ID BSResource____LooseFileStreamBase{ 4858871 };
+		inline constexpr REL::ID BSResource____LooseFileStreamBase{ 15225, 2783269, 4858871 };
 		inline constexpr REL::ID BSResource____RegisterFoundStreamTraverser{ 4858821 };
 		inline constexpr REL::ID BSResponse_BSFixedString_Actor_BSFixedString_DoNothingUnhandledPolicy_{ 4849180 };
 		inline constexpr REL::ID BSRetargetBodyBlend{ 4860667 };
@@ -3014,7 +3014,7 @@ namespace RE
 		inline constexpr REL::ID BSScript__ITypeLinkedCallback{ 4862627 };
 		inline constexpr REL::ID BSScript__IVMDebugInterface{ 4862629 };
 		inline constexpr REL::ID BSScript__IVMObjectBindInterface{ 4862595 };
-		inline constexpr REL::ID BSScript__IVMSaveLoadInterface{ 4862623 };
+		inline constexpr REL::ID BSScript__IVMSaveLoadInterface{ 222545, 2786741, 4862623 };
 		inline constexpr REL::ID BSScript__IVirtualMachine{ 4862625 };
 		inline constexpr REL::ID BSScript__Internal__AutoPropGetFunction{ 4862837 };
 		inline constexpr REL::ID BSScript__Internal__AutoPropSetFunction{ 4862839 };
@@ -3287,14 +3287,14 @@ namespace RE
 		inline constexpr REL::ID BSScript__Internal__CachedErrorMessageImpl_char_{ 4854770 };
 		inline constexpr REL::ID BSScript__Internal__CachedErrorMessageImpl_charconst_{ 4855332 };
 		inline constexpr REL::ID BSScript__Internal__CachedErrorMessageImpl_std__function_void_BSFixedString___{ 4862617 };
-		inline constexpr REL::ID BSScript__Internal__CodeTasklet{ 4862857 };
+		inline constexpr REL::ID BSScript__Internal__CodeTasklet{ 867472, 2786975, 4862857 };
 		inline constexpr REL::ID BSScript__Internal__IFuncCallQuery{ 4862739 };
 		inline constexpr REL::ID BSScript__Internal__NativeFunctionStub{ 4863015 };
 		inline constexpr REL::ID BSScript__Internal__RawFuncCallQuery{ 4862741 };
 		inline constexpr REL::ID BSScript__Internal__ScriptFunction{ 4863123 };
 		inline constexpr REL::ID BSScript__Internal__VirtualMachine{ 4862735 };
 		inline constexpr REL::ID BSScript__LinkerProcessor{ 4863059 };
-		inline constexpr REL::ID BSScript__NF_util__NativeFunctionBase{ 4854776 };
+		inline constexpr REL::ID BSScript__NF_util__NativeFunctionBase{ 1499420, 2779395, 4854776 };
 		inline constexpr REL::ID BSScript__NativeFunction0_ActiveEffect_Actor_{ 4855424 };
 		inline constexpr REL::ID BSScript__NativeFunction0_ActiveEffect_EffectSetting_{ 4855422 };
 		inline constexpr REL::ID BSScript__NativeFunction0_ActiveEffect_void_{ 4855420 };
@@ -3767,7 +3767,7 @@ namespace RE
 		inline constexpr REL::ID BSShaderAccumulator{ 4863519 };
 		inline constexpr REL::ID BSShaderMaterial{ 4863129 };
 		inline constexpr REL::ID BSShaderMaterialExtraData{ 4841172 };
-		inline constexpr REL::ID BSShaderProperty{ 4847582 };
+		inline constexpr REL::ID BSShaderProperty{ 261669, 2772263, 4847582 };
 		inline constexpr REL::ID BSShaderProperty__ForEachVisitor{ 4848578 };
 		inline constexpr REL::ID BSShaderResourceManager{ 4863767 };
 		inline constexpr REL::ID BSShaderTextureSet{ 4842022 };
@@ -6527,7 +6527,7 @@ namespace RE
 		inline constexpr REL::ID BSTreadTransfInterpolator{ 4859271 };
 		inline constexpr REL::ID BSTreeManager__IQueryCullingCamera{ 4848314 };
 		inline constexpr REL::ID BSTreeNode{ 4863135 };
-		inline constexpr REL::ID BSTriShape{ 4843552 };
+		inline constexpr REL::ID BSTriShape{ 1535592, 2768271, 4843552 };
 		inline constexpr REL::ID BSTweenerModifier{ 4860677 };
 		inline constexpr REL::ID BSUIMessageData{ 4847426 };
 		inline constexpr REL::ID BSUIScaleformData{ 4860755 };
@@ -8185,7 +8185,7 @@ namespace RE
 		inline constexpr REL::ID ExtraStartingWorldOrCell{ 4840416 };
 		inline constexpr REL::ID ExtraTeleport{ 4840086 };
 		inline constexpr REL::ID ExtraTeleportName{ 4840184 };
-		inline constexpr REL::ID ExtraTextDisplayData{ 4840142 };
+		inline constexpr REL::ID ExtraTextDisplayData{ 443510, 2764839, 4840142 };
 		inline constexpr REL::ID ExtraTimeLeft{ 4840104 };
 		inline constexpr REL::ID ExtraTransitionCellCount{ 4840174 };
 		inline constexpr REL::ID ExtraTresPassPackage{ 4840192 };
@@ -8387,7 +8387,7 @@ namespace RE
 		inline constexpr REL::ID GameScript____WriteStackWrapper{ 4856138 };
 		inline constexpr REL::ID GameSettingCollection{ 4839594 };
 		inline constexpr REL::ID GameUIModel{ 4845814 };
-		inline constexpr REL::ID GameVM{ 4855346 };
+		inline constexpr REL::ID GameVM{ 214866, 2779965, 4855346 };
 		inline constexpr REL::ID GenericMenu{ 4847178 };
 		inline constexpr REL::ID GetBestAmmoFunctor{ 4841804 };
 		inline constexpr REL::ID GetBestArmorFunctor{ 4841806 };
@@ -9035,7 +9035,7 @@ namespace RE
 		inline constexpr REL::ID NiOBBNode{ 4859087 };
 		inline constexpr REL::ID NiOBBRoot{ 4859069 };
 		inline constexpr REL::ID NiObject{ 4839692 };
-		inline constexpr REL::ID NiObjectNET{ 4840742 };
+		inline constexpr REL::ID NiObjectNET{ 850736, 2765449, 4840742 };
 		inline constexpr REL::ID NiPSysAgeDeathModifier{ 4859333 };
 		inline constexpr REL::ID NiPSysAirFieldAirFrictionCtlr{ 4859321 };
 		inline constexpr REL::ID NiPSysAirFieldInheritVelocityCtlr{ 4859325 };
@@ -9121,7 +9121,7 @@ namespace RE
 		inline constexpr REL::ID NiSphereTriIntersector{ 4859103 };
 		inline constexpr REL::ID NiSpotLight{ 4859037 };
 		inline constexpr REL::ID NiStandardAllocator{ 4858729 };
-		inline constexpr REL::ID NiStream{ 4842074 };
+		inline constexpr REL::ID NiStream{ 451332, 2766789, 4842074 };
 		inline constexpr REL::ID NiStringExtraData{ 4858921 };
 		inline constexpr REL::ID NiStringPalette{ 4859255 };
 		inline constexpr REL::ID NiStringsExtraData{ 4859039 };
@@ -9223,7 +9223,7 @@ namespace RE
 		inline constexpr REL::ID NiTStringTemplateMap_NiTPointerMap_charconst_unsignedshort__unsignedshort_{ 4858977 };
 		inline constexpr REL::ID NiTextKeyExtraData{ 4859257 };
 		inline constexpr REL::ID NiTextKeyMatch{ 4859113 };
-		inline constexpr REL::ID NiTexture{ 4858915 };
+		inline constexpr REL::ID NiTexture{ 1189054, 2783313, 4858915 };
 		inline constexpr REL::ID NiTimeController{ 4840604 };
 		inline constexpr REL::ID NiTransformController{ 4859151 };
 		inline constexpr REL::ID NiTransformData{ 4859161 };
@@ -9635,7 +9635,7 @@ namespace RE
 		inline constexpr REL::ID TESAudio__ScriptedMusicState{ 4847966 };
 		inline constexpr REL::ID TESBipedModelForm{ 4840474 };
 		inline constexpr REL::ID TESBoundAnimObject{ 4841386 };
-		inline constexpr REL::ID TESBoundObject{ 4839882 };
+		inline constexpr REL::ID TESBoundObject{ 1101055, 2764579, 4839882 };
 		inline constexpr REL::ID TESCamera{ 4840890 };
 		inline constexpr REL::ID TESCameraState{ 4840886 };
 		inline constexpr REL::ID TESChildCell{ 4841720 };
@@ -9656,9 +9656,9 @@ namespace RE
 		inline constexpr REL::ID TESFaction{ 4840066 };
 		inline constexpr REL::ID TESFlora{ 4841420 };
 		inline constexpr REL::ID TESFollowPackageData{ 4843520 };
-		inline constexpr REL::ID TESForm{ 4839494 };
+		inline constexpr REL::ID TESForm{ 1344421, 2764237, 4839494 };
 		inline constexpr REL::ID TESFormUIData{ 4847542 };
-		inline constexpr REL::ID TESFullName{ 4839792 };
+		inline constexpr REL::ID TESFullName{ 1098715, 2764489, 4839792 };
 		inline constexpr REL::ID TESFurniture{ 4841394 };
 		inline constexpr REL::ID TESGlobal{ 4840012 };
 		inline constexpr REL::ID TESGrass{ 4841438 };
@@ -9699,7 +9699,7 @@ namespace RE
 		inline constexpr REL::ID TESObjectLAND{ 4841718 };
 		inline constexpr REL::ID TESObjectLIGH{ 4839938 };
 		inline constexpr REL::ID TESObjectMISC{ 4840536 };
-		inline constexpr REL::ID TESObjectREFR{ 4839510 };
+		inline constexpr REL::ID TESObjectREFR{ 486180, 2764253, 4839510 };
 		inline constexpr REL::ID TESObjectREFRDef__IAliasFunctor{ 4840078 };
 		inline constexpr REL::ID TESObjectREFRDef__ILinkedReferenceFunctor{ 4840080 };
 		inline constexpr REL::ID TESObjectREFRDef__NativeLinkFunctor__lambda_8ee029e02c0d21abb923b5a7c71ab172__{ 4847552 };
@@ -9714,7 +9714,7 @@ namespace RE
 		inline constexpr REL::ID TESPackageData{ 4843504 };
 		inline constexpr REL::ID TESPatrolPackageData{ 4843522 };
 		inline constexpr REL::ID TESProduceForm{ 4840630 };
-		inline constexpr REL::ID TESQuest{ 4840074 };
+		inline constexpr REL::ID TESQuest{ 73835, 2764771, 4840074 };
 		inline constexpr REL::ID TESRace{ 4840678 };
 		inline constexpr REL::ID TESRaceForm{ 4840632 };
 		inline constexpr REL::ID TESReactionForm{ 4840636 };

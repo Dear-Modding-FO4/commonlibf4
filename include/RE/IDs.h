@@ -791,10 +791,10 @@ namespace RE::ID
 
 	namespace BSUIMessageData
 	{
-		inline constexpr REL::ID SendUIBoolMessage{ 2284981 };
-		inline constexpr REL::ID SendUIStringMessage{ 2284977 };
-		inline constexpr REL::ID SendUIPtrMessage{ 2284982 };
-		inline constexpr REL::ID SendUIStringUIntMessage{ 2284979 };
+		inline constexpr REL::ID SendUIBoolMessage{ 1388308, 2284981 };
+		inline constexpr REL::ID SendUIStringMessage{ 1270833, 2284977 };
+		inline constexpr REL::ID SendUIPtrMessage{ 1374542, 2284982 };
+		inline constexpr REL::ID SendUIStringUIntMessage{ 99795, 2284979 };
 	}
 
 	namespace BSUtilities
@@ -848,7 +848,7 @@ namespace RE::ID
 		inline constexpr REL::ID CalculateProjectileLOS1{ 2240617 };
 		inline constexpr REL::ID CalculateProjectileLOS2{ 2240616 };
 		inline constexpr REL::ID CalculateProjectileTrajectory{ 2240611 };
-		inline constexpr REL::ID WorldGravity{ 2700340 };
+		inline constexpr REL::ID WorldGravity{ 1378547, 2700340 };
 		inline constexpr REL::ID IsActorUsingMelee{ 2240626 };
 		inline constexpr REL::ID IsActorUsingUnarmed{ 2240625 };
 	}
@@ -890,12 +890,12 @@ namespace RE::ID
 
 	namespace ControlMap
 	{
-		inline constexpr REL::ID Singleton{ 0, 2692014, 4799307 };
-		inline constexpr REL::ID PopInputContext{ 2268336 };
-		inline constexpr REL::ID PushInputContext{ 2268335 };
-		inline constexpr REL::ID RemapButton{ 2268330 };
-		inline constexpr REL::ID SaveRemappings{ 2268331 };
-		inline constexpr REL::ID SetTextEntryMode{ 4491359 };
+		inline constexpr REL::ID Singleton{ 325206, 2692014, 4799307 };
+		inline constexpr REL::ID PopInputContext{ 74587, 2268336 };
+		inline constexpr REL::ID PushInputContext{ 1404410, 2268335 };
+		inline constexpr REL::ID RemapButton{ 11351, 2268330 };
+		inline constexpr REL::ID SaveRemappings{ 1141541, 2268331 };
+		inline constexpr REL::ID SetTextEntryMode{ 1270079, 4491359 };
 	}
 
 	namespace CurrentRadiationSourceCount
@@ -970,12 +970,12 @@ namespace RE::ID
 
 	namespace ExtraTextDisplayData
 	{
-		inline constexpr REL::ID GetDisplayName{ 2191318 };
+		inline constexpr REL::ID GetDisplayName{ 1523343, 2191318 };
 	}
 
 	namespace FavoritesManager
 	{
-		inline constexpr REL::ID Singleton{ 0, 2694399, 4801690 };
+		inline constexpr REL::ID Singleton{ 198281, 2694399, 4801690 };
 		inline constexpr REL::ID IsComponentFavorite{ 2248752 };
 		inline constexpr REL::ID UseQuickkeyItem{ 2248744 };
 		inline constexpr REL::ID HandleEvent{ 2248740 };
@@ -985,7 +985,7 @@ namespace RE::ID
 
 	namespace FlatScreenModel
 	{
-		inline constexpr REL::ID Singleton{ 847741, 4801718 };
+		inline constexpr REL::ID Singleton{ 847741, 2694427, 4801718 };
 	}
 
 	namespace GameMenuBase
@@ -1019,22 +1019,22 @@ namespace RE::ID
 	{
 		namespace HandlePolicy
 		{
-			inline constexpr REL::ID DropSaveLoadRemapData{ 2249995 };
-			inline constexpr REL::ID GetInventoryObjFromHandle{ 2249989 };
-			inline constexpr REL::ID UpdatePersistence{ 2249991 };
+			inline constexpr REL::ID DropSaveLoadRemapData{ 647657, 2249995 };
+			inline constexpr REL::ID GetInventoryObjFromHandle{ 66597, 2249989 };
+			inline constexpr REL::ID UpdatePersistence{ 11020, 2249991 };
 		}
 
 		namespace ObjectBindPolicy
 		{
-			inline constexpr REL::ID EndSaveLoad{ 2250482 };
+			inline constexpr REL::ID EndSaveLoad{ 1558837, 2250482 };
 		}
 
 		namespace GameVM
 		{
-			inline constexpr REL::ID Singleton{ 0, 2689134, 4796420 };
-			inline constexpr REL::ID QueuePostRenderCall{ 2251314 };
-			inline constexpr REL::ID RegisterForAllGameEvents{ 2251353 };
-			inline constexpr REL::ID SendEventToObjectAndRelated{ 2251344 };
+			inline constexpr REL::ID Singleton{ 996227, 2689134, 4796420 };
+			inline constexpr REL::ID QueuePostRenderCall{ 34412, 2251314 };
+			inline constexpr REL::ID RegisterForAllGameEvents{ 680454, 2251353 };
+			inline constexpr REL::ID SendEventToObjectAndRelated{ 367992, 2251344 };
 		}
 
 		inline constexpr REL::ID LogFormError{ 1081933, 2251028 };
@@ -1096,12 +1096,12 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectFullScreenBlur
 	{
-		inline constexpr REL::ID Disable{ 2713225 };
+		inline constexpr REL::ID Disable{ 372489, 2713225 };
 	}
 
 	namespace ImageSpaceEffectGetHit
 	{
-		inline constexpr REL::ID Disable{ 2713237 };
+		inline constexpr REL::ID Disable{ 1523708, 2713237 };
 	}
 
 	namespace ImageSpaceEffectHDR
@@ -1111,22 +1111,22 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectPipboyScreen
 	{
-		inline constexpr REL::ID PowerArmorPipboy{ 2713203 };
+		inline constexpr REL::ID PowerArmorPipboy{ 1065542, 2713203 };
 	}
 
 	namespace ImageSpaceEffectRadialBlur
 	{
-		inline constexpr REL::ID Disable{ 2713225 };
+		inline constexpr REL::ID Disable{ 1500590, 2713225 };
 	}
 
 	namespace ImageSpaceEffectTemporalAA
 	{
-		inline constexpr REL::ID MaskS{ 2713052 };
+		inline constexpr REL::ID MaskS{ 775377, 2713052 };
 	}
 
 	namespace ImageSpaceManager
 	{
-		inline constexpr REL::ID Singleton{ 2712627 };
+		inline constexpr REL::ID Singleton{ 161743, 2712627 };
 	}
 
 	namespace ImageSpaceModifierInstance
@@ -1264,16 +1264,16 @@ namespace RE::ID
 
 	namespace MenuControls
 	{
-		inline constexpr REL::ID Singleton{ 0, 2689089, 4796375 };
+		inline constexpr REL::ID Singleton{ 520890, 2689089, 4796375 };
 	}
 
 	namespace MenuCursor
 	{
-		inline constexpr REL::ID Singleton{ 0, 2696546, 4803837 };
-		inline constexpr REL::ID CenterCursor{ 2287473 };
-		inline constexpr REL::ID RegisterCursor{ 2287475 };
-		inline constexpr REL::ID SetCursorConstraintsRaw{ 2287480 };
-		inline constexpr REL::ID UnregisterCursor{ 2287486 };
+		inline constexpr REL::ID Singleton{ 695696, 2696546, 4803837 };
+		inline constexpr REL::ID CenterCursor{ 1107298, 2287473 };
+		inline constexpr REL::ID RegisterCursor{ 1318193, 2287475 };
+		inline constexpr REL::ID SetCursorConstraintsRaw{ 907092, 2287480 };
+		inline constexpr REL::ID UnregisterCursor{ 1225249, 2287486 };
 		inline constexpr REL::ID PipboyConstraintTLX{ 280077 };
 		inline constexpr REL::ID PipboyConstraintTLY{ 938173 };
 		inline constexpr REL::ID PipboyConstraintWidth{ 13663 };
@@ -1368,7 +1368,7 @@ namespace RE::ID
 
 	namespace NiTexture
 	{
-		inline constexpr REL::ID SetAllowDegrade{ 2270148 };
+		inline constexpr REL::ID SetAllowDegrade{ 948181, 2270148 };
 	}
 
 	namespace nsHUDNotifications
@@ -1447,31 +1447,31 @@ namespace RE::ID
 
 	namespace PipboyManager
 	{
-		inline constexpr REL::ID Singleton{ 0, 2691945, 4799238 };
-		inline constexpr REL::ID AddMenuToPipboy{ 2225453 };
-		inline constexpr REL::ID ClosedownPipboy{ 2225480 };
-		inline constexpr REL::ID EnablePipboyShader{ 2225484 };
-		inline constexpr REL::ID InitPipboy{ 2225479 };
-		inline constexpr REL::ID LowerPipboy{ 2225454 };
-		inline constexpr REL::ID OnPipboyCloseAnim{ 2225457 };
-		inline constexpr REL::ID OnPipboyCloseAnimFailed{ 2225459 };
-		inline constexpr REL::ID OnPipboyClosed{ 2225458 };
-		inline constexpr REL::ID OnPipboyOpenAnim{ 2225448 };
-		inline constexpr REL::ID OnPipboyOpenAnimFailed{ 2225449 };
-		inline constexpr REL::ID OnPipboyOpened{ 2225450 };
-		inline constexpr REL::ID PlayItemAnimOnClose{ 2225461 };
-		inline constexpr REL::ID PlayPipboyCloseAnim{ 2225456 };
-		inline constexpr REL::ID PlayPipboyGenericOpenAnim{ 2225447 };
-		inline constexpr REL::ID PlayPipboyLoadHolotapeAnim{ 2225446 };
-		inline constexpr REL::ID PlayPipboyOpenAnim{ 2225444 };
-		inline constexpr REL::ID PlayPipboyOpenTerminalAnim{ 2225445 };
-		inline constexpr REL::ID ProcessLoweringReason{ 2225486 };
-		inline constexpr REL::ID QPipboyActive{ 2225460 };
-		inline constexpr REL::ID RaisePipboy{ 2225455 };
-		inline constexpr REL::ID RefreshPipboyRenderSurface{ 2225478 };
-		inline constexpr REL::ID StartAnimationGraphListening{ 2225490 };
-		inline constexpr REL::ID StopAnimationGraphListening{ 2225491 };
-		inline constexpr REL::ID UpdateCursorConstraint{ 2225488 };
+		inline constexpr REL::ID Singleton{ 553234, 2691945, 4799238 };
+		inline constexpr REL::ID AddMenuToPipboy{ 394568, 2225453 };
+		inline constexpr REL::ID ClosedownPipboy{ 731410, 2225480 };
+		inline constexpr REL::ID EnablePipboyShader{ 157921, 2225484 };
+		inline constexpr REL::ID InitPipboy{ 1477369, 2225479 };
+		inline constexpr REL::ID LowerPipboy{ 1444875, 2225454 };
+		inline constexpr REL::ID OnPipboyCloseAnim{ 1231000, 2225457 };
+		inline constexpr REL::ID OnPipboyCloseAnimFailed{ 1362084, 2225459 };
+		inline constexpr REL::ID OnPipboyClosed{ 592088, 2225458 };
+		inline constexpr REL::ID OnPipboyOpenAnim{ 1500318, 2225448 };
+		inline constexpr REL::ID OnPipboyOpenAnimFailed{ 702357, 2225449 };
+		inline constexpr REL::ID OnPipboyOpened{ 1299608, 2225450 };
+		inline constexpr REL::ID PlayItemAnimOnClose{ 377837, 2225461 };
+		inline constexpr REL::ID PlayPipboyCloseAnim{ 273927, 2225456 };
+		inline constexpr REL::ID PlayPipboyGenericOpenAnim{ 809076, 2225447 };
+		inline constexpr REL::ID PlayPipboyLoadHolotapeAnim{ 477096, 2225446 };
+		inline constexpr REL::ID PlayPipboyOpenAnim{ 663900, 2225444 };
+		inline constexpr REL::ID PlayPipboyOpenTerminalAnim{ 743427, 2225445 };
+		inline constexpr REL::ID ProcessLoweringReason{ 302903, 2225486 };
+		inline constexpr REL::ID QPipboyActive{ 470886, 2225460 };
+		inline constexpr REL::ID RaisePipboy{ 726763, 2225455 };
+		inline constexpr REL::ID RefreshPipboyRenderSurface{ 81339, 2225478 };
+		inline constexpr REL::ID StartAnimationGraphListening{ 714713, 2225490 };
+		inline constexpr REL::ID StopAnimationGraphListening{ 621144, 2225491 };
+		inline constexpr REL::ID UpdateCursorConstraint{ 900802, 2225488 };
 	}
 
 	namespace PipboyMapMenu
@@ -1668,15 +1668,15 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID ConsoleFunctions{ 901511 };
 		inline constexpr REL::ID ScriptFunctions{ 75173 };
-		inline constexpr REL::ID CompileFunction{ 2204343 };
+		inline constexpr REL::ID CompileFunction{ 638606, 2204343 };
 	}
 
 	namespace Script
 	{
-		inline constexpr REL::ID ParseParameters{ 2204298 };
-		inline constexpr REL::ID CompileAndRun{ 2204287 };
-		inline constexpr REL::ID GetProcessScripts{ 2204310 };
-		inline constexpr REL::ID SetProcessScripts{ 2204309 };
+		inline constexpr REL::ID ParseParameters{ 1607, 2204298 };
+		inline constexpr REL::ID CompileAndRun{ 526625, 2204287 };
+		inline constexpr REL::ID GetProcessScripts{ 44950, 2204310 };
+		inline constexpr REL::ID SetProcessScripts{ 1188642, 2204309 };
 	}
 
 	namespace SendHUDMessage
@@ -1982,7 +1982,7 @@ namespace RE::ID
 		inline constexpr REL::ID ApplyArtObject{ 2205200 };
 		inline constexpr REL::ID ApplyEffectShader{ 2205201 };
 		inline constexpr REL::ID Enable{ 2201150 };
-		inline constexpr REL::ID FindReferenceFor3D{ 2201082 };
+		inline constexpr REL::ID FindReferenceFor3D{ 766937, 2201082 };
 		inline constexpr REL::ID GetCurrentLocation{ 2201163 };
 		inline constexpr REL::ID GetDisplayFullName{ 2201126 };
 		inline constexpr REL::ID GetEditorDead{ 2200781 };
@@ -2085,12 +2085,12 @@ namespace RE::ID
 
 	namespace UI
 	{
-		inline constexpr REL::ID Singleton{ 0, 2689028, 4796314 };
-		inline constexpr REL::ID CustomRendererHasQuads{ 2284757 };
-		inline constexpr REL::ID GetMenuMapRWLock{ 2707105 };
-		inline constexpr REL::ID RefreshCursor{ 2284772 };
-		inline constexpr REL::ID RegisterMenu{ 2284766 };
-		inline constexpr REL::ID UpdateControllerType{ 2284768 };
+		inline constexpr REL::ID Singleton{ 548587, 2689028, 4796314 };
+		inline constexpr REL::ID CustomRendererHasQuads{ 1401451, 2284757 };
+		inline constexpr REL::ID GetMenuMapRWLock{ 578487, 2707105 };
+		inline constexpr REL::ID RefreshCursor{ 1436639, 2284772 };
+		inline constexpr REL::ID RegisterMenu{ 1519575, 2284766 };
+		inline constexpr REL::ID UpdateControllerType{ 175796, 2284768 };
 	}
 
 	namespace UIAdvanceMenusFunctionCompleteEvent

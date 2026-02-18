@@ -123,7 +123,7 @@ namespace RE
 		inline constexpr REL::ID BSShaderAccumulator{ 2712792 };
 		inline constexpr REL::ID BSShaderDismembermentExtraData{ 2712815 };
 		inline constexpr REL::ID BSShaderMaterialExtraData{ 2712818 };
-		inline constexpr REL::ID BSShaderProperty{ 2712385 };
+		inline constexpr REL::ID BSShaderProperty{ 131682, 2712385 };
 		inline constexpr REL::ID BSShaderTextureSet{ 2712389 };
 		inline constexpr REL::ID BSSimpleScaleController{ 2698620 };
 		inline constexpr REL::ID BSSkin__BoneData{ 2703523 };
@@ -143,7 +143,7 @@ namespace RE
 		inline constexpr REL::ID BSTransformExtra{ 4796624 };
 		inline constexpr REL::ID BSTreadTransfInterpolator{ 2703992 };
 		inline constexpr REL::ID BSTreeNode{ 2712434 };
-		inline constexpr REL::ID BSTriShape{ 2703526 };
+		inline constexpr REL::ID BSTriShape{ 1193938, 2703526 };
 		inline constexpr REL::ID BSValueNode{ 2704205 };
 		inline constexpr REL::ID BSWArray{ 2704414 };
 		inline constexpr REL::ID BSWaterShaderProperty{ 2712798 };
@@ -234,7 +234,7 @@ namespace RE
 		inline constexpr REL::ID NiMultiTargetTransformController{ 2703633 };
 		inline constexpr REL::ID NiNode{ 2703477 };
 		inline constexpr REL::ID NiObject{ 2703473 };
-		inline constexpr REL::ID NiObjectNET{ 2703476 };
+		inline constexpr REL::ID NiObjectNET{ 1114970, 2703476 };
 		inline constexpr REL::ID NiPSysAgeDeathModifier{ 2704063 };
 		inline constexpr REL::ID NiPSysAirFieldAirFrictionCtlr{ 2704059 };
 		inline constexpr REL::ID NiPSysAirFieldInheritVelocityCtlr{ 2704060 };
@@ -320,7 +320,7 @@ namespace RE
 		inline constexpr REL::ID NiSwitchNode{ 2703502 };
 		inline constexpr REL::ID NiSwitchStringExtraData{ 2703578 };
 		inline constexpr REL::ID NiTextKeyExtraData{ 2703985 };
-		inline constexpr REL::ID NiTexture{ 2703492 };
+		inline constexpr REL::ID NiTexture{ 489689, 2703492 };
 		inline constexpr REL::ID NiTimeController{ 2703501 };
 		inline constexpr REL::ID NiTransformController{ 2703648 };
 		inline constexpr REL::ID NiTransformData{ 2703946 };
