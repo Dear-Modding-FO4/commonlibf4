@@ -582,61 +582,61 @@ namespace RE::ID
 
 	namespace BSResource_Archive2_AsyncReaderStream
 	{
-		inline constexpr REL::ID DoOpen{ 2269387 };
-		inline constexpr REL::ID DoClose{ 2269380 };
-		inline constexpr REL::ID DoClone{ 2269379 };
-		inline constexpr REL::ID DoStartRead{ 2269395 };
-		inline constexpr REL::ID DoStartPacketAlignedBufferedRead{ 2269394 };
-		inline constexpr REL::ID DoWait{ 2269399 };
+		inline constexpr REL::ID DoOpen{ 1401160, 2269387 };
+		inline constexpr REL::ID DoClose{ 883012, 2269380 };
+		inline constexpr REL::ID DoClone{ 803750, 2269379 };
+		inline constexpr REL::ID DoStartRead{ 1215072, 2269395 };
+		inline constexpr REL::ID DoStartPacketAlignedBufferedRead{ 603387, 2269394 };
+		inline constexpr REL::ID DoWait{ 244066, 2269399 };
 	}
 
 	namespace BSResource_Archive2_ReaderStream
 	{
-		inline constexpr REL::ID DoOpen{ 2269280 };
-		inline constexpr REL::ID DoClose{ 2269285 };
-		inline constexpr REL::ID DoGetKey{ 2269288 };
-		inline constexpr REL::ID DoClone{ 2269279 };
-		inline constexpr REL::ID DoRead{ 2269281 };
-		inline constexpr REL::ID DoSeek{ 2269282 };
-		inline constexpr REL::ID DoPrefetchAll{ 2269390 };
-		inline constexpr REL::ID DoCreateAsync{ 2269287 };
+		inline constexpr REL::ID DoOpen{ 762048, 2269280 };
+		inline constexpr REL::ID DoClose{ 109149, 2269285 };
+		inline constexpr REL::ID DoGetKey{ 772817, 2269288 };
+		inline constexpr REL::ID DoClone{ 855081, 2269279 };
+		inline constexpr REL::ID DoRead{ 1359347, 2269281 };
+		inline constexpr REL::ID DoSeek{ 1000164, 2269282 };
+		inline constexpr REL::ID DoPrefetchAll{ 1518821, 2269390 };
+		inline constexpr REL::ID DoCreateAsync{ 893405, 2269287 };
 	}
 
 	namespace BSResource_EntryDBBaseUtil
 	{
-		inline constexpr REL::ID ReleaseEntryAction{ 2269463 };
+		inline constexpr REL::ID ReleaseEntryAction{ 777279, 2269463 };
 	}
 
 	namespace BSResource_GlobalLocations
 	{
-		inline constexpr REL::ID Singleton{ 2703394 };
+		inline constexpr REL::ID Singleton{ 1573818, 2703394 };
 	}
 
 	namespace BSResource_GlobalPaths
 	{
-		inline constexpr REL::ID Singleton{ 2703393 };
+		inline constexpr REL::ID Singleton{ 210868, 2703393 };
 	}
 
 	namespace BSResource
 	{
 		inline constexpr REL::ID RegisterLocation{ 918408, 2269481 };
-		inline constexpr REL::ID GetOrCreateStream{ 2269490 };
+		inline constexpr REL::ID GetOrCreateStream{ 933832, 2269490 };
 
 		namespace ID
 		{
-			inline constexpr REL::ID GenerateFromPath{ 2269259 };
+			inline constexpr REL::ID GenerateFromPath{ 570861, 2269259 };
 		}
 	}
 
 	namespace BSResourceNiBinaryStream
 	{
-		inline constexpr REL::ID Seek{ 2269834 };
-		inline constexpr REL::ID DoRead{ 2269839 };
-		inline constexpr REL::ID DoWrite{ 2269840 };
-		inline constexpr REL::ID GetBufferInfo{ 2269836 };
-		inline constexpr REL::ID Ctor{ 2269830 };
-		inline constexpr REL::ID Dtor{ 2269832 };
-		inline constexpr REL::ID BinaryStreamWithRescan{ 2205871 };
+		inline constexpr REL::ID Seek{ 358512, 2269834 };
+		inline constexpr REL::ID DoRead{ 424286, 2269839 };
+		inline constexpr REL::ID DoWrite{ 1208863, 2269840 };
+		inline constexpr REL::ID GetBufferInfo{ 265501, 2269836 };
+		inline constexpr REL::ID Ctor{ 1198116, 2269830 };
+		inline constexpr REL::ID Dtor{ 1101742, 2269832 };
+		inline constexpr REL::ID BinaryStreamWithRescan{ 543595, 2205871 };
 	}
 
 	namespace BSScaleformManager
