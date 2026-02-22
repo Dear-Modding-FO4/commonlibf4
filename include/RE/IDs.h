@@ -2159,7 +2159,7 @@ namespace RE::ID
 		inline constexpr REL::ID UnregisterForItemPlaced{ 583255, 2194927 };
 		inline constexpr REL::ID UnregisterForWorkshopModeEvent{ 9236, 2194947 };
 		inline constexpr REL::ID UpdateActiveEdit{ 69261, 2195210 };
-		inline constexpr REL::ID WorkshopCanShowRecipe{ 239190, 2195115 };
+		inline constexpr REL::ID WorkshopCanShowRecipe{ 239190, 2194978 };          // old ID wrong: 2195115
 		inline constexpr REL::ID CurrentPlacementItemData{ 1279207, 0, 4797261 };	// FIXME: NG no ID
 		inline constexpr REL::ID CurrentRow{ 833923, 0, 4797160 };					// FIXME: NG no ID
 		inline constexpr REL::ID PlacementItem{ 526727, 0, 4797235 };				// FIXME: NG no ID
