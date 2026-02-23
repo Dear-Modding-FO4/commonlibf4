@@ -666,36 +666,36 @@ namespace RE::ID
 
 	namespace BSScript_ArrayWrapper
 	{
-		inline constexpr REL::ID ReplaceArray{ 2250435 };
+		inline constexpr REL::ID ReplaceArray{ 445184, 2250435 };
 	}
 
 	namespace BSScript_Internal_NativeFunctionBase
 	{
-		inline constexpr REL::ID Call{ 2314780 };
+		inline constexpr REL::ID Call{ 571037, 2314780 };
 	}
 
 	namespace BSScript_Internal_Stack
 	{
-		inline constexpr REL::ID GetPageForFrame{ 2314680 };
-		inline constexpr REL::ID GetStackFrameVariable{ 2314681 };
+		inline constexpr REL::ID GetPageForFrame{ 1429302, 2314680 };
+		inline constexpr REL::ID GetStackFrameVariable{ 897539, 2314681 };
 	}
 
 	namespace BSScript_Object
 	{
-		inline constexpr REL::ID DecRef{ 2314437 };
-		inline constexpr REL::ID GetHandle{ 2314431 };
-		inline constexpr REL::ID IncRef{ 2314436 };
+		inline constexpr REL::ID DecRef{ 541793, 2314437 };
+		inline constexpr REL::ID GetHandle{ 1452752, 2314431 };
+		inline constexpr REL::ID IncRef{ 461710, 2314436 };
 	}
 
 	namespace BSScript_ObjectTypeInfo
 	{
-		inline constexpr REL::ID dtor{ 2314513 };
+		inline constexpr REL::ID dtor{ 1047917, 2314513 };
 	}
 
 	namespace BSScript_ObjectBindPolicy
 	{
-		inline constexpr REL::ID BindObject{ 2314370 };
-		inline constexpr REL::ID UnbindObject{ 2314372 };
+		inline constexpr REL::ID BindObject{ 709728, 2314370 };
+		inline constexpr REL::ID UnbindObject{ 522763, 2314372 };
 	}
 
 	namespace BSScriptUtil
@@ -2109,7 +2109,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetComparisonItems{ 593818, 0 };  // 593818 - inlined?
 		inline constexpr REL::ID PlayPipboySound{ 2249706 };
 		inline constexpr REL::ID PlayMenuSound{ 2249707 };
-		inline constexpr REL::ID UpdateGamepadDependentButtonCodes{ 190238, 0, 4483350 };	// FIXME: NG no ID
+		inline constexpr REL::ID UpdateGamepadDependentButtonCodes{ 190238, 2249714, 4483350 };
 		inline constexpr REL::ID ShowCraftingMenu{ 2249718 };
 		inline constexpr REL::ID HasRequiredInventoryForCraftingMenu{ 2249717 };
 	}
@@ -2160,9 +2160,9 @@ namespace RE::ID
 		inline constexpr REL::ID UnregisterForWorkshopModeEvent{ 9236, 2194947 };
 		inline constexpr REL::ID UpdateActiveEdit{ 69261, 2195210 };
 		inline constexpr REL::ID WorkshopCanShowRecipe{ 239190, 2194978 };          // old ID wrong: 2195115
-		inline constexpr REL::ID CurrentPlacementItemData{ 1279207, 0, 4797261 };	// FIXME: NG no ID
-		inline constexpr REL::ID CurrentRow{ 833923, 0, 4797160 };					// FIXME: NG no ID
-		inline constexpr REL::ID PlacementItem{ 526727, 0, 4797235 };				// FIXME: NG no ID
+		inline constexpr REL::ID CurrentPlacementItemData{ 1279207, 2689973, 4797261 };
+		inline constexpr REL::ID CurrentRow{ 833923, 2689868, 4797160 };
+		inline constexpr REL::ID PlacementItem{ 526727, 2689906, 4797235 };
 	}
 
 	namespace WorkshopMenu
