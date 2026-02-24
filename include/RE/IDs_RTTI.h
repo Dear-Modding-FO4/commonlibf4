@@ -1920,8 +1920,8 @@ namespace RE
 		inline constexpr REL::ID BGSDamageType{ 4841234 };
 		inline constexpr REL::ID BGSDebris{ 4840594 };
 		inline constexpr REL::ID BGSDecalNode{ 4840746 };
-		inline constexpr REL::ID BGSDefaultObject{ 4841238 };
-		inline constexpr REL::ID BGSDefaultObjectManager{ 4841884 };
+		inline constexpr REL::ID BGSDefaultObject{ 431302, 2765955, 4841238 };
+		inline constexpr REL::ID BGSDefaultObjectManager{ 60844, 2766593, 4841884 };
 		inline constexpr REL::ID BGSDestructibleObjectForm{ 4839898 };
 		inline constexpr REL::ID BGSDialogueBranch{ 4840060 };
 		inline constexpr REL::ID BGSDualCastData{ 4839918 };

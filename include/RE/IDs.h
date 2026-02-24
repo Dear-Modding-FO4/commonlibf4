@@ -1091,7 +1091,7 @@ namespace RE::ID
 
 	namespace IFormFactory
 	{
-		inline constexpr REL::ID Factories{ 0, 2689177, 4796464 };
+		inline constexpr REL::ID Factories{ 228366, 2689177, 4796464 };
 	}
 
 	namespace ImageSpaceEffectFullScreenBlur
@@ -1888,7 +1888,7 @@ namespace RE::ID
 
 	namespace TESFurnitureEvent
 	{
-		inline constexpr REL::ID GetEventSource{ 2201844 };
+		inline constexpr REL::ID GetEventSource{ 678665, 2201844 };
 	}
 
 	namespace TESHarvestEvent
