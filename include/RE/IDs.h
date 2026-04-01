@@ -89,7 +89,7 @@ namespace RE::ID
 
 	namespace ActorValue
 	{
-		inline constexpr REL::ID Singleton{ 0, 2189587 };
+		inline constexpr REL::ID Singleton{ 405390, 2189587 };
 	}
 
 	namespace AIFormulas
@@ -170,8 +170,8 @@ namespace RE::ID
 	namespace BGSCreatedObjectManager
 	{
 		inline constexpr REL::ID Singleton{ 177947, 2697789 };
-		inline constexpr REL::ID DecrementRef{ 2228455 };
-		inline constexpr REL::ID IncrementRef{ 2228454 };
+		inline constexpr REL::ID DecrementRef{ 230928, 2228455 };
+		inline constexpr REL::ID IncrementRef{ 1042515, 2228454 };
 	}
 
 	namespace BGSDefaultObject
@@ -182,7 +182,7 @@ namespace RE::ID
 
 	namespace BGSDefaultObjectManager
 	{
-		inline constexpr REL::ID Singleton{ 0, 2192850 };
+		inline constexpr REL::ID Singleton{ 484974, 2192850 };
 	}
 
 	namespace BGSDynamicPersistenceManager
@@ -381,7 +381,7 @@ namespace RE::ID
 	namespace BGSSceneActionNPCResponseDialogue
 	{
 		inline constexpr REL::ID GetCurrentTopicInfo{ 781358, 2196825 };
-		inline constexpr REL::ID UpdateAction1{ 574707, 2196817 };
+		inline constexpr REL::ID UpdateAction1{ 1439851, 2196817 };
 		inline constexpr REL::ID UpdateAction2{ 574707, 2196800 };
 	}
 
@@ -744,8 +744,8 @@ namespace RE::ID
 			inline constexpr REL::ID Release{ 1204430, 2268720 };
 		}
 
-		inline constexpr REL::ID GetEntry_char{ 0, 2268729 };
-		inline constexpr REL::ID GetEntry_wchar{ 0, 2268730 };
+		inline constexpr REL::ID GetEntry_char{ 507142, 2268729 };
+		inline constexpr REL::ID GetEntry_wchar{ 345043, 2268730 };
 	}
 
 	namespace BSStringT
