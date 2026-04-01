@@ -70,8 +70,8 @@ namespace RE::ID
 
 	namespace ActorEquipManager
 	{
-		inline constexpr REL::ID Singleton{ 0, 2690994, 4798287 };
-		inline constexpr REL::ID EquipObject{ 2231392 };
+		inline constexpr REL::ID Singleton{ 1174340, 2690994, 4798287 };
+		inline constexpr REL::ID EquipObject{ 988029, 2231392 };
 		inline constexpr REL::ID UnequipObject{ 1292493, 2231395 };
 		inline constexpr REL::ID UnequipItem{ 1316852, 2231399 };
 	}
