@@ -1,5 +1,6 @@
 # dot folders
 .idea*/
+.local/
 .vs*/
 .vscode/
 .xmake/

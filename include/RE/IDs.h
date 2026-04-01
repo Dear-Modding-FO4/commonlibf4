@@ -16,7 +16,7 @@ namespace RE::ID
 		inline constexpr REL::ID ExitCover{ 770035, 2231166 };
 		inline constexpr REL::ID GetAimVector{ 554863, 2230378 };
 		inline constexpr REL::ID GetClosestBone{ 1180004, 2230051 };
-		inline constexpr REL::ID GetCollisionFilter{ 229984, 2277949 };
+		inline constexpr REL::ID GetCollisionFilter{ 1474995, 2277949 };
 		inline constexpr REL::ID GetCombatStyle{ 1270929, 2231053 };
 		inline constexpr REL::ID SetCurrentAmmoCount{ 2229952 };
 		inline constexpr REL::ID GetCurrentCollisionGroup{ 410500, 2229993 };
@@ -54,7 +54,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetCrimeTrackingFaction{ 1108024, 2229787 };
 		inline constexpr REL::ID ForceDetect{ 131995, 2230194 };
 		inline constexpr REL::ID GetDesirability{ 1325769, 2229946 };
-		inline constexpr REL::ID CalcArmorRating1{ 843406, 2230008 };
+		inline constexpr REL::ID CalcArmorRating1{ 1295757, 2230008 };
 		inline constexpr REL::ID CalcArmorRating2{ 843406, 2230009 };
 		inline constexpr REL::ID UnequipObject{ 2230479 };
 		inline constexpr REL::ID UpdateSoundCallBack{ 632367, 2229974 };
@@ -215,7 +215,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetDisplayFullName1{ 277641, 2194079 };
 		inline constexpr REL::ID GetDisplayFullName2{ 623232, 2194080 };
 		inline constexpr REL::ID GetInstanceData{ 491493, 2194072 };
-		inline constexpr REL::ID GetInventoryValue{ 23543, 2194099 };
+		inline constexpr REL::ID GetInventoryValue{ 962457, 2194099 };
 		inline constexpr REL::ID GetExtraDataAt{ 340277, 2194092 };
 		inline constexpr REL::ID MergeStacks{ 1132179, 2194109 };
 		inline constexpr REL::ID IsEquipped{ 2194086 };
@@ -380,8 +380,8 @@ namespace RE::ID
 
 	namespace BGSSceneActionNPCResponseDialogue
 	{
-		inline constexpr REL::ID GetCurrentTopicInfo{ 781358, 2196825 };
-		inline constexpr REL::ID UpdateAction1{ 1439851, 2196817 };
+		inline constexpr REL::ID GetCurrentTopicInfo{ 1369299, 2196825 };
+		inline constexpr REL::ID UpdateAction1{ 574707, 2196817 };
 		inline constexpr REL::ID UpdateAction2{ 574707, 2196800 };
 	}
 
@@ -577,7 +577,7 @@ namespace RE::ID
 		inline constexpr REL::ID UnsignedInt{ 694400, 2267950 };
 		inline constexpr REL::ID Float{ 2267953 };
 		inline constexpr REL::ID Float0To1{ 54937, 2267954 };
-		inline constexpr REL::ID Int{ 694400, 2267952 };
+		inline constexpr REL::ID Int{ 1212543, 2267952 };
 	}
 
 	namespace BSResource_Archive2_AsyncReaderStream
@@ -799,7 +799,7 @@ namespace RE::ID
 
 	namespace BSUtilities
 	{
-		inline constexpr REL::ID ConvertFloatToHalf{ 1085643, 2212098 };
+		inline constexpr REL::ID ConvertFloatToHalf{ 1317445, 2212098 };
 		inline constexpr REL::ID ConvertHalfToFloat{ 2195843 };
 		inline constexpr REL::ID GetObjectByName{ 843650, 2274841 };
 		inline constexpr REL::ID GetFlattenedBoneTree{ 1539401, 2274858 };
@@ -927,7 +927,7 @@ namespace RE::ID
 
 	namespace EffectItem
 	{
-		inline constexpr REL::ID GetDescription{ 523613, 2189612 };
+		inline constexpr REL::ID GetDescription{ 949839, 2189612 };
 	}
 
 	namespace EquippedWeaponData
@@ -1142,7 +1142,7 @@ namespace RE::ID
 	namespace ImageSpaceModifierInstanceForm
 	{
 		inline constexpr REL::ID Trigger1{ 179769, 2199906 };
-		inline constexpr REL::ID Trigger2{ 179769, 2199907 };
+		inline constexpr REL::ID Trigger2{ 1216312, 2199907 };
 		inline constexpr REL::ID Stop1{ 2199909 };
 		inline constexpr REL::ID Stop2{ 149082, 2199910 };
 	}
@@ -1923,7 +1923,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID AddLeveledObject{ 1163308, 2193258 };
 		inline constexpr REL::ID AddScriptAddedLeveledObject{ 860553, 2193269 };
-		inline constexpr REL::ID CalculateCurrentFormList{ 507405, 2193259 };
+		inline constexpr REL::ID CalculateCurrentFormList{ 603811, 2193259 };
 		inline constexpr REL::ID CalculateCurrentFormListForRef{ 507405, 2193260 };
 		inline constexpr REL::ID GetUseAll{ 233875, 2193253 };
 	}
