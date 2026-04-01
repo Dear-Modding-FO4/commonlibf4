@@ -1334,18 +1334,18 @@ namespace RE::ID
 
 	namespace NiMatrix3
 	{
-		inline constexpr REL::ID ToEulerAnglesXYZ1{ 1432925, 2269806 };
-		inline constexpr REL::ID ToEulerAnglesXZY2{ 1432925, 2269807 };
-		inline constexpr REL::ID ToEulerAnglesYXZ3{ 1432925, 2269808 };
-		inline constexpr REL::ID ToEulerAnglesYZX4{ 1432925, 2269809 };
-		inline constexpr REL::ID ToEulerAnglesZYX5{ 1432925, 2269810 };
-		inline constexpr REL::ID ToEulerAnglesZXY6{ 1432925, 2269824 };
-		inline constexpr REL::ID FromEulerAnglesXYZ1{ 444358, 2269813 };
-		inline constexpr REL::ID FromEulerAnglesXZY2{ 444358, 2269814 };
-		inline constexpr REL::ID FromEulerAnglesYXZ3{ 444358, 2269815 };
-		inline constexpr REL::ID FromEulerAnglesYZX4{ 444358, 2269816 };
-		inline constexpr REL::ID FromEulerAnglesZYX5{ 1059814, 2269817 };
-		inline constexpr REL::ID FromEulerAnglesZXY6{ 1059814, 2269825 };
+		inline constexpr REL::ID ToEulerAnglesXYZ1{ 34114, 2269806 };
+		inline constexpr REL::ID ToEulerAnglesXZY2{ 1164218, 2269807 };
+		inline constexpr REL::ID ToEulerAnglesYXZ3{ 272989, 2269808 };
+		inline constexpr REL::ID ToEulerAnglesYZX4{ 963829, 2269809 };
+		inline constexpr REL::ID ToEulerAnglesZYX5{ 511385, 2269810 };
+		inline constexpr REL::ID ToEulerAnglesZXY6{ 606387, 2269824 };
+		inline constexpr REL::ID FromEulerAnglesXYZ1{ 124665, 2269813 };
+		inline constexpr REL::ID FromEulerAnglesXZY2{ 1319962, 2269814 };
+		inline constexpr REL::ID FromEulerAnglesYXZ3{ 55761, 2269815 };
+		inline constexpr REL::ID FromEulerAnglesYZX4{ 373803, 2269816 };
+		inline constexpr REL::ID FromEulerAnglesZYX5{ 1569564, 2269817 };
+		inline constexpr REL::ID FromEulerAnglesZXY6{ 326460, 2269825 };
 	}
 
 	namespace NiNode
