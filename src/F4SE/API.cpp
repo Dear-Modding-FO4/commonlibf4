@@ -68,7 +68,10 @@ namespace F4SE
 				pluginHandle = a_intfc->GetPluginHandle();
 				releaseIndex = a_intfc->GetReleaseIndex();
 				pluginInfoAccessor = reinterpret_cast<const Impl::F4SEInterface*>(a_intfc)->GetPluginInfo;
-				saveFolderName = a_intfc->GetSaveFolderName();
+				// GetSaveFolderName added in F4SE 0.7.1 (NG). OG F4SE 0.6.x doesn't have it.
+				if (f4seVersion >= REL::Version{ 0, 7, 1, 0 }) {
+					saveFolderName = a_intfc->GetSaveFolderName();
+				}
 			});
 		}
 
@@ -78,7 +81,7 @@ namespace F4SE
 				static std::once_flag once;
 				std::call_once(once, [&]() {
 					if (saveFolderName.empty())
-						return;
+						saveFolderName = "Fallout4";
 
 					wchar_t*                                                       knownBuffer{ nullptr };
 					const auto                                                     knownResult = REX::W32::SHGetKnownFolderPath(REX::W32::FOLDERID_Documents, REX::W32::KF_FLAG_DEFAULT, nullptr, std::addressof(knownBuffer));
