@@ -730,28 +730,27 @@ namespace RE
 			RenderTargetProperties        renderTargetData[100];       // 000
 			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
 			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
-			std::byte                     padDC4[0x30];
-			std::uint32_t                 renderTargetID[100];                            // DC4
-			std::uint32_t                 depthStencilTargetID[12];                       // F54
-			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
-			float                         dynamicWidthRatio;                              // F88
-			float                         dynamicHeightRatio;                             // F8C
-			float                         lowestWidthRatio;                               // F90
-			float                         lowestHeightRatio;                              // F94
-			float                         ratioIncreasePerSeconds;                        // F98
-			float                         ratioDecreasePerSeconds;                        // F9C
-			float                         movementDelta;                                  // FA0
-			bool                          increaseResolution;                             // FA4
-			bool                          freezeResolution;                               // FA5
+			std::uint32_t                 renderTargetID[100];         // DC4
+			std::uint32_t                 depthStencilTargetID[12];    // F54
+			std::uint32_t                 cubeMapRenderTargetID[1];    // F84
+			float                         dynamicWidthRatio;           // F88
+			float                         dynamicHeightRatio;          // F8C
+			float                         lowestWidthRatio;            // F90
+			float                         lowestHeightRatio;           // F94
+			float                         ratioIncreasePerSeconds;     // F98
+			float                         ratioDecreasePerSeconds;     // F9C
+			float                         movementDelta;               // FA0
+			bool                          increaseResolution;          // FA4
+			bool                          freezeResolution;            // FA5
 			bool                          updateResolutionOnlyWhenMoving;                 // FA6
 			bool                          useDynamicResolutionViewportAsDefaultViewport;  // FA7
 			bool                          isDynamicResolutionCurrentlyActivated;          // FA8
-			std::uint32_t                 nbFramePause;                                   // FAC
-			std::uint32_t                 nbFramesSinceLastIncrease;                      // FB0
-			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;                      // FB4
-			Create_T                      create;                                         // FB8
+			std::uint32_t                 nbFramePause;                // FAC
+			std::uint32_t                 nbFramesSinceLastIncrease;   // FB0
+			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;   // FB4
+			Create_T                      create;                      // FB8
 		};
-		static_assert(sizeof(RenderTargetManager) == 0xFF0);
+		static_assert(sizeof(RenderTargetManager) == 0xFC0);
 
 		class OcclusionQuery
 		{
