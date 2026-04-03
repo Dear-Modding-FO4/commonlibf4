@@ -16,7 +16,7 @@ namespace RE::ID
 		inline constexpr REL::ID ExitCover{ 770035, 2231166 };
 		inline constexpr REL::ID GetAimVector{ 554863, 2230378 };
 		inline constexpr REL::ID GetClosestBone{ 1180004, 2230051 };
-		inline constexpr REL::ID GetCollisionFilter{ 229984, 2277949 };
+		inline constexpr REL::ID GetCollisionFilter{ 1474995, 2277949 };
 		inline constexpr REL::ID GetCombatStyle{ 1270929, 2231053 };
 		inline constexpr REL::ID SetCurrentAmmoCount{ 2229952 };
 		inline constexpr REL::ID GetCurrentCollisionGroup{ 410500, 2229993 };
@@ -380,7 +380,7 @@ namespace RE::ID
 
 	namespace BGSSceneActionNPCResponseDialogue
 	{
-		inline constexpr REL::ID GetCurrentTopicInfo{ 781358, 2196825 };
+		inline constexpr REL::ID GetCurrentTopicInfo{ 1369299, 2196825 };
 		inline constexpr REL::ID UpdateAction1{ 1439851, 2196817 };
 		inline constexpr REL::ID UpdateAction2{ 574707, 2196800 };
 	}
@@ -799,7 +799,7 @@ namespace RE::ID
 
 	namespace BSUtilities
 	{
-		inline constexpr REL::ID ConvertFloatToHalf{ 1085643, 2212098 };
+		inline constexpr REL::ID ConvertFloatToHalf{ 1317445, 2212098 };
 		inline constexpr REL::ID ConvertHalfToFloat{ 2195843 };
 		inline constexpr REL::ID GetObjectByName{ 843650, 2274841 };
 		inline constexpr REL::ID GetFlattenedBoneTree{ 1539401, 2274858 };
