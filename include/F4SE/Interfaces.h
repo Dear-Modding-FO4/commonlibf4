@@ -495,13 +495,19 @@ namespace F4SE
 
 		constexpr void UsesSigScanning(const bool a_value) noexcept { SetOrClearBit(addressIndependence, 1 << 0, a_value); }
 
+		constexpr void UsesAddressLibrary(const bool a_value) noexcept { UsesAddressLibraryAE(a_value); }
+		// 1 << 1 is for address library for 1.10.980 and 1.10.984
+		constexpr void UsesAddressLibraryNG(const bool a_value) noexcept { SetOrClearBit(addressIndependence, 1 << 1, a_value); }
 		// 1 << 2 is for address library for 1.11.137 and later
-		constexpr void UsesAddressLibrary(const bool a_value) noexcept { SetOrClearBit(addressIndependence, 1 << 2, a_value); }
+		constexpr void UsesAddressLibraryAE(const bool a_value) noexcept { SetOrClearBit(addressIndependence, 1 << 2, a_value); }
 
 		constexpr void HasNoStructUse(const bool a_value) noexcept { SetOrClearBit(structureIndependence, 1 << 0, a_value); }
-
+	
+		constexpr void IsLayoutDependent(const bool a_value) noexcept { IsLayoutDependentAE(a_value); }
+		// 1 << 2 is for runtime 1.10.980 and 1.10.984
+		constexpr void IsLayoutDependentNG(const bool a_value) noexcept { SetOrClearBit(structureIndependence, 1 << 1, a_value); }
 		// 1 << 2 is for runtime 1.11.137 and later
-		constexpr void IsLayoutDependent(const bool a_value) noexcept { SetOrClearBit(structureIndependence, 1 << 2, a_value); }
+		constexpr void IsLayoutDependentAE(const bool a_value) noexcept { SetOrClearBit(structureIndependence, 1 << 2, a_value); }
 
 		constexpr void CompatibleVersions(std::initializer_list<REL::Version> a_versions) noexcept
 		{
