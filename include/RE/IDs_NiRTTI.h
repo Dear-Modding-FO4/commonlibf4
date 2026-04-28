@@ -2,7 +2,7 @@
 
 namespace RE
 {
-	namespace RTTI
+	namespace Ni_RTTI
 	{
 		inline constexpr REL::ID BGSAddonNodeSoundHandleExtra{ 1438983, 2690478, 4797767 };
 		inline constexpr REL::ID BGSDecalNode{ 935310, 2689265, 4796552 };
