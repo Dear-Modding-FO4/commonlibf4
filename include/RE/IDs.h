@@ -581,7 +581,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID UnsignedInt{ 694400, 2267950 };
 		inline constexpr REL::ID Float{ 1118937, 2267953 }; // Check
-		inline constexpr REL::ID Float0To1{ 54937, 2267954 }; // Check
+		inline constexpr REL::ID Float0To1{ 1025602, 2267954 }; // Check
 		inline constexpr REL::ID Int{ 1212543, 2267952 }; // Check
 	}
 
@@ -2043,7 +2043,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetHasOwner{ 1016277, 2202622 };
 		inline constexpr REL::ID GetInventoryObjectCount{ 333415, 2200939 };
 		inline constexpr REL::ID GetLinkedRef{ 897287, 2202683 };
-		inline constexpr REL::ID GetLock{ 305507, 2202648 }; // Check
+		inline constexpr REL::ID GetLock{ 930785, 2202648 }; // Check
 		inline constexpr REL::ID GetWeightInContainer{ 1377567, 2201001 };
 		inline constexpr REL::ID HasContainer{ 1213017, 2201022 };
 		inline constexpr REL::ID IsAnOwner{ 933798, 2202635 };
@@ -2153,7 +2153,7 @@ namespace RE::ID
 	namespace UIMessageQueue
 	{
 		inline constexpr REL::ID Singleton{ 82123, 2689091, 4796377 };
-		inline constexpr REL::ID AddMessage{ 133053, 2284929 }; // Check
+		inline constexpr REL::ID AddMessage{ 1182019, 2284929 }; // Check
 	}
 
 	namespace UIUtils
