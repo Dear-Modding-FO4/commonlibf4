@@ -4,7 +4,7 @@ namespace RE::ID
 {
 	namespace ActiveEffect
 	{
-		inline constexpr REL::VariantID CheckDisplacementSpellOnTarget{ 1415178, 0 };  // Inlined in NG/AE
+		inline constexpr REL::VariantID CheckDisplacementSpellOnTarget{ 1415178, 2226001 };
 	}
 
 	namespace Actor
@@ -27,7 +27,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetMountHandle{ 313362, 2231230 };
 		inline constexpr REL::VariantID GetLevel{ 661617, 2229734 };
 		inline constexpr REL::VariantID GetPerkRank{ 1368313, 2230125 };
-		inline constexpr REL::VariantID GetSex{ 1216256, 2229674 }; // Check
+		inline constexpr REL::VariantID GetSex{ 1216256, 2229674 };
 		inline constexpr REL::VariantID HandleDefaultAnimationSwitch{ 1163130, 2229780 };
 		inline constexpr REL::VariantID HandleItemEquip{ 164912, 2229781 };
 		inline constexpr REL::VariantID HasObjects{ 861256, 2229961 };
@@ -53,14 +53,14 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetEquippedItem{ 1318331, 2231089 };
 		inline constexpr REL::VariantID GetCrimeTrackingFaction{ 1108024, 2229787 };
 		inline constexpr REL::VariantID ForceDetect{ 131995, 2230194 };
-		inline constexpr REL::VariantID GetDesirability{ 1325769, 2229946 }; // Check
-		inline constexpr REL::VariantID CalcArmorRating1{ 843406, 2230008 }; // Check
-		inline constexpr REL::VariantID CalcArmorRating2{ 843406, 2230009 }; // Check
+		inline constexpr REL::VariantID GetDesirability{ 1325769, 2229946 };
+		inline constexpr REL::VariantID CalcArmorRating1{ 1295757, 2230008 };
+		inline constexpr REL::VariantID CalcArmorRating2{ 843406, 2230009 };
 		inline constexpr REL::VariantID UnequipObject{ 1363509, 2230479 };
-		inline constexpr REL::VariantID UpdateSoundCallBack{ 632367, 2229974 }; // Check
-		inline constexpr REL::VariantID GetFactionRank{ 761698, 2230100 }; // Check
-		inline constexpr REL::VariantID IsAngryWithPlayer{ 1433187, 2229998 }; // Check
-		inline constexpr REL::VariantID RedressIfNeeded{ 323782, 2230394 }; // Check
+		inline constexpr REL::VariantID UpdateSoundCallBack{ 632367, 2229974 };
+		inline constexpr REL::VariantID GetFactionRank{ 761698, 2230100 };
+		inline constexpr REL::VariantID IsAngryWithPlayer{ 1433187, 2229998 };
+		inline constexpr REL::VariantID RedressIfNeeded{ 323782, 2230394 };
 		inline constexpr REL::VariantID UpdateSprinting{ 385539, 2230498 };
 		inline constexpr REL::VariantID Jump{ 1394576, 2229650 };
 		inline constexpr REL::VariantID GetMobilityCrippled{ 281477, 2230996 };
