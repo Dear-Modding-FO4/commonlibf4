@@ -159,7 +159,7 @@ namespace RE::ID
 
 	namespace BGSConstructibleObject
 	{
-		inline constexpr REL::VariantID PlayerPassesConditions{ 293575, 2197318 }; // Check
+		inline constexpr REL::VariantID PlayerPassesConditions{ 293575, 2197318 };
 	}
 
 	namespace BGSCraftItemEvent
@@ -169,7 +169,7 @@ namespace RE::ID
 
 	namespace BGSCreatedObjectManager
 	{
-		inline constexpr REL::VariantID Singleton{ 1000678, 2689006, 2697789 };
+		inline constexpr REL::VariantID Singleton{ 1000678, 2689006, 4796296 };
 		inline constexpr REL::VariantID DecrementRef{ 230928, 2228455 };
 		inline constexpr REL::VariantID IncrementRef{ 1042515, 2228454 };
 	}
@@ -182,7 +182,7 @@ namespace RE::ID
 
 	namespace BGSDefaultObjectManager
 	{
-		inline constexpr REL::VariantID Singleton{ 484974, 2192850 };
+		inline constexpr REL::VariantID Singleton{ 484974, 0 };	// Inlined NG/AE - old ids 2192850 this function get by type (also, the number increased by 1)
 	}
 
 	namespace BGSDynamicPersistenceManager
@@ -226,7 +226,7 @@ namespace RE::ID
 
 	namespace BGSInventoryItemUtils
 	{
-		inline constexpr REL::VariantID GetInventoryValue{ 23543, 2194127 }; // Check
+		inline constexpr REL::VariantID GetInventoryValue{ 23543, 2194127 };
 	}
 
 	namespace BGSInventoryList
@@ -234,7 +234,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID FindAndWriteStackDataForItem{ 1354005, 2194179 };
 		inline constexpr REL::VariantID BuildFromContainer{ 551792, 2194158 };
 		inline constexpr REL::VariantID ctor{ 845050, 2194153 };
-		inline constexpr REL::VariantID AddItem{ 19103, 2194159 }; // Check
+		inline constexpr REL::VariantID AddItem{ 19103, 2194159 };
 	}
 
 	namespace BGSKeyword
@@ -386,8 +386,8 @@ namespace RE::ID
 	namespace BGSSceneActionNPCResponseDialogue
 	{
 		inline constexpr REL::VariantID GetCurrentTopicInfo{ 1369299, 2196825 };
-		inline constexpr REL::VariantID UpdateAction1{ 1439851, 2196817 }; // Check
-		inline constexpr REL::VariantID UpdateAction2{ 574707, 2196800 }; // Check
+		inline constexpr REL::VariantID UpdateAction1{ 1439851, 2196817 };
+		inline constexpr REL::VariantID UpdateAction2{ 574707, 2196800 };
 	}
 
 	namespace BGSSceneActionPlayerDialogue
