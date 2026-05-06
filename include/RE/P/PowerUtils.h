@@ -51,14 +51,14 @@ namespace RE
 		};
 		static_assert(sizeof(TraverseConnectionsOptions) == 0x8);
 
-		bool ItemIsPowerConnection(const TESObjectREFR* refr)
+		inline bool ItemIsPowerConnection(const TESObjectREFR* refr)
 		{
 			using func_t = decltype(&PowerUtils::ItemIsPowerConnection);
 			static REL::Relocation<func_t> func{ ID::PowerUtils::ItemIsPowerConnection };
 			return func(refr);
 		}
 
-		bool ItemIsPowerReceiver(const TESObjectREFR* refr)
+		inline bool ItemIsPowerReceiver(const TESObjectREFR* refr)
 		{
 			using func_t = decltype(&PowerUtils::ItemIsPowerReceiver);
 			static REL::Relocation<func_t> func{ ID::PowerUtils::ItemIsPowerReceiver };
