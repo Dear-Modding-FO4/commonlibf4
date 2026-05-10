@@ -377,6 +377,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID QueueSaveLoadTask{ 1487308, 2228080 };
 	}
 
+	namespace BGSSaveLoadGame
+	{
+		inline constexpr REL::VariantID Singleton{ 177947, 2697789, 2697789 };
+		inline constexpr REL::VariantID GetChange{ 688165, 2227898, 2227898 };
+	}
+
 	namespace BGSScene
 	{
 		inline constexpr REL::VariantID ResetAllSceneActions{ 1356678, 2206864 };
