@@ -216,6 +216,24 @@ namespace RE::ID
 		inline constexpr REL::VariantID PlayerPassesConditions{ 293575, 2197318 };
 	}
 
+	namespace BGSCharacterTint
+	{
+		namespace Entries
+		{
+			inline constexpr REL::VariantID GetEntryByID{ 1292903, 2196508 };
+		}
+
+		namespace Template
+		{
+			namespace Groups
+			{
+				inline constexpr REL::VariantID GetFirstEntryForSlot{ 672616, 2196538 };
+			}
+		}
+
+		inline constexpr REL::VariantID GetEntryType{ 615828, 2196504 };
+	}
+
 	namespace BGSCraftItemEvent
 	{
 		inline constexpr REL::VariantID EventIndex{ 1382765, 2663409 };
@@ -2071,6 +2089,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID EnableRadio{ 741937, 2233211 };
 		inline constexpr REL::VariantID UpdateAnimation{ 740864, 2233005 };
 		inline constexpr REL::VariantID HandlePositionPlayerRequest{ 146861, 2232905 };
+		inline constexpr REL::VariantID SetTintingData{ 802946, 2233185 };
 	}
 
 	namespace PlayerControls
@@ -2471,6 +2490,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetHairColor{ 1201742, 2207426 };
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
 		inline constexpr REL::VariantID GetXPValue{ 1134136, 2207384 };
+		inline constexpr REL::VariantID SetTintingData{ 452734, 2207493 };
+        inline constexpr REL::VariantID GetTintingTemplate{ 1316627, 2207494 };
+        inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
+        inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
 	}
 
 	namespace TESObjectARMO

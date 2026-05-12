@@ -334,6 +334,13 @@ namespace RE
 			return func(this);
 		}
 
+		void SetTintingData(std::int16_t a_uniqueID, float a_tintingValue, std::uint32_t a_color)
+		{
+			using func_t = decltype(&PlayerCharacter::SetTintingData);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::SetTintingData };
+			return func(this, a_uniqueID, a_tintingValue, a_color);
+		}
+
 		// members
 		BSSpinLock                                                     actorToDisplayOnHUDLock;              // 628
 		BSSpinLock                                                     questTargetLock;                      // 630
