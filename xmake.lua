@@ -14,7 +14,7 @@ add_rules("mode.debug", "mode.releasedbg")
 includes("lib/commonlib-shared")
 
 -- override runtime count
-add_defines("COMMONLIB_RUNTIMECOUNT=3")
+add_defines("COMMONLIB_RUNTIMECOUNT=3", { public = true })
 
 -- define targets
 target("commonlibf4", function()
