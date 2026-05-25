@@ -229,35 +229,35 @@ namespace RE
 		static_assert(sizeof(PostSolveSignal) == 0x08);
 
 		// members
-		WorldDestroyedSignal           worldDestroyed;            // 00
-		WorldShiftedSignal             worldShifted;              // 08
-		BodyBufferFullSignal           bodyBufferFull;            // 10
-		BodyBufferChangedSignal        bodyBufferChanged;         // 18
-		BodyCreatedSignal              bodyCreated;               // 20
-		BodyAddedSignal                bodyAdded;                 // 28
-		BodyRemovedSignal              bodyRemoved;               // 30
-		BodyDestroyedSignal            bodyDestroyed;             // 38
-		MotionBufferFullSignal         motionBufferFull;          // 40
-		MotionBufferChangedSignal      motionBufferChanged;       // 48
-		MotionCreatedSignal            motionCreated;             // 50
-		MotionDestroyedSignal          motionDestroyed;           // 58
-		StaticBodyMovedSignal          staticBodyMoved;           // 60
-		BodySwitchStaticDynamicSignal  bodySwitchStaticDynamic;   // 68
-		BodyAttachToCompoundSignal     bodyAttached;              // 70
-		BodyDetachToCompoundSignal     bodyDetached;              // 78
-		BodyShapeSetSignal             bodyShapeChanged;          // 80
-		BodyChangedSignal              bodyChanged;               // 88
-		ConstraintBufferFullSignal     constraintBufferFull;      // 90
-		ConstraintBufferChangedSignal  constraintBufferChanged;   // 98
-		ConstraintCreatedSignal        constraintCreated;         // A0
-		ConstraintDestroyedSignal      constraintDestroyed;       // A8
-		ConstraintEnabledSignal        constraintEnabled;         // B0
-		ConstraintDisabledSignal       constraintDisabled;        // B8
-		ImmediateConstraintAddedSignal immediateConstraintAdded;  // C0
-		PreCollideSignal               preCollide;                // C8
-		PostCollideSignal              postCollide;               // D0
-		PreSolveSignal                 preSolve;                  // D8
-		PostSolveSignal                postSolve;                 // E0
+		WorldDestroyedSignal           worldDestroyed;            // 0x00
+		WorldShiftedSignal             worldShifted;              // 0x08
+		BodyBufferFullSignal           bodyBufferFull;            // 0x10
+		BodyBufferChangedSignal        bodyBufferChanged;         // 0x18
+		BodyCreatedSignal              bodyCreated;               // 0x20
+		BodyAddedSignal                bodyAdded;                 // 0x28
+		BodyRemovedSignal              bodyRemoved;               // 0x30
+		BodyDestroyedSignal            bodyDestroyed;             // 0x38
+		MotionBufferFullSignal         motionBufferFull;          // 0x40
+		MotionBufferChangedSignal      motionBufferChanged;       // 0x48
+		MotionCreatedSignal            motionCreated;             // 0x50
+		MotionDestroyedSignal          motionDestroyed;           // 0x58
+		StaticBodyMovedSignal          staticBodyMoved;           // 0x60
+		BodySwitchStaticDynamicSignal  bodySwitchStaticDynamic;   // 0x68
+		BodyAttachToCompoundSignal     bodyAttached;              // 0x70
+		BodyDetachToCompoundSignal     bodyDetached;              // 0x78
+		BodyShapeSetSignal             bodyShapeChanged;          // 0x80
+		BodyChangedSignal              bodyChanged;               // 0x88
+		ConstraintBufferFullSignal     constraintBufferFull;      // 0x90
+		ConstraintBufferChangedSignal  constraintBufferChanged;   // 0x98
+		ConstraintCreatedSignal        constraintCreated;         // 0xA0
+		ConstraintDestroyedSignal      constraintDestroyed;       // 0xA8
+		ConstraintEnabledSignal        constraintEnabled;         // 0xB0
+		ConstraintDisabledSignal       constraintDisabled;        // 0xB8
+		ImmediateConstraintAddedSignal immediateConstraintAdded;  // 0xC0
+		PreCollideSignal               preCollide;                // 0xC8
+		PostCollideSignal              postCollide;               // 0xD0
+		PreSolveSignal                 preSolve;                  // 0xD8
+		PostSolveSignal                postSolve;                 // 0xE0
 	};
 	static_assert(sizeof(hknpWorldSignals) == 0xE8);
 }

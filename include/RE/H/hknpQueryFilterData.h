@@ -9,9 +9,9 @@ namespace RE
 	{
 	public:
 		// members
-		hknpMaterialId          materialId;           // 00
-		hkPadSpu<std::uint32_t> collisionFilterInfo;  // 04
-		hkPadSpu<std::uint64_t> userData;             // 08
+		hknpMaterialId          m_materialId;           // 0x00
+		hkPadSpu<std::uint32_t> m_collisionFilterInfo;  // 0x04
+		hkPadSpu<std::uint64_t> m_userData;             // 0x08
 	};
 	static_assert(sizeof(hknpQueryFilterData) == 0x10);
 }

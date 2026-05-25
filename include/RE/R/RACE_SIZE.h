@@ -4,9 +4,9 @@ namespace RE
 {
 	enum class RACE_SIZE : std::int32_t
 	{
-		kSmall = 0x0,
-		kMedium = 0x1,
-		kLarge = 0x2,
-		kExtraLarge = 0x2
+		kSmall = 0,
+		kMedium = 1,
+		kLarge = 2,
+		kExtraLarge = 3
 	};
 }

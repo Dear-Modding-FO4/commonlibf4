@@ -9,6 +9,9 @@ namespace RE
 		public hkBlockStreamBase::Stream
 	{
 	public:
+		class Consumer;
+		class Modifier;
+		class Reader;
 		class Writer;
 	};
 	static_assert(sizeof(hkBlockStream<void>) == 0x100);

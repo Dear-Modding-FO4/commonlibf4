@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSContainer.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
@@ -18,6 +19,7 @@ namespace RE
 	class LOADED_CELL_DATA;
 	class NavMeshArray;
 	class NiAVObject;
+	class NiPoint3;
 	class TESRegionList;
 
 	namespace BGSWaterCollisionManager
@@ -27,15 +29,15 @@ namespace RE
 	}
 
 	class __declspec(novtable) TESObjectCELL :
-		public TESForm,     // 00
-		public TESFullName  // 20
+		public TESForm,     // 0x00
+		public TESFullName  // 0x20
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::TESObjectCELL };
 		static constexpr auto VTABLE{ VTABLE::TESObjectCELL };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCELL };
 
-		enum class CELL_STATE
+		enum class CELL_STATE : std::uint8_t
 		{
 			kNotLoaded = 0x0,
 			kUnloading = 0x1,
@@ -98,6 +100,12 @@ namespace RE
 		{
 			kLightMarker = 0x0,
 			kSoundMarker = 0x1
+		};
+
+		union CELL_DATA
+		{
+			EXTERIOR_DATA* exterior;  // XCLC
+			INTERIOR_DATA* interior;  // XCLL
 		};
 
 		class RENDER_DATA
@@ -211,44 +219,44 @@ namespace RE
 			return func(this);
 		}
 
+		EXTERIOR_DATA*              GetCoordinates() const;
 		[[nodiscard]] TESWaterForm* GetWaterType() const noexcept;
 		[[nodiscard]] bool          HasWater() const noexcept { return cellFlags.all(Flag::kHasWater); }
+		[[nodiscard]] bool          IsAttached() const noexcept { return cellState == CELL_STATE::kAttached; }
 		[[nodiscard]] bool          IsExterior() const noexcept { return !IsInterior(); }
 		[[nodiscard]] bool          IsInterior() const noexcept { return cellFlags.all(Flag::kInterior); }
 
+		void ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback);
+		void ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback);
+
 		// members
-		BSSpinLock                              grassCreateLock;  // 30
-		BSSpinLock                              grassTaskLock;    // 38
-		REX::TEnumSet<Flag, std::uint16_t>      cellFlags;        // 40
-		std::uint16_t                           cellGameFlags;    // 42
-		REX::TEnumSet<CELL_STATE, std::uint8_t> cellState;        // 44
-		bool                                    autoWaterLoaded;  // 45
-		bool                                    cellDetached;     // 46
-		BSTSmartPointer<ExtraDataList>          extraList;        // 48
-		union
-		{
-			void*          cellData;
-			EXTERIOR_DATA* cellDataExterior;
-			INTERIOR_DATA* cellDataInterior;
-		};  // 50
-		TESObjectLAND*                                                     cellLand;     // 58
-		float                                                              waterHeight;  // 60
-		NavMeshArray*                                                      navMeshes;    // 68
-		BSTArray<NiPointer<TESObjectREFR>>                                 references;   // 70
-		BSTSmartPointer<BGSWaterCollisionManager::AutoWater>               autoWater;    // 77
-		BSTSet<BSTSmartPointer<BGSWaterCollisionManager::BGSWaterUpdateI>> waterSet;     // 80
-		BSSpinLock                                                         spinLock;     // C0
+		BSSpinLock                                                         grassCreateLock;  // 0x30
+		BSSpinLock                                                         grassTaskLock;    // 0x38
+		REX::TEnumSet<Flag, std::uint16_t>                                 cellFlags;        // 0x40
+		std::uint16_t                                                      cellGameFlags;    // 0x42
+		CELL_STATE                                                         cellState;        // 0x44
+		bool                                                               autoWaterLoaded;  // 0x45
+		bool                                                               cellDetached;     // 0x46
+		BSTSmartPointer<ExtraDataList>                                     extraList;        // 0x48
+		CELL_DATA                                                          cellData;         // 0x50
+		TESObjectLAND*                                                     cellLand;         // 0x58
+		float                                                              waterHeight;      // 0x60
+		NavMeshArray*                                                      navMeshes;        // 0x68
+		BSTArray<NiPointer<TESObjectREFR>>                                 references;       // 0x70
+		BSTSmartPointer<BGSWaterCollisionManager::AutoWater>               autoWater;        // 0x77
+		BSTSet<BSTSmartPointer<BGSWaterCollisionManager::BGSWaterUpdateI>> waterSet;         // 0x80
+		BSSpinLock                                                         spinLock;         // 0xC0
 		union
 		{
 			TESWorldSpace* worldSpace;
 			std::uint32_t  tempDataOffset;
-		};  // C8
-		LOADED_CELL_DATA*    loadedData;            // D0
-		BGSLightingTemplate* lightingTemplate;      // D8
-		void*                visibilityData;        // E0 - TODO
-		std::uint32_t        rootVisibilityCellID;  // E8
-		std::uint16_t        visCalcDate;           // EC
-		std::uint16_t        preCombineDate;        // F0
+		};  // 0xC8
+		LOADED_CELL_DATA*    loadedData;            // 0xD0
+		BGSLightingTemplate* lightingTemplate;      // 0xD8
+		void*                visibilityData;        // 0xE0 - TODO
+		std::uint32_t        rootVisibilityCellID;  // 0xE8
+		std::uint16_t        visCalcDate;           // 0xEC
+		std::uint16_t        preCombineDate;        // 0xF0
 	};
 	static_assert(sizeof(TESObjectCELL) == 0xF0);
 }

@@ -5,7 +5,7 @@
 #include "RE/G/GameMenuBase.h"
 #include "RE/I/ImageSpaceLUTData.h"
 #include "RE/N/NiMatrix3.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {

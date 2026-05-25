@@ -6,7 +6,7 @@
 #include "RE/B/BSStringT.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint2.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiTMap.h"
 #include "RE/T/TESForm.h"
@@ -23,9 +23,9 @@ namespace RE
 	class NiNode;
 
 	class __declspec(novtable) TESWorldSpace :
-		public TESForm,      // 000
-		public TESFullName,  // 020
-		public TESTexture    // 030
+		public TESForm,      // 0x000
+		public TESFullName,  // 0x020
+		public TESTexture    // 0x030
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::TESWorldSpace };
@@ -47,8 +47,8 @@ namespace RE
 		{
 		public:
 			// members
-			std::int16_t x;  // 0
-			std::int16_t y;  // 2
+			std::int16_t x;  // 0x0
+			std::int16_t y;  // 0x2
 		};
 		static_assert(sizeof(ShortPoint) == 0x4);
 
@@ -56,17 +56,24 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t* cellFileOffsets;  // 00
-			std::uint32_t* cellFileSizes;    // 08
-			NiPoint2       offsetMinCoords;  // 10
-			NiPoint2       offsetMaxCoords;  // 18
-			std::uint32_t  fileOffset;       // 20
+			std::uint32_t* cellFileOffsets;  // 0x00
+			std::uint32_t* cellFileSizes;    // 0x08
+			NiPoint2       offsetMinCoords;  // 0x10
+			NiPoint2       offsetMaxCoords;  // 0x18
+			std::uint32_t  fileOffset;       // 0x20
 		};
 		static_assert(sizeof(OFFSET_DATA) == 0x28);
 
 		[[nodiscard]] TESWorldSpace* GetParentWorld(PARENT_USE_FLAG a_flags) const noexcept
 		{
 			return parentUseFlags.all(a_flags) ? parentWorld : nullptr;
+		}
+
+		[[nodiscard]] TESObjectCELL* GetSkyCell() const
+		{
+			using func_t = decltype(&TESWorldSpace::GetSkyCell);
+			static REL::Relocation<func_t> func{ ID::TESWorldSpace::GetSkyCell };
+			return func(this);
 		}
 
 		[[nodiscard]] TESWaterForm* GetWaterType() const noexcept
@@ -84,60 +91,53 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] TESObjectCELL* GetSkyCell()
-		{
-			using func_t = decltype(&TESWorldSpace::GetSkyCell);
-			static REL::Relocation<func_t> func{ ID::TESWorldSpace::GetSkyCell };
-			return func(this);
-		}
-
 		// members
-		BSTHashMap<std::int32_t, TESObjectCELL*>                       cellMap;                  // 040
-		TESObjectCELL*                                                 persistentCell;           // 070
-		BGSTerrainManager*                                             terrainManager;           // 078
-		TESClimate*                                                    climate;                  // 080
-		std::int8_t                                                    flags;                    // 088
-		REX::TEnumSet<PARENT_USE_FLAG, std::uint16_t>                  parentUseFlags;           // 08A
-		std::int8_t                                                    worldFlags;               // 08C
-		ShortPoint                                                     fixedCenter;              // 08E
-		BSTHashMap<std::uint32_t, BSTArray<NiPointer<TESObjectREFR>>*> fixedPersistentRefMap;    // 098
-		BSTArray<NiPointer<TESObjectREFR>>                             mobilePersistentRefs;     // 0C8
-		BSTHashMap<std::uint32_t, BSSimpleList<TESObjectREFR*>*>       overlappedMultiboundMap;  // 0E0
-		TESObjectCELL*                                                 skyCell;                  // 110
-		BSTHashMap<std::uint32_t, BGSLocation*>                        locationMap;              // 118
-		BSTArray<TESObjectREFR*>                                       teleportDoorCache;        // 148
-		NiPointer<BSPortalGraph>                                       portalGraph;              // 160
-		BSTHashMap<ObjectRefHandle, NiPointer<BSMultiBoundNode>>*      multiboundRefMap;         // 168
-		BSTHashMap<BSMultiBoundNode*, ObjectRefHandle>*                refMultiboundMap;         // 170
-		NiPointer<NiNode>                                              multiboundNode;           // 178
-		NiPointer<NiNode>                                              portalSharedNode;         // 180
-		TESWorldSpace*                                                 parentWorld;              // 188
-		BGSLightingTemplate*                                           lightingTemplate;         // 190
-		TESWaterForm*                                                  worldWater;               // 198
-		TESWaterForm*                                                  lodWater;                 // 1A0
-		float                                                          lodWaterHeight;           // 1A8
-		WORLD_MAP_DATA                                                 worldMapData;             // 1AC
-		WORLD_MAP_OFFSET_DATA                                          worldMapOffsetData;       // 1BC
-		BGSMusicType*                                                  musicType;                // 1D0
-		NiPoint2                                                       minimumCoords;            // 1D8
-		NiPoint2                                                       maximumCoords;            // 1E0
-		NiTMap<TESFile*, OFFSET_DATA*>                                 offsetDataMap;            // 1E8
-		BSString                                                       editorID;                 // 208
-		float                                                          defaultLandHeight;        // 218
-		float                                                          defaultWaterHeight;       // 21C
-		float                                                          distantLODMult;           // 220
-		BGSEncounterZone*                                              encounterZone;            // 228
-		BGSLocation*                                                   location;                 // 230
-		TESTexture                                                     canopyShadowTexture;      // 238
-		TESTexture                                                     waterEnvMap;              // 248
-		BGSLargeRefData                                                largeRefData;             // 258
-		float                                                          northRotation;            // 2B8
-		std::int8_t                                                    lvlDataCellStartX;        // 2BC
-		std::int8_t                                                    lvlDataCellStartY;        // 2BD
-		std::int8_t                                                    lvlDataCellWidthX;        // 2BE
-		std::int8_t                                                    lvlDataCellWidthY;        // 2BF
-		std::int8_t*                                                   lvlDataCellA;             // 2C0
-		std::int8_t*                                                   maxHeightData;            // 2C8
+		BSTHashMap<std::int32_t, TESObjectCELL*>                       cellMap;                  // 0x040
+		TESObjectCELL*                                                 persistentCell;           // 0x070
+		BGSTerrainManager*                                             terrainManager;           // 0x078
+		TESClimate*                                                    climate;                  // 0x080
+		std::int8_t                                                    flags;                    // 0x088
+		REX::TEnumSet<PARENT_USE_FLAG, std::uint16_t>                  parentUseFlags;           // 0x08A
+		std::int8_t                                                    worldFlags;               // 0x08C
+		ShortPoint                                                     fixedCenter;              // 0x08E
+		BSTHashMap<std::uint32_t, BSTArray<NiPointer<TESObjectREFR>>*> fixedPersistentRefMap;    // 0x098
+		BSTArray<NiPointer<TESObjectREFR>>                             mobilePersistentRefs;     // 0x0C8
+		BSTHashMap<std::uint32_t, BSSimpleList<TESObjectREFR*>*>       overlappedMultiboundMap;  // 0x0E0
+		TESObjectCELL*                                                 skyCell;                  // 0x110
+		BSTHashMap<std::uint32_t, BGSLocation*>                        locationMap;              // 0x118
+		BSTArray<TESObjectREFR*>                                       teleportDoorCache;        // 0x148
+		NiPointer<BSPortalGraph>                                       portalGraph;              // 0x160
+		BSTHashMap<ObjectRefHandle, NiPointer<BSMultiBoundNode>>*      multiboundRefMap;         // 0x168
+		BSTHashMap<BSMultiBoundNode*, ObjectRefHandle>*                refMultiboundMap;         // 0x170
+		NiPointer<NiNode>                                              multiboundNode;           // 0x178
+		NiPointer<NiNode>                                              portalSharedNode;         // 0x180
+		TESWorldSpace*                                                 parentWorld;              // 0x188
+		BGSLightingTemplate*                                           lightingTemplate;         // 0x190
+		TESWaterForm*                                                  worldWater;               // 0x198
+		TESWaterForm*                                                  lodWater;                 // 0x1A0
+		float                                                          lodWaterHeight;           // 0x1A8
+		WORLD_MAP_DATA                                                 worldMapData;             // 0x1AC
+		WORLD_MAP_OFFSET_DATA                                          worldMapOffsetData;       // 0x1BC
+		BGSMusicType*                                                  musicType;                // 0x1D0
+		NiPoint2                                                       minimumCoords;            // 0x1D8
+		NiPoint2                                                       maximumCoords;            // 0x1E0
+		NiTMap<TESFile*, OFFSET_DATA*>                                 offsetDataMap;            // 0x1E8
+		BSString                                                       editorID;                 // 0x208
+		float                                                          defaultLandHeight;        // 0x218
+		float                                                          defaultWaterHeight;       // 0x21C
+		float                                                          distantLODMult;           // 0x220
+		BGSEncounterZone*                                              encounterZone;            // 0x228
+		BGSLocation*                                                   location;                 // 0x230
+		TESTexture                                                     canopyShadowTexture;      // 0x238
+		TESTexture                                                     waterEnvMap;              // 0x248
+		BGSLargeRefData                                                largeRefData;             // 0x258
+		float                                                          northRotation;            // 0x2B8
+		std::int8_t                                                    lvlDataCellStartX;        // 0x2BC
+		std::int8_t                                                    lvlDataCellStartY;        // 0x2BD
+		std::int8_t                                                    lvlDataCellWidthX;        // 0x2BE
+		std::int8_t                                                    lvlDataCellWidthY;        // 0x2BF
+		std::int8_t*                                                   lvlDataCellA;             // 0x2C0
+		std::int8_t*                                                   maxHeightData;            // 0x2C8
 	};
 	static_assert(sizeof(TESWorldSpace) == 0x2D0);
 }

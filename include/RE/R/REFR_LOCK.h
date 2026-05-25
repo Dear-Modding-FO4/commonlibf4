@@ -7,6 +7,12 @@ namespace RE
 	class REFR_LOCK
 	{
 	public:
+		enum class Flags : std::uint8_t
+		{
+			kLocked = 0x1,
+			kLeveled = 0x4
+		};
+
 		[[nodiscard]] LOCK_LEVEL GetLockLevel(TESObjectREFR* a_owner)
 		{
 			using func_t = decltype(&REFR_LOCK::GetLockLevel);

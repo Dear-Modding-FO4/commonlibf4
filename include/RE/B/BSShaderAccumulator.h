@@ -4,7 +4,7 @@
 #include "RE/B/BSShaderManager.h"
 #include "RE/N/NiAlphaAccumulator.h"
 #include "RE/N/NiColor.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/S/SunOcclusionTest.h"
 

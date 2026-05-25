@@ -2,25 +2,29 @@
 
 namespace RE
 {
-	class hkMemoryAllocator
+	class __declspec(novtable) hkMemoryAllocator
 	{
 	public:
+		static constexpr auto RTTI{ RTTI::hkMemoryAllocator };
+		static constexpr auto VTABLE{ VTABLE::hkMemoryAllocator };
+
 		class ExtendedInterface;
 		class MemoryStatistics;
 
+		virtual ~hkMemoryAllocator() = default;  // 00
+
 		// add
-		virtual ~hkMemoryAllocator();                                                    // 00
-		virtual void*              blockAlloc(std::int32_t);                             // 01
-		virtual void               blockFree(void*, std::int32_t);                       // 02
-		virtual void*              bufAlloc(std::int32_t*);                              // 03
-		virtual void               bufFree(void*, std::int32_t);                         // 04
-		virtual void*              bufRealloc(void*, std::int32_t, std::int32_t*);       // 05
-		virtual void               blockAllocBatch(void**, std::int32_t, std::int32_t);  // 06
-		virtual void               blockFreeBatch(void**, std::int32_t, std::int32_t);   // 07
-		virtual void               getMemoryStatistics(MemoryStatistics*);               // 08
-		virtual void               getAllocatedSize(const void*, std::int32_t);          // 09
-		virtual std::int32_t       resetPeakMemoryStatistics();                          // 0A
-		virtual ExtendedInterface* getExtendedInterface();                               // 0B
+		virtual void*              BlockAlloc(std::int32_t a_numBytesIn) = 0;                                              // 01
+		virtual void               BlockFree(void* a_ptr, std::int32_t a_numBytesIn) = 0;                                  // 02
+		virtual void*              BufAlloc(std::int32_t& a_reqNumBytesInOut) { return BlockAlloc(a_reqNumBytesInOut); }   // 03
+		virtual void               BufFree(void* a_ptr, std::int32_t a_numBytes) { BlockFree(a_ptr, a_numBytes); }         // 04
+		virtual void*              BufRealloc(void* a_old, std::int32_t a_oldNumBytes, std::int32_t& a_reqNumBytesInOut);  // 05
+		virtual void               BlockAllocBatch(void** a_ptrsOut, std::int32_t a_numPtrs, std::int32_t a_blockSize);    // 06
+		virtual void               BlockFreeBatch(void** a_ptrsIn, std::int32_t a_numPtrs, std::int32_t a_blockSize);      // 07
+		virtual void               GetMemoryStatistics(MemoryStatistics& a_stats) const = 0;                               // 08
+		virtual std::int32_t       GetAllocatedSize(const void* a_obj, std::int32_t a_numBytes) const = 0;                 // 09
+		virtual void               ResetPeakMemoryStatistics() { return; }                                                 // 0A
+		virtual ExtendedInterface* GetExtendedInterface() { return nullptr; }                                              // 0B
 	};
 	static_assert(sizeof(hkMemoryAllocator) == 0x08);
 }

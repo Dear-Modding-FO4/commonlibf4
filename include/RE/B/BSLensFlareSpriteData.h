@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiColor.h"
 
 namespace RE
 {

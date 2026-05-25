@@ -7,7 +7,7 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/N/NiMatrix3.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiQuaternion.h"
 

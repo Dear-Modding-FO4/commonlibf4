@@ -16,7 +16,7 @@
 #include "RE/I/IKeywordFormBase.h"
 #include "RE/I/ITEM_REMOVE_REASON.h"
 #include "RE/M/MapMarkerData.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/O/OBJ_REFR.h"
 #include "RE/T/TESForm.h"
 
@@ -87,12 +87,12 @@ namespace RE
 		class RemoveItemData
 		{
 		public:
-			RemoveItemData(TESForm* a_form, std::int32_t a_count) :
-				RemoveItemData(a_form->As<TESBoundObject>(), a_count)
-			{}
-
 			RemoveItemData(TESBoundObject* a_object, std::int32_t a_count) :
 				object(a_object), count(a_count)
+			{}
+
+			RemoveItemData(TESForm* a_form, std::int32_t a_count) :
+				RemoveItemData(a_form->As<TESBoundObject>(), a_count)
 			{}
 
 			// members
@@ -100,7 +100,7 @@ namespace RE
 			TESBoundObject*                 object{ nullptr };                    // 20
 			std::int32_t                    count{ 0 };                           // 28
 			ITEM_REMOVE_REASON              reason{ ITEM_REMOVE_REASON::kNone };  // 2C
-			TESObjectREFR*                  a_otherContainer{ nullptr };          // 30
+			TESObjectREFR*                  otherContainer{ nullptr };            // 30
 			const NiPoint3*                 dropLoc{ nullptr };                   // 38
 			const NiPoint3*                 rotate{ nullptr };                    // 40
 		};
@@ -330,7 +330,35 @@ namespace RE
 			return func(this);
 		}
 
-		bool GetEditorDead() const
+		[[nodiscard]] float GetDistanceFromPoint(const NiPoint3& a_point) const
+		{
+			using func_t = decltype(&TESObjectREFR::GetDistanceFromPoint);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetDistanceFromPoint };
+			return func(this, a_point);
+		}
+
+		[[nodiscard]] float GetDistanceFromReference(const TESObjectREFR* a_ref, bool a_disabled, bool a_sameSpace) const
+		{
+			using func_t = decltype(&TESObjectREFR::GetDistanceFromReference);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetDistanceFromReference };
+			return func(this, a_ref, a_disabled, a_sameSpace);
+		}
+
+		[[nodiscard]] float GetDistanceSqFromPoint(const NiPoint3& a_point) const
+		{
+			using func_t = decltype(&TESObjectREFR::GetDistanceSqFromPoint);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetDistanceSqFromPoint };
+			return func(this, a_point);
+		}
+
+		[[nodiscard]] float GetDistanceSqFromReference(const TESObjectREFR* a_ref, bool a_disabled, bool a_sameSpace, bool a_diffZHeight) const
+		{
+			using func_t = decltype(&TESObjectREFR::GetDistanceSqFromReference);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetDistanceSqFromReference };
+			return func(this, a_ref, a_disabled, a_sameSpace, a_diffZHeight);
+		}
+
+		[[nodiscard]] bool GetEditorDead() const
 		{
 			using func_t = decltype(&TESObjectREFR::GetEditorDead);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetEditorDead };
@@ -565,14 +593,14 @@ namespace RE
 		}
 
 		// members
-		TESObjectCELL*                 parentCell;     // 0B8
-		OBJ_REFR                       data;           // 0C0
-		LOADED_REF_DATA*               loadedData;     // 0F0
-		BGSInventoryList*              inventoryList;  // 0F8
-		BSTSmartPointer<ExtraDataList> extraList;      // 100
-		std::uint16_t                  refScale;       // 018
-		std::int8_t                    modelState;     // 10A
-		bool                           predestroyed;   // 10B
+		TESObjectCELL*                 parentCell;     // 0x0B8
+		OBJ_REFR                       data;           // 0x0C0
+		LOADED_REF_DATA*               loadedData;     // 0x0F0
+		BGSInventoryList*              inventoryList;  // 0x0F8
+		BSTSmartPointer<ExtraDataList> extraList;      // 0x100
+		std::uint16_t                  refScale;       // 0x018
+		std::int8_t                    modelState;     // 0x10A
+		bool                           predestroyed;   // 0x10B
 	};
 	static_assert(sizeof(TESObjectREFR) == 0x110);
 }

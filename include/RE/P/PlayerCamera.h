@@ -8,7 +8,7 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/C/CameraStates.h"
 #include "RE/H/hknpBodyId.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/T/TESCamera.h"
 #include "RE/T/TESCameraState.h"
 
@@ -36,6 +36,18 @@ namespace RE
 		{
 			static REL::Relocation<PlayerCamera**> singleton{ ID::PlayerCamera::Singleton };
 			return *singleton;
+		}
+
+		[[nodiscard]] BSTSmartPointer<TESCameraState> GetCameraCurrentState() const
+		{
+			return currentState;
+		}
+
+		bool GetCameraPosition(NiPoint3& a_position, bool a_addPlayerPos) const
+		{
+			using func_t = decltype(&PlayerCamera::GetCameraPosition);
+			static REL::Relocation<func_t> func{ ID::PlayerCamera::GetCameraPosition };
+			return func(this, a_position, a_addPlayerPos);
 		}
 
 		[[nodiscard]] BSTSmartPointer<TESCameraState> GetState(CameraState a_state) const
@@ -71,7 +83,7 @@ namespace RE
 			return func(this, a_freezeTime);
 		}
 
-		void SetState(TESCameraState* a_newstate) const
+		void SetState(TESCameraState* a_newstate)
 		{
 			using func_t = decltype(&PlayerCamera::SetState);
 			static REL::Relocation<func_t> func{ ID::PlayerCamera::SetState };
@@ -99,7 +111,7 @@ namespace RE
 			return func(this);
 		}
 
-		bool QCameraEquals(CameraState a_state)
+		bool QCameraEquals(CameraState a_state) const
 		{
 			using func_t = decltype(&PlayerCamera::QCameraEquals);
 			static REL::Relocation<func_t> func{ ID::PlayerCamera::QCameraEquals };

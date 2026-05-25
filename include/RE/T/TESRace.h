@@ -16,7 +16,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/M/Movement.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/R/RACE_DATA.h"
 #include "RE/T/TESDescription.h"
 #include "RE/T/TESForm.h"

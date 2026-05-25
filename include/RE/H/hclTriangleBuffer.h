@@ -8,10 +8,10 @@ namespace RE
 	{
 	public:
 		// members
-		const void*   bufferStart;       // 00
-		std::uint32_t numElements;       // 08
-		std::uint8_t  stride;            // 0C
-		hkBool        use16BitsIndices;  /// 0D
+		const void*   m_bufferStart;       // 0x00
+		std::uint32_t m_numElements;       // 0x08
+		std::uint8_t  m_stride;            // 0x0C
+		hkBool        m_use16BitsIndices;  // 0x0D
 	};
 	static_assert(sizeof(hclTriangleBuffer) == 0x10);
 }

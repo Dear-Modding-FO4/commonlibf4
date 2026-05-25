@@ -23,10 +23,17 @@ namespace RE
 		inline static constexpr auto Ni_RTTI{ Ni_RTTI::bhkNPCollisionObject };
 
 		// add
-		virtual void CreateInstance(bhkWorld& a_world);             // 2D
-		virtual void AddToWorld(bhkWorld& a_world);                 // 2E
+		virtual void CreateInstance(bhkWorld* a_world);             // 2D
+		virtual void AddToWorld(bhkWorld* a_world);                 // 2E
 		virtual void RemoveFromWorld();                             // 2F
 		virtual bool SetCollisionFilterInfo(CFilter a_filterInfo);  // 30
+
+		static bhkNPCollisionObject* CreateObject()
+		{
+			using func_t = decltype(&bhkNPCollisionObject::CreateObject);
+			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::CreateObject };
+			return func();
+		}
 
 		void CopyMembers(bhkNPCollisionObject* a_dest, NiCloningProcess& a_cloningProcess)
 		{
@@ -42,16 +49,16 @@ namespace RE
 			return func(this);
 		}
 
-		hknpBodyId& GetBodyId(hknpBodyId& a_id)
+		hknpBodyId& GetBodyId(hknpBodyId& a_bodyId)
 		{
 			using func_t = decltype(&bhkNPCollisionObject::GetBodyId);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::GetBodyId };
-			return func(this, a_id);
+			return func(this, a_bodyId);
 		}
 
-		bhkPhysicsSystem* GetPhysicsSystem()
+		NiPointer<bhkPhysicsSystem> GetPhysicsSystem() const
 		{
-			return system.get();
+			return system;
 		}
 
 		hknpShape* GetShape()
@@ -73,6 +80,11 @@ namespace RE
 			using func_t = decltype(&bhkNPCollisionObject::SetMotionType);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::SetMotionType };
 			func(this, a_type);
+		}
+
+		void SetPhysicsSystem(NiPointer<bhkPhysicsSystem> a_system)
+		{
+			system = a_system;
 		}
 
 		bool SetTransform(hkTransformf& a_transform)

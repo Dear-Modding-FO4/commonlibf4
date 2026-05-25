@@ -3,13 +3,13 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/I/IMovementInterface.h"
 #include "RE/M/Movement.h"
-#include "RE/N/NiPoint.h"
 
 namespace RE
 {
 	class BSPathingLocation;
 	class BSPathingRequest;
 	class IMovementParameters;
+	class NiPoint3;
 
 	class __declspec(novtable) IMovementState :
 		public IMovementInterface  // 0

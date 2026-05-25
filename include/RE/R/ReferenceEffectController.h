@@ -1,7 +1,6 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
-#include "RE/N/NiPoint.h"
 
 namespace RE
 {
@@ -9,6 +8,7 @@ namespace RE
 	class BGSSaveGameBuffer;
 	class NiAVObject;
 	class NiNode;
+	class NiPoint3;
 	class ReferenceEffect;
 
 	class __declspec(novtable) ReferenceEffectController

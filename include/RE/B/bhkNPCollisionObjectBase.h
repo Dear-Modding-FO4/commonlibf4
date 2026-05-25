@@ -20,6 +20,17 @@ namespace RE
 			kRot = 0x2
 		};
 
+		enum class Flag : std::uint16_t
+		{
+			kNotifyPos = 0x4,
+			kSetLocalPos = 0x8,
+			kUseVelPos = 0x20,
+			kResetPos = 0x40,
+			kSyncOnUpdate = 0x80,
+			kAnimTargeted = 0x400,
+			kDismemberedLimb = 0x800,
+		};
+
 		// add
 		virtual void LockMotionImpl() = 0;  // 2C
 

@@ -15,6 +15,12 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BGSColorForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCLFM };
 
+		enum class Flags : std::int32_t
+		{
+			kPlayable = 0x1,
+			kRemappingIndex = 0x2
+		};
+
 		// members
 		union
 		{

@@ -7,7 +7,7 @@
 namespace RE
 {
 	class __declspec(novtable) hknpAllHitsCollector :
-		public hknpCollisionQueryCollector  // 000
+		public hknpCollisionQueryCollector  // 0x000
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::hknpAllHitsCollector };
@@ -16,8 +16,8 @@ namespace RE
 		hknpAllHitsCollector()
 		{
 			REX::EMPLACE_VTABLE<hknpAllHitsCollector>(this);
-			hits.data = (hknpCollisionResult*)((uintptr_t)this + 0x30);
-			hits.capacityAndFlags = 0x8000000A;
+			m_hits.m_data = (hknpCollisionResult*)((uintptr_t)this + 0x30);
+			m_hits.m_capacityAndFlags = 0x8000000A;
 		}
 
 		// override (hknpCollisionQueryCollector)
@@ -28,7 +28,7 @@ namespace RE
 		const hknpCollisionResult* GetHits() const override;                     // 05
 
 		// members
-		hkInplaceArray<hknpCollisionResult, 10> hits;  // 020
+		hkInplaceArray<hknpCollisionResult, 10> m_hits;  // 0x020
 	};
 	static_assert(sizeof(hknpAllHitsCollector) == 0x3F0);
 }

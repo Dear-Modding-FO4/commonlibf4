@@ -29,8 +29,8 @@ namespace RE
 		static_assert(sizeof(ShapeMutatedSignal) == 0x08);
 
 		// members
-		ShapeMutatedSignal   shapeMutated;    // 00
-		ShapeDestroyedSignal shapeDestroyed;  // 08
+		ShapeMutatedSignal   m_shapeMutated;    // 0x00
+		ShapeDestroyedSignal m_shapeDestroyed;  // 0x08
 	};
 	static_assert(sizeof(hknpShapeSignals) == 0x10);
 }

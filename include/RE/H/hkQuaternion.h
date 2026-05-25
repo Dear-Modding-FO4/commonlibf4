@@ -6,7 +6,9 @@ namespace RE
 	{
 	public:
 		// members
-		hkVector4f vec;  // 00
+		hkVector4f m_vec;  // 0x00
 	};
 	static_assert(sizeof(hkQuaternionf) == 0x10);
+
+	using hkQuaternion = hkQuaternionf;
 }

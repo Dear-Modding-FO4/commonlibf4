@@ -8,10 +8,10 @@ namespace RE
 	{
 	public:
 		// members
-		hkPadSpu<float> startTime;     // 00
-		hkPadSpu<float> endTime;       // 04
-		hkPadSpu<float> deltaTime;     // 08
-		hkPadSpu<float> invDeltaTime;  // 0C
+		hkPadSpu<float> m_startTime;     // 0x00
+		hkPadSpu<float> m_endTime;       // 0x04
+		hkPadSpu<float> m_deltaTime;     // 0x08
+		hkPadSpu<float> m_invDeltaTime;  // 0x0C
 	};
 	static_assert(sizeof(hkStepInfo) == 0x10);
 }

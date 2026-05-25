@@ -8,7 +8,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/H/hknpClosestUniqueBodyIdHitCollector.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/T/TESObjectREFR.h"
 

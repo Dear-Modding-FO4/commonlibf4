@@ -4,7 +4,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {

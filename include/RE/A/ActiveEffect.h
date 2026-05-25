@@ -16,7 +16,7 @@ namespace RE
 
 	namespace MagicSystem
 	{
-		enum class CastingSource;
+		enum class CastingSource : std::int32_t;
 	}
 
 	class __declspec(novtable) ActiveEffect :
@@ -47,7 +47,7 @@ namespace RE
 
 		enum class ConditionStatus : std::uint32_t
 		{
-			kNotAvailable = static_cast<std::underlying_type_t<ConditionStatus>>(-1),
+			kNotAvailable = 0xFFFFFFFF,
 			kFalse = 0,
 			kTrue = 1
 		};
@@ -62,23 +62,23 @@ namespace RE
 		}
 
 		// members
-		ActiveEffectReferenceEffectController                    hitEffectController;  // 0C
-		BSSoundHandle                                            persistentSound;      // 30
-		ActorHandle                                              caster;               // 38
-		NiPointer<NiNode>                                        sourceNode;           // 40
-		MagicItem*                                               spell;                // 48
-		EffectItem*                                              effect;               // 50
-		MagicTarget*                                             target;               // 58
-		TESBoundObject*                                          source;               // 60
-		BSSimpleList<ReferenceEffect*>*                          hitEffects;           // 68
-		MagicItem*                                               displacementSpell;    // 70
-		float                                                    elapsedSeconds;       // 74
-		float                                                    duration;             // 78
-		float                                                    magnitude;            // 7C
-		REX::TEnumSet<Flags, std::uint32_t>                      flags;                // 80
-		REX::TEnumSet<ConditionStatus, std::uint32_t>            conditionStatus;      // 84
-		std::uint16_t                                            uniqueID;             // 8C
-		REX::TEnumSet<MagicSystem::CastingSource, std::uint32_t> castingSource;        // 90
+		ActiveEffectReferenceEffectController hitEffectController;  // 0C
+		BSSoundHandle                         persistentSound;      // 30
+		ActorHandle                           caster;               // 38
+		NiPointer<NiNode>                     sourceNode;           // 40
+		MagicItem*                            spell;                // 48
+		EffectItem*                           effect;               // 50
+		MagicTarget*                          target;               // 58
+		TESBoundObject*                       source;               // 60
+		BSSimpleList<ReferenceEffect*>*       hitEffects;           // 68
+		MagicItem*                            displacementSpell;    // 70
+		float                                 elapsedSeconds;       // 74
+		float                                 duration;             // 78
+		float                                 magnitude;            // 7C
+		REX::TEnumSet<Flags, std::uint32_t>   flags;                // 80
+		ConditionStatus                       conditionStatus;      // 84
+		std::uint16_t                         uniqueID;             // 8C
+		MagicSystem::CastingSource            castingSource;        // 90
 	};
 	static_assert(sizeof(ActiveEffect) == 0x98);
 }

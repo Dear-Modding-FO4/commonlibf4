@@ -3,7 +3,7 @@
 #include "RE/B/BGSModelMaterialSwap.h"
 #include "RE/B/BSSimpleList.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/T/TESBoundObject.h"
 
 namespace RE

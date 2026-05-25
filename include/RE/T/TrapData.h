@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/B/BSPointerHandle.h"
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 
 namespace RE
 {

@@ -2,7 +2,7 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSPointerHandle.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/R/ReferenceEffectController.h"
 
 namespace RE

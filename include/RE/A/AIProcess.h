@@ -7,7 +7,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSimpleList.h"
 #include "RE/D/DEFAULT_OBJECT.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {
@@ -167,6 +167,13 @@ namespace RE
 		{
 			using func_t = decltype(&AIProcess::ComputeLastTimeProcessed);
 			static REL::Relocation<func_t> func{ ID::AIProcess::ComputeLastTimeProcessed };
+			return func(this);
+		}
+
+		float GetActorLightLevel()
+		{
+			using func_t = decltype(&AIProcess::GetActorLightLevel);
+			static REL::Relocation<func_t> func{ ID::AIProcess::GetActorLightLevel };
 			return func(this);
 		}
 

@@ -18,7 +18,7 @@
 #include "RE/D/DifficultyLevel.h"
 #include "RE/F/FriendshipFactionsStruct.h"
 #include "RE/I/IMovementPlayerControlsFilter.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiTMap.h"
 #include "RE/P/PLAYER_TARGET_LOC.h"
@@ -310,6 +310,13 @@ namespace RE
 		{
 			using func_t = decltype(&PlayerCharacter::SetAIControlledPackage);
 			static REL::Relocation<func_t> func{ ID::PlayerCharacter::SetAIControlledPackage };
+			return func(this, a_enable);
+		}
+
+		void EnableRadio(bool a_enable)
+		{
+			using func_t = decltype(&PlayerCharacter::EnableRadio);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::EnableRadio };
 			return func(this, a_enable);
 		}
 

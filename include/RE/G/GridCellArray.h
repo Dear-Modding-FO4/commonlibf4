@@ -2,12 +2,11 @@
 
 #include "RE/B/BSTArray.h"
 #include "RE/G/GridArray.h"
-#include "RE/N/NiPoint.h"
+#include "RE/G/GridCell.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {
-	class GridCell;
-
 	class __declspec(novtable) GridCellArray :
 		public GridArray  // 00
 	{
@@ -15,33 +14,33 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::GridCellArray };
 		static constexpr auto VTABLE{ VTABLE::GridCellArray };
 
-		class QueuedAttatch
+		class QueuedAttach
 		{
 		private:
-			enum class ProgressiveAttatchState : std::int32_t
+			enum class ProgressiveAttachState : std::int32_t
 			{
-				kToWorld = 0x0,
-				kModels = 0x1,
-				kRegisterCombinedObjectVisibility = 0x2,
-				kAttatchDone = 0x3
+				kWorld = 0,
+				kModels = 1,
+				kRegisterCombinedObjectVisibility = 2,
+				kDone = 3,
 			};
 
 		public:
 			// members
-			TESObjectCELL*          cell;          // 00
-			ProgressiveAttatchState attatchState;  // 08
+			TESObjectCELL*         cell;         // 00
+			ProgressiveAttachState attachState;  // 08
 		};
-		static_assert(sizeof(QueuedAttatch) == 0x10);
+		static_assert(sizeof(QueuedAttach) == 0x10);
 
 		class QueuedDetach
 		{
 		private:
 			enum class ProgressiveDetachState : std::int32_t
 			{
-				PROGRESSIVE_DETATCH_ACTORS_NEXT = 0x0,
-				PROGRESSIVE_DETATCH_REFS_NEXT = 0x1,
-				PROGRESSIVE_DETATCH_COMBINED_ART_NEXT = 0x2,
-				PROGRESSIVE_DETATCH_DONE = 0x3
+				kActorsNext = 0,
+				kRefsNext = 1,
+				kCombinedArtNext = 2,
+				kDone = 3,
 			};
 
 		public:
@@ -51,7 +50,7 @@ namespace RE
 		};
 		static_assert(sizeof(QueuedDetach) == 0x10);
 
-		class AutoDisableQueuedCellAttatchDetach
+		class AutoDisableQueuedCellAttachDetach
 		{
 		public:
 			// members
@@ -68,20 +67,25 @@ namespace RE
 		void MoveItem(std::uint32_t a_fromX, std::uint32_t a_fromY, std::uint32_t a_toX, std::uint32_t a_toY) override;  // 07
 		void SwapItem(std::uint32_t a_fromX, std::uint32_t a_fromY, std::uint32_t a_toX, std::uint32_t a_toY) override;  // 08
 
-		GridCell* Get(std::uint32_t a_x, std::uint32_t a_y)
+		GridCell* Get(std::uint32_t a_x, std::uint32_t a_y) const
 		{
 			using func_t = decltype(&GridCellArray::Get);
 			static REL::Relocation<func_t> func{ ID::GridCellArray::Get };
 			return func(this, a_x, a_y);
 		}
 
+		TESObjectCELL* GetCell(const std::uint32_t a_x, const std::uint32_t a_y) const noexcept
+		{
+			return Get(a_x, a_y)->cell;
+		};
+
 		// members
-		GridCell*               gridCell;
-		std::uint32_t           cellAttachDetatchQueueDisabled;
-		BSTArray<QueuedAttatch> queuedAttach;
-		BSTArray<QueuedDetach>  queuedDetach;
-		NiPoint3                worldCenter;
-		bool                    landAttached;
+		GridCell*              gridCell;                       // 0x18 - (memory allocated using 0x8 * numGrids * numGrids)
+		std::uint32_t          cellAttachDetachQueueDisabled;  // 0x20
+		BSTArray<QueuedAttach> queuedAttach;                   // 0x28
+		BSTArray<QueuedDetach> queuedDetach;                   // 0x40
+		NiPoint3               worldCenter;                    // 0x58
+		bool                   landAttached;                   // 0x64
 	};
 	static_assert(sizeof(GridCellArray) == 0x68);
 }

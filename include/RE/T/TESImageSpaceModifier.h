@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/B/BSStringT.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint2.h"
 #include "RE/N/NiPointer.h"
 #include "RE/T/TESForm.h"
 

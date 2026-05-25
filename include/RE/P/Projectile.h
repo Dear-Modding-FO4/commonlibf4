@@ -10,7 +10,7 @@
 #include "RE/C/CELLJobs.h"
 #include "RE/C/CFilter.h"
 #include "RE/H/hknpBodyId.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiTransform.h"
 #include "RE/T/TESObjectREFR.h"
@@ -61,24 +61,24 @@ namespace RE
 		{
 		public:
 			// members
-			NiPoint3                                                 location;                // 00
-			NiPoint3                                                 normal;                  // 0C
-			bhkCollisionQueryResultHandle                            impactDecalQuery;        // 18
-			ObjectRefHandle                                          collidee;                // 20
-			NiPointer<bhkNPCollisionObject>                          colObj;                  // 28
-			BGSMaterialType*                                         materialType;            // 30
-			REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> damageLimb;              // 38
-			REX::TEnumSet<COL_LAYER, std::int32_t>                   collisionLayer;          // 3C
-			NiPointer<NiNode>                                        closestBone;             // 40
-			REX::TEnumSet<ImpactResult, std::int32_t>                resultOverride;          // 48
-			float                                                    decalSize;               // 4C
-			std::uint32_t                                            collisionShapeKey;       // 50
-			std::int16_t                                             targetWorldObjectCount;  // 54
-			std::int16_t                                             targetWorldObjectIndex;  // 56
-			bool                                                     processed;               // 58
-			bool                                                     spellCast;               // 59
-			bool                                                     effectSpawned;           // 5A
-			bool                                                     backface;                // 5B
+			NiPoint3                        location;                // 00
+			NiPoint3                        normal;                  // 0C
+			bhkCollisionQueryResultHandle   impactDecalQuery;        // 18
+			ObjectRefHandle                 collidee;                // 20
+			NiPointer<bhkNPCollisionObject> colObj;                  // 28
+			BGSMaterialType*                materialType;            // 30
+			BGSBodyPartDefs::LIMB_ENUM      damageLimb;              // 38
+			COL_LAYER                       collisionLayer;          // 3C
+			NiPointer<NiNode>               closestBone;             // 40
+			ImpactResult                    resultOverride;          // 48
+			float                           decalSize;               // 4C
+			std::uint32_t                   collisionShapeKey;       // 50
+			std::int16_t                    targetWorldObjectCount;  // 54
+			std::int16_t                    targetWorldObjectIndex;  // 56
+			bool                            processed;               // 58
+			bool                            spellCast;               // 59
+			bool                            effectSpawned;           // 5A
+			bool                            backface;                // 5B
 		};
 		static_assert(sizeof(ImpactData) == 0x60);
 

@@ -3,7 +3,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiMatrix3.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE

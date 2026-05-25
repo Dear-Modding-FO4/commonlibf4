@@ -21,6 +21,11 @@ namespace RE
 		virtual void Initialize([[maybe_unused]] void* a_data) { return; }                                         // 2A
 		virtual void Convert([[maybe_unused]] std::uint32_t a_version, [[maybe_unused]] void* a_data) { return; }  // 2B
 
+		NiAVObject* GetSceneGraphObject() const
+		{
+			return sceneObject;
+		}
+
 		// members
 		NiAVObject* sceneObject;  // 10
 	};

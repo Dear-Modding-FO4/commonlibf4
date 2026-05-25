@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSContainer.h"
 #include "RE/B/BSSimpleList.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
@@ -17,10 +18,15 @@ namespace RE
 	class NiDirectionalLight;
 	class NiFogProperty;
 	class NiNode;
+	class NiPoint3;
 	class NiTexture;
 	class PositionPlayerEvent;
 	class QueuedFile;
 	class Sky;
+	class TESObjectCELL;
+	class TESObjectREFR;
+	class TESRegion;
+	class TESWorldSpace;
 
 	namespace BSResource::Archive2
 	{
@@ -97,6 +103,10 @@ namespace RE
 			return *singleton;
 		}
 
+		void ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
+		void ForEachReferenceInRange(const NiPoint3& a_origin, const float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
+		void ForEachReferenceInRange(const TESObjectREFR* a_ref, const float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
+
 		// members
 		GridDistantArray*                                   gridDistant;                    // 010
 		GridCellArray*                                      gridCells;                      // 018
@@ -143,7 +153,7 @@ namespace RE
 		NiPointer<NiTexture>                                bloodDecalPreload1;             // 100
 		NiPointer<QueuedFile>                               preloadedForms;                 // 108
 		NiPointer<QueuedFile>                               preloadedDefaultModels;         // 110
-		TES::ParticleObjectCache*                           particleCacheHead;              // 118
+		ParticleObjectCache*                                particleCacheHead;              // 118
 		std::uint32_t                                       placeableWaterCount;            // 120
 		NavMeshInfoMap*                                     navMeshInfoMap;                 // 128
 		NiPointer<LoadedAreaBound>                          loadedAreaBound;                // 130

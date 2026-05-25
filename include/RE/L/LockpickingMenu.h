@@ -3,7 +3,7 @@
 #include "RE/B/BSSoundHandle.h"
 #include "RE/G/GameMenuBase.h"
 #include "RE/N/NiMatrix3.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE
@@ -38,6 +38,13 @@ namespace RE
 			using func_t = decltype(&LockpickingMenu::OpenLockpickingMenu);
 			static REL::Relocation<func_t> func{ ID::LockpickingMenu::OpenLockpickingMenu };
 			return func(a_lockedRef);
+		}
+
+		static void DamageLockpick()
+		{
+			using func_t = decltype(&LockpickingMenu::DamageLockpick);
+			static REL::Relocation<func_t> func{ ID::LockpickingMenu::DamageLockpick };
+			return func();
 		}
 
 		// members

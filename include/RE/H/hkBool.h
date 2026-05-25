@@ -5,10 +5,26 @@ namespace RE
 	class hkBool
 	{
 	public:
+		hkBool() = default;
+
+		hkBool(bool a_bool) :
+			m_bool(a_bool)
+		{}
+
+		hkBool& operator=(bool a_bool)
+		{
+			m_bool = a_bool;
+			return *this;
+		}
+
+		bool operator==(const hkBool&) const = default;
+		bool operator!=(const hkBool&) const = default;
+
+		operator bool() { return m_bool; }
+
 		// members
-		bool _bool;  // 00
+		bool m_bool{ false };
 	};
-	static_assert(sizeof(hkBool) == 0x01);
 
 	using hkBool32 = std::uint32_t;
 	using hkBoolLL = std::uint64_t;

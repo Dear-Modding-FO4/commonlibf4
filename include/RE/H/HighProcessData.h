@@ -5,7 +5,7 @@
 #include "RE/I/IDLE_REPLAY_DELAY.h"
 #include "RE/M/MovementLargeDelta.h"
 #include "RE/N/NiBillboardNode.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NonMorphFaceManagement.h"
 #include "RE/R/ReanimateData.h"
 #include "RE/T/TESShout.h"

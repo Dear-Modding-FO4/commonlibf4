@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/B/BSTPoint.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/T/TESCameraState.h"
 
 namespace RE

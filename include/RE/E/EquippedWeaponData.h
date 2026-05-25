@@ -5,7 +5,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTTuple.h"
 #include "RE/E/EquippedItemData.h"
-#include "RE/N/NiPoint.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE

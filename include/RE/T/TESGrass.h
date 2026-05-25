@@ -30,6 +30,13 @@ namespace RE
 		class GRASS_DATA
 		{
 		public:
+			enum class Flags : std::int8_t
+			{
+				kVertexLighting = 0x1,
+				kUniformScaling = 0x2,
+				kFitToSlope = 0x4
+			};
+
 			// members
 			std::int8_t                                    density;                 // 00
 			std::int8_t                                    minSlopeDegrees;         // 01

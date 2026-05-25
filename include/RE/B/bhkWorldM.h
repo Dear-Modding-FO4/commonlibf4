@@ -15,9 +15,9 @@ namespace RE
 		virtual ~bhkWorldM();  // 00
 
 		// members
-		hkVector4f worldTotalSize;
-		hkVector4f borderSize;
-		hkVector4f broadPhaseSize;
+		hkVector4f m_worldTotalSize;  // 0x180
+		hkVector4f m_borderSize;      // 0x190
+		hkVector4f m_broadPhaseSize;  // 0x1A0
 	};
 	static_assert(sizeof(bhkWorldM) == 0x1B0);
 }

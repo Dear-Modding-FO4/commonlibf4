@@ -16,6 +16,13 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::TESEyes };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEYES };
 
+		enum class Flags : std::int8_t
+		{
+			kPlayable = 0x1,
+			kMale = 0x2,
+			kFemale = 0x4,
+		};
+
 		// members
 		std::int8_t flags;  // 40
 	};

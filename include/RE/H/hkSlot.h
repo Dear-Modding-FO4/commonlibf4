@@ -15,8 +15,8 @@ namespace RE
 		virtual std::uint32_t matchMethod(const void*, std::int32_t);  // 01
 
 		// members
-		hkPtrAndInt<hkSlot, std::uint32_t, 3> next;    // 08
-		void*                                 object;  // 10
+		hkPtrAndInt<hkSlot, std::uint32_t, 3> m_next;    // 0x08
+		void*                                 m_object;  // 0x10
 	};
 	static_assert(sizeof(hkSlot) == 0x18);
 }

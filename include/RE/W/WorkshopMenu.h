@@ -9,7 +9,7 @@
 #include "RE/D/DisplayItemModel.h"
 #include "RE/G/GameMenuBase.h"
 #include "RE/I/Inventory3DManager.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE

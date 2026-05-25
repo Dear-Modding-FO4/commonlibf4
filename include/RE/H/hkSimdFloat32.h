@@ -6,7 +6,7 @@ namespace RE
 	{
 	public:
 		// members
-		__m128 real;  // 00
+		__m128 m_real;  // 00
 	};
 	static_assert(sizeof(hkSimdFloat32) == 0x10);
 }

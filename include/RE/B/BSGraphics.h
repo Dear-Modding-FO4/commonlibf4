@@ -5,7 +5,7 @@
 #include "RE/B/BSTAtomicValue.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/N/NiColor.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint4.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiRect.h"
 #include "RE/N/NiTexture.h"

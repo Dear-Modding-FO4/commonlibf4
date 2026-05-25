@@ -15,7 +15,7 @@
 #include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicTarget.h"
 #include "RE/M/Modifiers.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiTFlags.h"
 #include "RE/O/ObjectEquipParams.h"
 #include "RE/S/SEX.h"
@@ -48,6 +48,8 @@ namespace RE
 	class CastPowerItem;
 	class CombatController;
 	class CombatGroup;
+	class DetectionData;
+	class HitData;
 	class MovementControllerNPC;
 	class MovementMessageActorCollision;
 	class MovementMessageNewPath;
@@ -597,6 +599,20 @@ namespace RE
 			using func_t = decltype(&Actor::StopInteractingQuick);
 			static REL::Relocation<func_t> func{ ID::Actor::StopInteractingQuick };
 			return func(this, a_instance, a_moveActor, a_update3D);
+		}
+
+		void CalculateDetectionFormula(Actor* a_target, DetectionData* a_detectionData)
+		{
+			using func_t = decltype(&Actor::CalculateDetectionFormula);
+			static REL::Relocation<func_t> func{ ID::Actor::CalculateDetectionFormula };
+			return func(this, a_target, a_detectionData);
+		}
+
+		void DoHitMe(const HitData* a_data)
+		{
+			using func_t = decltype(&Actor::DoHitMe);
+			static REL::Relocation<func_t> func{ ID::Actor::DoHitMe };
+			return func(this, a_data);
 		}
 
 		// members

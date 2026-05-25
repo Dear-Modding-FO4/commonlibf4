@@ -1,8 +1,7 @@
 #pragma once
 
 #include "RE/H/hkBool.h"
-#include "RE/H/hkHandle.h"
-#include "RE/H/hknpConstraintIdDiscriminant.h"
+#include "RE/H/hknpConstraintId.h"
 
 namespace RE
 {
@@ -13,15 +12,15 @@ namespace RE
 	{
 	public:
 		// members
-		hknpWorld*                                                        world;                        // 00
-		hknpConstraint*                                                   constraintBuffer;             // 08
-		std::uint32_t                                                     capacity;                     // 10
-		hkBool                                                            constraintBufferIsUserOwned;  // 14
-		hkHandle<std::uint32_t, 2147483647, hknpConstraintIdDiscriminant> firstDestroyedConstraintId;   // 18
-		hkHandle<std::uint32_t, 2147483647, hknpConstraintIdDiscriminant> firstFreeConstraintId;        // 1C
-		std::uint32_t                                                     numAllocatedConstraints;      // 20
-		std::uint32_t                                                     numDestroyedConstraints;      // 24
-		hkHandle<std::uint32_t, 2147483647, hknpConstraintIdDiscriminant> peakConstraintId;             // 28
+		hknpWorld*       world;                        // 0x00
+		hknpConstraint*  constraintBuffer;             // 0x08
+		std::uint32_t    capacity;                     // 0x10
+		hkBool           constraintBufferIsUserOwned;  // 0x14
+		hknpConstraintId firstDestroyedConstraintId;   // 0x18
+		hknpConstraintId firstFreeConstraintId;        // 0x1C
+		std::uint32_t    numAllocatedConstraints;      // 0x20
+		std::uint32_t    numDestroyedConstraints;      // 0x24
+		hknpConstraintId peakConstraintId;             // 0x28
 	};
 	static_assert(sizeof(hknpConstraintManager) == 0x30);
 }

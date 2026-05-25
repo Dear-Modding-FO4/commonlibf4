@@ -55,5 +55,12 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcScopeSteadyActionPointDrain };
 			return func(a_actor, a_deltaSec);
 		}
+
+		[[nodiscard]] inline float CalcResistedPercentage(const ActorValueInfo* a_resistance, float a_damage, float a_resistancePoints)
+		{
+			using func_t = decltype(&CombatFormulas::CalcResistedPercentage);
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcResistedPercentage };
+			return func(a_resistance, a_damage, a_resistancePoints);
+		}
 	}
 }

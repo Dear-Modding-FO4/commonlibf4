@@ -19,6 +19,8 @@ namespace RE
 		public NiObjectNET  // 000
 	{
 	public:
+		F4_HEAP_REDEFINE_ALIGNED_NEW(NiAVObject);
+
 		static constexpr auto RTTI{ RTTI::NiAVObject };
 		static constexpr auto VTABLE{ VTABLE::NiAVObject };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::NiAVObject };
@@ -46,14 +48,29 @@ namespace RE
 		virtual void        PostAttachUpdate();                                                                                 // 38
 		virtual void        OnVisible([[maybe_unused]] NiCullingProcess& a_culler) { return; }                                  // 39
 
-		F4_HEAP_REDEFINE_ALIGNED_NEW(NiAVObject);
-
-		[[nodiscard]] bool          GetAppCulled() const noexcept { return flags.flags & 1; }
-		[[nodiscard]] std::uint64_t GetFlags() const noexcept { return flags.flags; }
-		[[nodiscard]] bool          ShadowCaster() const noexcept { return ~(flags.flags >> 40) & 1; }
-		void                        CullGeometry(bool a_cull);
-		void                        CullNode(bool a_cull);
-		void                        Update(NiUpdateData& a_data);
+		bool                         GetAppCulled() const noexcept { return flags.flags & 1; }
+		NiPointer<NiCollisionObject> GetCollisionObject() const noexcept { return collisionObject; }
+		std::uint64_t                GetFlags() const noexcept { return flags.flags; }
+		const NiMatrix3&             GetLocalRotate() const noexcept { return local.rotate; }
+		float                        GetLocalScale() const noexcept { return local.scale; }
+		const NiTransform&           GetLocalTransform() const noexcept { return local; }
+		const NiPoint3&              GetLocalTranslate() const noexcept { return local.translate; }
+		const NiMatrix3&             GetWorldRotate() const noexcept { return world.rotate; }
+		float                        GetWorldScale() const noexcept { return world.scale; }
+		const NiTransform&           GetWorldTransform() const noexcept { return world; }
+		const NiPoint3&              GetWorldTranslate() const noexcept { return world.translate; }
+		void                         SetLocalRotate(const NiMatrix3& a_rotate) noexcept { local.rotate = a_rotate; }
+		void                         SetLocalScale(float a_scale) noexcept { local.scale = a_scale; }
+		void                         SetLocalTransform(const NiTransform& a_transform) noexcept { local = a_transform; }
+		void                         SetLocalTranslate(const NiPoint3& a_translate) noexcept { local.translate = a_translate; }
+		void                         SetWorldRotate(const NiMatrix3& a_rotate) noexcept { world.rotate = a_rotate; }
+		void                         SetWorldScale(float a_scale) noexcept { world.scale = a_scale; }
+		void                         SetWorldTransform(const NiTransform& a_transform) noexcept { world = a_transform; }
+		void                         SetWorldTranslate(const NiPoint3& a_translate) noexcept { world.translate = a_translate; }
+		bool                         ShadowCaster() const noexcept { return ~(flags.flags >> 40) & 1; }
+		void                         CullGeometry(bool a_cull);
+		void                         CullNode(bool a_cull);
+		void                         Update(NiUpdateData& a_data);
 
 		// members
 		NiNode*                             parent{ nullptr };          // 027

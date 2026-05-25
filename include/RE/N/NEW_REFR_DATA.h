@@ -2,7 +2,7 @@
 
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/ExtraDataList.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {

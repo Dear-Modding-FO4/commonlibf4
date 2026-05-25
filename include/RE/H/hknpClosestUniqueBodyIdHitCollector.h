@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 #include "RE/H/hknpUniqueBodyIdHitCollector.h"
 
 namespace RE

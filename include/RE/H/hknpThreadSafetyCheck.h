@@ -12,16 +12,16 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t numReaders: 5;
-			std::uint32_t numWriters: 3;
-			std::uint32_t writerThreadId: 24;
+			std::uint32_t m_numReaders: 5;
+			std::uint32_t m_numWriters: 3;
+			std::uint32_t m_writerThreadId: 24;
 		};
 		static_assert(sizeof(State) == 0x04);
 
 		// members
-		State             state;            // 00
-		hkCriticalSection criticalSection;  // 08
-		hkBool            enabled;          // 30
+		State             m_state;            // 0x00
+		hkCriticalSection m_criticalSection;  // 0x08
+		hkBool            m_enabled;          // 0x30
 	};
 	static_assert(sizeof(hknpThreadSafetyCheck) == 0x38);
 }

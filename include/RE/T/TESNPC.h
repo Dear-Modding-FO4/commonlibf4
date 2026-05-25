@@ -11,7 +11,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/N/NPC_DATA.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/P/PerkRankData.h"
 #include "RE/S/SEX.h"
 #include "RE/T/TESActorBase.h"

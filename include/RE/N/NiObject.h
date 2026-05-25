@@ -44,7 +44,7 @@ namespace RE
 		virtual ~NiObject() = default;  // NOLINT(modernize-use-override) 00
 
 		// add
-		virtual const NiRTTI*              GetRTTI() const;                                                                 // 02
+		virtual const NiRTTI*              GetRTTI() const { return nullptr; }                                              // 02
 		virtual NiNode*                    IsNode() { return nullptr; }                                                     // 04
 		virtual const NiNode*              IsNode() const { return nullptr; }                                               // 03
 		virtual NiSwitchNode*              IsSwitchNode() { return nullptr; }                                               // 05
@@ -71,16 +71,16 @@ namespace RE
 		virtual NiObject*                  CreateClone([[maybe_unused]] NiCloningProcess& a_cloneData) { return nullptr; }  // 1A
 		virtual void                       LoadBinary([[maybe_unused]] NiStream& a_stream) { return; }                      // 1B
 		virtual void                       LinkObject([[maybe_unused]] NiStream& a_stream) { return; }                      // 1C
-		virtual bool                       RegisterStreamables(NiStream& a_stream);                                         // 1D
+		virtual bool                       RegisterStreamables([[maybe_unused]] NiStream& a_stream) { return false; }       // 1D
 		virtual void                       SaveBinary([[maybe_unused]] NiStream& a_stream) { return; }                      // 1E
-		virtual bool                       IsEqual(NiObject* a_object);                                                     // 1F
-		virtual void                       ProcessClone(NiCloningProcess& a_cloning);                                       // 20
+		virtual bool                       IsEqual([[maybe_unused]] NiObject* a_object) { return false; }                   // 1F
+		virtual void                       ProcessClone([[maybe_unused]] NiCloningProcess& a_cloning) {}                    // 20
 		virtual void                       PostLinkObject([[maybe_unused]] NiStream& a_stream) { return; }                  // 21
 		virtual bool                       StreamCanSkip() { return false; }                                                // 22
 		virtual const NiRTTI*              GetStreamableRTTI() { return GetRTTI(); }                                        // 23
 		virtual std::uint32_t              GetBlockAllocationSize() const { return 0; }                                     // 24
 		virtual NiObjectGroup*             GetGroup() const { return nullptr; }                                             // 25
-		virtual void                       SetGroup(NiObjectGroup*) { return; }                                             // 26
+		virtual void                       SetGroup([[maybe_unused]] NiObjectGroup*) { return; }                            // 26
 		virtual NiControllerManager*       IsNiControllerManager() { return nullptr; }                                      // 27
 
 		F4_HEAP_REDEFINE_NEW(NiObject);

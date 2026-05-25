@@ -4,7 +4,7 @@
 #include "RE/H/hkBool.h"
 #include "RE/H/hkEnum.h"
 #include "RE/H/hkRefPtr.h"
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 #include "RE/H/hknpContactSolverType.h"
 
 namespace RE

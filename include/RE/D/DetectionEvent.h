@@ -2,7 +2,7 @@
 
 #include "RE/A/AITimeStamp.h"
 #include "RE/B/BSPointerHandle.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {

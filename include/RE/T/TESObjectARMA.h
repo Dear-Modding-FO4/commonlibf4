@@ -5,7 +5,7 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/O/OBJ_ARMA.h"
 #include "RE/T/TESObject.h"
 #include "RE/T/TESRaceForm.h"

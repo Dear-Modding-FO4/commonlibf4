@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiQuaternion.h"
 #include "RE/T/TESCameraState.h"

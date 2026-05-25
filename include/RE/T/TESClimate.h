@@ -38,12 +38,6 @@ namespace RE
 			kCount = 0x4
 		};
 
-		enum class SpellContext
-		{
-			kApplyOnLightning = 0x0,
-			kApplyWhenActive = 0x1
-		};
-
 		// members
 		TESModel       nightSky;       // 20
 		TESWeatherList weatherList;    // 50

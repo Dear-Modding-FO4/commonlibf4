@@ -4,7 +4,7 @@
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTArray.h"
 #include "RE/N/NiColor.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/U/UIShaderFXInfo.h"
 #include "Scaleform/G/GFx_Movie.h"

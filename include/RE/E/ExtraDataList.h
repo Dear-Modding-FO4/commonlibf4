@@ -7,13 +7,13 @@
 #include "RE/B/BaseExtraList.h"
 #include "RE/E/EXTRA_DATA_TYPE.h"
 #include "RE/M/MemoryManager.h"
-#include "RE/N/NiPoint.h"
 #include "RE/T/TBO_InstanceData.h"
 
 namespace RE
 {
 	class BGSObjectInstanceExtra;
 	class BGSPrimitive;
+	class NiPoint3;
 
 	namespace detail
 	{

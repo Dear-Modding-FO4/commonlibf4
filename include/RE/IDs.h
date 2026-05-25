@@ -66,6 +66,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetMobilityCrippled{ 281477, 2230996 };
 		inline constexpr REL::VariantID SPECIALModifiedCallback{ 234305, 2231020 };
 		inline constexpr REL::VariantID StopInteractingQuick{ 129904, 2231227 };
+		inline constexpr REL::VariantID CalculateDetectionFormula{ 0, 2230213 }; // Check OG
+		inline constexpr REL::VariantID DoHitMe{ 0, 2231148 }; // Check OG
 	}
 
 	namespace ActorEquipManager
@@ -95,6 +97,7 @@ namespace RE::ID
 	namespace AIFormulas
 	{
 		inline constexpr REL::VariantID GetBarterValue{ 984344, 2208969 };
+		inline constexpr REL::VariantID ComputePickpocketSuccess{ 0, 2208977 }; // Check OG
 	}
 
 	namespace AIProcess
@@ -116,6 +119,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetRunOncePackage{ 155445, 2232344 };
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
+		inline constexpr REL::VariantID GetActorLightLevel{ 0, 2231981 }; // Check OG
 	}
 
 	namespace AITimer
@@ -434,6 +438,7 @@ namespace RE::ID
 
 	namespace bhkNPCollisionObject
 	{
+		inline constexpr REL::VariantID CreateObject{ 0, 2277912 }; // Check OG
 		inline constexpr REL::VariantID CopyMembers{ 1558409, 2277907 };
 		inline constexpr REL::VariantID GetBody{ 1127049, 2277926 };
 		inline constexpr REL::VariantID GetBodyId{ 1286222, 2277928 };
@@ -442,6 +447,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetMotionType{ 200912, 2277913 };
 		inline constexpr REL::VariantID SetTransform{ 178085, 2277945 };
 		inline constexpr REL::VariantID Getbhk{ 730034, 2277919 };
+	}
+
+	namespace hknpBodyCinfo
+	{
+		inline constexpr REL::VariantID ctor{ 0, 2255967 }; // Check OG
 	}
 
 	namespace bhkPhysicsSystem
@@ -468,13 +478,23 @@ namespace RE::ID
 	namespace bhkUtilFunctions
 	{
 		inline constexpr REL::VariantID FindFirstCollisionObject{ 507243, 2278093 };
+		inline constexpr REL::VariantID GetAVObjectFromBodyID{ 0, 2278085 }; // Check OG
 	}
 
 	namespace bhkWorld
 	{
+		inline constexpr REL::VariantID AddObjects{ 0, 2277719 }; // Check OG
 		inline constexpr REL::VariantID AddPhysicsSystem{ 82382, 2277752 };
+		inline constexpr REL::VariantID IsBodyAdded{ 0, 2277997 }; // Check OG
 		inline constexpr REL::VariantID RemovePhysicsSystem{ 1039226, 2277753 };
+		inline constexpr REL::VariantID Activate{ 0, 2277728 }; // Check OG
+		inline constexpr REL::VariantID Enable{ 0, 2277725 }; // Check OG
+		inline constexpr REL::VariantID EnableCollision{ 0, 2277730 }; // Check OG
+		inline constexpr REL::VariantID IsActive{ 0, 2277729 }; // Check OG
 		inline constexpr REL::VariantID RemoveObjects{ 1514984, 2277721 };
+		inline constexpr REL::VariantID SetCollisionGroup{ 0, 2277722 }; // Check OG
+		inline constexpr REL::VariantID SetDismemberedLimb{ 0, 2277726 }; // Check OG
+		inline constexpr REL::VariantID SetMotion{ 0, 2277723 }; // Check OG
 	}
 
 	namespace BIPOBJECT
@@ -725,6 +745,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetMaterial{ 706318, 2316285 };
 	}
 
+	namespace BSShaderResourceManager
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2703483 }; // Check OG
+	}
+
 	namespace BSShaderTextureSet
 	{
 		inline constexpr REL::VariantID CreateObject{ 993063, 2316324 };
@@ -737,11 +762,24 @@ namespace RE::ID
 
 	namespace BSSoundHandle
 	{
+		inline constexpr REL::VariantID ClearFollowedObject{ 0, 2267067 }; // Check OG
 		inline constexpr REL::VariantID FadeInPlay{ 353528, 2267075 };
 		inline constexpr REL::VariantID FadeOutAndRelease{ 260328, 2267076 };
+		inline constexpr REL::VariantID FadeTo{ 0, 2267074 }; // Check OG
+		inline constexpr REL::VariantID GetDuration{ 0, 2267062 }; // Check OG
+		inline constexpr REL::VariantID IsEnvelopeLoop{ 0, 2267051 }; // Check OG
+		inline constexpr REL::VariantID IsPaused{ 0, 2267047 }; // Check OG
 		inline constexpr REL::VariantID IsPlaying{ 1514207, 2267046 }; // Check
+		inline constexpr REL::VariantID IsValid{ 0, 2267048 }; // Check OG
+		inline constexpr REL::VariantID Pause{ 0, 2267044 }; // Check OG
 		inline constexpr REL::VariantID Play{ 384073, 2276042 };
+		inline constexpr REL::VariantID PlayAfter{ 0, 2267043 }; // Check OG
+		inline constexpr REL::VariantID SetFrequency{ 0, 2267059 }; // Check OG
+		inline constexpr REL::VariantID SetFrequencyVariance{ 0, 2267060 }; // Check OG
+		inline constexpr REL::VariantID SetObjectToFollow{ 0, 2267066 }; // Check OG
 		inline constexpr REL::VariantID SetOutputModel{ 170407, 2267053 };
+		inline constexpr REL::VariantID SetPosition{ 0, 2267064 }; // Check OG
+		inline constexpr REL::VariantID SetStaticAttenuation{ 0, 2267061 }; // Check OG
 		inline constexpr REL::VariantID Stop{ 1340948, 2267045 };
 	}
 
@@ -863,6 +901,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID CalcWeaponDamage{ 211411, 2209001 };
 		inline constexpr REL::VariantID GetNumCrippledAttackConditions{ 170270, 2209041 };
 		inline constexpr REL::VariantID CalcScopeSteadyActionPointDrain{ 380926, 2209045 };
+		inline constexpr REL::VariantID CalcResistedPercentage{ 0, 2209007 }; // Check OG
 	}
 
 	namespace CombatUtilities
@@ -1079,6 +1118,140 @@ namespace RE::ID
 		inline constexpr REL::VariantID Get{ 1330136, 2194566 }; // Check
 	}
 
+	namespace hkContainerHeapAllocator
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2665426 }; // Check OG
+	}
+
+	namespace hkDisplaySerializeOStream
+	{
+		inline constexpr REL::VariantID ctor{ 0, 2266374 }; // Check OG
+	}
+
+	namespace hkHardwareInfo
+	{
+		inline constexpr REL::VariantID CalcNumHardwareThreads{ 0, 2260765 }; // Check OG
+	}
+
+	namespace hkIArchive
+	{
+		inline constexpr REL::VariantID ctor2{};
+	}
+
+	namespace hkMemoryRouter
+	{
+		inline constexpr REL::VariantID tlsSlotID{ 0, 878080 }; // Check OG
+	}
+
+	namespace hkMonitorStream
+	{
+		inline constexpr REL::VariantID tlsSlotID{ 0, 2702743 }; // Check OG
+		inline constexpr REL::VariantID Clear{ 0, 2257312 }; // Check OG
+		inline constexpr REL::VariantID Resize{ 0, 2257310 }; // Check OG
+	}
+
+	namespace hknpCapsuleShape
+	{
+		inline constexpr REL::VariantID Init{ 0, 2257217 }; // Check OG
+		inline constexpr REL::VariantID CreateCapsuleShape{ 0, 2257207 }; // Check OG
+	}
+
+	namespace hknpConvexPolytopeShape
+	{
+		inline constexpr REL::VariantID CreateFromVerticesInternal{ 0, 2257201 }; // Check OG
+	}
+
+	namespace hknpConvexShape
+	{
+		inline constexpr REL::VariantID CreateFromAabb{ 0, 2257125 }; // Check OG
+		inline constexpr REL::VariantID CreateFromCylinder{ 0, 2257126 }; // Check OG
+		inline constexpr REL::VariantID CreateFromHalfExtents{ 0, 2257124 }; // Check OG
+		inline constexpr REL::VariantID CreateFromIndexedVertices{ 0, 2257123 }; // Check OG
+		inline constexpr REL::VariantID CreateFromVertices{ 0, 2257122 }; // Check OG
+	}
+
+	namespace hknpMotionCinfo
+	{
+		inline constexpr REL::VariantID ctor{ 0, 2258369 }; // Check OG
+		inline constexpr REL::VariantID InitializeAsKeyFramed{ 0, 2258373 }; // Check OG
+	}
+
+	namespace hknpPhysicsSystem
+	{
+		inline constexpr REL::VariantID AddToWorld{ 0, 2255984 }; // Check OG
+		inline constexpr REL::VariantID RemoveFromWorld{ 0, 2255985 }; // Check OG
+	}
+
+	namespace hknpSphereShape
+	{
+		inline constexpr REL::VariantID CreateSphereShape{ 0, 2256377 }; // Check OG
+	}
+
+	namespace hknpTriangleShape
+	{
+		inline constexpr REL::VariantID CreateEmptyTriangleShape{ 0, 2256226 }; // Check OG
+		inline constexpr REL::VariantID SetVertices{ 0, 2256228 }; // Check OG
+	}
+
+	namespace hknpBSWorld
+	{
+		inline constexpr REL::VariantID AccessMotion{ 0, 2277680 }; // Check OG
+		inline constexpr REL::VariantID ActivateBody{ 0, 2277677 }; // Check OG
+		inline constexpr REL::VariantID SetBodyAngularVelocity{ 0, 2277672 }; // Check OG
+		inline constexpr REL::VariantID SetBodyKeyframed{ 0, 2277684 }; // Check OG
+		inline constexpr REL::VariantID SetBodyLinearVelocity{ 0, 2277671 }; // Check OG
+		inline constexpr REL::VariantID SetBodyStatic{ 0, 2277683 }; // Check OG
+		inline constexpr REL::VariantID SetBodyVelocity{ 0, 2277670 }; // Check OG
+	}
+
+	namespace hknpWorld
+	{
+		inline constexpr REL::VariantID AddBodies{ 0, 2255681 }; // Check OG
+		inline constexpr REL::VariantID CreateBody{ 0, 2255680 }; // Check OG
+		inline constexpr REL::VariantID CreateMotion{ 0, 2255688 }; // Check OG
+		inline constexpr REL::VariantID DisableBodyFlags{ 0, 2255636 }; // Check OG
+		inline constexpr REL::VariantID EnableBodyFlags{ 0, 2255635 }; // Check OG
+		inline constexpr REL::VariantID GetActionManager{ 0, 2255709 }; // Check OG
+		inline constexpr REL::VariantID SetBodyCollisionFilterInfo{ 0, 2255626 }; // Check OG
+		inline constexpr REL::VariantID SetBodyMotion{ 0, 2255634 }; // Check OG
+	}
+
+	namespace hkOArchive
+	{
+		inline constexpr REL::VariantID ctor2{ 0, 2259258 }; // Check OG
+	}
+
+	namespace hkProcessFactory
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2702978 }; // Check OG
+		inline constexpr REL::VariantID CreateProcess{ 0, 2263377 }; // Check OG
+	}
+
+	namespace hkReferencedObject
+	{
+		inline constexpr REL::VariantID AddReference{ 0, 2259213 }; // Check OG
+		inline constexpr REL::VariantID RemoveReference{ 0, 2195747 }; // Check OG
+	}
+
+	namespace hkStringPtr
+	{
+		inline constexpr REL::VariantID ctor{ 0, 2255573 }; // Check OG
+	}
+
+	namespace hkVisualDebugger
+	{
+		inline constexpr REL::VariantID ctor{ 0, 2263295 }; // Check OG
+		inline constexpr REL::VariantID AddContext{ 0, 2263313 }; // Check OG
+		inline constexpr REL::VariantID AddDefaultProcess{ 0, 2263302 }; // Check OG
+		inline constexpr REL::VariantID Serve{ 0, 2263296 }; // Check OG
+		inline constexpr REL::VariantID Shutdown{ 0, 2263300 }; // Check OG
+	}
+
+	namespace hkVtableClassRegistry
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2702926 }; // Check OG
+	}
+
 	namespace HolotapeMenu
 	{
 		inline constexpr REL::VariantID ShowHolotapeInPipboy{ 217953, 2224028 };
@@ -1250,6 +1423,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID OpenLockpickingMenu{ 129892, 2249263 };
 		inline constexpr REL::VariantID SendLockInfoToMenu{ 1256681, 2249267 }; // Check
+		inline constexpr REL::VariantID DamageLockpick{ 0, 2249275 }; // Check OG
 	}
 
 	namespace LocksPicked
@@ -1366,18 +1540,18 @@ namespace RE::ID
 
 	namespace NiMatrix3
 	{
-		inline constexpr REL::VariantID ToEulerAnglesXYZ1{ 34114, 2269806 };
-		inline constexpr REL::VariantID ToEulerAnglesXZY2{ 1164218, 2269807 };
-		inline constexpr REL::VariantID ToEulerAnglesYXZ3{ 272989, 2269808 };
-		inline constexpr REL::VariantID ToEulerAnglesYZX4{ 963829, 2269809 };
-		inline constexpr REL::VariantID ToEulerAnglesZYX5{ 511385, 2269810 };
-		inline constexpr REL::VariantID ToEulerAnglesZXY6{ 606387, 2269824 };
-		inline constexpr REL::VariantID FromEulerAnglesXYZ1{ 124665, 2269813 };
-		inline constexpr REL::VariantID FromEulerAnglesXZY2{ 1319962, 2269814 };
-		inline constexpr REL::VariantID FromEulerAnglesYXZ3{ 55761, 2269815 };
-		inline constexpr REL::VariantID FromEulerAnglesYZX4{ 373803, 2269816 };
-		inline constexpr REL::VariantID FromEulerAnglesZYX5{ 1569564, 2269817 };
-		inline constexpr REL::VariantID FromEulerAnglesZXY6{ 326460, 2269825 };
+		inline constexpr REL::VariantID ToEulerAnglesXYZ{ 34114, 2269806 };
+		inline constexpr REL::VariantID ToEulerAnglesXZY{ 1164218, 2269807 };
+		inline constexpr REL::VariantID ToEulerAnglesYXZ{ 272989, 2269808 };
+		inline constexpr REL::VariantID ToEulerAnglesYZX{ 963829, 2269809 };
+		inline constexpr REL::VariantID ToEulerAnglesZYX{ 511385, 2269810 };
+		inline constexpr REL::VariantID ToEulerAnglesZXY{ 606387, 2269824 };
+		inline constexpr REL::VariantID FromEulerAnglesXYZ{ 124665, 2269813 };
+		inline constexpr REL::VariantID FromEulerAnglesXZY{ 1319962, 2269814 };
+		inline constexpr REL::VariantID FromEulerAnglesYXZ{ 55761, 2269815 };
+		inline constexpr REL::VariantID FromEulerAnglesYZX{ 373803, 2269816 };
+		inline constexpr REL::VariantID FromEulerAnglesZYX{ 1569564, 2269817 };
+		inline constexpr REL::VariantID FromEulerAnglesZXY{ 326460, 2269825 };
 	}
 
 	namespace NiNode
@@ -1385,12 +1559,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID ChildrenVTable{ 390064 };
 	}
 
-	namespace NiPoint
+	namespace NiPoint3
 	{
-		namespace NiPoint3
-		{
-			inline constexpr REL::VariantID GetZAngleFromVector{ 1450064, 2269788 };
-		}
+		inline constexpr REL::VariantID GetZAngleFromVector{ 1450064, 2269788 };
 	}
 
 	namespace NiRefObject
@@ -1588,6 +1759,7 @@ namespace RE::ID
 	namespace PlayerCamera
 	{
 		inline constexpr REL::VariantID Singleton{ 1171980, 2688801, 4796065 };
+		inline constexpr REL::VariantID GetCameraPosition{ 0, 2248334 }; // Check OG
 		inline constexpr REL::VariantID PopState{ 120998, 2248424 };
 		inline constexpr REL::VariantID PushState{ 746523, 2248422 };
 		inline constexpr REL::VariantID ToggleFreeCameraMode{ 224913, 2248368 };
@@ -1628,6 +1800,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetPerkCount{ 616372, 2233187 };
 		inline constexpr REL::VariantID HasLOSToTarget{ 449775, 2233004 };
 		inline constexpr REL::VariantID TryUnlockObject{ 1341574, 2233040 };
+		inline constexpr REL::VariantID EnableRadio{ 0, 2233211 }; // Check OG
 	}
 
 	namespace PlayerControls
@@ -1682,6 +1855,13 @@ namespace RE::ID
 		inline constexpr REL::VariantID AreHostileActorsNear{ 1053584, 2234105 };
 		inline constexpr REL::VariantID IsActorTargetingREFinPackage{ 559542, 2234033 };
 		inline constexpr REL::VariantID RequestHighestDetectionLevelAgainstActor{ 1036693, 2234111 };
+	}
+
+	namespace RadioManager
+	{
+		inline constexpr REL::VariantID QPlayerRadioEnabled{ 0, 2227674 }; // Check OG
+		inline constexpr REL::VariantID QCurrentPlayerFreq{ 0, 2227670 }; // Check OG
+		inline constexpr REL::VariantID EnablePlayerRadio{ 0, 2227673 }; // Check OG
 	}
 
 	namespace REFR_LOCK
@@ -1806,6 +1986,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID QueueShowPipboy{ 1133684, 2229288 };
 		inline constexpr REL::VariantID QueueUpdate3D{ 581890, 2229234 };
 		inline constexpr REL::VariantID QueueWeaponFire{ 15449, 2229186 };
+		inline constexpr REL::VariantID TaskUnpackFunc{ 0, 2229323 }; // Check OG
 	}
 
 	namespace TerminalHacked
@@ -1997,6 +2178,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetFacialBoneMorphIntensity{ 272217, 2207416 };
 		inline constexpr REL::VariantID SetHairColor{ 1201742, 2207426 };
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
+		inline constexpr REL::VariantID GetXPValue{ 0, 2207384 }; // Check OG
 	}
 
 	namespace TESObjectARMO
@@ -2051,6 +2233,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID FindReferenceFor3D{ 766937, 2201082 };
 		inline constexpr REL::VariantID GetCurrentLocation{ 1135470, 2201163 };
 		inline constexpr REL::VariantID GetDisplayFullName{ 1212056, 2201126 };
+		inline constexpr REL::VariantID GetDistanceFromPoint{ 0, 2201172 }; // Check OG
+		inline constexpr REL::VariantID GetDistanceFromReference{ 0, 2201174 }; // Check OG
+		inline constexpr REL::VariantID GetDistanceSqFromPoint{ 0, 2201173 }; // Check OG
+		inline constexpr REL::VariantID GetDistanceSqFromReference{ 0, 2201175 }; // Check OG
 		inline constexpr REL::VariantID GetEditorDead{ 941388, 2200781 };
 		inline constexpr REL::VariantID GetOwner{ 1323437, 2202616 };
 		inline constexpr REL::VariantID GetGoldAmount{ 564356, 2200923 };
