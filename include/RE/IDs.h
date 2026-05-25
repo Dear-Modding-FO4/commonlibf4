@@ -592,9 +592,9 @@ namespace RE::ID
 	namespace BSRandom
 	{
 		inline constexpr REL::VariantID UnsignedInt{ 694400, 2267950 };
-		inline constexpr REL::VariantID Float{ 1118937, 2267953 }; // Check
-		inline constexpr REL::VariantID Float0To1{ 1025602, 2267954 }; // Check
-		inline constexpr REL::VariantID Int{ 1212543, 2267952 }; // Check
+		inline constexpr REL::VariantID Float{ 1118937, 2267953 };
+		inline constexpr REL::VariantID Float0To1{ 1025602, 2267954 };
+		inline constexpr REL::VariantID Int{ 1212543, 2267952 };
 	}
 
 	namespace BSResource_Archive2_AsyncReaderStream
