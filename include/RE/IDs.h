@@ -235,6 +235,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID BuildFromContainer{ 551792, 2194158 };
 		inline constexpr REL::VariantID ctor{ 845050, 2194153 };
 		inline constexpr REL::VariantID AddItem{ 19103, 2194159 };
+		inline constexpr REL::VariantID AddItemWithExtra{ 98986, 2194160 };
+		inline constexpr REL::VariantID RemoveItem{ 400062, 2194169 };
+		inline constexpr REL::VariantID GetItemCount{ 894081, 2194163 };
+		inline constexpr REL::VariantID GetQuestItemCount{ 800903, 2194164 };
+		inline constexpr REL::VariantID FindItemIndex{ 2111, 2194165 };
+		inline constexpr REL::VariantID Clear{ 1080446, 2194162 };
 	}
 
 	namespace BGSKeyword
@@ -983,6 +989,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID CompareList{ 585876, 2190098 };
 		inline constexpr REL::VariantID SetFavorite{ 534268, 2190188 }; // Check
 		inline constexpr REL::VariantID GetPrimitive{ 1271508, 2190427 }; // Check
+		inline constexpr REL::VariantID Create{ 1329859, 2190088 };
+		inline constexpr REL::VariantID CopyFrom{ 561304, 2190094 };
+		inline constexpr REL::VariantID SetCount{ 1460465, 2190125 };
 	}
 
 	namespace ExtraTextDisplayData

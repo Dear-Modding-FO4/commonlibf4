@@ -13,3 +13,5 @@ vs*/
 # files
 *.zip
 CMakeUserPresets.json
+compile_commands.json
+.clangd
