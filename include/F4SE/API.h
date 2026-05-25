@@ -39,6 +39,7 @@ namespace F4SE
 	void Init(const LoadInterface* a_intfc, InitInfo a_info = {}) noexcept;
 
 	[[nodiscard]] REL::Version      GetF4SEVersion() noexcept;
+	[[nodiscard]] REL::Version      GetRuntimeVersion() noexcept;
 	[[nodiscard]] std::string_view  GetPluginName() noexcept;
 	[[nodiscard]] std::string_view  GetPluginAuthor() noexcept;
 	[[nodiscard]] REL::Version      GetPluginVersion() noexcept;
