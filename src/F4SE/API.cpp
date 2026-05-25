@@ -31,6 +31,7 @@ namespace F4SE
 			REL::Version pluginVersion{};
 
 			REL::Version                            f4seVersion{};
+			REL::Version                            runtimeVersion{};
 			PluginHandle                            pluginHandle{ static_cast<PluginHandle>(-1) };
 			std::uint32_t                           releaseIndex{ 0 };
 			std::function<const void*(const char*)> pluginInfoAccessor;
@@ -65,6 +66,7 @@ namespace F4SE
 				}
 
 				f4seVersion = a_intfc->F4SEVersion();
+				runtimeVersion = a_intfc->RuntimeVersion();
 				pluginHandle = a_intfc->GetPluginHandle();
 				releaseIndex = a_intfc->GetReleaseIndex();
 				pluginInfoAccessor = reinterpret_cast<const Impl::F4SEInterface*>(a_intfc)->GetPluginInfo;
@@ -111,6 +113,8 @@ namespace F4SE
 					spdlog::set_pattern(info.logPattern ? info.logPattern : "[%T.%e] [%=5t] [%L] %v");
 
 					REX::INFO("{} v{}", GetPluginName(), GetPluginVersion());
+					REX::INFO("Runtime: {}", GetRuntimeVersion());
+					REX::INFO("F4SE: {}", GetF4SEVersion());
 				});
 			}
 		}
@@ -185,6 +189,11 @@ namespace F4SE
 	REL::Version GetF4SEVersion() noexcept
 	{
 		return Impl::API::GetSingleton()->f4seVersion;
+	}
+
+	REL::Version GetRuntimeVersion() noexcept
+	{
+		return Impl::API::GetSingleton()->runtimeVersion;
 	}
 
 	std::string_view GetPluginName() noexcept
