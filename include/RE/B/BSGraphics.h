@@ -271,10 +271,22 @@ namespace RE
 		};
 		static_assert(sizeof(RendererWindow) == 0x50);
 
+		enum class ShaderFlags : std::uint32_t
+		{
+			DIRTY_RENDERTARGET = 0x1,
+			DIRTY_VIEWPORT = 0x2,
+			DIRTY_DEPTH_STENCIL_STATE = 0x4,
+			DIRTY_RASTERIZER_STATE = 0x8,
+			DIRTY_BLEND_STATE = 0x10,
+			DIRTY_INPUT_LAYOUT = 0x20,
+			DIRTY_PRIMITIVE_TOPOLOGY = 0x40,
+		};
+
 		class alignas(0x10) RendererShadowState
 		{
 		public:
-			std::byte pad[0x910];  // 000
+			std::uint32_t stateUpdateFlags;    // 000
+			std::byte     pad04[0x910 - 0x4];  // 004
 		};
 		static_assert(sizeof(RendererShadowState) == 0x910);
 
