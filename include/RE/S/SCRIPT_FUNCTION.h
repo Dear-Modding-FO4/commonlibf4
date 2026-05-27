@@ -18,8 +18,9 @@ namespace RE
 
 		[[nodiscard]] static auto GetConsoleFunctions()
 		{
-			static REL::Relocation<SCRIPT_FUNCTION(*)[523]> functions{ ID::SCRIPT_FUNCTION::ConsoleFunctions };
-			return std::span{ *functions };
+			static REL::Relocation<SCRIPT_FUNCTION*> functions{ ID::SCRIPT_FUNCTION::ConsoleFunctions };
+			const std::size_t size = (REX::FModule::IsRuntimeOG() ? 521 : (REX::FModule::IsRuntimeNG() ? 525 : 523));
+			return std::span<SCRIPT_FUNCTION>{ functions.get(), size };
 		}
 
 		static SCRIPT_FUNCTION* LocateConsoleCommand(const std::string_view a_longName)
