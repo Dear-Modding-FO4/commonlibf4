@@ -238,12 +238,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID FindAndWriteStackDataForItem{ 1354005, 2194179 };
 		inline constexpr REL::VariantID BuildFromContainer{ 551792, 2194158 };
 		inline constexpr REL::VariantID ctor{ 845050, 2194153 };
-		inline constexpr REL::VariantID AddItem{ 19103, 2194159 };
-		inline constexpr REL::VariantID AddItem1{ 19103, 2194159 };       // libxse name for AddItem
-		inline constexpr REL::VariantID AddItemWithExtra{ 98986, 2194160 };
-		inline constexpr REL::VariantID AddItem2{ 98986, 2194160 };       // libxse name for AddItemWithExtra
-		inline constexpr REL::VariantID RemoveItem{ 400062, 2194169 };
-		inline constexpr REL::VariantID RemoveItem1{ 400062, 2194169 };   // libxse name for RemoveItem
+		inline constexpr REL::VariantID AddItem1{ 19103, 2194159 };
+		inline constexpr REL::VariantID AddItem2{ 98986, 2194160 };
+		inline constexpr REL::VariantID RemoveItem1{ 400062, 2194169 };
 		inline constexpr REL::VariantID GetItemCount{ 894081, 2194163 };
 		inline constexpr REL::VariantID GetQuestItemCount{ 800903, 2194164 };
 		inline constexpr REL::VariantID FindItemIndex{ 2111, 2194165 };
@@ -1031,10 +1028,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID CompareList{ 585876, 2190098 };
 		inline constexpr REL::VariantID SetFavorite{ 534268, 2190188 }; // Check
 		inline constexpr REL::VariantID GetPrimitive{ 1271508, 2190427 }; // Check
-		inline constexpr REL::VariantID Create{ 1329859, 2190088 };
-		inline constexpr REL::VariantID Ctor{ 1329859, 2190088 };      // libxse name for Create
-		inline constexpr REL::VariantID CopyFrom{ 561304, 2190094 };
-		inline constexpr REL::VariantID CopyList{ 561304, 2190094 };   // libxse name for CopyFrom
+		inline constexpr REL::VariantID Ctor{ 1329859, 2190088 };
+		inline constexpr REL::VariantID CopyList{ 561304, 2190094 };
 		inline constexpr REL::VariantID SetCount{ 1460465, 2190125 };
 	}
 

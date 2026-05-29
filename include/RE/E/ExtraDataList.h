@@ -199,20 +199,6 @@ namespace RE
 			return func(this);
 		}
 
-		void CopyFrom(ExtraDataList* a_extraDataList) noexcept
-		{
-			using func_t = decltype(&ExtraDataList::CopyFrom);
-			static REL::Relocation<func_t> func{ ID::ExtraDataList::CopyFrom };
-			return func(this, a_extraDataList);
-		}
-
-		static void Create(ExtraDataList* a_extraDataList) noexcept
-		{
-			using func_t = decltype(&ExtraDataList::Create);
-			static REL::Relocation<func_t> func{ ID::ExtraDataList::Create };
-			return func(a_extraDataList);
-		}
-
 		// members
 		BaseExtraList           extraData;    // 08
 		mutable BSReadWriteLock extraRWLock;  // 20
