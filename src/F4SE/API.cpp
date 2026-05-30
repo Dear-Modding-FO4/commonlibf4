@@ -72,6 +72,9 @@ namespace F4SE
 				if (f4seVersion >= REL::Version{ 0, 7, 1, 0 }) {
 					saveFolderName = a_intfc->GetSaveFolderName();
 				}
+				else {
+					saveFolderName = "Fallout4"sv;
+				}
 			});
 		}
 
