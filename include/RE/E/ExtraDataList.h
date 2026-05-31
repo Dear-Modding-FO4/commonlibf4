@@ -30,19 +30,35 @@ namespace RE
 	public:
 		F4_HEAP_REDEFINE_NEW(ExtraDataList);
 
+		using ComparisonQualifier = bool (*)(const BSExtraData*);
+
 		enum class CLEAR_FOR
 		{
 			kContainer = 0x0,
 			kReference = 0x1
 		};
 
-		void AddExtra(BSExtraData* a_extra)
+		ExtraDataList()
+		{
+			using func_t = void (*)(ExtraDataList*);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::Ctor };
+			func(this);
+		}
+
+		inline void AddExtra(BSExtraData* a_extra)
 		{
 			const BSAutoWriteLock l{ extraRWLock };
 			extraData.AddExtra(a_extra);
 		}
 
-		TBO_InstanceData* CreateInstanceData(TESBoundObject* a_object, bool a_generateName)
+		inline void CopyList(const ExtraDataList* a_copy) noexcept
+		{
+			using func_t = decltype(&ExtraDataList::CopyList);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::CopyList };
+			func(this, a_copy);
+		}
+
+		inline TBO_InstanceData* CreateInstanceData(TESBoundObject* a_object, bool a_generateName)
 		{
 			using func_t = decltype(&ExtraDataList::CreateInstanceData);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::CreateInstanceData };
@@ -87,115 +103,100 @@ namespace RE
 		}
 
 		template <detail::ExtraDataListConstraint T>
-		std::unique_ptr<T> RemoveExtra()
+		inline std::unique_ptr<T> RemoveExtra()
 		{
 			return std::unique_ptr<T>{ static_cast<T*>(RemoveExtra(T::TYPE).release()) };
 		}
 
-		bool SetBendableSplineInfo(float* a_thickness, float* a_slack, NiPoint3* a_halfExtents = nullptr, bool* a_detachedEnd = nullptr)
+		inline bool SetBendableSplineInfo(float* a_thickness, float* a_slack, NiPoint3* a_halfExtents = nullptr, bool* a_detachedEnd = nullptr)
 		{
 			using func_t = decltype(&ExtraDataList::SetBendableSplineInfo);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetBendableSplineInfo };
 			return func(this, a_thickness, a_slack, a_halfExtents, a_detachedEnd);
 		}
 
-		void SetDisplayNameFromInstanceData(BGSObjectInstanceExtra* a_instExtra, TESBoundObject* a_object, const BSTSmartPointer<TBO_InstanceData>& a_data)
+		inline void SetCount(std::int16_t a_count) noexcept
+		{
+			using func_t = decltype(&ExtraDataList::SetCount);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetCount };
+			func(this, a_count);
+		}
+
+		inline void SetDisplayNameFromInstanceData(BGSObjectInstanceExtra* a_instExtra, TESBoundObject* a_object, const BSTSmartPointer<TBO_InstanceData>& a_data)
 		{
 			using func_t = decltype(&ExtraDataList::SetDisplayNameFromInstanceData);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetDisplayNameFromInstanceData };
-			return func(this, a_instExtra, a_object, a_data);
+			func(this, a_instExtra, a_object, a_data);
 		}
 
-		void SetOverrideName(const char* a_name)
+		inline void SetOverrideName(const char* a_name)
 		{
 			using func_t = decltype(&ExtraDataList::SetOverrideName);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetOverrideName };
-			return func(this, a_name);
+			func(this, a_name);
 		}
 
-		void SetStartingWorldOrCell(TESForm* a_form)
+		inline void SetStartingWorldOrCell(TESForm* a_form)
 		{
 			using func_t = decltype(&ExtraDataList::SetStartingWorldOrCell);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetStartingWorldOrCell };
-			return func(this, a_form);
+			func(this, a_form);
 		}
 
-		float GetHealthPerc()
+		inline float GetHealthPerc()
 		{
 			using func_t = decltype(&ExtraDataList::GetHealthPerc);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetHealthPerc };
 			return func(this);
 		}
 
-		void SetHealthPerc(float a_healthPerc)
+		inline void SetHealthPerc(float a_healthPerc)
 		{
 			using func_t = decltype(&ExtraDataList::SetHealthPerc);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetHealthPerc };
-			return func(this, a_healthPerc);
+			func(this, a_healthPerc);
 		}
 
-		bool ClearFavorite()
+		inline bool ClearFavorite()
 		{
 			using func_t = decltype(&ExtraDataList::ClearFavorite);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::ClearFavorite };
 			return func(this);
 		}
 
-		bool IsFavorite()
+		inline bool IsFavorite()
 		{
 			using func_t = decltype(&ExtraDataList::IsFavorite);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::IsFavorite };
 			return func(this);
 		}
 
-		bool IsDamaged()
+		inline bool IsDamaged()
 		{
 			using func_t = decltype(&ExtraDataList::IsDamaged);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::IsDamaged };
 			return func(this);
 		}
 
-		typedef bool (*ComparisonQualifier)(const BSExtraData*);
-		bool CompareList(const ExtraDataList* a_compare, ComparisonQualifier a_qualifier)
+		inline bool CompareList(const ExtraDataList* a_compare, ComparisonQualifier a_qualifier)
 		{
 			using func_t = decltype(&ExtraDataList::CompareList);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::CompareList };
 			return func(this, a_compare, a_qualifier);
 		}
 
-		void SetFavorite(char a_quickKeyIndex)
+		inline void SetFavorite(char a_quickKeyIndex)
 		{
 			using func_t = decltype(&ExtraDataList::SetFavorite);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetFavorite };
-			return func(this, a_quickKeyIndex);
+			func(this, a_quickKeyIndex);
 		}
 
-		BGSPrimitive* GetPrimitive()
+		inline BGSPrimitive* GetPrimitive()
 		{
 			using func_t = decltype(&ExtraDataList::GetPrimitive);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetPrimitive };
 			return func(this);
-		}
-
-		void CopyFrom(ExtraDataList* a_extraDataList) noexcept
-		{
-			using func_t = decltype(&ExtraDataList::CopyFrom);
-			static REL::Relocation<func_t> func{ ID::ExtraDataList::CopyFrom };
-			return func(this, a_extraDataList);
-		}
-
-		void SetCount(int16_t a_count) noexcept
-		{
-			using func_t = decltype(&ExtraDataList::SetCount);
-			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetCount };
-			return func(this, a_count);
-		}
-
-		static void Create(ExtraDataList* a_extraDataList) noexcept
-		{
-			using func_t = decltype(&ExtraDataList::Create);
-			static REL::Relocation<func_t> func{ ID::ExtraDataList::Create };
-			return func(a_extraDataList);
 		}
 
 		// members

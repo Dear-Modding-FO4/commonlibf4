@@ -6,9 +6,10 @@ F4SE_PLUGIN_VERSION = []() noexcept {
     v.PluginName("${COMMONLIB_PLUGIN_NAME}");
     v.AuthorName("${COMMONLIB_PLUGIN_AUTHOR}");
     v.UsesAddressLibrary(true);
+    v.UsesAddressLibraryNG(true);
     v.UsesSigScanning(false);
     v.IsLayoutDependent(true);
+    v.IsLayoutDependentNG(true);
     v.HasNoStructUse(false);
-    v.CompatibleVersions({ F4SE::RUNTIME_LATEST });
     return v;
 }();
