@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSFixedString.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSimpleList.h"
 #include "RE/B/BSTArray.h"
