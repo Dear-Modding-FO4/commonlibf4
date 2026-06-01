@@ -74,6 +74,7 @@ namespace RE
 		}
 
 		/// Set pathfinding goal to a target reference with explicit speed override.
+		/// USE THIS FOR MOVEMENT
 		void SetPathfindingGoal(TESObjectREFR* a_target, float a_speed, float a_overrideSpeed, BSPathingAvoidNodeArray* a_avoidNodes)
 		{
 			using func_t = void(ActorMover*, TESObjectREFR*, float, float, BSPathingAvoidNodeArray*);

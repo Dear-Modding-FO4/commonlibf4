@@ -1,5 +1,7 @@
 #pragma once
 
+// Unstable, doesn't work 9/10 times, trying to use it WILL break your will to live.
+
 #include "RE/I/IMovementPlannerAgent.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/M/MovementPlannerAgent.h"

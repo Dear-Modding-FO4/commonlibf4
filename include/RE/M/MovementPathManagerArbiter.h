@@ -1,5 +1,7 @@
 #pragma once
 
+// Unstable, doesn't work 9/10 times, trying to use it WILL break your will to live.
+
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTSmartPointer.h"

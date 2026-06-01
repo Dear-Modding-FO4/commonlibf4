@@ -1,5 +1,7 @@
 #pragma once
 
+// Unstable, doesn't work 9/10 times, trying to use it WILL break your will to live.
+
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/I/IMovementDirectControl.h"
@@ -119,15 +121,24 @@ namespace RE
 		// === Interface accessors (offset-based reads from the sub-interface vtables) ===
 
 		/// Get the IMovementSetGoal interface pointer (at +0x120).
+		/// NOTE: Returns the ADDRESS of the vtable slot (this+0x120), NOT the
+		/// vtable pointer value stored at that slot.  The slot address serves as
+		/// the "interface object" because the first 8 bytes at that address ARE
+		/// the vtable pointer (as set by the MC constructor).  The previous
+		/// implementation dereferenced the slot and returned the raw vtable
+		/// address, which would cause virtual function calls to read the destructor
+		/// function address as the vtable pointer and then index into random code.
 		[[nodiscard]] IMovementSetGoal* GetIMovementSetGoal() const
 		{
-			return *reinterpret_cast<IMovementSetGoal* const*>(reinterpret_cast<const std::uint8_t*>(this) + 0x120);
+			return reinterpret_cast<IMovementSetGoal*>(
+				const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(this) + 0x120));
 		}
 
 		/// Get the IMovementQueryState interface pointer (at +0x128).
 		[[nodiscard]] IMovementQueryState* GetIMovementQueryState() const
 		{
-			return *reinterpret_cast<IMovementQueryState* const*>(reinterpret_cast<const std::uint8_t*>(this) + 0x128);
+			return reinterpret_cast<IMovementQueryState*>(
+				const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(this) + 0x128));
 		}
 
 		/// Get the IMovementPathManager interface pointer (at +0x130).
@@ -135,25 +146,29 @@ namespace RE
 		/// but QueryInterface returns IMovementPathManager here.
 		[[nodiscard]] IMovementPathManager* GetIMovementPathManager() const
 		{
-			return *reinterpret_cast<IMovementPathManager* const*>(reinterpret_cast<const std::uint8_t*>(this) + 0x130);
+			return reinterpret_cast<IMovementPathManager*>(
+				const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(this) + 0x130));
 		}
 
 		/// Get the IMovementDirectControl interface pointer (at +0x138).
 		[[nodiscard]] IMovementDirectControl* GetIMovementDirectControl() const
 		{
-			return *reinterpret_cast<IMovementDirectControl* const*>(reinterpret_cast<const std::uint8_t*>(this) + 0x138);
+			return reinterpret_cast<IMovementDirectControl*>(
+				const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(this) + 0x138));
 		}
 
 		/// Get the IMovementPlannerDirectControl interface pointer (at +0x140).
 		[[nodiscard]] IMovementPlannerDirectControl* GetIMovementPlannerDirectControl() const
 		{
-			return *reinterpret_cast<IMovementPlannerDirectControl* const*>(reinterpret_cast<const std::uint8_t*>(this) + 0x140);
+			return reinterpret_cast<IMovementPlannerDirectControl*>(
+				const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(this) + 0x140));
 		}
 
 		/// Get the IMovementSetSprinting interface pointer (at +0x148).
 		[[nodiscard]] IMovementSetSprinting* GetIMovementSetSprinting() const
 		{
-			return *reinterpret_cast<IMovementSetSprinting* const*>(reinterpret_cast<const std::uint8_t*>(this) + 0x148);
+			return reinterpret_cast<IMovementSetSprinting*>(
+				const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(this) + 0x148));
 		}
 
 		// === Key accessors (offset-based reads) ===
