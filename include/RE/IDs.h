@@ -2195,6 +2195,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetProcessScripts{ 1188642, 2204309 };
 	}
 
+	namespace ScriptCompiler
+	{
+		inline constexpr REL::VariantID GetFunctionDef{ 1159982, 2204350 };
+	}
+
 	namespace SendHUDMessage
 	{
 		inline constexpr REL::VariantID PopHUDMode{ 1495042, 2222444 };
