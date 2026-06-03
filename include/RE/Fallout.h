@@ -331,6 +331,7 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/B/BSFaceCustomizationShader.h"
 #include "RE/B/BSFaceGenAnimationData.h"
+#include "RE/B/BSFaceGenNiNode.h"
 #include "RE/B/BSFaceGenUtils.h"
 #include "RE/B/BSFadeNode.h"
 #include "RE/B/BSFile.h"
