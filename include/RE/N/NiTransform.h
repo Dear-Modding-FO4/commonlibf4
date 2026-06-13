@@ -95,6 +95,6 @@ struct std::formatter<RE::NiTransform>
 	template <class FormatContext>
 	constexpr auto format(const RE::NiTransform& a_transform, FormatContext& a_ctx) const
 	{
-		return format_to(a_ctx.out(), "<{}, {}>", a_transform.rotate, a_transform.translate, a_transform.scale);
+		return format_to(a_ctx.out(), "<{}, {}, {}>", a_transform.rotate, a_transform.translate, a_transform.scale);
 	}
 };
