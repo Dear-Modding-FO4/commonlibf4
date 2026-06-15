@@ -769,10 +769,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetDuration{ 1192939, 2267062 };
 		inline constexpr REL::VariantID IsEnvelopeLoop{ 529498, 2267051 };
 		inline constexpr REL::VariantID IsPaused{ 543387, 2267047 };
-		inline constexpr REL::VariantID IsPlaying{ 1514207, 2267046 }; // Check
+		inline constexpr REL::VariantID IsPlaying{ 1514207, 2267046 };
 		inline constexpr REL::VariantID IsValid{ 1154607, 2267048 };
 		inline constexpr REL::VariantID Pause{ 1168427, 2267044 };
-		inline constexpr REL::VariantID Play{ 384073, 2276042 };
+		inline constexpr REL::VariantID Play{ 384073, 2267042 };
 		inline constexpr REL::VariantID PlayAfter{ 557072, 2267043 };
 		inline constexpr REL::VariantID SetFrequency{ 940583, 2267059 };
 		inline constexpr REL::VariantID SetFrequencyVariance{ 1552262, 2267060 };
@@ -1449,7 +1449,7 @@ namespace RE::ID
 
 	namespace MapMarkerData
 	{
-		inline constexpr REL::VariantID GetLocationName{ 50980, 2191791 }; // Check
+		inline constexpr REL::VariantID GetLocationName{ 50980, 2191791 };
 	}
 
 	namespace MemoryManager
@@ -1466,6 +1466,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetThreadScrapHeap{ 1495205, 2267850 };
 		inline constexpr REL::VariantID Reallocate{ 1502917, 2267873 };
 		inline constexpr REL::VariantID RegisterMemoryManager{ 453212, 2228356 };
+		inline constexpr REL::VariantID Size{ 1453698, 2267858 };
 	}
 
 	namespace MenuControls
@@ -1508,7 +1509,7 @@ namespace RE::ID
 
 	namespace Moon
 	{
-		inline constexpr REL::VariantID Init{ 114988, 2208804 }; // Check
+		inline constexpr REL::VariantID Init{ 114988, 2208804 };
 	}
 
 	namespace NiAlphaProperty
@@ -1576,16 +1577,16 @@ namespace RE::ID
 
 	namespace nsHUDNotifications
 	{
-		inline constexpr REL::VariantID IsQuestNotification{ 1291377, 2222465 }; // Check
-		inline constexpr REL::VariantID IsObjectiveNotification{ 1025216, 2222466 }; // Check
-		inline constexpr REL::VariantID IsLocationDiscoveredNotification{ 759615, 2222467 }; // Check
+		inline constexpr REL::VariantID IsQuestNotification{ 1291377, 2222465 };
+		inline constexpr REL::VariantID IsObjectiveNotification{ 1025216, 2222466 };
+		inline constexpr REL::VariantID IsLocationDiscoveredNotification{ 759615, 2222467 };
 	}
 
 	namespace nsHUDTypes
 	{
 		namespace NotificationInfo
 		{
-			inline constexpr REL::VariantID ctor{ 283986, 2223292 }; // Check
+			inline constexpr REL::VariantID ctor{ 283986, 2223292 };
 		}
 	}
 
