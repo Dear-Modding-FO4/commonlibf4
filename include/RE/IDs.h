@@ -42,6 +42,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsSneaking{ 1173627, 2207655 };
 		inline constexpr REL::VariantID Move{ 737625, 2229934 };
 		inline constexpr REL::VariantID PerformAction{ 1057231, 2231177 };
+		inline constexpr REL::VariantID PlaySoundByEditorName{ 763587, 2230172 };
 		inline constexpr REL::VariantID RemovePerk{ 1316475, 2230122 };
 		inline constexpr REL::VariantID Reset3D{ 302888, 2229913 };
 		inline constexpr REL::VariantID RewardExperience{ 262786, 2230428 };
