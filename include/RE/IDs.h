@@ -161,6 +161,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetParentGroupNumber{ 1412266, 2189125 };
 	}
 
+	namespace BGSAudio
+	{
+		inline constexpr REL::VariantID GetSoundDescriptor{ 1305215, 2214758 };
+		inline constexpr REL::VariantID GetUIOutputModel{ 1381590, 2214800 };
+	}
+
 	namespace BGSConstructibleObject
 	{
 		inline constexpr REL::VariantID PlayerPassesConditions{ 293575, 2197318 };
@@ -505,7 +511,8 @@ namespace RE::ID
 	namespace BSAudioManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1321158, 2703058 };
-		inline constexpr REL::VariantID GetSoundHandleByName{ 196484, 2267105 };
+		inline constexpr REL::VariantID GetSoundHandle{ 1419045, 2267105 };
+		inline constexpr REL::VariantID GetSoundHandleByName{ 196484, 2267104 };
 		inline constexpr REL::VariantID GetSoundHandleByFile{ 37039, 2267103 };
 	}
 

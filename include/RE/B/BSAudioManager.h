@@ -37,18 +37,25 @@ namespace RE
 			return *singleton;
 		}
 
-		void GetSoundHandleByName(BSSoundHandle& a_handle, const char* a_soundName, float a_distance, std::uint32_t a_usageFlags, BSISoundDescriptor::ExtraResolutionData* a_data)
+		bool GetSoundHandle(BSSoundHandle& a_handle, const BSISoundDescriptor* a_descriptor, float a_distance, std::uint32_t a_usageFlags, BSISoundDescriptor::ExtraResolutionData* a_data = nullptr)
+		{
+			using func_t = decltype(&BSAudioManager::GetSoundHandle);
+			static REL::Relocation<func_t> func{ ID::BSAudioManager::GetSoundHandle };
+			return func(this, a_handle, a_descriptor, a_distance, a_usageFlags, a_data);
+		}
+
+		void GetSoundHandleByName(BSSoundHandle& a_handle, const char* a_soundName, float a_distance, std::uint32_t a_usageFlags, BSISoundDescriptor::ExtraResolutionData* a_data = nullptr)
 		{
 			using func_t = decltype(&BSAudioManager::GetSoundHandleByName);
 			static REL::Relocation<func_t> func{ ID::BSAudioManager::GetSoundHandleByName };
-			return func(this, a_handle, a_soundName, a_distance, a_usageFlags, a_data);
+			func(this, a_handle, a_soundName, a_distance, a_usageFlags, a_data);
 		}
 
 		void GetSoundHandleByFile(BSSoundHandle& a_handle, const BSResource::ID& a_file, std::uint32_t a_usageFlags, std::uint8_t a_priority)
 		{
 			using func_t = decltype(&BSAudioManager::GetSoundHandleByFile);
 			static REL::Relocation<func_t> func{ ID::BSAudioManager::GetSoundHandleByFile };
-			return func(this, a_handle, a_file, a_usageFlags, a_priority);
+			func(this, a_handle, a_file, a_usageFlags, a_priority);
 		}
 
 		// members

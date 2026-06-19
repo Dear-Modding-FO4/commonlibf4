@@ -43,6 +43,7 @@ namespace RE
 	class bhkCharacterStateChangeEvent;
 	class bhkNonSupportContactEvent;
 	class BSMovementDataChangedEvent;
+	class BSSoundHandle;
 	class BSSubGraphActivationUpdate;
 	class BSTransformDeltaEvent;
 	class CastPowerItem;
@@ -473,6 +474,13 @@ namespace RE
 			using func_t = decltype(&Actor::PerformAction);
 			static REL::Relocation<func_t> func{ ID::Actor::PerformAction };
 			return func(this, a_action, a_target);
+		}
+
+		BSSoundHandle& PlaySoundByEditorName(BSSoundHandle& a_handle, const char* a_editorName, bool a_loop, std::uint32_t a_usageFlags) const
+		{
+			using func_t = decltype(&Actor::PlaySoundByEditorName);
+			static REL::Relocation<func_t> func{ ID::Actor::PlaySoundByEditorName };
+			return func(this, a_handle, a_editorName, a_loop, a_usageFlags);
 		}
 
 		void RemovePerk(BGSPerk* a_perk)

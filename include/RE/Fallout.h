@@ -76,6 +76,7 @@
 #include "RE/B/BGSAttackDataForm.h"
 #include "RE/B/BGSAttackDataMap.h"
 #include "RE/B/BGSAttractionRule.h"
+#include "RE/B/BGSAudio.h"
 #include "RE/B/BGSAudioEffectChain.h"
 #include "RE/B/BGSAwakeSoundData.h"
 #include "RE/B/BGSBaseAlias.h"

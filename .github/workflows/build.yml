@@ -8,10 +8,8 @@ on:
       - "include/**"
       - "src/**"
       - "xmake.lua"
-      - "xmake-rules.lua"
   pull_request:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   xmake:
@@ -21,13 +19,13 @@ jobs:
       matrix:
         mode:
           - debug
-          - release
+          - releasedbg
         toolchain:
           - msvc
           - clang-cl
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: recursive
 
