@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ActorMover.h"
 #include "RE/A/ACTOR_VISIBILITY_MASK.h"
 #include "RE/A/AIProcess.h"
 #include "RE/A/AITimeStamp.h"
@@ -421,6 +422,17 @@ namespace RE
 			return func(this);
 		}
 
+		/// Check if this actor is standing on a walkable navmesh triangle.
+		/// Uses the pathfinding system to find the navmesh triangle at the actor's
+		/// current position and checks the walkable flag (bit 0) on it.
+		/// Returns false if the actor is not on any valid navmesh surface.
+		[[nodiscard]] bool IsOnNavmesh()
+		{
+			using func_t = std::uint8_t(Actor*);
+			static REL::Relocation<func_t> func{ ID::Actor::IsOnNavmesh };
+			return func(this) != 0;
+		}
+
 		bool IsPathValid()
 		{
 			using func_t = decltype(&Actor::IsPathValid);
@@ -530,6 +542,102 @@ namespace RE
 			using func_t = decltype(&Actor::SetHeading);
 			static REL::Relocation<func_t> func{ ID::Actor::SetHeading };
 			return func(this, a_angle);
+		}
+
+		// Set pathfinding goal: mover (this) walks to target's position
+		void SetPathfindingGoalPos(Actor* a_target, float a_speed = FLT_MIN, uint64_t a_flags = 0)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return;
+			using func_t = void(Actor*, Actor*, float, uint64_t);
+			static REL::Relocation<func_t> func{ REL::ID(2230246) };
+			return func(this, a_target, a_speed, a_flags);
+		}
+
+		// Set pathfinding goal to a target reference
+		void SetPathfindingGoal(TESObjectREFR* a_target, float a_speed, void* a_avoidNodes = nullptr)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return;
+			using func_t = void(Actor*, TESObjectREFR*, float, void*);
+			static REL::Relocation<func_t> func{ REL::ID(2230247) };
+			return func(this, a_target, a_speed, a_avoidNodes);
+		}
+
+		// Force AI system to re-evaluate the current package (guard check → dispatches to AIProcess)
+		void EvaluatePackage()
+		{
+			if (!REX::FModule::IsRuntimeNG()) return;
+			using func_t = void(Actor*);
+			static REL::Relocation<func_t> func{ REL::ID(2229802) };
+			func(this);
+		}
+
+		// Set pathfinding goal to a specific world position (NiPoint3), NOT a target actor or ref.
+		// This is the core function for "make actor walk to this coordinate".
+		// Internally routes through ActorMover → BSPathingRequest → MovementController event sink.
+		// @param a_pos  Target position in world coordinates
+		// @param a_speed  Movement speed (pass FLT_MIN for auto-calc)
+		// @return true if path request was submitted
+		bool SetPathfindingGoalPos(const NiPoint3& a_pos, float a_speed = FLT_MIN)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return false;
+			using func_t = bool(Actor*, const NiPoint3&, float);
+			static REL::Relocation<func_t> func{ REL::ID(2230256) };
+			return func(this, a_pos, a_speed);
+		}
+
+		// Clear current pathfinding request. Cancels any active path.
+		void ClearPath(BSTSmartPointer<BSPathingRequest>& a_request)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return;
+			using func_t = void(Actor*, BSTSmartPointer<BSPathingRequest>&);
+			static REL::Relocation<func_t> func{ REL::ID(2230253) };
+			return func(this, a_request);
+		}
+
+		// Set pathfinding goal to a target reference (with full BSPathingAvoidNodeArray support).
+		// Unlike the simpler SetPathfindingGoal overload, this routes through the
+		// ActorMover's SetPathfindingGoal method directly.
+		void SetPathfindingGoal(TESObjectREFR* a_target, float a_speed, BSPathingAvoidNodeArray* a_avoidNodes)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return;
+			using func_t = void(Actor*, TESObjectREFR*, float, BSPathingAvoidNodeArray*);
+			static REL::Relocation<func_t> func{ REL::ID(2230248) };
+			return func(this, a_target, a_speed, a_avoidNodes);
+		}
+
+		// Release the MovementControllerNPC at actor+0x318.
+		void ReleaseMovementController()
+		{
+			if (!REX::FModule::IsRuntimeNG()) return;
+			using func_t = void(Actor*);
+			static REL::Relocation<func_t> func{ REL::ID(2230236) };
+			return func(this);
+		}
+
+		// Ensure the MovementControllerNPC at actor+0x318 exists.
+		// GetMovementControllerNPC (ID 2230235) auto-creates it if null.
+		void GetOrCreateMovementController()
+		{
+			using func_t = void(Actor*);
+			static REL::Relocation<func_t> func{ ID::Actor::GetMovementControllerNPC };
+			return func(this);
+		}
+
+		// Resolve ActorMover from actor, handling mount indirection via actor+0x308.
+		RE::ActorMover* GetOrCreateActorMover()
+		{
+			using func_t = RE::ActorMover*(Actor*);
+			static REL::Relocation<func_t> func{ ID::Actor::GetActorMoverResolver };
+			return func(this);
+		}
+
+		// Atomic teleport: updates pos, NIF world transform tree, Havok rigid body, anim graph, and cell attachment
+		bool MoveTo(float a_x, float a_y, float a_z, float a_yawRad)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return false;
+			using func_t = bool(Actor*, float, float, float, float);
+			static REL::Relocation<func_t> func{ REL::ID(2229713) };
+			return func(this, a_x, a_y, a_z, a_yawRad);
 		}
 
 		void TrespassAlarm(TESObjectREFR* a_refr, TESForm* a_owner, std::int32_t a_crime)

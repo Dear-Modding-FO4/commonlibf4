@@ -53,6 +53,14 @@ namespace RE
 			return func(this, a_variable, a_var);
 		};
 
+		bool NotifyAnimationGraph(const BSFixedString& a_eventName)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return false;
+			using func_t = bool(IAnimationGraphManagerHolder*, const BSFixedString&);
+			static REL::Relocation<func_t> func{ REL::ID(2214564) };
+			return func(this, a_eventName);
+		}
+
 		bool SetGraphVariableFloat(const BSFixedString& a_variable, float a_var)
 		{
 			using func_t = decltype(&IAnimationGraphManagerHolder::SetGraphVariableFloat);
