@@ -1505,7 +1505,7 @@ namespace RE::ID
 
 	namespace MenuTopicManager
 	{
-		inline constexpr REL::VariantID Singleton{ 520890, 2689089, 4796375 };
+		inline constexpr REL::VariantID Singleton{ 1391114, 2688800, 4796064 };
 	}
 
 	namespace MessageBoxMenu
