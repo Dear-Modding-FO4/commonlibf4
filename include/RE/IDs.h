@@ -987,6 +987,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID OpenMenu{ 1562703, 2249658 };
 		inline constexpr REL::VariantID CloseMenu{ 764651, 2249659 };
+		inline constexpr REL::VariantID ShowButtons{ 191452, 2249663 };
 		inline constexpr REL::VariantID ShowSpeechChallengeAnim{ 868159, 2249665 };
 	}
 
