@@ -738,14 +738,67 @@ namespace RE
 				return func(this, a_enableDynamicResolution);
 			}
 
+			[[nodiscard]] float GetDynamicWidthRatio() const noexcept
+			{
+				return GetRuntimeField<float>(GetDynamicResolutionOffsets().widthRatio);
+			}
+
+			[[nodiscard]] float GetDynamicHeightRatio() const noexcept
+			{
+				return GetRuntimeField<float>(GetDynamicResolutionOffsets().heightRatio);
+			}
+
+			[[nodiscard]] bool IsDynamicResolutionCurrentlyActivated() const noexcept
+			{
+				return GetRuntimeField<bool>(GetDynamicResolutionOffsets().isActivated);
+			}
+
+			void SetDynamicResolutionState(float a_widthRatio, float a_heightRatio, bool a_activated) noexcept
+			{
+				const auto offsets = GetDynamicResolutionOffsets();
+				GetRuntimeField<float>(offsets.widthRatio) = a_widthRatio;
+				GetRuntimeField<float>(offsets.heightRatio) = a_heightRatio;
+				GetRuntimeField<bool>(offsets.isActivated) = a_activated;
+			}
+
+		private:
+			struct DynamicResolutionOffsets
+			{
+				std::size_t widthRatio;
+				std::size_t heightRatio;
+				std::size_t isActivated;
+			};
+
+			[[nodiscard]] static DynamicResolutionOffsets GetDynamicResolutionOffsets() noexcept
+			{
+				// Fallout4RE cs-rtm-dynamic-res-offsets.json @ a124812; RE-note-sourced OG offsets need live validation.
+				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8 };
+				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5 };
+				return REX::FModule::IsRuntimeOG() ? og : ngae;
+			}
+
+			template <class T>
+			[[nodiscard]] T& GetRuntimeField(std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<T*>(reinterpret_cast<std::byte*>(this) + a_offset);
+			}
+
+			template <class T>
+			[[nodiscard]] const T& GetRuntimeField(std::size_t a_offset) const noexcept
+			{
+				return *reinterpret_cast<const T*>(reinterpret_cast<const std::byte*>(this) + a_offset);
+			}
+
+		public:
 			// members
 			RenderTargetProperties        renderTargetData[100];       // 000
 			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
 			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
 			std::byte                     padDC4[0x30];
-			std::uint32_t                 renderTargetID[100];                            // DC4
-			std::uint32_t                 depthStencilTargetID[12];                       // F54
-			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
+			std::uint32_t                 renderTargetID[100];       // DC4
+			std::uint32_t                 depthStencilTargetID[12];  // F54
+			std::uint32_t                 cubeMapRenderTargetID[1];  // F84
+			// OG layout; use the accessors above for runtime-independent dynamic-resolution fields.
 			float                         dynamicWidthRatio;                              // F88
 			float                         dynamicHeightRatio;                             // F8C
 			float                         lowestWidthRatio;                               // F90
