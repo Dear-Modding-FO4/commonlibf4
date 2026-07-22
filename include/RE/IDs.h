@@ -906,7 +906,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetWeaponDisplayRange{ 1324037, 2209047 };
 		inline constexpr REL::VariantID GetWeaponDisplayRateOfFire{ 1403591, 2209048 };
 		inline constexpr REL::VariantID CalcTargetedLimbDamage{ 1530751, 2209033 };
-		inline constexpr REL::VariantID CalcWeaponDamage{ 211411, 2209001 };
+		inline constexpr REL::VariantID CalcWeaponDamage{ 651643, 2209001 };
 		inline constexpr REL::VariantID GetNumCrippledAttackConditions{ 170270, 2209041 };
 		inline constexpr REL::VariantID CalcScopeSteadyActionPointDrain{ 380926, 2209045 };
 		inline constexpr REL::VariantID CalcResistedPercentage{ 420470, 2209007 };
