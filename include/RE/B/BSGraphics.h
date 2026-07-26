@@ -586,10 +586,10 @@ namespace RE
 		class State
 		{
 		public:
-			[[nodiscard]] static State GetSingleton()
+			[[nodiscard]] static State* GetSingleton()
 			{
 				static REL::Relocation<State*> singleton{ ID::BSGraphics::State::Singleton };
-				return *singleton;
+				return singleton.get();
 			}
 
 			// members
