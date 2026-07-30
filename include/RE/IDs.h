@@ -150,6 +150,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetCapsOwedByPlayer{ 672405, 2222714 };
 	}
 
+	namespace BGSAddToPlayerInventoryEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1163657, 2663407 };
+	}
+
 	namespace BGSAnimationSystemUtils
 	{
 		inline constexpr REL::VariantID GetActiveSyncInfo{ 1349978, 2214289 };
@@ -157,15 +162,50 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsActiveGraphInTransition{ 839650, 2214305 };
 	}
 
+	namespace BGSArrestEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 309362, 2663427 };
+	}
+
+	namespace BGSAssualtActorEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 355870, 2663399 };
+	}
+
 	namespace BGSAttachParentArray
 	{
 		inline constexpr REL::VariantID SetParentGroupNumber{ 1412266, 2189125 };
+	}
+
+	namespace BGSAttractionObject
+	{
+		inline constexpr REL::VariantID EventIndex{ 967451, 2663432 };
 	}
 
 	namespace BGSAudio
 	{
 		inline constexpr REL::VariantID GetSoundDescriptor{ 1305215, 2214758 };
 		inline constexpr REL::VariantID GetUIOutputModel{ 1381590, 2214800 };
+	}
+
+	namespace BGSBribeNPCEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 113293, 2663418 };
+	}
+
+	namespace BGSCastMagicEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1210444, 2663428 };
+	}
+
+	namespace BGSChangeLocationEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 528859, 2663401 };
+	}
+
+	namespace BGSClearLocationEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1406072, 2663402 };
 	}
 
 	namespace BGSConstructibleObject
@@ -185,6 +225,16 @@ namespace RE::ID
 		inline constexpr REL::VariantID IncrementRef{ 1042515, 2228454 };
 	}
 
+	namespace BGSCrimeGoldEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 990529, 2663426 };
+	}
+
+	namespace BGSCureEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 920813, 2663412 };
+	}
+
 	namespace BGSDefaultObject
 	{
 		inline constexpr REL::VariantID Singleton{ 561749, 2690473, 4797762 };
@@ -194,6 +244,16 @@ namespace RE::ID
 	namespace BGSDefaultObjectManager
 	{
 		inline constexpr REL::VariantID Singleton{ 484974, 0 };	// Inlined NG/AE - old ids 2192850 this function get by type (also, the number increased by 1)
+	}
+
+	namespace BGSDialogueEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 43243, 2663404 };
+	}
+
+	namespace BGSDiscoverDeadBodyEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1140233, 2663414 };
 	}
 
 	namespace BGSDynamicPersistenceManager
@@ -208,9 +268,44 @@ namespace RE::ID
 		inline constexpr REL::VariantID HandleEntryPoint{ 714336, 2206243 };
 	}
 
+	namespace BGSEscapeJailEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 771655, 2663424 };
+	}
+
+	namespace BGSFavorEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 262770, 2663406 };
+	}
+
+	namespace BGSFlatterNPCEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1014013, 2663419 };
+	}
+
 	namespace BGSHackTerminal
 	{
 		inline constexpr REL::VariantID EventIndex{ 1186942, 2663434 };
+	}
+
+	namespace BGSHelloEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 944155, 2663405 };
+	}
+
+	namespace BGSIncreaseLevelEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 575487, 2663415 };
+	}
+
+	namespace BGSInfectionEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 19653, 2663411 };
+	}
+
+	namespace BGSIntimidateNPCEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 795005, 2663417 };
 	}
 
 	namespace BGSInventoryInterface
@@ -254,6 +349,16 @@ namespace RE::ID
 		inline constexpr REL::VariantID Clear{ 1080446, 2194162 };
 	}
 
+	namespace BGSIronSights
+	{
+		inline constexpr REL::VariantID EventIndex{ 285964, 2663433 };
+	}
+
+	namespace BGSJailEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 552352, 2663422 };
+	}
+
 	namespace BGSKeyword
 	{
 		inline constexpr REL::VariantID TypedKeywords{ 1095775, 2692038, 4799330 };
@@ -263,6 +368,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID AddKeyword{ 762999, 2192766 }; // Check
 		inline constexpr REL::VariantID RemoveKeyword{ 921694, 2192767 }; // Check
+	}
+
+	namespace BGSKillActorEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1037338, 2663398 };
 	}
 
 	namespace BGSListForm
@@ -278,6 +388,11 @@ namespace RE::ID
 	namespace BGSLocalizedStringDL
 	{
 		inline constexpr REL::VariantID GetText{ 472297, 2194238 };
+	}
+
+	namespace BGSLocationLoadedStoryEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 748430, 2663430 };
 	}
 
 	namespace BGSMessage
@@ -315,6 +430,11 @@ namespace RE::ID
 		}
 	}
 
+	namespace BGSNewVoicePowerEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 239479, 2663413 };
+	}
+
 	namespace BGSNumericIDIndex
 	{
 		inline constexpr REL::VariantID GetNumericID{ 915982, 2228199 };
@@ -337,6 +457,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetNumMods{ 1526690, 2189019 };
 	}
 
+	namespace BGSOnActorAttachEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 66772, 2663431 };
+	}
+
 	namespace BGSOpenCloseForm
 	{
 		inline constexpr REL::VariantID AutoCloseRef{ 1175698, 2192797 };
@@ -346,6 +471,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsOpenCloseEvent{ 1016560, 2192795 };
 		inline constexpr REL::VariantID IsOpenCloseForm{ 860629, 2192790 };
 		inline constexpr REL::VariantID SetOpenState{ 895942, 2192798 };
+	}
+
+	namespace BGSPayFine
+	{
+		inline constexpr REL::VariantID EventIndex{ 1233594, 2663421 };
 	}
 
 	namespace BGSPerkRankArray
@@ -358,6 +488,16 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID EventIndex{ 701969, 2663410 };
 		inline constexpr REL::VariantID ctor{ 193329, 2214021 };
+	}
+
+	namespace BGSPickPocket
+	{
+		inline constexpr REL::VariantID EventIndex{ 505459, 2663435 };
+	}
+
+	namespace BGSPlayerGetsFavorEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 332712, 2663420 };
 	}
 
 	namespace BGSPrimitive
@@ -373,6 +513,16 @@ namespace RE::ID
 	namespace BGSQuestInstanceText
 	{
 		inline constexpr REL::VariantID ParseString{ 141681, 2206630 };
+	}
+
+	namespace BGSRelationshipChangeRankEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1476498, 2663416 };
+	}
+
+	namespace BGSRemoveFromPlayerEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 482080, 2663408 };
 	}
 
 	namespace BGSSaveLoadFileEntry
@@ -418,6 +568,21 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetCurrentTopicInfo{ 781358, 2196825 };
 	}
 
+	namespace BGSScriptEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 725199, 2663403 };
+	}
+
+	namespace BGSServedTime
+	{
+		inline constexpr REL::VariantID EventIndex{ 1453033, 2663423 };
+	}
+
+	namespace BGSStartQuestEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1429380, 2663429 };
+	}
+
 	namespace BGSStoryEventManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1160067, 2693504, 4800796 };
@@ -436,6 +601,16 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsTerminalRefInUse{ 1093565, 2197779 };
 		inline constexpr REL::VariantID Show{ 1069012, 2197776 };
 		inline constexpr REL::VariantID Activate{ 178045, 2197778 }; // Check
+	}
+
+	namespace BGSTrespassEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 90057, 2663425 };
+	}
+
+	namespace BGSTriggerMineExplosionEvent
+	{
+		inline constexpr REL::VariantID EventIndex{ 1256916, 2663400 };
 	}
 
 	namespace bhkCharacterController
