@@ -264,6 +264,7 @@
 #include "RE/B/BSDFCompositeShader.h"
 #include "RE/B/BSDFLightShader.h"
 #include "RE/B/BSDFPrePassShader.h"
+#include "RE/B/BSDeferredDecal.h"
 #include "RE/B/BSDistantTreeShader.h"
 #include "RE/B/BSEffectShader.h"
 #include "RE/B/BSEventFlag.h"
