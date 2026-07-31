@@ -371,8 +371,8 @@ namespace RE::ID
 
 	namespace BGSKeywordForm
 	{
-		inline constexpr REL::VariantID AddKeyword{ 762999, 2192766 };     // Check
-		inline constexpr REL::VariantID RemoveKeyword{ 921694, 2192767 };  // Check
+		inline constexpr REL::VariantID AddKeyword{ 762999, 2192766 };
+		inline constexpr REL::VariantID RemoveKeyword{ 921694, 2192767 };
 	}
 
 	namespace BGSKillActorEvent
@@ -382,7 +382,7 @@ namespace RE::ID
 
 	namespace BGSListForm
 	{
-		inline constexpr REL::VariantID AddScriptAddedForm{ 1064874, 2203262 };  // Check
+		inline constexpr REL::VariantID AddScriptAddedForm{ 1064874, 2203262 };
 	}
 
 	namespace BGSLoadGameBuffer
@@ -418,7 +418,7 @@ namespace RE::ID
 				inline constexpr REL::VariantID SetLooseMod{ 123132, 2197558 };
 			}
 
-			inline constexpr REL::VariantID GetAllLooseMods{ 1359613, 2661620 };  // Check
+			inline constexpr REL::VariantID GetAllLooseMods{ 1108112, 2661611 };
 		}
 
 		namespace Container
@@ -605,7 +605,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetHackDifficultyLockLevel{ 537273, 2197777 };
 		inline constexpr REL::VariantID IsTerminalRefInUse{ 1093565, 2197779 };
 		inline constexpr REL::VariantID Show{ 1069012, 2197776 };
-		inline constexpr REL::VariantID Activate{ 178045, 2197778 };  // Check
+		inline constexpr REL::VariantID Activate{ 178045, 2197778 };
 	}
 
 	namespace BGSTrespassEvent
@@ -731,8 +731,8 @@ namespace RE::ID
 			inline constexpr REL::VariantID DecRef{ 194808, 2276870 };
 			inline constexpr REL::VariantID Begin{ 288964, 2276833 };
 			inline constexpr REL::VariantID End{ 700869, 2276834 };
-			inline constexpr REL::VariantID Lock{ 1087134, 2276828 };   // Check
-			inline constexpr REL::VariantID Unlock{ 382332, 2276829 };  // Check
+			inline constexpr REL::VariantID Lock{ 1087134, 2276828 };
+			inline constexpr REL::VariantID Unlock{ 382332, 2276829 };
 		}
 
 		namespace RenderTargetManager
@@ -871,7 +871,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetMovieFilename{ 1191277, 2287428 };
 		inline constexpr REL::VariantID InitMovieViewport{ 206895, 2287430, 4494254 };
 		inline constexpr REL::VariantID FileUncacheOnMenuOpen{ 454316, 2667999 };
-		inline constexpr REL::VariantID IsNameValid{ 593721, 2287425 };  // Check
+		inline constexpr REL::VariantID IsNameValid{ 593721, 2287425 };
 	}
 
 	namespace BSScaleformRenderer
@@ -886,7 +886,7 @@ namespace RE::ID
 
 	namespace BSScript_Array
 	{
-		inline constexpr REL::VariantID ctor{ 870924, 2314915 };  // Check
+		inline constexpr REL::VariantID ctor{ 870924, 2314915 };
 	}
 
 	namespace BSScript_ArrayWrapper
@@ -908,24 +908,24 @@ namespace RE::ID
 	namespace BSScript_Object
 	{
 		inline constexpr REL::VariantID DecRef{ 541793, 2314437 };
-		inline constexpr REL::VariantID GetHandle{ 1452752, 2314431 };  // Check
+		inline constexpr REL::VariantID GetHandle{ 1452752, 2314431 };
 		inline constexpr REL::VariantID IncRef{ 461710, 2314436 };
 	}
 
 	namespace BSScript_ObjectTypeInfo
 	{
-		inline constexpr REL::VariantID dtor{ 1047917, 2314513 };  // Check
+		inline constexpr REL::VariantID dtor{ 1047917, 2314513 };
 	}
 
 	namespace BSScript_ObjectBindPolicy
 	{
-		inline constexpr REL::VariantID BindObject{ 709728, 2314370 };    // Check
-		inline constexpr REL::VariantID UnbindObject{ 522763, 2314372 };  // Check
+		inline constexpr REL::VariantID BindObject{ 709728, 2314370 };
+		inline constexpr REL::VariantID UnbindObject{ 522763, 2314372 };
 	}
 
 	namespace BSScriptUtil
 	{
-		inline constexpr REL::VariantID BaseObjectName{ 648543, 2702269 };  // Check
+		inline constexpr REL::VariantID BaseObjectName{ 648543, 2702269 };
 	}
 
 	namespace BSShaderProperty
@@ -998,7 +998,7 @@ namespace RE::ID
 
 	namespace BSStringT
 	{
-		inline constexpr REL::VariantID Set{ 407804, 2189084, 4471693 };  // Check
+		inline constexpr REL::VariantID Set{ 407804, 2189084, 4471693 };
 	}
 
 	namespace BSSystemFileStreamer
@@ -1050,13 +1050,13 @@ namespace RE::ID
 		inline constexpr REL::VariantID ConvertFloatToHalf{ 10414, 2212098 };
 		inline constexpr REL::VariantID ConvertHalfToFloat{ 1502141, 2195843 };
 		inline constexpr REL::VariantID GetObjectByName{ 843650, 2274841 };
-		inline constexpr REL::VariantID GetFlattenedBoneTree{ 1539401, 2274858 };  // Check
+		inline constexpr REL::VariantID GetFlattenedBoneTree{ 1539401, 2274858 };
 	}
 
 	namespace Calendar
 	{
 		inline constexpr REL::VariantID Singleton{ 1444952, 2689092, 4796378 };
-		inline constexpr REL::VariantID GetDaysPassed{ 1209930, 2228563 };  // Check
+		inline constexpr REL::VariantID GetDaysPassed{ 1209930, 2228563 };
 	}
 
 	namespace CanDisplayNextHUDMessage
@@ -1076,7 +1076,7 @@ namespace RE::ID
 
 	namespace CombatBehaviorFindObject
 	{
-		inline constexpr REL::VariantID EvaluateArmor{ 1333384, 2241004 };  // Check
+		inline constexpr REL::VariantID EvaluateArmor{ 1333384, 2241004 };
 	}
 
 	namespace CombatFormulas
@@ -1098,8 +1098,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID CalculateProjectileLOS2{ 55339, 2240616 };
 		inline constexpr REL::VariantID CalculateProjectileTrajectory{ 1575156, 2240611 };
 		inline constexpr REL::VariantID WorldGravity{ 1378547, 2700340 };
-		inline constexpr REL::VariantID IsActorUsingMelee{ 858050, 2240626 };     // Check
-		inline constexpr REL::VariantID IsActorUsingUnarmed{ 1483696, 2240625 };  // Check
+		inline constexpr REL::VariantID IsActorUsingMelee{ 858050, 2240626 };
+		inline constexpr REL::VariantID IsActorUsingUnarmed{ 1483696, 2240625 };
 	}
 
 	namespace ComparisonQualifiers
@@ -1115,7 +1115,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetPickRef{ 170742, 2701395 };
 		inline constexpr REL::VariantID GetPickRefs{ 875116, 2701391 };
 		inline constexpr REL::VariantID SetCurrentPickREFR{ 79066, 2248551 };
-		inline constexpr REL::VariantID DisplayRef{ 1107782, 2248550 };  // Check
+		inline constexpr REL::VariantID DisplayRef{ 1107782, 2248550 };
 	}
 
 	namespace ConsoleLog
@@ -1160,7 +1160,7 @@ namespace RE::ID
 
 	namespace DialogueCameraState
 	{
-		inline constexpr REL::VariantID UpdateActorsAndAction{ 24497, 2214898 };  // Check
+		inline constexpr REL::VariantID UpdateActorsAndAction{ 24497, 2214898 };
 	}
 
 	namespace DialogueMenuUtils
@@ -1193,7 +1193,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID ShowConfirmMenu{ 443081, 2223081 };
 		inline constexpr REL::VariantID ConsumeSelectedItems{ 686586, 2223052 };
 		inline constexpr REL::VariantID BuildConfirmed{ 1396668, 2223013 };
-		inline constexpr REL::VariantID GetBuildConfirmQuestion{ 1360189, 2223057 };  // Check
+		inline constexpr REL::VariantID GetBuildConfirmQuestion{ 1360189, 2223057 };
 	}
 
 	namespace ExteriorCellSingleton
@@ -1213,10 +1213,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetHealthPerc{ 1208294, 2190124 };
 		inline constexpr REL::VariantID ClearFavorite{ 254434, 2190191 };
 		inline constexpr REL::VariantID IsFavorite{ 786568, 2190189 };
-		inline constexpr REL::VariantID IsDamaged{ 116730, 2190224 };  // Check
+		inline constexpr REL::VariantID IsDamaged{ 116730, 2190224 };
 		inline constexpr REL::VariantID CompareList{ 585876, 2190098 };
-		inline constexpr REL::VariantID SetFavorite{ 534268, 2190188 };    // Check
-		inline constexpr REL::VariantID GetPrimitive{ 1271508, 2190427 };  // Check
+		inline constexpr REL::VariantID SetFavorite{ 534268, 2190188 };
+		inline constexpr REL::VariantID GetPrimitive{ 1271508, 2190427 };
 		inline constexpr REL::VariantID Ctor{ 1329859, 2190088 };
 		inline constexpr REL::VariantID CopyList{ 561304, 2190094 };
 		inline constexpr REL::VariantID SetCount{ 1460465, 2190125 };
@@ -1232,9 +1232,13 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 198281, 2694399, 4801690 };
 		inline constexpr REL::VariantID IsComponentFavorite{ 352046, 2248752 };
 		inline constexpr REL::VariantID UseQuickkeyItem{ 303130, 2248744 };
-		inline constexpr REL::VariantID HandleEvent{ 1049251, 2248740 };  // Check
-		inline constexpr REL::VariantID Call{ 1566377, 2248766 };         // Check
+		inline constexpr REL::VariantID HandleEvent{ 1049251, 2248740 };
 		inline constexpr REL::VariantID ClearCurrentAmmoCount{ 541959, 2248745 };
+	}
+
+	namespace FavoritesMenu
+	{
+		inline constexpr REL::VariantID Call{ 1566377, 2248766 };
 	}
 
 	namespace FlatScreenModel
@@ -1261,12 +1265,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetLockXPReward{ 880926, 2209070 };
 		inline constexpr REL::VariantID CalculateItemHealthDamageBonus{ 612133, 2209087 };
 		inline constexpr REL::VariantID CalcSpringingActionPoints{ 1053786, 2209071 };
-		inline constexpr REL::VariantID GetSweetSpotAngle{ 293819, 2209082 };     // Check
-		inline constexpr REL::VariantID GetPartialPickAngle{ 1078228, 2209083 };  // Check
-		inline constexpr REL::VariantID GetPickBreakSeconds{ 984807, 2209084 };   // Check
+		inline constexpr REL::VariantID GetSweetSpotAngle{ 293819, 2209082 };
+		inline constexpr REL::VariantID GetPartialPickAngle{ 1078228, 2209083 };
+		inline constexpr REL::VariantID GetPickBreakSeconds{ 984807, 2209084 };
 		inline constexpr REL::VariantID GetHackingWordCount{ 190347, 2209067 };
-		inline constexpr REL::VariantID CalculateItemValue{ 960532, 2209074 };  // Check
-		inline constexpr REL::VariantID GetForceLockChance{ 549534, 2209065 };  // Check
+		inline constexpr REL::VariantID CalculateItemValue{ 960532, 2209074 };
+		inline constexpr REL::VariantID GetForceLockChance{ 549534, 2209065 };
 	}
 
 	namespace GameScript
@@ -1304,7 +1308,7 @@ namespace RE::ID
 
 	namespace GridCellArray
 	{
-		inline constexpr REL::VariantID Get{ 1330136, 2194566 };  // Check
+		inline constexpr REL::VariantID Get{ 1330136, 2194566 };
 	}
 
 	namespace hkContainerHeapAllocator
@@ -1459,7 +1463,7 @@ namespace RE::ID
 
 	namespace HUDExperienceMeter
 	{
-		inline constexpr REL::VariantID UpdateDisplayObject{ 246555, 2220382 };  // Check
+		inline constexpr REL::VariantID UpdateDisplayObject{ 246555, 2220382 };
 	}
 
 	namespace HUDMenu
@@ -1597,7 +1601,7 @@ namespace RE::ID
 	namespace InventoryUserUIUtils
 	{
 		inline constexpr REL::VariantID AddItemCardInfoEntry{ 489521, 2222648 };
-		inline constexpr REL::VariantID PopulateItemCardInfo_Helper{ 475551, 2222625 };  // Check
+		inline constexpr REL::VariantID PopulateItemCardInfo_Helper{ 475551, 2222625 };
 	}
 
 	namespace ItemCrafted
@@ -1621,7 +1625,7 @@ namespace RE::ID
 	namespace LockpickingMenu
 	{
 		inline constexpr REL::VariantID OpenLockpickingMenu{ 129892, 2249263 };
-		inline constexpr REL::VariantID SendLockInfoToMenu{ 1256681, 2249267 };  // Check
+		inline constexpr REL::VariantID SendLockInfoToMenu{ 1256681, 2249267 };
 		inline constexpr REL::VariantID DamageLockpick{ 1118991, 2249275 };
 	}
 
