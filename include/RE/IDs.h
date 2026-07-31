@@ -1648,6 +1648,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID QGameSystemsShouldUpdate{ 779552, 2698031 };
 		inline constexpr REL::VariantID QGameDataLoaded{ 1004331, 2698032 };
 		inline constexpr REL::VariantID SetCameraFOV{ 1348813, 2228973 };
+		inline constexpr REL::VariantID OnIdle{ 633524, 2228917 };
 	}
 
 	namespace MapMarkerData
