@@ -69,6 +69,21 @@ namespace RE
 		[[nodiscard]] const_pointer data() const noexcept { return _data.data(); }
 		[[nodiscard]] const_pointer c_str() const noexcept { return _data.c_str(); }
 
+		// skips the "<ID=NNNNNNNN>" editor marker, as the engine's accessors do
+		[[nodiscard]] const_pointer QString() const noexcept
+		{
+			const auto text = _data.c_str();
+			return has_id_prefix(text) ? text + PREFIX_LENGTH : text;
+		}
+
+		[[nodiscard]] size_type QLength() const noexcept
+		{
+			const auto length = _data.length();
+			return has_id_prefix(_data.c_str()) ? length - PREFIX_LENGTH : length;
+		}
+
+		[[nodiscard]] bool QEmpty() const noexcept { return QLength() == 0; }
+
 		[[nodiscard]] operator std::basic_string_view<value_type>() const { return { _data }; }
 
 		[[nodiscard]] bool empty() const noexcept { return _data.empty(); }
@@ -84,6 +99,11 @@ namespace RE
 
 	private:
 		static constexpr std::size_t PREFIX_LENGTH = 13;
+
+		[[nodiscard]] static bool has_id_prefix(const_pointer a_text) noexcept
+		{
+			return a_text && a_text[0] == '<' && a_text[1] == 'I' && a_text[2] == 'D' && a_text[3] == '=';
+		}
 
 		// members
 		BSFixedStringCS _data;  // 0

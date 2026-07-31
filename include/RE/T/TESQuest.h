@@ -11,6 +11,7 @@
 #include "RE/B/BSTTuple.h"
 #include "RE/N/NiPointer.h"
 #include "RE/Q/QUEST_DATA.h"
+#include "RE/Q/QuestFlag.h"
 #include "RE/T/TESCondition.h"
 #include "RE/T/TESFullName.h"
 
@@ -48,6 +49,12 @@ namespace RE
 			using func_t = decltype(&TESQuest::GetAliasedRef);
 			static REL::Relocation<func_t> func{ ID::TESQuest::GetAliasedRef };
 			return func(this, a_result, a_aiAliasID);
+		}
+
+		// not sufficient alone for "tracked": also needs currentInstanceID == objective index
+		[[nodiscard]] bool GetActive() const noexcept
+		{
+			return (data.flags & static_cast<std::uint16_t>(QuestFlag::kActive)) != 0;
 		}
 
 		// members
