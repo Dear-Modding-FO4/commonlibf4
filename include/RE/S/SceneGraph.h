@@ -5,6 +5,7 @@ namespace RE
 	class __declspec(novtable) SceneGraph :
 		public BSSceneGraph  // 000
 	{
+	public:
 		static constexpr auto RTTI{ RTTI::SceneGraph };
 		static constexpr auto VTABLE{ VTABLE::SceneGraph };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::SceneGraph };
