@@ -806,10 +806,10 @@ namespace RE
 		public:
 			using Create_T = void (*)();
 
-			[[nodiscard]] static RenderTargetManager GetSingleton()
+			[[nodiscard]] static RenderTargetManager* GetSingleton()
 			{
 				static REL::Relocation<RenderTargetManager*> singleton{ ID::BSGraphics::RenderTargetManager::Singleton };
-				return *singleton;
+				return singleton.get();
 			}
 
 			void SetEnableDynamicResolution(bool a_enableDynamicResolution)
