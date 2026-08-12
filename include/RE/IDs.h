@@ -1987,7 +1987,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID dtor{ 542100, 2233293 };
 		}
 
-		inline constexpr REL::VariantID Singleton{ 303410, 2690919, 4798212 };
+		inline constexpr REL::VariantID Singleton{ 412034, 2690919, 4798212 };
 		inline constexpr REL::VariantID GetPlayerHandle{ 522947, 2698072 };
 		inline constexpr REL::VariantID GetDifficultyLevel{ 922962, 2233056 };
 		inline constexpr REL::VariantID IsGodMode{ 1032309, 2232986 };
