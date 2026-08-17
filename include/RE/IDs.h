@@ -654,7 +654,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetStartEnd{ 747470, 2236622 };
 		inline constexpr REL::VariantID Reset{ 438299, 2277761 };
 		inline constexpr REL::VariantID HasHit{ 1181584, 2277770 };
-		inline constexpr REL::VariantID GetHitFraction{ 476687, 2277772 };
+		inline constexpr REL::VariantID GetHitFraction{ 476687, 2277771 };
 		inline constexpr REL::VariantID GetAllCollectorRayHitSize{ 1288513, 2277765 };
 		inline constexpr REL::VariantID GetAllCollectorRayHitAt{ 583997, 2277766 };
 		inline constexpr REL::VariantID SortAllCollectorHits{ 1274842, 2277767 };
