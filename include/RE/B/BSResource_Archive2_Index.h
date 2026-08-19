@@ -57,11 +57,11 @@ namespace RE::BSResource
 
 				// members
 				ID            nameID;                 // 00
-				std::uint8_t  dataFileIndex = 0;      // 0C
-				std::uint8_t  chunkCount = 0;         // 0D
-				std::uint16_t chunkOffsetOrType = 0;  // 0E
+				std::uint16_t dataFileIndex = 0;      // 0C
+				std::uint8_t  chunkCount = 0;         // 0E
+				std::uint16_t chunkOffsetOrType = 0;  // 0F
 			};
-			static_assert(sizeof(EntryHeader) == 0x10);
+			static_assert(sizeof(EntryHeader) == 0x14);
 
 			class Entry :
 				public EntryHeader  // 00
