@@ -658,7 +658,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetAllCollectorRayHitSize{ 1288513, 2277765 };
 		inline constexpr REL::VariantID GetAllCollectorRayHitAt{ 583997, 2277766 };
 		inline constexpr REL::VariantID SortAllCollectorHits{ 1274842, 2277767 };
-		inline constexpr REL::VariantID GetNiAVObject{ 863406, 2277764 };
+		inline constexpr REL::VariantID GetNiAVObject{ 863406, 2277763 };
 		inline constexpr REL::VariantID GetBody{ 1223055, 2277762 };
 	}
 
