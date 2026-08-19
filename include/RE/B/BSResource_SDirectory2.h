@@ -11,5 +11,5 @@ namespace RE::BSResource::SDirectory2
 		// members
 		Archive2::Index* index;  // 170
 	};
-	static_assert(sizeof(Cursor) == 0x178);
+	static_assert(sizeof(Cursor) == 0x180);
 }

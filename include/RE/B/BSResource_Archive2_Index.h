@@ -85,7 +85,7 @@ namespace RE::BSResource
 				};  // 10
 				BSFixedString stringName;  // 20
 			};
-			static_assert(sizeof(Entry) == 0x28);
+			static_assert(sizeof(Entry) == 0x30);
 
 			class CursorWithEntry :
 				public BSBTreeFile::BPTree<Pager, BSBTreeFile::PGFSEDL<Entry, ID, 4096>, 16>::Cursor  // 000
@@ -94,7 +94,7 @@ namespace RE::BSResource
 				// members
 				Entry e;  // 148
 			};
-			static_assert(sizeof(CursorWithEntry) == 0x170);
+			static_assert(sizeof(CursorWithEntry) == 0x178);
 
 			// members
 			BSTSmallIndexScatterTable<ID, NameIDAccess>                           nameTable;             // 0010
