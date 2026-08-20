@@ -4,12 +4,23 @@
 
 namespace RE::BSResource::SDirectory2
 {
-	class Cursor :
-		public Archive2::Index::CursorWithEntry  // 000
+	class Cursor256 :
+		public Archive2::Index256::CursorWithEntry  // 000
 	{
 	public:
 		// members
-		Archive2::Index* index;  // 170
+		Archive2::Index256* index;  // 170
 	};
-	static_assert(sizeof(Cursor) == 0x180);
+	static_assert(sizeof(Cursor256) == 0x178);
+
+	class Cursor1024 :
+		public Archive2::Index1024::CursorWithEntry  // 000
+	{
+	public:
+		// members
+		Archive2::Index1024* index;  // 178
+	};
+	static_assert(sizeof(Cursor1024) == 0x180);
+
+	using Cursor = Cursor1024;
 }
