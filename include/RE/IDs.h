@@ -16,7 +16,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID ExitCover{ 770035, 2231166 };
 		inline constexpr REL::VariantID GetAimVector{ 554863, 2230378 };
 		inline constexpr REL::VariantID GetClosestBone{ 1180004, 2230051 };
-		inline constexpr REL::VariantID GetCollisionFilter{ REL::Offset{ 0x1D80640 }, 2277949 };  // OG: 1474995 this function calls the desired one inside itself, something like a Singleton.
+		inline constexpr REL::VariantID GetCollisionFilter{ 1474995, 2229991 };
 		inline constexpr REL::VariantID GetCombatStyle{ 1270929, 2231053 };
 		inline constexpr REL::VariantID SetCurrentAmmoCount{ 725546, 2229952 };
 		inline constexpr REL::VariantID GetCurrentCollisionGroup{ 410500, 2229993 };
@@ -658,7 +658,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetAllCollectorRayHitSize{ 1288513, 2277765 };
 		inline constexpr REL::VariantID GetAllCollectorRayHitAt{ 583997, 2277766 };
 		inline constexpr REL::VariantID SortAllCollectorHits{ 1274842, 2277767 };
-		inline constexpr REL::VariantID GetNiAVObject{ 863406, 2277764 };
+		inline constexpr REL::VariantID GetNiAVObject{ 863406, 2277763 };
 		inline constexpr REL::VariantID GetBody{ 1223055, 2277762 };
 	}
 
