@@ -17,7 +17,9 @@ namespace RE
 
 		PipboyPrimitiveValue(std::uint32_t a_value, PipboyValue* a_parent) :
 			PipboyValue(a_parent), m_value(a_value)
-		{}
+		{
+			REX::EMPLACE_VTABLE(this);
+		}
 
 		// override
 		virtual void                    CleanDirtyToGame() override {}                                                                                              // 00
@@ -52,7 +54,9 @@ namespace RE
 
 		PipboyPrimitiveValue(bool a_value, PipboyValue* a_parent) :
 			PipboyValue(a_parent), m_value(a_value)
-		{}
+		{
+			REX::EMPLACE_VTABLE(this);
+		}
 
 		// override
 		virtual void                    CleanDirtyToGame() override {}                                                                                              // 00

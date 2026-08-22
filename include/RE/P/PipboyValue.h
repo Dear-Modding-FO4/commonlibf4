@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/M/MemoryManager.h"
+
 namespace Json
 {
 	class Value;
@@ -47,6 +49,8 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::PipboyValue::ctor };
 			func(this, a_parent);
 		}
+
+		F4_HEAP_REDEFINE_NEW(PipboyValue)
 
 		// members
 		std::uint32_t m_id;                  // 0x08
