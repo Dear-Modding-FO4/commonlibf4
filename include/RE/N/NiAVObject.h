@@ -72,6 +72,17 @@ namespace RE
 		void                         CullNode(bool a_cull);
 		void                         Update(NiUpdateData& a_data);
 
+		// Set the Havok motion type on this object's collision body.
+		// type: 0=Dynamic, 2=Keyframed, 4=Static
+		// force: force update even if body is not yet added
+		void SetMotionType(std::uint32_t a_type, bool a_force)
+		{
+			if (!REX::FModule::IsRuntimeNG()) return;
+			using func_t = void(NiAVObject*, std::uint32_t, bool);
+			static REL::Relocation<func_t> func{ REL::ID(2277724) };
+			return func(this, a_type, a_force);
+		}
+
 		// members
 		NiNode*                             parent{ nullptr };          // 027
 		NiTransform                         local;                      // 030
