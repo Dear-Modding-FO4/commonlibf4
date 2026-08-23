@@ -97,7 +97,7 @@ namespace RE
 		UndoData                                                                          undoData;                                                   // 390
 		UndoData                                                                          saveData;                                                   // 400
 		UndoData                                                                          detailUndoData;                                             // 470
-		BSTHashMap<const BSFixedString&, float>                                           morphSliderDeltas;                                          // 4E0
+		BSTHashMap<BSFixedString, float>                                                  morphSliderDeltas;                                          // 4E0
 		std::uint32_t                                                                     lastCharacterPreset;                                        // 510
 		bool                                                                              needsCustomizationUpdate;                                   // 514
 		bool                                                                              needsFaceUpdate;                                            // 515
