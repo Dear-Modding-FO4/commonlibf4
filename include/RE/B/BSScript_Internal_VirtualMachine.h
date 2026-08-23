@@ -192,7 +192,7 @@ namespace RE
 				virtual std::uint64_t                                  GetSaveHandleForArray(const BSScript::Array* a_Array) const override;                                                                                                              //14307D9B0 	// 0F
 				virtual void                                           SetSaveHandleForArray(const BSScript::Array* a_Array, std::uint64_t) override;                                                                                                     //14307D9B8 	// 10
 				virtual bool                                           GetArrayBySaveHandle(std::uint64_t handle, BSTSmartPointer<BSScript::Array, BSTSmartPointerIntrusiveRefCount>& a_array_pointer) const override;                                    //14307D9C0 	// 11
-				virtual bool                                           GetStackByID(std::uint32_t, BSTSmartPointer<BSScript::Stack, BSTSmartPointerIntrusiveRefCount>& a_stack_pointer) const override;                                                    //14307D9C8 	// 12
+				virtual bool                                           GetStackByID(std::uint32_t, BSTSmartPointer<BSScript::Stack, BSTSmartPointerIntrusiveRefCount>& a_stack_pointer) const override;                                                   //14307D9C8 	// 12
 				virtual const BSScript::Internal::WritableStringTable& GetWritableStringTable() const override;                                                                                                                                           //14307D9D0 	// 13
 				virtual const BSScript::Internal::WritableStringTable& GetWritableStringTable() override;                                                                                                                                                 //14307D9D8 	// 14
 				virtual BSScript::Internal::ReadableStringTable&       GetReadableStringTable() const override;                                                                                                                                           //14307D9E0 	// 15
@@ -203,8 +203,8 @@ namespace RE
 
 				// override (IVMDebugInterface)
 				virtual void DumpRunningStacksToLog() override;                                                                                // 01
-				virtual void DumpStackFrameToLog(std::uint32_t a_v, std::uint32_t b_v, bool a_flag) override;                                    // 02
-				virtual void GetStackFrame(std::uint32_t a_v, std::uint32_t b_v, bool a_flag, BSFixedString& a_identifier) override;             // 03
+				virtual void DumpStackFrameToLog(std::uint32_t a_v, std::uint32_t b_v, bool a_flag) override;                                  // 02
+				virtual void GetStackFrame(std::uint32_t a_v, std::uint32_t b_v, bool a_flag, BSFixedString& a_identifier) override;           // 03
 				virtual void DumpPersistenceInformationToLog(char const* logfile, uint64_t a_v) const override;                                // 04
 				virtual void DumpEventRelayInformationToLog(char const* logfile, uint64_t a_v, BSFixedString const& a_string) const override;  // 05
 
