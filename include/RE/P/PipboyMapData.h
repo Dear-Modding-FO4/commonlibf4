@@ -84,6 +84,13 @@ namespace RE
 		virtual void DoClearData() override;          // 0C
 		virtual void DoClearSink() override;          // 0D
 
+		ObjectRefHandle GetTravelLocationRefr(ObjectRefHandle* a_result, std::uint32_t a_markerId)
+		{
+			using func_t = decltype(&PipboyMapData::GetTravelLocationRefr);
+			static REL::Relocation<func_t> func{ ID::PipboyMapData::GetTravelLocationRefr };
+			return func(this, a_result, a_markerId);
+		}
+
 		// members
 		PipboyObject*                                   mapObject;                   // E8
 		BSTHashMap<const MapMarkerData*, PipboyObject*> travelLocationsMarkers;      // F0

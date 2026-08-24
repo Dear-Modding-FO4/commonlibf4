@@ -19,7 +19,7 @@ namespace RE
 		Actor*                          actor;                 // 88
 		float                           fireConeSize;          // 90
 		float                           lastShotDeltaMs;       // 94
-		unsigned int                    continuousShots;       // 98
+		std::uint32_t                   continuousShots;       // 98
 	};
 	static_assert(sizeof(AimModel) == 0xA0);
 }

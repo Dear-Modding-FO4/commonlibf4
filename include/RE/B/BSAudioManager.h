@@ -31,9 +31,25 @@ namespace RE
 		};
 		static_assert(sizeof(SyncedPlaybackManager) == 0x18);
 
+		enum class State : std::uint32_t
+		{
+			ManagerInitialized = 1 << 0,
+			PlatformInitialized = 1 << 1,
+			PlatformInitFailed = 1 << 2,
+			CacheEnabled = 1 << 3,
+			ShuttingDown = 1 << 4,
+			RunDisabled = 1 << 5
+		};
+
 		[[nodiscard]] static BSAudioManager* GetSingleton()
 		{
 			static REL::Relocation<BSAudioManager**> singleton{ ID::BSAudioManager::Singleton };
+			return *singleton;
+		}
+
+		[[nodiscard]] static BSAudioManager* GetPlatformSingleton()
+		{
+			static REL::Relocation<BSAudioManager**> singleton{ ID::BSAudioManager::PlatformSingleton };
 			return *singleton;
 		}
 
@@ -82,7 +98,7 @@ namespace RE
 		std::uint32_t                                             audioCacheSize;              // 200
 		std::uint32_t                                             maxAudioCacheSize;           // 204
 		std::uint32_t                                             maxSizeForCachedSound;       // 208
-		std::uint32_t                                             stateFlags;                  // 20C
+		REX::TEnumSet<State>                                      stateFlags;                  // 20C
 		float                                                     masterVolume;                // 210
 		std::uint8_t                                              asyncPriorityThreshold;      // 214
 		float                                                     invSpeedInUnitsPerMS;        // 218

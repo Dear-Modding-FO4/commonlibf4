@@ -618,6 +618,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID EventIndex{ 1256916, 2663400 };
 	}
 
+	namespace BGSTerrainManager
+	{
+		inline constexpr REL::VariantID RecomputeQuickCullData{ 0, 2213622 };
+	}
+
 	namespace bhkCharacterController
 	{
 		inline constexpr REL::VariantID Jump{ 1067306, 2278191 };
@@ -692,6 +697,7 @@ namespace RE::ID
 	namespace BSAudioManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1321158, 2703058 };
+		inline constexpr REL::VariantID PlatformSingleton{ 0, 2267094 };
 		inline constexpr REL::VariantID GetSoundHandle{ 1419045, 2267105 };
 		inline constexpr REL::VariantID GetSoundHandleByName{ 196484, 2267104 };
 		inline constexpr REL::VariantID GetSoundHandleByFile{ 37039, 2267103 };
@@ -700,6 +706,12 @@ namespace RE::ID
 	namespace BSAwardsSystemUtility
 	{
 		inline constexpr REL::VariantID Singleton{ 1569384, 2255115 };
+	}
+
+	namespace BSCullingProcess
+	{
+		inline constexpr REL::VariantID Process1{ 0, 2275931 };
+		inline constexpr REL::VariantID Process2{ 0, 2275932 };
 	}
 
 	namespace BSGFxDisplayObject
@@ -1051,6 +1063,30 @@ namespace RE::ID
 		inline constexpr REL::VariantID ConvertHalfToFloat{ 1502141, 2195843 };
 		inline constexpr REL::VariantID GetObjectByName{ 843650, 2274841 };
 		inline constexpr REL::VariantID GetFlattenedBoneTree{ 1539401, 2274858 };
+	}
+
+	namespace BSXAudio2Audio
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
+	}
+
+	namespace BSXAudio2Graph
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
+		inline constexpr REL::VariantID Ctor{ 0, 2267547 };
+		inline constexpr REL::VariantID OnProcessingPassEnd{ 0, 2267567 };
+	}
+
+	namespace BSXAudio2Audio
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
+	}
+
+	namespace BSXAudio2Graph
+	{
+		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
+		inline constexpr REL::VariantID Ctor{ 0, 2267547 };
+		inline constexpr REL::VariantID OnProcessingPassEnd{ 0, 2267567 };
 	}
 
 	namespace Calendar
@@ -1648,6 +1684,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID QGameSystemsShouldUpdate{ 779552, 2698031 };
 		inline constexpr REL::VariantID QGameDataLoaded{ 1004331, 2698032 };
 		inline constexpr REL::VariantID SetCameraFOV{ 1348813, 2228973 };
+		inline constexpr REL::VariantID LandLODRoot{ 0, 2698035 };
+		inline constexpr REL::VariantID ObjectLODRoot{ 0, 2698036 };
 		inline constexpr REL::VariantID OnIdle{ 633524, 2228917 };
 	}
 
@@ -1734,6 +1772,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID BoundInFrustum{ 781526, 2194525 };
 		inline constexpr REL::VariantID WorldPtToScreenPt3{ 109441, 2270344 };
 		inline constexpr REL::VariantID ViewPointToRay{ 460613, 2270338 };
+		inline constexpr REL::VariantID ctor{ 0, 2270332 };
 	}
 
 	namespace NiControllerManager
@@ -1745,6 +1784,11 @@ namespace RE::ID
 	namespace NiControllerSequence
 	{
 		inline constexpr REL::VariantID Activate{ 829033, 2271861 };
+	}
+
+	namespace NiCullingProcess
+	{
+		inline constexpr REL::VariantID SetFrustum{ 0, 2270782 };
 	}
 
 	namespace NiMatrix3
@@ -1886,6 +1930,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID UpdateCursorConstraint{ 900802, 2225488 };
 	}
 
+	namespace PipboyMapData
+	{
+		inline constexpr REL::VariantID GetTravelLocationRefr{ 0, 2225515 };
+	}
+
 	namespace PipboyMapMenu
 	{
 		inline constexpr REL::VariantID UpdateData{ 92696, 2224074 };
@@ -2010,6 +2059,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID HasLOSToTarget{ 449775, 2233004 };
 		inline constexpr REL::VariantID TryUnlockObject{ 1341574, 2233040 };
 		inline constexpr REL::VariantID EnableRadio{ 741937, 2233211 };
+		inline constexpr REL::VariantID UpdateAnimation{ 0, 2233005 };
+		inline constexpr REL::VariantID HandlePositionPlayerRequest{ 0, 2232905 };
 	}
 
 	namespace PlayerControls
@@ -2211,6 +2262,7 @@ namespace RE::ID
 	namespace TES
 	{
 		inline constexpr REL::VariantID Singleton{ 1194835, 2698044 };
+		inline constexpr REL::VariantID UpdateMultiBoundVisibility{ 0, 2192134 };
 	}
 
 	namespace TESActivateEvent
@@ -2633,6 +2685,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID DefaultWater{ 289864, 2691845, 4799138 };
 		inline constexpr REL::VariantID GetSkyCell{ 903020, 2202924 };
+		inline constexpr REL::VariantID AdjustMapMarkerCoord{ 0, 2202880 };
 	}
 
 	namespace UI

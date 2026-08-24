@@ -4,6 +4,8 @@
 
 namespace RE
 {
+	class NiFrustum;
+
 	class __declspec(novtable) NiCullingProcess
 	{
 	public:
@@ -40,6 +42,13 @@ namespace RE
 		virtual void Process(NiAVObject* a_object);                                                         // 19
 		virtual void Process(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet);  // 1A
 		virtual void AppendVirtual(BSGeometry* a_visible);                                                  // 1B
+
+		void SetFrustum(const NiFrustum* a_frustum)
+		{
+			using func_t = decltype(&NiCullingProcess::SetFrustum);
+			static REL::Relocation<func_t> func{ ID::NiCullingProcess::SetFrustum };
+			return func(this, a_frustum);
+		}
 
 		// members
 		bool            useVirtualAppend;      // 08

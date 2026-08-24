@@ -36,3 +36,15 @@ xmake project -k compile_commands
 ## Notes
 
 CommonLibF4 is intended to replace F4SE as a static dependency. However, the runtime component of F4SE is still required.
+
+## License
+
+[GPL-3.0-or-later](LICENSE) WITH [Modding Exception AND GPL-3.0 Linking Exception (with Corresponding Source)](EXCEPTIONS).
+
+Specifically, the **Modded Code** is Fallout 4 (and its variants) and **Modding Libraries** include [F4SE](https://f4se.silverlock.org/) ([GitHub](https://github.com/ianpatt/f4se)).
+
+It is recommended to read the [FSF FAQ](https://www.gnu.org/licenses/gpl-faq.en.html) for a full explanation on what this license requires.
+
+The main requirement of this license is: if you link your mod against CommonLibF4, and you distribute the binaries for that mod, you must also distribute the source code under the same license as CommonLibF4 along with the source code for any other libraries you link against, with the exception of the Modded Code and Modding Libraries defined above.
+
+Originally based on code under [MIT](res/license/MIT).

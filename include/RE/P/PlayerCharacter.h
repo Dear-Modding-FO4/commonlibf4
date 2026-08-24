@@ -320,6 +320,20 @@ namespace RE
 			return func(this, a_enable);
 		}
 
+		void UpdateAnimation(float a_delta)
+		{
+			using func_t = decltype(&PlayerCharacter::UpdateAnimation);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::UpdateAnimation };
+			return func(this, a_delta);
+		}
+
+		bool HandlePositionPlayerRequest()
+		{
+			using func_t = decltype(&PlayerCharacter::HandlePositionPlayerRequest);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::HandlePositionPlayerRequest };
+			return func(this);
+		}
+
 		// members
 		BSSpinLock                                                     actorToDisplayOnHUDLock;              // 628
 		BSSpinLock                                                     questTargetLock;                      // 630

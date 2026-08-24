@@ -494,11 +494,11 @@ namespace RE
 			return func(this, a_point);
 		}
 
-		void SetLinkedRef(Actor* a_actor, BGSKeyword* a_keyword)
+		void SetLinkedRef(TESObjectREFR* a_ref, BGSKeyword* a_keyword)
 		{
 			using func_t = decltype(&TESObjectREFR::SetLinkedRef);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::SetLinkedRef };
-			return func(this, a_actor, a_keyword);
+			return func(this, a_ref, a_keyword);
 		}
 
 		void SetLocationOnReference(const NiPoint3& a_point)

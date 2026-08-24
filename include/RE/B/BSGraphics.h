@@ -34,7 +34,7 @@ namespace RE
 		enum class RasterStateFillMode : std::int32_t;
 		enum class RasterStateScissorMode : std::int32_t;
 
-		enum class MultiSampleLevel
+		enum class MultiSampleLevel : std::int32_t
 		{
 			kNone,
 			kTwo,
@@ -42,7 +42,7 @@ namespace RE
 			kEight
 		};
 
-		enum class SetRenderTargetMode
+		enum class SetRenderTargetMode : std::int32_t
 		{
 			kClear = 0x0,
 			kClearDepth = 0x1,
@@ -53,13 +53,13 @@ namespace RE
 			kInit = 0x5
 		};
 
-		enum class TAA_STATE
+		enum class TAA_STATE : std::int32_t
 		{
 			kDisabled,
 			kEnabled
 		};
 
-		enum class TextureFileFormat
+		enum class TextureFileFormat : std::int32_t
 		{
 			kBMP = 0,
 			kJPG = 1,
@@ -72,7 +72,7 @@ namespace RE
 			kPFM = 8,
 		};
 
-		enum class TextureFilterMode
+		enum class TextureFilterMode : std::int32_t
 		{
 			kNearest = 0x0,
 			kBilerp = 0x1,
@@ -81,7 +81,7 @@ namespace RE
 			kCompBilerp = 0x4,
 		};
 
-		enum class TextureAddressMode
+		enum class TextureAddressMode : std::int32_t
 		{
 			kClamp_S_Clamp_T = 0x0,
 			kClamp_S_Wrap_T = 0x1,
@@ -89,7 +89,7 @@ namespace RE
 			kWrap_S_Wrap_T = 0x3,
 		};
 
-		enum class Usage
+		enum class Usage : std::int32_t
 		{
 			kDefault = 0x0,
 			kImmutable = 0x1,
@@ -686,50 +686,50 @@ namespace RE
 			}
 
 			// members
-			std::uint32_t                                  currentFrame;                      // 000
-			float                                          offsetX;                           // 004
-			float                                          offsetY;                           // 008
-			std::uint32_t                                  currentFrameOffset;                // 00C
-			std::uint32_t                                  previousFrameOffset;               // 010
-			FogStateType                                   fogState;                          // 014
-			REX::TEnumSet<MultiSampleLevel, std::uint32_t> multiSample;                       // 074
-			std::uint32_t                                  backBufferWidth;                   // 078
-			std::uint32_t                                  backBufferHeight;                  // 07C
-			std::uint32_t                                  screenWidth;                       // 080
-			std::uint32_t                                  screenHeight;                      // 084
-			NiRect<float>                                  frameBufferViewport;               // 088
-			std::uint32_t                                  frameCount;                        // 098
-			std::uint32_t                                  frameID;                           // 09C
-			bool                                           insideFrame;                       // 0A0
-			bool                                           letterbox;                         // 0A1
-			bool                                           allowDepthBufferAsTexture;         // 0A2
-			bool                                           shadows;                           // 0A3
-			bool                                           compiledShaderThisFrame;           // 0A4
-			REX::TEnumSet<TAA_STATE, std::uint32_t>        taaState;                          // 0A8
-			std::uint32_t                                  taaDisableCounter;                 // 0AC
-			std::uint32_t                                  trijuiceState;                     // 0B0
-			NiPointer<NiTexture>                           defaultTextureBlack;               // 0B8
-			NiPointer<NiTexture>                           defaultTextureWhite;               // 0C0
-			NiPointer<NiTexture>                           defaultTextureGrey;                // 0C8
-			NiPointer<NiTexture>                           defaultHeightMap;                  // 0D0
-			NiPointer<NiTexture>                           defaultReflectionCubeMap;          // 0D8
-			NiPointer<NiTexture>                           defaultFaceDetailMap;              // 0E0
-			NiPointer<NiTexture>                           defaultHighFreqNormalMap;          // 0E8
-			NiPointer<NiTexture>                           defaultTexEffectMap;               // 0F0
-			NiPointer<NiTexture>                           defaultTextureWhiteNoiseMap;       // 0F8
-			NiPointer<NiTexture>                           defaultTextureWhiteNoiseMapSmall;  // 100
-			NiPointer<NiTexture>                           defaultTextureNormalMap;           // 108
-			NiPointer<NiTexture>                           defaultTextureDiffuseMap;          // 110
-			NiPointer<NiTexture>                           defaultSplineMap;                  // 118
-			NiPointer<NiTexture>                           defaultTextureDissolvePattern;     // 120
-			Texture*                                       defaultImagespaceLUT;              // 128
-			NiPointer<NiTexture>                           rotatedPoissonDiscLookupMap;       // 130
-			std::uint32_t                                  presentImmediateThreshold;         // 138
-			std::uint32_t                                  presentFlag;                       // 13C
-			BSTArray<CameraStateData>                      cameraDataCache;                   // 140
-			CameraStateData                                cameraState;                       // 160
-			bool                                           commitTexturesOnCreation;          // 3B0
-			bool                                           immediateTextureLoads;             // 3B1
+			std::uint32_t             currentFrame;                      // 000
+			float                     offsetX;                           // 004
+			float                     offsetY;                           // 008
+			std::uint32_t             currentFrameOffset;                // 00C
+			std::uint32_t             previousFrameOffset;               // 010
+			FogStateType              fogState;                          // 014
+			MultiSampleLevel          multiSample;                       // 074
+			std::uint32_t             backBufferWidth;                   // 078
+			std::uint32_t             backBufferHeight;                  // 07C
+			std::uint32_t             screenWidth;                       // 080
+			std::uint32_t             screenHeight;                      // 084
+			NiRect<float>             frameBufferViewport;               // 088
+			std::uint32_t             frameCount;                        // 098
+			std::uint32_t             frameID;                           // 09C
+			bool                      insideFrame;                       // 0A0
+			bool                      letterbox;                         // 0A1
+			bool                      allowDepthBufferAsTexture;         // 0A2
+			bool                      shadows;                           // 0A3
+			bool                      compiledShaderThisFrame;           // 0A4
+			TAA_STATE                 taaState;                          // 0A8
+			std::uint32_t             taaDisableCounter;                 // 0AC
+			std::uint32_t             trijuiceState;                     // 0B0
+			NiPointer<NiTexture>      defaultTextureBlack;               // 0B8
+			NiPointer<NiTexture>      defaultTextureWhite;               // 0C0
+			NiPointer<NiTexture>      defaultTextureGrey;                // 0C8
+			NiPointer<NiTexture>      defaultHeightMap;                  // 0D0
+			NiPointer<NiTexture>      defaultReflectionCubeMap;          // 0D8
+			NiPointer<NiTexture>      defaultFaceDetailMap;              // 0E0
+			NiPointer<NiTexture>      defaultHighFreqNormalMap;          // 0E8
+			NiPointer<NiTexture>      defaultTexEffectMap;               // 0F0
+			NiPointer<NiTexture>      defaultTextureWhiteNoiseMap;       // 0F8
+			NiPointer<NiTexture>      defaultTextureWhiteNoiseMapSmall;  // 100
+			NiPointer<NiTexture>      defaultTextureNormalMap;           // 108
+			NiPointer<NiTexture>      defaultTextureDiffuseMap;          // 110
+			NiPointer<NiTexture>      defaultSplineMap;                  // 118
+			NiPointer<NiTexture>      defaultTextureDissolvePattern;     // 120
+			Texture*                  defaultImagespaceLUT;              // 128
+			NiPointer<NiTexture>      rotatedPoissonDiscLookupMap;       // 130
+			std::uint32_t             presentImmediateThreshold;         // 138
+			std::uint32_t             presentFlag;                       // 13C
+			BSTArray<CameraStateData> cameraDataCache;                   // 140
+			CameraStateData           cameraState;                       // 160
+			bool                      commitTexturesOnCreation;          // 3B0
+			bool                      immediateTextureLoads;             // 3B1
 		};
 		static_assert(sizeof(State) == 0x3C0);
 

@@ -38,7 +38,7 @@ namespace RE
 			return func();
 		}
 
-		[[nodiscard]] static SceneGraph* WorldRootNode()
+		[[nodiscard]] static SceneGraph* GetWorldRootNode()
 		{
 			static REL::Relocation<NiPointer<SceneGraph>*> nodePtr{ ID::Main::WorldRootNode };
 			return nodePtr->get();
@@ -61,6 +61,18 @@ namespace RE
 			using func_t = decltype(&Main::SetCameraFOV);
 			static REL::Relocation<func_t> func{ ID::Main::SetCameraFOV };
 			return func(this, a_fov);
+		}
+
+		inline static NiNode* GetLandLODRoot()
+		{
+			static REL::Relocation<NiNode*> value{ ID::Main::LandLODRoot };
+			return value.get();
+		}
+
+		inline static NiNode* GetObjectLODRoot()
+		{
+			static REL::Relocation<NiNode*> value{ ID::Main::ObjectLODRoot };
+			return value.get();
 		}
 
 		// members
