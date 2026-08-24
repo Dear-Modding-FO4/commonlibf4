@@ -620,7 +620,7 @@ namespace RE::ID
 
 	namespace BGSTerrainManager
 	{
-		inline constexpr REL::VariantID RecomputeQuickCullData{ 0, 2213622 };
+		inline constexpr REL::VariantID RecomputeQuickCullData{ 1483119, 2213622 };
 	}
 
 	namespace bhkCharacterController
@@ -697,7 +697,7 @@ namespace RE::ID
 	namespace BSAudioManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1321158, 2703058 };
-		inline constexpr REL::VariantID PlatformSingleton{ 0, 2267094 };
+		inline constexpr REL::VariantID PlatformSingleton{ 1117951, 2267094 };
 		inline constexpr REL::VariantID GetSoundHandle{ 1419045, 2267105 };
 		inline constexpr REL::VariantID GetSoundHandleByName{ 196484, 2267104 };
 		inline constexpr REL::VariantID GetSoundHandleByFile{ 37039, 2267103 };
@@ -710,8 +710,8 @@ namespace RE::ID
 
 	namespace BSCullingProcess
 	{
-		inline constexpr REL::VariantID Process1{ 0, 2275931 };
-		inline constexpr REL::VariantID Process2{ 0, 2275932 };
+		inline constexpr REL::VariantID Process1{ 409428, 2275931 };
+		inline constexpr REL::VariantID Process2{ 820910, 2275932 };
 	}
 
 	namespace BSGFxDisplayObject
@@ -1067,26 +1067,14 @@ namespace RE::ID
 
 	namespace BSXAudio2Audio
 	{
-		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
+		inline constexpr REL::VariantID Singleton{ 1565436, 2703127 };
 	}
 
 	namespace BSXAudio2Graph
 	{
-		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
-		inline constexpr REL::VariantID Ctor{ 0, 2267547 };
-		inline constexpr REL::VariantID OnProcessingPassEnd{ 0, 2267567 };
-	}
-
-	namespace BSXAudio2Audio
-	{
-		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
-	}
-
-	namespace BSXAudio2Graph
-	{
-		inline constexpr REL::VariantID Singleton{ 0, 2703127 };
-		inline constexpr REL::VariantID Ctor{ 0, 2267547 };
-		inline constexpr REL::VariantID OnProcessingPassEnd{ 0, 2267567 };
+		inline constexpr REL::VariantID Singleton{ 1219921, 2703127 };
+		inline constexpr REL::VariantID Ctor{ 799447, 2267547 };
+		inline constexpr REL::VariantID OnProcessingPassEnd{ 351273, 2267567 };
 	}
 
 	namespace Calendar
@@ -1684,8 +1672,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID QGameSystemsShouldUpdate{ 779552, 2698031 };
 		inline constexpr REL::VariantID QGameDataLoaded{ 1004331, 2698032 };
 		inline constexpr REL::VariantID SetCameraFOV{ 1348813, 2228973 };
-		inline constexpr REL::VariantID LandLODRoot{ 0, 2698035 };
-		inline constexpr REL::VariantID ObjectLODRoot{ 0, 2698036 };
+		inline constexpr REL::VariantID LandLODRoot{ 1208715, 2698035 };
+		inline constexpr REL::VariantID ObjectLODRoot{ 1115209, 2698036 };
 		inline constexpr REL::VariantID OnIdle{ 633524, 2228917 };
 	}
 
@@ -1772,7 +1760,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID BoundInFrustum{ 781526, 2194525 };
 		inline constexpr REL::VariantID WorldPtToScreenPt3{ 109441, 2270344 };
 		inline constexpr REL::VariantID ViewPointToRay{ 460613, 2270338 };
-		inline constexpr REL::VariantID ctor{ 0, 2270332 };
+		inline constexpr REL::VariantID ctor{ 1182532, 2270332 };
 	}
 
 	namespace NiControllerManager
@@ -1788,7 +1776,7 @@ namespace RE::ID
 
 	namespace NiCullingProcess
 	{
-		inline constexpr REL::VariantID SetFrustum{ 0, 2270782 };
+		inline constexpr REL::VariantID SetFrustum{ 1142496, 2270782 };
 	}
 
 	namespace NiMatrix3
@@ -1932,7 +1920,7 @@ namespace RE::ID
 
 	namespace PipboyMapData
 	{
-		inline constexpr REL::VariantID GetTravelLocationRefr{ 0, 2225515 };
+		inline constexpr REL::VariantID GetTravelLocationRefr{ 501825, 2225515 };
 	}
 
 	namespace PipboyMapMenu
@@ -2059,8 +2047,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID HasLOSToTarget{ 449775, 2233004 };
 		inline constexpr REL::VariantID TryUnlockObject{ 1341574, 2233040 };
 		inline constexpr REL::VariantID EnableRadio{ 741937, 2233211 };
-		inline constexpr REL::VariantID UpdateAnimation{ 0, 2233005 };
-		inline constexpr REL::VariantID HandlePositionPlayerRequest{ 0, 2232905 };
+		inline constexpr REL::VariantID UpdateAnimation{ 740864, 2233005 };
+		inline constexpr REL::VariantID HandlePositionPlayerRequest{ 146861, 2232905 };
 	}
 
 	namespace PlayerControls
@@ -2262,7 +2250,7 @@ namespace RE::ID
 	namespace TES
 	{
 		inline constexpr REL::VariantID Singleton{ 1194835, 2698044 };
-		inline constexpr REL::VariantID UpdateMultiBoundVisibility{ 0, 2192134 };
+		inline constexpr REL::VariantID UpdateMultiBoundVisibility{ 1281872, 2192134 };
 	}
 
 	namespace TESActivateEvent
@@ -2685,7 +2673,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID DefaultWater{ 289864, 2691845, 4799138 };
 		inline constexpr REL::VariantID GetSkyCell{ 903020, 2202924 };
-		inline constexpr REL::VariantID AdjustMapMarkerCoord{ 0, 2202880 };
+		inline constexpr REL::VariantID AdjustMapMarkerCoord{ 896772, 2202880 };
 	}
 
 	namespace UI
