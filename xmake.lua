@@ -33,6 +33,7 @@ target("commonlibf4", function()
     -- add header files
     add_includedirs("include", { public = true })
     add_headerfiles(
+        "include/(DearModdingUI/**.h)",
         "include/(F4SE/**.h)",
         "include/(RE/**.h)",
         "include/(Scaleform/**.h)"
