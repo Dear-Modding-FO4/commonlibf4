@@ -100,6 +100,21 @@ typedef uint32_t DMUI_StatusSeverity;
 #define DMUI_STATUS_SEVERITY_WARNING 2u
 #define DMUI_STATUS_SEVERITY_ERROR 3u
 
+typedef uint32_t DMUI_FontRole;
+
+#define DMUI_FONT_ROLE_BODY 0u
+#define DMUI_FONT_ROLE_TITLE 1u
+#define DMUI_FONT_ROLE_HEADING 2u
+#define DMUI_FONT_ROLE_SUBHEADING 3u
+#define DMUI_FONT_ROLE_SUBTEXT 4u
+#define DMUI_FONT_ROLE_COUNT 5u
+
+typedef uint32_t DMUI_SettingsAction;
+
+#define DMUI_SETTINGS_ACTION_RESET 0u
+#define DMUI_SETTINGS_ACTION_REVERT 1u
+#define DMUI_SETTINGS_ACTION_APPLY 2u
+
 typedef uint32_t DMUI_ClientCapabilities;
 
 #define DMUI_CLIENT_CAPABILITY_NONE 0u
@@ -235,6 +250,42 @@ typedef struct DMUI_HostStateInfo
 	uint32_t demandedOverlayCount;
 } DMUI_HostStateInfo;
 
+typedef struct DMUI_Vec2
+{
+	float x;
+	float y;
+} DMUI_Vec2;
+
+typedef struct DMUI_Vec4
+{
+	float x;
+	float y;
+	float z;
+	float w;
+} DMUI_Vec4;
+
+typedef struct DMUI_ThemeColors
+{
+	uint32_t structSize;
+	DMUI_Vec4 success;
+	DMUI_Vec4 warning;
+	DMUI_Vec4 error;
+	DMUI_Vec4 info;
+	DMUI_Vec4 muted;
+	DMUI_Vec4 accent;
+	DMUI_Vec4 accentMuted;
+	DMUI_Vec4 statusDisable;
+	DMUI_Vec4 statusError;
+	DMUI_Vec4 statusWarning;
+	DMUI_Vec4 statusRestartNeeded;
+	DMUI_Vec4 statusCurrentHotkey;
+	DMUI_Vec4 statusSuccess;
+	DMUI_Vec4 statusInfo;
+} DMUI_ThemeColors;
+
+#define DMUI_THEME_COLORS_1_0_SIZE \
+	((uint32_t)(offsetof(DMUI_ThemeColors, statusInfo) + sizeof(DMUI_Vec4)))
+
 typedef DMUI_Result (DMUI_CALL *DMUI_RegisterClientFn)(
 	const DMUI_ClientDescriptor* descriptor,
 	DMUI_ClientHandle* client) DMUI_NOEXCEPT;
@@ -266,6 +317,45 @@ typedef DMUI_Result (DMUI_CALL *DMUI_SetStatusFn)(
 	DMUI_ClientHandle client,
 	DMUI_StatusSeverity severity,
 	const char* message) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_GetThemeColorsFn)(
+	DMUI_ClientHandle client,
+	DMUI_ThemeColors* colors) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_PushFontFn)(
+	DMUI_ClientHandle client,
+	DMUI_FontRole role) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_PopFontFn)(
+	DMUI_ClientHandle client) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_DrawSectionHeaderFn)(
+	DMUI_ClientHandle client,
+	const char* text,
+	uint32_t glyph) DMUI_NOEXCEPT;
+// buffer must be NUL-terminated within capacity bytes, and capacity zero is invalid.
+// On success, buffer stays NUL-terminated and output longer than capacity is truncated to fit.
+// changed is set when the edited text differs from the input, including a truncated edit.
+typedef DMUI_Result (DMUI_CALL *DMUI_DrawSearchInputFn)(
+	DMUI_ClientHandle client,
+	const char* id,
+	const char* hint,
+	char* buffer,
+	size_t capacity,
+	uint32_t* changed) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_DrawCollapsingSectionHeaderFn)(
+	DMUI_ClientHandle client,
+	const char* key,
+	const char* text,
+	uint32_t glyph,
+	uint32_t* expanded,
+	size_t count) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_DrawSettingsActionButtonFn)(
+	DMUI_ClientHandle client,
+	const char* id,
+	DMUI_Vec2 origin,
+	DMUI_Vec2 size,
+	DMUI_SettingsAction action,
+	const char* fallbackLabel,
+	const char* tooltip,
+	uint32_t enabled,
+	uint32_t* pressed) DMUI_NOEXCEPT;
 
 typedef struct DMUI_HostAPI
 {
@@ -282,6 +372,13 @@ typedef struct DMUI_HostAPI
 	DMUI_AttachSwapChainFn attachSwapChain;
 	DMUI_RegisterActionFn registerAction;
 	DMUI_SetStatusFn setStatus;
+	DMUI_GetThemeColorsFn getThemeColors;
+	DMUI_PushFontFn pushFont;
+	DMUI_PopFontFn popFont;
+	DMUI_DrawSectionHeaderFn drawSectionHeader;
+	DMUI_DrawSearchInputFn drawSearchInput;
+	DMUI_DrawCollapsingSectionHeaderFn drawCollapsingSectionHeader;
+	DMUI_DrawSettingsActionButtonFn drawSettingsActionButton;
 } DMUI_HostAPI;
 
 #define DMUI_HOST_API_ATTACH_SWAP_CHAIN_SIZE \
@@ -290,6 +387,20 @@ typedef struct DMUI_HostAPI
 	((uint32_t)(offsetof(DMUI_HostAPI, registerAction) + sizeof(DMUI_RegisterActionFn)))
 #define DMUI_HOST_API_SET_STATUS_SIZE \
 	((uint32_t)(offsetof(DMUI_HostAPI, setStatus) + sizeof(DMUI_SetStatusFn)))
+#define DMUI_HOST_API_GET_THEME_COLORS_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, getThemeColors) + sizeof(DMUI_GetThemeColorsFn)))
+#define DMUI_HOST_API_PUSH_FONT_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, pushFont) + sizeof(DMUI_PushFontFn)))
+#define DMUI_HOST_API_POP_FONT_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, popFont) + sizeof(DMUI_PopFontFn)))
+#define DMUI_HOST_API_DRAW_SECTION_HEADER_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, drawSectionHeader) + sizeof(DMUI_DrawSectionHeaderFn)))
+#define DMUI_HOST_API_DRAW_SEARCH_INPUT_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, drawSearchInput) + sizeof(DMUI_DrawSearchInputFn)))
+#define DMUI_HOST_API_DRAW_COLLAPSING_SECTION_HEADER_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, drawCollapsingSectionHeader) + sizeof(DMUI_DrawCollapsingSectionHeaderFn)))
+#define DMUI_HOST_API_DRAW_SETTINGS_ACTION_BUTTON_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, drawSettingsActionButton) + sizeof(DMUI_DrawSettingsActionButtonFn)))
 
 #if defined(_MSC_VER)
 #pragma pack(pop)

@@ -14,6 +14,7 @@
 
 #include <Windows.h>
 
+#include <algorithm>
 #include <atomic>
 #include <concepts>
 #include <cstddef>
@@ -230,6 +231,176 @@ namespace dmui
 			return lastResult_ == DMUI_RESULT_OK;
 		}
 
+		[[nodiscard]] std::optional<DMUI_ThemeColors> GetThemeColors() noexcept
+		{
+			if (!IsConnected())
+			{
+				Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+				return std::nullopt;
+			}
+			if (api_->structSize < DMUI_HOST_API_GET_THEME_COLORS_SIZE || !api_->getThemeColors)
+			{
+				Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+				return std::nullopt;
+			}
+
+			DMUI_ThemeColors colors{};
+			colors.structSize = sizeof(colors);
+			lastResult_ = api_->getThemeColors(clientHandle_, &colors);
+			if (lastResult_ != DMUI_RESULT_OK)
+				return std::nullopt;
+			return colors;
+		}
+
+		[[nodiscard]] bool PushFont(DMUI_FontRole a_role) noexcept
+		{
+			if (!IsConnected())
+				return Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+			if (api_->structSize < DMUI_HOST_API_PUSH_FONT_SIZE || !api_->pushFont)
+				return Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+
+			lastResult_ = api_->pushFont(clientHandle_, a_role);
+			return lastResult_ == DMUI_RESULT_OK;
+		}
+
+		[[nodiscard]] bool PopFont() noexcept
+		{
+			if (!IsConnected())
+				return Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+			if (api_->structSize < DMUI_HOST_API_POP_FONT_SIZE || !api_->popFont)
+				return Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+
+			lastResult_ = api_->popFont(clientHandle_);
+			return lastResult_ == DMUI_RESULT_OK;
+		}
+
+		[[nodiscard]] bool DrawSectionHeader(const char* a_text, char32_t a_glyph = 0) noexcept
+		{
+			if (!IsConnected())
+				return Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+			if (api_->structSize < DMUI_HOST_API_DRAW_SECTION_HEADER_SIZE ||
+				!api_->drawSectionHeader)
+				return Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+
+			lastResult_ = api_->drawSectionHeader(
+				clientHandle_,
+				a_text,
+				static_cast<uint32_t>(a_glyph));
+			return lastResult_ == DMUI_RESULT_OK;
+		}
+
+		[[nodiscard]] std::optional<bool> DrawSearchInput(
+			const char* a_id,
+			const char* a_hint,
+			std::string& a_search) noexcept
+		{
+			if (!IsConnected())
+			{
+				Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+				return std::nullopt;
+			}
+			if (api_->structSize < DMUI_HOST_API_DRAW_SEARCH_INPUT_SIZE ||
+				!api_->drawSearchInput)
+			{
+				Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+				return std::nullopt;
+			}
+
+			try
+			{
+				const auto capacity = a_search.size() < 255 ? 256 : a_search.size() + 1;
+				std::vector<char> buffer(capacity);
+				std::copy(a_search.begin(), a_search.end(), buffer.begin());
+				uint32_t changed{};
+				lastResult_ = api_->drawSearchInput(
+					clientHandle_,
+					a_id,
+					a_hint,
+					buffer.data(),
+					buffer.size(),
+					&changed);
+				if (lastResult_ != DMUI_RESULT_OK)
+					return std::nullopt;
+				if (changed)
+					a_search.assign(buffer.data());
+				return changed != 0;
+			}
+			catch (const std::bad_alloc&)
+			{
+				Fail(DMUI_RESULT_RESOURCE_EXHAUSTED);
+				return std::nullopt;
+			}
+			catch (...)
+			{
+				Fail(DMUI_RESULT_CALLBACK_FAILED);
+				return std::nullopt;
+			}
+		}
+
+		[[nodiscard]] bool DrawCollapsingSectionHeader(
+			const char* a_key,
+			const char* a_text,
+			char32_t a_glyph,
+			bool& a_expanded,
+			size_t a_count) noexcept
+		{
+			if (!IsConnected())
+				return Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+			if (api_->structSize < DMUI_HOST_API_DRAW_COLLAPSING_SECTION_HEADER_SIZE ||
+				!api_->drawCollapsingSectionHeader)
+				return Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+
+			uint32_t expanded = a_expanded ? 1u : 0u;
+			lastResult_ = api_->drawCollapsingSectionHeader(
+				clientHandle_,
+				a_key,
+				a_text,
+				static_cast<uint32_t>(a_glyph),
+				&expanded,
+				a_count);
+			if (lastResult_ != DMUI_RESULT_OK)
+				return false;
+			a_expanded = expanded != 0;
+			return true;
+		}
+
+		[[nodiscard]] std::optional<bool> DrawSettingsActionButton(
+			const char* a_id,
+			const ImVec2& a_origin,
+			const ImVec2& a_size,
+			DMUI_SettingsAction a_action,
+			const char* a_fallbackLabel,
+			const char* a_tooltip,
+			bool a_enabled) noexcept
+		{
+			if (!IsConnected())
+			{
+				Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+				return std::nullopt;
+			}
+			if (api_->structSize < DMUI_HOST_API_DRAW_SETTINGS_ACTION_BUTTON_SIZE ||
+				!api_->drawSettingsActionButton)
+			{
+				Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+				return std::nullopt;
+			}
+
+			uint32_t pressed{};
+			lastResult_ = api_->drawSettingsActionButton(
+				clientHandle_,
+				a_id,
+				{ a_origin.x, a_origin.y },
+				{ a_size.x, a_size.y },
+				a_action,
+				a_fallbackLabel,
+				a_tooltip,
+				a_enabled ? 1u : 0u,
+				&pressed);
+			if (lastResult_ != DMUI_RESULT_OK)
+				return std::nullopt;
+			return pressed != 0;
+		}
+
 		[[nodiscard]] std::optional<bool> IsMenuVisible() noexcept
 		{
 			if (!api_)
@@ -416,4 +587,33 @@ namespace dmui
 		std::deque<PageRegistration> pages_;
 		std::deque<ActionRegistration> actions_;
 	};
+
+	class FontGuard
+	{
+	public:
+		FontGuard(Client& a_client, DMUI_FontRole a_role) noexcept :
+			m_client(&a_client),
+			m_pushed(a_client.PushFont(a_role))
+		{}
+
+		~FontGuard() noexcept
+		{
+			if (m_pushed)
+				(void)m_client->PopFont();
+		}
+
+		FontGuard(const FontGuard&) = delete;
+		FontGuard(FontGuard&&) = delete;
+		FontGuard& operator=(const FontGuard&) = delete;
+		FontGuard& operator=(FontGuard&&) = delete;
+
+	private:
+		Client* m_client;
+		bool m_pushed;
+	};
+
+	[[nodiscard]] constexpr ImVec4 ToImVec4(DMUI_Vec4 a_color) noexcept
+	{
+		return { a_color.x, a_color.y, a_color.z, a_color.w };
+	}
 }
