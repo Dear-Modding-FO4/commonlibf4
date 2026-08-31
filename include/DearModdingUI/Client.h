@@ -14,6 +14,13 @@
 
 #include <Windows.h>
 
+// Windows macros that collide with REX::W32 symbols in consuming plugins.
+#undef ERROR
+#undef MEM_RELEASE
+#undef MAX_PATH
+#undef PAGE_EXECUTE_READWRITE
+#undef IMAGE_DOS_SIGNATURE
+
 #include <algorithm>
 #include <atomic>
 #include <concepts>
