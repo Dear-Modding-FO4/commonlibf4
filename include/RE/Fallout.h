@@ -410,6 +410,7 @@
 #include "RE/B/BSPrecomputedNavmeshInfoPathMap.h"
 #include "RE/B/BSRandom.h"
 #include "RE/B/BSReloadShaderI.h"
+#include "RE/B/BSRenderPass.h"
 #include "RE/B/BSResource.h"
 #include "RE/B/BSResourceNiBinaryStream.h"
 #include "RE/B/BSResourceStreamParser.h"
