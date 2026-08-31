@@ -356,6 +356,15 @@ typedef DMUI_Result (DMUI_CALL *DMUI_DrawSettingsActionButtonFn)(
 	const char* tooltip,
 	uint32_t enabled,
 	uint32_t* pressed) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_SettingsActionButtonWidthFn)(
+	DMUI_ClientHandle client,
+	DMUI_SettingsAction action,
+	const char* fallbackLabel,
+	float buttonExtent,
+	float* width) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_SettingsActionButtonExtentFn)(
+	DMUI_ClientHandle client,
+	float* extent) DMUI_NOEXCEPT;
 
 typedef struct DMUI_HostAPI
 {
@@ -379,8 +388,12 @@ typedef struct DMUI_HostAPI
 	DMUI_DrawSearchInputFn drawSearchInput;
 	DMUI_DrawCollapsingSectionHeaderFn drawCollapsingSectionHeader;
 	DMUI_DrawSettingsActionButtonFn drawSettingsActionButton;
+	DMUI_SettingsActionButtonWidthFn settingsActionButtonWidth;
+	DMUI_SettingsActionButtonExtentFn settingsActionButtonExtent;
 } DMUI_HostAPI;
 
+#define DMUI_HOST_API_SELECT_PAGE_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, selectPage) + sizeof(DMUI_SelectPageFn)))
 #define DMUI_HOST_API_ATTACH_SWAP_CHAIN_SIZE \
 	((uint32_t)(offsetof(DMUI_HostAPI, attachSwapChain) + sizeof(DMUI_AttachSwapChainFn)))
 #define DMUI_HOST_API_REGISTER_ACTION_SIZE \
@@ -401,6 +414,10 @@ typedef struct DMUI_HostAPI
 	((uint32_t)(offsetof(DMUI_HostAPI, drawCollapsingSectionHeader) + sizeof(DMUI_DrawCollapsingSectionHeaderFn)))
 #define DMUI_HOST_API_DRAW_SETTINGS_ACTION_BUTTON_SIZE \
 	((uint32_t)(offsetof(DMUI_HostAPI, drawSettingsActionButton) + sizeof(DMUI_DrawSettingsActionButtonFn)))
+#define DMUI_HOST_API_SETTINGS_ACTION_BUTTON_WIDTH_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, settingsActionButtonWidth) + sizeof(DMUI_SettingsActionButtonWidthFn)))
+#define DMUI_HOST_API_SETTINGS_ACTION_BUTTON_EXTENT_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, settingsActionButtonExtent) + sizeof(DMUI_SettingsActionButtonExtentFn)))
 
 #if defined(_MSC_VER)
 #pragma pack(pop)

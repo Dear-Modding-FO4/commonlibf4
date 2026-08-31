@@ -112,7 +112,7 @@ namespace dmui
 
 		template <class Callable>
 			requires std::invocable<std::decay_t<Callable>&>
-		bool AddPage(
+		[[nodiscard]] std::optional<DMUI_PageHandle> AddPage(
 			const char* a_id,
 			const char* a_displayName,
 			const char* a_category,
@@ -122,13 +122,16 @@ namespace dmui
 			DMUI_PageKind a_kind = DMUI_PAGE_KIND_SETTINGS) noexcept
 		{
 			if (!CanRegisterPage())
-				return false;
+				return std::nullopt;
 
 			try
 			{
 				std::function<void()> callback{ std::forward<Callable>(a_draw) };
 				if (!callback)
-				return Fail(DMUI_RESULT_INVALID_ARGUMENT);
+				{
+					Fail(DMUI_RESULT_INVALID_ARGUMENT);
+					return std::nullopt;
+				}
 
 				pages_.push_back({ DMUI_INVALID_PAGE_HANDLE, std::move(callback) });
 				auto& registration = pages_.back();
@@ -149,19 +152,21 @@ namespace dmui
 				if (lastResult_ != DMUI_RESULT_OK)
 				{
 					pages_.pop_back();
-					return false;
+					return std::nullopt;
 				}
 
 				registration.handle = handle;
-				return true;
+				return handle;
 			}
 			catch (const std::bad_alloc&)
 			{
-				return Fail(DMUI_RESULT_RESOURCE_EXHAUSTED);
+				Fail(DMUI_RESULT_RESOURCE_EXHAUSTED);
+				return std::nullopt;
 			}
 			catch (...)
 			{
-				return Fail(DMUI_RESULT_CALLBACK_FAILED);
+				Fail(DMUI_RESULT_CALLBACK_FAILED);
+				return std::nullopt;
 			}
 		}
 
@@ -399,6 +404,67 @@ namespace dmui
 			if (lastResult_ != DMUI_RESULT_OK)
 				return std::nullopt;
 			return pressed != 0;
+		}
+
+		[[nodiscard]] std::optional<float> SettingsActionButtonWidth(
+			DMUI_SettingsAction a_action,
+			const char* a_fallbackLabel,
+			float a_buttonExtent) noexcept
+		{
+			if (!IsConnected())
+			{
+				Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+				return std::nullopt;
+			}
+			if (api_->structSize < DMUI_HOST_API_SETTINGS_ACTION_BUTTON_WIDTH_SIZE ||
+				!api_->settingsActionButtonWidth)
+			{
+				Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+				return std::nullopt;
+			}
+
+			float width{};
+			lastResult_ = api_->settingsActionButtonWidth(
+				clientHandle_,
+				a_action,
+				a_fallbackLabel,
+				a_buttonExtent,
+				&width);
+			if (lastResult_ != DMUI_RESULT_OK)
+				return std::nullopt;
+			return width;
+		}
+
+		[[nodiscard]] std::optional<float> SettingsActionButtonExtent() noexcept
+		{
+			if (!IsConnected())
+			{
+				Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+				return std::nullopt;
+			}
+			if (api_->structSize < DMUI_HOST_API_SETTINGS_ACTION_BUTTON_EXTENT_SIZE ||
+				!api_->settingsActionButtonExtent)
+			{
+				Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+				return std::nullopt;
+			}
+
+			float extent{};
+			lastResult_ = api_->settingsActionButtonExtent(clientHandle_, &extent);
+			if (lastResult_ != DMUI_RESULT_OK)
+				return std::nullopt;
+			return extent;
+		}
+
+		[[nodiscard]] bool SelectPage(DMUI_PageHandle a_page) noexcept
+		{
+			if (!IsConnected())
+				return Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+			if (api_->structSize < DMUI_HOST_API_SELECT_PAGE_SIZE || !api_->selectPage)
+				return Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+
+			lastResult_ = api_->selectPage(clientHandle_, a_page);
+			return lastResult_ == DMUI_RESULT_OK;
 		}
 
 		[[nodiscard]] std::optional<bool> IsMenuVisible() noexcept
