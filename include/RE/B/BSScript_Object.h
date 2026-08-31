@@ -4,6 +4,7 @@
 #include "RE/B/BSScript_ObjectTypeInfo.h"
 #include "RE/B/BSScript_Variable.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/M/MemoryManager.h"
 
 namespace RE
 {
@@ -46,8 +47,7 @@ namespace RE
 			Variable*                     GetProperty(const BSFixedString& a_name);
 			[[nodiscard]] const Variable* GetProperty(const BSFixedString& a_name) const;
 
-			// TODO: Figure out if F4_HEAP_REDEFINE_NEW is necessary here
-			//			F4_HEAP_REDEFINE_NEW(Object);
+			F4_HEAP_REDEFINE_NEW(Object);
 
 			// members
 			std::uint32_t                   constructed: 1;            // 00:00

@@ -19,15 +19,15 @@ namespace RE
 
 		// add
 		virtual void  Start(float a_time);                             // 28
-		virtual void  Stop();                                          // 28
-		virtual void  Update(NiUpdateData& a_updateData) = 0;          // 29
-		virtual void  SetTarget(NiObjectNET* a_target);                // 2A
-		virtual bool  IsTransformController() const { return false; }  // 2B
-		virtual bool  IsVertexController() const { return false; }     // 2C
-		virtual float ComputeScaledTime(float a_time);                 // 2D
-		virtual void  OnPreDisplay() { return; }                       // 2E
-		virtual bool  IsStreamable() const { return true; }            // 2F
-		virtual void  Start() = 0;                                     // 30
+		virtual void  Stop();                                          // 29
+		virtual void  Update(NiUpdateData& a_updateData) = 0;          // 2A
+		virtual void  SetTarget(NiObjectNET* a_target);                // 2B
+		virtual bool  IsTransformController() const { return false; }  // 2C
+		virtual bool  IsVertexController() const { return false; }     // 2D
+		virtual float ComputeScaledTime(float a_time);                 // 2E
+		virtual void  OnPreDisplay() { return; }                       // 2F
+		virtual bool  IsStreamable() const { return true; }            // 30
+		virtual bool  TargetIsRequiredType() const = 0;                // 31
 
 		// members
 		NiTFlags<std::uint16_t, NiTimeController> flags;             // 10

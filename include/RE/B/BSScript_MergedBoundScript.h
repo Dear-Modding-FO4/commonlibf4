@@ -1,13 +1,12 @@
 #pragma once
 
+#include "RE/B/BSScript_BoundScript.h"
 #include "RE/B/BSTSmartPointer.h"
 
 namespace RE
 {
 	namespace BSScript
 	{
-		class BoundScript;
-
 		class MergedBoundScript
 		{
 		public:

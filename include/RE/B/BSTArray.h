@@ -662,7 +662,34 @@ namespace RE
 		using iterator = pointer;
 		using const_iterator = const_pointer;
 
-		~BSTSmallSharedArray() { REX::FAIL("unimplemented"); }
+		BSTSmallSharedArray() noexcept = default;
+		BSTSmallSharedArray(const BSTSmallSharedArray&) = delete;
+
+		BSTSmallSharedArray(BSTSmallSharedArray&& a_rhs)  //
+			noexcept(std::is_nothrow_move_constructible_v<value_type> &&
+					 std::is_nothrow_destructible_v<value_type>)
+		{
+			move_from(a_rhs);
+		}
+
+		~BSTSmallSharedArray()  //
+			noexcept(std::is_nothrow_destructible_v<value_type>)
+		{
+			release();
+		}
+
+		BSTSmallSharedArray& operator=(const BSTSmallSharedArray&) = delete;
+
+		BSTSmallSharedArray& operator=(BSTSmallSharedArray&& a_rhs)  //
+			noexcept(std::is_nothrow_move_constructible_v<value_type> &&
+					 std::is_nothrow_destructible_v<value_type>)
+		{
+			if (this != std::addressof(a_rhs)) {
+				release();
+				move_from(a_rhs);
+			}
+			return *this;
+		}
 
 		[[nodiscard]] reference operator[](size_type a_pos) noexcept
 		{
@@ -694,11 +721,41 @@ namespace RE
 		[[nodiscard]] const_iterator end() const noexcept { return data() + size(); }
 		[[nodiscard]] const_iterator cend() const noexcept { return end(); }
 
-		[[nodiscard]] bool empty() const noexcept { return size() != 0; }
+		[[nodiscard]] bool empty() const noexcept { return size() == 0; }
 
 		[[nodiscard]] size_type size() const noexcept { return _size; }
 
 	private:
+		void move_from(BSTSmallSharedArray& a_rhs)  //
+			noexcept(std::is_nothrow_move_constructible_v<value_type> &&
+					 std::is_nothrow_destructible_v<value_type>)
+		{
+			if (a_rhs.size() > 1) {
+				heap = std::exchange(a_rhs.heap, nullptr);
+				_size = std::exchange(a_rhs._size, 0);
+			} else if (a_rhs.size() == 1) {
+				std::construct_at(std::addressof(local), std::move(a_rhs.local));
+				_size = 1;
+				std::destroy_at(std::addressof(a_rhs.local));
+				a_rhs._size = 0;
+				a_rhs.heap = nullptr;
+			}
+		}
+
+		void release()  //
+			noexcept(std::is_nothrow_destructible_v<value_type>)
+		{
+			if (size() > 1) {
+				std::destroy_n(heap, size());
+				free(heap);
+			} else if (size() == 1) {
+				std::destroy_at(std::addressof(local));
+			}
+
+			_size = 0;
+			heap = nullptr;
+		}
+
 		// members
 		std::uint32_t _size{ 0 };  // 00
 		union
@@ -707,4 +764,5 @@ namespace RE
 			value_type local;
 		};  // 08
 	};
+	static_assert(sizeof(BSTSmallSharedArray<std::uint32_t>) == 0x10);
 }

@@ -12,6 +12,7 @@
 #include "RE/B/BSScript_IVirtualMachine.h"
 #include "RE/B/BSScript_Internal_IProfilePolicy.h"
 #include "RE/B/BSScript_MergedBoundScript.h"
+#include "RE/B/BSScript_Object.h"
 #include "RE/B/BSScript_ObjectBindPolicy.h"
 #include "RE/B/BSScript_SimpleAllocMemoryPagePolicy.h"
 #include "RE/B/BSScript_Variable.h"

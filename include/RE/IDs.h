@@ -906,6 +906,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID ReplaceArray{ 445184, 2250435 };
 	}
 
+	namespace BSScript_BoundScript
+	{
+		inline constexpr REL::VariantID ClearProperties{ 1314501, 2314644 };
+	}
+
 	namespace BSScript_Internal_NativeFunctionBase
 	{
 		inline constexpr REL::VariantID Call{ 571037, 2314780 };
