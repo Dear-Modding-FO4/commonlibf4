@@ -1,24 +1,23 @@
 name: maintenance
 
-on: push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  maintenance:
+  generated-headers:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v6
 
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
+      - name: setup-python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
 
-    - name: Run clang-format
-      run: find -type f \( -name *.h -o -name *.cpp \) | xargs clang-format -style=file -i
-
-    - name: Glob files
-      run: python ${{ github.workspace }}/res/scripts/generate_headers.py
-
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: maintenance
+      - name: check generated headers
+        run: python res/scripts/generate_headers.py --check

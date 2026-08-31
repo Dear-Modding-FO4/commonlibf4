@@ -2,12 +2,13 @@
 
 #include "RE/B/BSTArray.h"
 
- namespace RE
- {
-	 class BGSSaveLoadHistory
-	 {
-	 public:	
-		 BSTArray<char*, BSTArrayHeapAllocator> Notes;
-	 };
+namespace RE
+{
+	class BGSSaveLoadHistory
+	{
+	public:
+		// members
+		BSTArray<char*, BSTArrayHeapAllocator> Notes;  // 00
+	};
 	static_assert(sizeof(BGSSaveLoadHistory) == 0x18);
- }
+}

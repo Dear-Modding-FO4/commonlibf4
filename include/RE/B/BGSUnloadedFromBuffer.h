@@ -1,15 +1,14 @@
 #pragma once
 
-#include "RE/B/BGSChangeFlags.h"
-#include "RE/B/BGSSaveGameBuffer.h"
+#include "RE/B/BGSSaveLoadBuffer.h"
 
 namespace RE
 {
 	class BGSUnloadedFormBuffer
 	{
 	public:
-		BGSSaveLoadBuffer Buffer;
+		// members
+		BGSSaveLoadBuffer Buffer;  // 00
 	};
 	static_assert(sizeof(BGSUnloadedFormBuffer) == 0x8);
-
 }
