@@ -1,3 +1,6 @@
 [submodule "lib/commonlib-shared"]
 	path = lib/commonlib-shared
 	url = https://github.com/Dear-Modding-FO4/commonlib-shared
+[submodule "lib/dearmoddingui-api"]
+	path = lib/dearmoddingui-api
+	url = https://github.com/Dear-Modding-FO4/DearModdingUI-API
