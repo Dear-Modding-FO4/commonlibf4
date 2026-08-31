@@ -42,6 +42,12 @@ namespace dmui
 		}
 	};
 
+	struct VideoMemoryInfo
+	{
+		uint64_t used{};
+		uint64_t budget{};
+	};
+
 	// IMPORTANT: Client instances must outlive the game session because DMUI v1 cannot unregister callbacks.
 	class Client
 	{
@@ -223,6 +229,87 @@ namespace dmui
 			{
 				return Fail(DMUI_RESULT_CALLBACK_FAILED);
 			}
+		}
+
+		template <class Callable>
+			requires std::invocable<std::decay_t<Callable>&>
+		[[nodiscard]] std::optional<DMUI_FrameObserverHandle> AddFrameObserver(
+			Callable&& a_callback) noexcept
+		{
+			if (!IsConnected())
+			{
+				Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+				return std::nullopt;
+			}
+			if (api_->structSize < DMUI_HOST_API_REGISTER_FRAME_OBSERVER_SIZE ||
+				!api_->registerFrameObserver)
+			{
+				Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+				return std::nullopt;
+			}
+
+			try
+			{
+				std::function<void()> callback{ std::forward<Callable>(a_callback) };
+				if (!callback)
+				{
+					Fail(DMUI_RESULT_INVALID_ARGUMENT);
+					return std::nullopt;
+				}
+
+				frameObservers_.push_back(
+					{ DMUI_INVALID_FRAME_OBSERVER_HANDLE, std::move(callback) });
+				auto& registration = frameObservers_.back();
+
+				DMUI_FrameObserverDescriptor descriptor{};
+				descriptor.structSize = sizeof(descriptor);
+				descriptor.callback = &Invoke;
+				descriptor.userData = &registration.callback;
+
+				DMUI_FrameObserverHandle handle{ DMUI_INVALID_FRAME_OBSERVER_HANDLE };
+				lastResult_ =
+					api_->registerFrameObserver(clientHandle_, &descriptor, &handle);
+				if (lastResult_ != DMUI_RESULT_OK)
+				{
+					frameObservers_.pop_back();
+					return std::nullopt;
+				}
+
+				registration.handle = handle;
+				return handle;
+			}
+			catch (const std::bad_alloc&)
+			{
+				Fail(DMUI_RESULT_RESOURCE_EXHAUSTED);
+				return std::nullopt;
+			}
+			catch (...)
+			{
+				Fail(DMUI_RESULT_CALLBACK_FAILED);
+				return std::nullopt;
+			}
+		}
+
+		[[nodiscard]] std::optional<VideoMemoryInfo> QueryVideoMemory() noexcept
+		{
+			if (!IsConnected())
+			{
+				Fail(DMUI_RESULT_CLIENT_NOT_FOUND);
+				return std::nullopt;
+			}
+			if (api_->structSize < DMUI_HOST_API_QUERY_VIDEO_MEMORY_SIZE ||
+				!api_->queryVideoMemory)
+			{
+				Fail(DMUI_RESULT_UNSUPPORTED_ABI);
+				return std::nullopt;
+			}
+
+			VideoMemoryInfo info{};
+			lastResult_ =
+				api_->queryVideoMemory(clientHandle_, &info.used, &info.budget);
+			if (lastResult_ != DMUI_RESULT_OK)
+				return std::nullopt;
+			return info;
 		}
 
 		bool SetStatus(DMUI_StatusSeverity a_severity, const char* a_message) noexcept
@@ -544,6 +631,12 @@ namespace dmui
 			std::function<void()> callback;
 		};
 
+		struct FrameObserverRegistration
+		{
+			DMUI_FrameObserverHandle handle;
+			std::function<void()> callback;
+		};
+
 		static constexpr uint32_t kRegisterClientSize =
 			static_cast<uint32_t>(offsetof(DMUI_HostAPI, registerClient) + sizeof(DMUI_RegisterClientFn));
 		static constexpr uint32_t kRegisterPageSize =
@@ -652,6 +745,7 @@ namespace dmui
 		bool hostPresent_{};
 		std::deque<PageRegistration> pages_;
 		std::deque<ActionRegistration> actions_;
+		std::deque<FrameObserverRegistration> frameObservers_;
 	};
 
 	class FontGuard

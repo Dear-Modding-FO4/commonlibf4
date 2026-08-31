@@ -123,10 +123,12 @@ typedef uint32_t DMUI_ClientCapabilities;
 typedef uint64_t DMUI_ClientHandle;
 typedef uint64_t DMUI_PageHandle;
 typedef uint64_t DMUI_ActionHandle;
+typedef uint64_t DMUI_FrameObserverHandle;
 
 #define DMUI_INVALID_CLIENT_HANDLE ((DMUI_ClientHandle)0u)
 #define DMUI_INVALID_PAGE_HANDLE ((DMUI_PageHandle)0u)
 #define DMUI_INVALID_ACTION_HANDLE ((DMUI_ActionHandle)0u)
+#define DMUI_INVALID_FRAME_OBSERVER_HANDLE ((DMUI_FrameObserverHandle)0u)
 
 #if defined(_MSC_VER)
 #pragma pack(push, 8)
@@ -199,6 +201,8 @@ typedef void (DMUI_CALL *DMUI_HostUnavailableCallback)(
 	void* userData);
 typedef void (DMUI_CALL *DMUI_PageDrawCallback)(void* userData);
 typedef void (DMUI_CALL *DMUI_ActionCallback)(void* userData);
+// Frame callbacks run on the render thread and cannot be unregistered in DMUI v1.
+typedef void (DMUI_CALL *DMUI_FrameCallback)(void* userData);
 
 typedef struct DMUI_ClientDescriptor
 {
@@ -238,6 +242,13 @@ typedef struct DMUI_ActionDescriptor
 	DMUI_ActionCallback callback;
 	void* userData;
 } DMUI_ActionDescriptor;
+
+typedef struct DMUI_FrameObserverDescriptor
+{
+	uint32_t structSize;
+	DMUI_FrameCallback callback;
+	void* userData;
+} DMUI_FrameObserverDescriptor;
 
 typedef struct DMUI_HostStateInfo
 {
@@ -365,6 +376,14 @@ typedef DMUI_Result (DMUI_CALL *DMUI_SettingsActionButtonWidthFn)(
 typedef DMUI_Result (DMUI_CALL *DMUI_SettingsActionButtonExtentFn)(
 	DMUI_ClientHandle client,
 	float* extent) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_RegisterFrameObserverFn)(
+	DMUI_ClientHandle client,
+	const DMUI_FrameObserverDescriptor* descriptor,
+	DMUI_FrameObserverHandle* observer) DMUI_NOEXCEPT;
+typedef DMUI_Result (DMUI_CALL *DMUI_QueryVideoMemoryFn)(
+	DMUI_ClientHandle client,
+	uint64_t* used,
+	uint64_t* budget) DMUI_NOEXCEPT;
 
 typedef struct DMUI_HostAPI
 {
@@ -390,6 +409,8 @@ typedef struct DMUI_HostAPI
 	DMUI_DrawSettingsActionButtonFn drawSettingsActionButton;
 	DMUI_SettingsActionButtonWidthFn settingsActionButtonWidth;
 	DMUI_SettingsActionButtonExtentFn settingsActionButtonExtent;
+	DMUI_RegisterFrameObserverFn registerFrameObserver;
+	DMUI_QueryVideoMemoryFn queryVideoMemory;
 } DMUI_HostAPI;
 
 #define DMUI_HOST_API_SELECT_PAGE_SIZE \
@@ -418,6 +439,10 @@ typedef struct DMUI_HostAPI
 	((uint32_t)(offsetof(DMUI_HostAPI, settingsActionButtonWidth) + sizeof(DMUI_SettingsActionButtonWidthFn)))
 #define DMUI_HOST_API_SETTINGS_ACTION_BUTTON_EXTENT_SIZE \
 	((uint32_t)(offsetof(DMUI_HostAPI, settingsActionButtonExtent) + sizeof(DMUI_SettingsActionButtonExtentFn)))
+#define DMUI_HOST_API_REGISTER_FRAME_OBSERVER_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, registerFrameObserver) + sizeof(DMUI_RegisterFrameObserverFn)))
+#define DMUI_HOST_API_QUERY_VIDEO_MEMORY_SIZE \
+	((uint32_t)(offsetof(DMUI_HostAPI, queryVideoMemory) + sizeof(DMUI_QueryVideoMemoryFn)))
 
 #if defined(_MSC_VER)
 #pragma pack(pop)
