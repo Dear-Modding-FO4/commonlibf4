@@ -10,6 +10,7 @@
 #include "RE/N/NiRect.h"
 #include "RE/N/NiTexture.h"
 
+#include "REX/LOG.h"
 #include "REX/W32/D3D11.h"
 
 namespace RE
@@ -819,6 +820,60 @@ namespace RE
 				return func(this, a_enableDynamicResolution);
 			}
 
+			[[nodiscard]] DepthStencilTargetProperties& GetDepthStencilTargetProperties(std::size_t a_index) noexcept
+			{
+				assert(a_index < 12);
+				const auto offsets = GetRenderTargetOffsets();
+				return GetRuntimeField<DepthStencilTargetProperties>(offsets.depthStencilTargetData + (offsets.depthStencilTargetStride * a_index));
+			}
+
+			[[nodiscard]] const DepthStencilTargetProperties& GetDepthStencilTargetProperties(std::size_t a_index) const noexcept
+			{
+				assert(a_index < 12);
+				const auto offsets = GetRenderTargetOffsets();
+				return GetRuntimeField<DepthStencilTargetProperties>(offsets.depthStencilTargetData + (offsets.depthStencilTargetStride * a_index));
+			}
+
+			[[nodiscard]] CubeMapRenderTargetProperties& GetCubeMapRenderTargetProperties(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<CubeMapRenderTargetProperties>(GetRenderTargetOffsets().cubeMapRenderTargetData + (sizeof(CubeMapRenderTargetProperties) * a_logicalID));
+			}
+
+			[[nodiscard]] const CubeMapRenderTargetProperties& GetCubeMapRenderTargetProperties(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<CubeMapRenderTargetProperties>(GetRenderTargetOffsets().cubeMapRenderTargetData + (sizeof(CubeMapRenderTargetProperties) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetCubeMapRenderTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().cubeMapRenderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetCubeMapRenderTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().cubeMapRenderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] CubeMapRenderTarget& GetCubeMapRenderTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetCubeMapRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->cubeMapRenderTargets));
+				return rendererData->cubeMapRenderTargets[platformID];
+			}
+
+			[[nodiscard]] const CubeMapRenderTarget& GetCubeMapRenderTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetCubeMapRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->cubeMapRenderTargets));
+				return rendererData->cubeMapRenderTargets[platformID];
+			}
+
 			[[nodiscard]] float GetDynamicWidthRatio() const noexcept
 			{
 				return GetRuntimeField<float>(GetDynamicResolutionOffsets().widthRatio);
@@ -843,12 +898,41 @@ namespace RE
 			}
 
 		private:
+			struct RenderTargetOffsets
+			{
+				std::size_t depthStencilTargetData;
+				std::size_t depthStencilTargetStride;
+				std::size_t cubeMapRenderTargetData;
+				std::size_t cubeMapRenderTargetID;
+			};
+
 			struct DynamicResolutionOffsets
 			{
 				std::size_t widthRatio;
 				std::size_t heightRatio;
 				std::size_t isActivated;
 			};
+
+			[[nodiscard]] static RenderTargetOffsets GetRenderTargetOffsets() noexcept
+			{
+				constexpr RenderTargetOffsets og{ 0xC80, 0x18, 0xDA0, 0xF84 };
+				constexpr RenderTargetOffsets ngae{ 0xC80, 0x1C, 0xDD0, 0xFB4 };
+				if (REX::FModule::IsRuntimeOG()) {
+					return og;
+				}
+				if (REX::FModule::IsRuntimeAE()) {
+					return ngae;
+				}
+
+				constexpr REL::Version supportedNGVersion{ 1, 10, 984, 0 };
+				static const auto      version = REX::FModule::GetExecutingModule().GetFileVersion();
+				if (version == supportedNGVersion) {
+					return ngae;
+				}
+
+				REX::FAIL("Unverified RenderTargetManager layout for Fallout 4 {}.", version);
+				std::terminate();
+			}
 
 			[[nodiscard]] static DynamicResolutionOffsets GetDynamicResolutionOffsets() noexcept
 			{
@@ -872,14 +956,13 @@ namespace RE
 
 		public:
 			// members
-			RenderTargetProperties        renderTargetData[100];       // 000
-			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
-			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
-			std::byte                     padDC4[0x30];
-			std::uint32_t                 renderTargetID[100];       // DC4
-			std::uint32_t                 depthStencilTargetID[12];  // F54
-			std::uint32_t                 cubeMapRenderTargetID[1];  // F84
-			// OG layout; use the accessors above for runtime-independent dynamic-resolution fields.
+			RenderTargetProperties renderTargetData[100];  // 000
+			// OG-only layout from this point; use matching accessors across runtimes.
+			DepthStencilTargetProperties  depthStencilTargetData[12];                     // C80
+			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];                     // DA0
+			std::uint32_t                 renderTargetID[100];                            // DC4
+			std::uint32_t                 depthStencilTargetID[12];                       // F54
+			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
 			float                         dynamicWidthRatio;                              // F88
 			float                         dynamicHeightRatio;                             // F8C
 			float                         lowestWidthRatio;                               // F90
@@ -897,7 +980,12 @@ namespace RE
 			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;                      // FB4
 			Create_T                      create;                                         // FB8
 		};
-		static_assert(sizeof(RenderTargetManager) == 0xFF0);
+		static_assert(offsetof(RenderTargetManager, renderTargetData) == 0x000);
+		static_assert(offsetof(RenderTargetManager, depthStencilTargetData) == 0xC80);
+		static_assert(offsetof(RenderTargetManager, cubeMapRenderTargetData) == 0xDA0);
+		static_assert(offsetof(RenderTargetManager, renderTargetID) == 0xDC4);
+		static_assert(offsetof(RenderTargetManager, depthStencilTargetID) == 0xF54);
+		static_assert(offsetof(RenderTargetManager, cubeMapRenderTargetID) == 0xF84);
 
 		class OcclusionQuery
 		{
