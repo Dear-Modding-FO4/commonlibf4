@@ -16,37 +16,32 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::Precipitation };
 		static constexpr auto VTABLE{ VTABLE::Precipitation };
 
-		// Occlusion render context, constructed unconditionally by the Precipitation
-		// constructor rather than when precipitation starts. Its own constructor allocates
-		// the culling process, the occlusion camera, and a dedicated accumulator whose
-		// render mode is 14; its destructor releases camera and accumulator by refcount and
-		// the culling process virtually.
 		struct OcclusionMapData
 		{
 			OcclusionMapData();
 
 			// members
-			std::byte                      field_0x0[0x40];  // 00 uninitialized; unread by every Precipitation method
+			std::byte                      field_0x0[0x40];  // 00 - unused
 			NiPointer<NiCamera>            camera;           // 40
-			NiPointer<BSShaderAccumulator> accumulator;      // 48 render mode 14
-			std::byte                      field_0x50[0x8];  // 50 uninitialized; unread by every Precipitation method
-			BSCullingProcess*              cullingProcess;   // 58 owning
+			NiPointer<BSShaderAccumulator> accumulator;      // 48 - render mode 14
+			std::byte                      field_0x50[0x8];  // 50 - unused
+			BSCullingProcess*              cullingProcess;   // 58 - owning
 		};
 		static_assert(sizeof(OcclusionMapData) == 0x60);
 
 		virtual ~Precipitation();
 
 		// members
-		std::byte             field_0x8[0x8];              // 08 uninitialized; unread by every Precipitation method
+		std::byte             field_0x8[0x8];              // 08 - unused
 		OcclusionMapData      occlusionData;               // 10
 		BSFixedString         wetnessEnvMap;               // 70
 		std::byte             wetnessEnvMapTexture[0x80 - 0x78];  // 78 - BSResource::RHandleType<...NiTexture...>
 		NiPointer<BSGeometry> precipParticleGeometry;      // 80
 		NiPointer<BSGeometry> prevPrecipParticleGeometry;  // 88
-		float                 precipUpdateValue;           // 90 constructed 4096.0f
-		float                 precipFadeScale;             // 94 constructed 1.0f
-		float                 prevPrecipFade;              // 98 constructed 1.0f
-		float                 prevPrecipOcclusion;         // 9C constructed 0.0f
+		float                 precipUpdateValue;           // 90 - constructed 4096.0f
+		float                 precipFadeScale;             // 94 - constructed 1.0f
+		float                 prevPrecipFade;              // 98 - constructed 1.0f
+		float                 prevPrecipOcclusion;         // 9C - constructed 0.0f
 	};
 	static_assert(sizeof(Precipitation) == 0xA0);
 }
