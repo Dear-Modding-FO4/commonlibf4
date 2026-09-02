@@ -1247,6 +1247,7 @@
 #include "RE/P/PowerArmorLightData.h"
 #include "RE/P/PowerArmorModMenu.h"
 #include "RE/P/PowerUtils.h"
+#include "RE/P/Precipitation.h"
 #include "RE/P/PrecomputedNavmeshInfoPathMap.h"
 #include "RE/P/ProcessLists.h"
 #include "RE/P/Projectile.h"
