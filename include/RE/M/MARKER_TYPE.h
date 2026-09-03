@@ -52,7 +52,7 @@ namespace RE
 		kShipwreck = 0x2D,
 		kSubmarine = 0x2E,
 		kSwanPond = 0x2F,
-		kSynthHead = 0x0,
+		kSynthHead = 0x30,
 		kTown = 0x31,
 		kBOS = 0x32,
 		kBrownstone = 0x33,
