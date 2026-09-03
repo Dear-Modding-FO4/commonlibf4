@@ -846,6 +846,30 @@ namespace RE
 				return GetRuntimeField<CubeMapRenderTargetProperties>(GetRenderTargetOffsets().cubeMapRenderTargetData + (sizeof(CubeMapRenderTargetProperties) * a_logicalID));
 			}
 
+			[[nodiscard]] std::uint32_t& GetRenderTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 100);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().renderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetRenderTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 100);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().renderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetDepthStencilTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 12);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().depthStencilTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetDepthStencilTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 12);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().depthStencilTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
 			[[nodiscard]] std::uint32_t& GetCubeMapRenderTargetPlatformID(std::size_t a_logicalID) noexcept
 			{
 				assert(a_logicalID < 1);
@@ -856,6 +880,38 @@ namespace RE
 			{
 				assert(a_logicalID < 1);
 				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().cubeMapRenderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] RenderTarget& GetRenderTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->renderTargets));
+				return rendererData->renderTargets[platformID];
+			}
+
+			[[nodiscard]] const RenderTarget& GetRenderTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->renderTargets));
+				return rendererData->renderTargets[platformID];
+			}
+
+			[[nodiscard]] DepthStencilTarget& GetDepthStencilTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetDepthStencilTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->depthStencilTargets));
+				return rendererData->depthStencilTargets[platformID];
+			}
+
+			[[nodiscard]] const DepthStencilTarget& GetDepthStencilTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetDepthStencilTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->depthStencilTargets));
+				return rendererData->depthStencilTargets[platformID];
 			}
 
 			[[nodiscard]] CubeMapRenderTarget& GetCubeMapRenderTarget(std::size_t a_logicalID) noexcept
@@ -903,6 +959,8 @@ namespace RE
 				std::size_t depthStencilTargetData;
 				std::size_t depthStencilTargetStride;
 				std::size_t cubeMapRenderTargetData;
+				std::size_t renderTargetID;
+				std::size_t depthStencilTargetID;
 				std::size_t cubeMapRenderTargetID;
 			};
 
@@ -915,8 +973,8 @@ namespace RE
 
 			[[nodiscard]] static RenderTargetOffsets GetRenderTargetOffsets() noexcept
 			{
-				constexpr RenderTargetOffsets og{ 0xC80, 0x18, 0xDA0, 0xF84 };
-				constexpr RenderTargetOffsets ngae{ 0xC80, 0x1C, 0xDD0, 0xFB4 };
+				constexpr RenderTargetOffsets og{ 0xC80, 0x18, 0xDA0, 0xDC4, 0xF54, 0xF84 };
+				constexpr RenderTargetOffsets ngae{ 0xC80, 0x1C, 0xDD0, 0xDF4, 0xF84, 0xFB4 };
 				if (REX::FModule::IsRuntimeOG()) {
 					return og;
 				}
@@ -960,6 +1018,7 @@ namespace RE
 			// OG-only layout from this point; use matching accessors across runtimes.
 			DepthStencilTargetProperties  depthStencilTargetData[12];                     // C80
 			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];                     // DA0
+			// ID member offsets are OG-only; use the accessors.
 			std::uint32_t                 renderTargetID[100];                            // DC4
 			std::uint32_t                 depthStencilTargetID[12];                       // F54
 			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
