@@ -36,9 +36,10 @@ namespace RE
 		}
 
 		// members
-		REX::TEnumSet<Flag, std::uint8_t> flags;          // 10
-		REX::TEnumSet<Flag, std::uint8_t> originalFlags;  // 11, the FNAM byte as loaded from the plugin, never mutated at runtime
-		MARKER_TYPE                       type;           // 12
+		REX::TEnumSet<Flag, std::uint8_t>         flags;          // 10
+		REX::TEnumSet<Flag, std::uint8_t>         originalFlags;  // 11, the FNAM byte as loaded from the plugin, never mutated at runtime
+		REX::TEnumSet<MARKER_TYPE, std::uint16_t> type;           // 12, the engine loads TNAM as two bytes and MARKER_TYPE is wider
 	};
 	static_assert(sizeof(MapMarkerData) == 0x18);
+	static_assert(offsetof(MapMarkerData, type) == 0x12);
 }
