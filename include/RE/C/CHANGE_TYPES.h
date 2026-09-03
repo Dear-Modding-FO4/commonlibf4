@@ -54,7 +54,7 @@ namespace RE
 			kTopicSaidPlayer = 1u << 30,
 			kTopicSaidOnce = 1u << 31,
 			kRelationshipData = 1u << 1,
-			kLocationSpecRefs = 1u < 28,
+			kLocationSpecRefs = 1u << 28,
 			kLocationNewRefs = 1u << 29,
 			kLocationKeywordData = 1u << 30,
 			kLocationCleared = 1u << 31,
