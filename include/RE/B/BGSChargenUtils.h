@@ -7,7 +7,7 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
-#include "RE/B/BSTHashmap.h"
+#include "RE/B/BSTHashMap.h"
 
 namespace RE
 {
