@@ -31,6 +31,28 @@ namespace RE
 		using Create_t = typename UIMenuEntry::Create_t;
 		using StaticUpdate_t = typename UIMenuEntry::StaticUpdate_t;
 
+		struct RuntimeData
+		{
+			bool menuSystemVisible;           // 00
+			bool closingAllMenus;             // 01
+			bool freezeFrameScreenshotReady;  // 02
+		};
+		static_assert(sizeof(RuntimeData) == 0x3);
+
+		[[nodiscard]] RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) noexcept
+		{
+			return *reinterpret_cast<RuntimeData*>(
+				reinterpret_cast<std::byte*>(std::addressof(uiTimer)) + BSTimer::GetRuntimeSize(a_runtime));
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) const noexcept
+		{
+			return *reinterpret_cast<const RuntimeData*>(
+				reinterpret_cast<const std::byte*>(std::addressof(uiTimer)) + BSTimer::GetRuntimeSize(a_runtime));
+		}
+
 		// add
 		virtual ~UI() = default;  // 01
 
@@ -135,9 +157,11 @@ namespace RE
 		std::uint32_t                          largeCacheRenderModeCount;   // 1FC
 		std::uint32_t                          movementToDirectionalCount;  // 200
 		BSTimer                                uiTimer;                     // 208
+		// AE-only tail; use GetRuntimeData across runtimes.
 		bool                                   menuSystemVisible;           // 258
 		bool                                   closingAllMenus;             // 259
 		bool                                   freezeFrameScreenshotReady;  // 25A
 	};
+	static_assert(offsetof(UI, uiTimer) == 0x208);
 	static_assert(sizeof(UI) == 0x260);
 }

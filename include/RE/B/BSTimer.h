@@ -1,10 +1,42 @@
 #pragma once
 
+#include "REX/FModule.h"
+
 namespace RE
 {
 	class BSTimer
 	{
 	public:
+		struct RuntimeData
+		{
+			std::uint64_t firstTime;                      // 00
+			std::uint64_t disabledLastTime;               // 08
+			std::uint64_t disabledFirstTime;              // 10
+			std::uint32_t disableCounter;                 // 18
+			bool          useGlobalTimeMultiplierTarget;  // 1C
+		};
+		static_assert(sizeof(RuntimeData) == 0x20);
+
+		[[nodiscard]] static constexpr std::size_t GetRuntimeSize(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) noexcept
+		{
+			return a_runtime == REX::FModule::Runtime::kAE ? 0x50 : 0x40;
+		}
+
+		[[nodiscard]] RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) noexcept
+		{
+			return *reinterpret_cast<RuntimeData*>(
+				reinterpret_cast<std::byte*>(this) + GetRuntimeSize(a_runtime) - sizeof(RuntimeData));
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) const noexcept
+		{
+			return *reinterpret_cast<const RuntimeData*>(
+				reinterpret_cast<const std::byte*>(this) + GetRuntimeSize(a_runtime) - sizeof(RuntimeData));
+		}
+
 		[[nodiscard]] static BSTimer* GetSingleton()
 		{
 			static REL::Relocation<BSTimer*> singleton{ ID::BSTimer::Singleton };
@@ -37,6 +69,7 @@ namespace RE
 		float         delta;                          // 10
 		float         realTimeDelta;                  // 14
 		std::uint64_t lastTime;                       // 18
+		// AE-only tail; use GetRuntimeData across runtimes.
 		std::byte     unk20[0x10];                    // 20
 		std::uint64_t firstTime;                      // 30
 		std::uint64_t disabledLastTime;               // 38

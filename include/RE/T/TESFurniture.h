@@ -27,6 +27,13 @@ namespace RE
 		};
 		static_assert(sizeof(EntryPointData) == 0x8);
 
+		virtual bool Activate(TESObjectREFR* a_itemActivated, TESObjectREFR* a_actionRef, TESBoundObject* a_objectToGet, std::int32_t a_count) override
+		{
+			using func_t = decltype(&TESFurniture::Activate);
+			static REL::Relocation<func_t> func{ ID::TESFurniture::Activate };
+			return func(this, a_itemActivated, a_actionRef, a_objectToGet, a_count);
+		}
+
 		[[nodiscard]] TESContainer* GetContainer()
 		{
 			using func_t = decltype(&TESFurniture::GetContainer);

@@ -7835,7 +7835,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 24> PlayerCharacter{ REL::ID(1400465), REL::ID(226716), REL::ID(884677), REL::ID(1542933), REL::ID(618796), REL::ID(1276847), REL::ID(870759), REL::ID(385483), REL::ID(1435647), REL::ID(1342378), REL::ID(624217), REL::ID(1282138), REL::ID(357885), REL::ID(1016105), REL::ID(92071), REL::ID(750458), REL::ID(1408054), REL::ID(484126), REL::ID(1142245), REL::ID(218262), REL::ID(876165), REL::ID(1534607), REL::ID(610436), REL::ID(1488087) };
 		inline constexpr std::array<REL::ID, 1>  PlayerControllerXSmoothedChannel_Actor_float_{ REL::ID(542894) };
 		inline constexpr std::array<REL::ID, 1>  PlayerControllerYSmoothedChannel_Actor_float_{ REL::ID(1466918) };
-		inline constexpr std::array<REL::ID, 7>  PlayerControls{ REL::ID(1410640), REL::ID(4826539), REL::ID(4826540), REL::ID(4826541), REL::ID(4826542), REL::ID(1317482), REL::ID(4826543) };
+		inline constexpr std::array<REL::ID, 7>  PlayerControls{ REL::ID(1410640), REL::ID{ 267421, 267421, 4826539 }, REL::ID{ 925390, 925390, 4826540 }, REL::ID{ 752, 752, 4826541 }, REL::ID{ 659755, 659755, 4826542 }, REL::ID(1317482), REL::ID{ 393346, 393346, 4826543 } };
 		inline constexpr std::array<REL::ID, 1>  PlayerFastEquipSoundHandler{ REL::ID(177573) };
 		inline constexpr std::array<REL::ID, 1>  PlayerFirstSpeedSmoothedChannel_Actor_float_{ REL::ID(1074631) };
 		inline constexpr std::array<REL::ID, 1>  PlayerFurnitureExitHandler{ REL::ID(1099241) };
