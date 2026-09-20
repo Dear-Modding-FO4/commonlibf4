@@ -1387,6 +1387,7 @@
 #include "RE/S/SpectatorThreatInfo.h"
 #include "RE/S/SpellItem.h"
 #include "RE/S/SplineUtils.h"
+#include "RE/S/Stars.h"
 #include "RE/S/StartMenuBase.h"
 #include "RE/S/StolenItemValueStruct.h"
 #include "RE/S/SubGraphIdleRootData.h"
