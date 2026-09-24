@@ -1595,6 +1595,7 @@
 #include "RE/V/VATSEvents.h"
 #include "RE/V/VATSForcedEnemyHealthPercentEvent.h"
 #include "RE/V/VOICE_TYPE_DATA.h"
+#include "RE/V/ValueModifierEffect.h"
 #include "RE/W/WARNING_TYPES.h"
 #include "RE/W/WEAPONHITBEHAVIOR.h"
 #include "RE/W/WEAPON_CULL_TYPE.h"
