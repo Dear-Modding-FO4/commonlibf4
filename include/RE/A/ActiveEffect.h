@@ -55,7 +55,33 @@ namespace RE
 			kTrue = 1
 		};
 
-		virtual ~ActiveEffect();
+		virtual ~ActiveEffect();                                                          // 00
+		virtual void           AdjustForPerks(Actor* a_caster, MagicTarget* a_target);    // 01
+		virtual void           OnAdd(MagicTarget* a_target);                              // 02
+		virtual void           OnRemove();                                                // 03
+		virtual TESObjectREFR* GetVisualsTarget();                                        // 04
+		virtual void           Update(float a_delta);                                     // 05
+		virtual void           EvaluateConditions(float a_delta, bool a_forceUpdate);     // 06
+		virtual void           EvaluateActiveStatus(float a_delta, bool a_forceUpdate);   // 07
+		virtual bool           IsCausingHealthDamage();                                   // 08
+		virtual bool           IsCausingRadDamage();                                      // 09
+		virtual void           SetLocation(const NiPoint3& a_location);                   // 0A
+		virtual void           SaveGame(BGSSaveGameBuffer* a_buf);                        // 0B
+		virtual void           LoadGame(BGSLoadGameBuffer* a_buf);                        // 0C
+		virtual void           FinishLoadGame(BGSLoadGameBuffer* a_buf);                  // 0D
+		virtual void           Revert(BGSLoadGameBuffer* a_buf);                          // 0E
+		virtual std::int32_t   Compare(ActiveEffect* a_otherEffect);                      // 0F
+		virtual void           HandleEvent(const BSFixedString& a_eventName);             // 10
+		virtual void           SwitchAttachedRoot(NiNode* a_root, NiNode* a_attachRoot);  // 11
+		virtual void           HandleQueuedStart();                                       // 12
+		virtual bool           ShouldDispelOnDeath() const;                               // 13
+		virtual bool           GetAllowMultipleCastingSourceStacking();                   // 14
+		virtual void           ClearTargetImpl();                                         // 15
+		virtual void           Start();                                                   // 16
+		virtual void           Finish();                                                  // 17
+		virtual bool           CanFinish();                                               // 18
+		virtual bool           CheckCustomSkillUseConditions() const;                     // 19
+		virtual float          GetCustomSkillUseMagnitudeMultiplier(float a_mult) const;  // 1A
 
 		bool CheckDisplacementSpellOnTarget()
 		{
