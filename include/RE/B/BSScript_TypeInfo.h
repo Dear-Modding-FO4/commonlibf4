@@ -114,7 +114,7 @@ namespace RE
 						data.rawType += RawType::kArrayStart;
 					} else {
 						assert(IsArray());
-						data.rawType -= RawType::kArrayEnd;
+						data.rawType -= RawType::kArrayStart;
 					}
 				}
 			}
