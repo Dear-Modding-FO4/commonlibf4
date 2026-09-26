@@ -127,7 +127,7 @@ namespace RE
 			std::uint16_t                                                   attackDamage;           // 132
 			std::uint16_t                                                   rank;                   // 134
 			std::int8_t                                                     accuracyBonus;          // 136
-			REX::TEnumSet<WEAPON_TYPE, std::uint8_t>                        type;                   // 137
+			REX::TEnum<WEAPON_TYPE, std::uint8_t>                           type;                   // 137
 		};
 		static_assert(sizeof(InstanceData) == 0x138);
 
@@ -156,52 +156,71 @@ namespace RE
 
 		bool IsMeleeWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kOneHandSword,
-				WEAPON_TYPE::kOneHandDagger,
-				WEAPON_TYPE::kOneHandAxe,
-				WEAPON_TYPE::kOneHandMace,
-				WEAPON_TYPE::kTwoHandSword,
-				WEAPON_TYPE::kTwoHandAxe);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kOneHandSword:
+				case WEAPON_TYPE::kOneHandDagger:
+				case WEAPON_TYPE::kOneHandAxe:
+				case WEAPON_TYPE::kOneHandMace:
+				case WEAPON_TYPE::kTwoHandSword:
+				case WEAPON_TYPE::kTwoHandAxe:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsGunWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kGun);
+			return weaponData.type == WEAPON_TYPE::kGun;
 		}
 
 		bool IsThrownWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kGrenade,
-				WEAPON_TYPE::kMine);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kGrenade:
+				case WEAPON_TYPE::kMine:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsOneHandedWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kOneHandSword,
-				WEAPON_TYPE::kOneHandDagger,
-				WEAPON_TYPE::kOneHandAxe,
-				WEAPON_TYPE::kOneHandMace);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kOneHandSword:
+				case WEAPON_TYPE::kOneHandDagger:
+				case WEAPON_TYPE::kOneHandAxe:
+				case WEAPON_TYPE::kOneHandMace:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsTwoHandedWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kTwoHandSword,
-				WEAPON_TYPE::kTwoHandAxe);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kTwoHandSword:
+				case WEAPON_TYPE::kTwoHandAxe:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsRangedWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kBow,
-				WEAPON_TYPE::kStaff,
-				WEAPON_TYPE::kGun,
-				WEAPON_TYPE::kGrenade,
-				WEAPON_TYPE::kMine);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kBow:
+				case WEAPON_TYPE::kStaff:
+				case WEAPON_TYPE::kGun:
+				case WEAPON_TYPE::kGrenade:
+				case WEAPON_TYPE::kMine:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsBoundWeapon() const
