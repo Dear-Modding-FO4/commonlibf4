@@ -21,7 +21,7 @@ namespace RE
 		if (!a_extra)
 			return false;
 
-		if (!a_extra->GetName().empty())
+		if (a_extra->GetName().empty())
 			a_extra->SetName(a_key);
 		else if (a_key != a_extra->GetName())
 			return false;
@@ -60,12 +60,14 @@ namespace RE
 
 	bool NiObjectNET::InsertExtraData(NiExtraData* a_extra)
 	{
-		if (extra) {
-			extra->Add(a_extra);
-			return true;
-		}
+		if (!a_extra)
+			return false;
 
-		return false;
+		if (!extra)
+			extra = new NiExtraDataContainer(0);
+
+		extra->Add(a_extra);
+		return true;
 	}
 
 	bool NiObjectNET::RemoveExtraData(const BSFixedString& a_key)
