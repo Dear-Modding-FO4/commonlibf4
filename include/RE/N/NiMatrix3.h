@@ -53,7 +53,7 @@ namespace RE
 namespace RE
 {
 	inline const NiMatrix3 NiMatrix3::ZERO = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-	inline const NiMatrix3 NiMatrix3::IDENTITY = { NiPoint4::IDENTITY0, NiPoint4::IDENTITY0, NiPoint4::IDENTITY0 };
+	inline const NiMatrix3 NiMatrix3::IDENTITY = { NiPoint4::IDENTITY0, NiPoint4::IDENTITY1, NiPoint4::IDENTITY2 };
 
 	constexpr NiMatrix3::NiMatrix3(const NiPoint4& a_point0, const NiPoint4& a_point1, const NiPoint4& a_point2) noexcept
 	{
