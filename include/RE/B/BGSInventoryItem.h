@@ -84,7 +84,7 @@ namespace RE
 			{}
 
 			// override (StackDataCompareFunctor)
-			bool CompareData(const BGSInventoryItem::Stack&) override { return true; }  // this->extra == extra; ??
+			bool CompareData(const BGSInventoryItem::Stack& a_stack) override { return a_stack.extra.get() == extra; }
 
 			// members
 			const ExtraDataList* extra;  // 08
@@ -159,7 +159,7 @@ namespace RE
 		};
 		static_assert(sizeof(SetHealthFunctor) == 0x18);
 
-		bool FindAndWriteStackData(StackDataCompareFunctor& a_compareFunc, StackDataWriteFunctor& a_writeFunc, bool a_manualMerge, ObjectRefHandle a_owner)
+		bool FindAndWriteStackData(StackDataCompareFunctor& a_compareFunc, StackDataWriteFunctor& a_writeFunc, bool a_manualMerge, const ObjectRefHandle& a_owner)
 		{
 			using func_t = decltype(&BGSInventoryItem::FindAndWriteStackData);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::FindAndWriteStackData };
