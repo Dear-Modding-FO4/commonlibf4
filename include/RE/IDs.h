@@ -1868,7 +1868,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID BaseAddItemCardInfoEntry{ 1150364, 2225270 };
 		inline constexpr REL::VariantID InitializeItem{ 482276, 2225264 };
 		inline constexpr REL::VariantID PopulateItemCardInfo{ 54211, 2225266 };
-		inline constexpr REL::VariantID QueueItemCardRepopulate{ 1034299, 2225311 };
+		inline constexpr REL::VariantID QueueItemCardRepopulate{ 1034299, 2225281 };
 		inline constexpr REL::VariantID RepopulateItemCardOnSection{ 892255, 2225279 };
 	}
 
