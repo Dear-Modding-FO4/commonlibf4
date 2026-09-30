@@ -171,6 +171,34 @@ namespace RE
 			return func(this);
 		}
 
+		void SetTintingData(std::int16_t a_uniqueID, float a_tintingValue, std::uint32_t a_color)
+		{
+			using func_t = decltype(&TESNPC::SetTintingData);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetTintingData };
+			return func(this, a_uniqueID, a_tintingValue, a_color);
+		}
+
+		BGSCharacterTint::Template::Groups* GetTintingTemplate(void)
+		{
+			using func_t = decltype(&TESNPC::GetTintingTemplate);
+			static REL::Relocation<func_t> func{ ID::TESNPC::GetTintingTemplate };
+			return func(this);
+		}
+
+		void RemoveHeadPart(BGSHeadPart* a_headPart, bool a_removeExtraParts)
+		{
+			using func_t = decltype(&TESNPC::RemoveHeadPart);
+			static REL::Relocation<func_t> func{ ID::TESNPC::RemoveHeadPart };
+			return func(this, a_headPart, a_removeExtraParts);
+		}
+
+		void AddUniqueHeadType(BGSHeadPart* a_headPart)
+		{
+			using func_t = decltype(&TESNPC::AddUniqueHeadType);
+			static REL::Relocation<func_t> func{ ID::TESNPC::AddUniqueHeadType };
+			return func(this, a_headPart);
+		}
+
 		// members
 		BGSAttachParentArray attachParents;    // 220
 		NPC_DATA             data;             // 238

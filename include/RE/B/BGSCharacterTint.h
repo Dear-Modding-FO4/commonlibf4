@@ -57,6 +57,13 @@ namespace RE
 			kBeard = 0x19
 		};
 
+		inline std::uint32_t GetEntryType(REX::TEnumSet<BGSCharacterTint::EntrySlot, std::int32_t> entrySlot)
+		{
+			using func_t = decltype(&BGSCharacterTint::GetEntryType);
+			static REL::Relocation<func_t> func{ ID::BGSCharacterTint::GetEntryType };
+			return func(entrySlot);
+		}
+
 		namespace Template
 		{
 			class __declspec(novtable) Entry
@@ -103,6 +110,13 @@ namespace RE
 			class Groups
 			{
 			public:
+				Entry* GetFirstEntryForSlot(REX::TEnumSet<BGSCharacterTint::EntrySlot, std::int32_t> a_entrySlot)
+				{
+					using func_t = decltype(&BGSCharacterTint::Template::Groups::GetFirstEntryForSlot);
+					static REL::Relocation<func_t> func{ ID::BGSCharacterTint::Template::Groups::GetFirstEntryForSlot };
+					return func(this, a_entrySlot);
+				}
+
 				// members
 				BSTArray<Group*> groups;  // 00
 			};
@@ -157,6 +171,13 @@ namespace RE
 		class Entries
 		{
 		public:
+			Entry* GetEntryByID(std::int16_t a_uniqueID)
+			{
+				using func_t = decltype(&BGSCharacterTint::Entries::GetEntryByID);
+				static REL::Relocation<func_t> func{ ID::BGSCharacterTint::Entries::GetEntryByID };
+				return func(this, a_uniqueID);
+			}
+
 			// members
 			BSTArray<Entry*> entriesA;  // 00
 		};
