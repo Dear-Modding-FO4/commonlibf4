@@ -120,8 +120,8 @@ namespace RE
 		PipboyObject*                                   worldCustomMarker;           // 210
 		PipboyObject*                                   localPowerArmorMarker;       // 218
 		PipboyObject*                                   worldPowerArmorMarker;       // 220
-		PipboyObject*                                   worldMapExtents;             // 230
-		PipboyObject*                                   localMapExtents;             // 238
+		PipboyObject*                                   worldMapExtents;             // 228
+		PipboyObject*                                   localMapExtents;             // 230
 	};
 	static_assert(sizeof(PipboyMapData) == 0x238);
 }
