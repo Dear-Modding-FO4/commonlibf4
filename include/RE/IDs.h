@@ -18,7 +18,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetClosestBone{ 1180004, 2230051 };
 		inline constexpr REL::VariantID GetCollisionFilter{ 1474995, 2229991 };
 		inline constexpr REL::VariantID GetCombatStyle{ 1270929, 2231053 };
-		inline constexpr REL::VariantID GetCurrentAmmoCount{ 0, 2229950 };
+		inline constexpr REL::VariantID GetCurrentAmmoCount{ 33890, 2229950 };
 		inline constexpr REL::VariantID SetCurrentAmmoCount{ 725546, 2229952 };
 		inline constexpr REL::VariantID GetCurrentCollisionGroup{ 410500, 2229993 };
 		inline constexpr REL::VariantID GetCurrentFireLocation{ 663107, 2231167 };
@@ -78,7 +78,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID EquipObject{ 988029, 2231392 };
 		inline constexpr REL::VariantID UnequipObject{ 1292493, 2231395 };
 		inline constexpr REL::VariantID UnequipItem{ 1316852, 2231399 };
-		inline constexpr REL::VariantID CanEquip{ 0, 2231405 };
+		inline constexpr REL::VariantID CanEquip{ 702912, 2231405 };
 	}
 
 	namespace ActorUtils
@@ -212,7 +212,7 @@ namespace RE::ID
 
 	namespace BGSConstructibleObject
 	{
-		inline constexpr REL::VariantID FindRecipeForCreatedForm{ 0, 2197324 };
+		inline constexpr REL::VariantID FindRecipeForCreatedForm{ 1036659, 2197324 };
 		inline constexpr REL::VariantID PlayerPassesConditions{ 293575, 2197318 };
 	}
 
@@ -950,7 +950,7 @@ namespace RE::ID
 
 	namespace BSScript_ZeroFunctionArguments
 	{
-		inline constexpr REL::VariantID ZeroFunctionArguments{ 0, 2314598 };
+		inline constexpr REL::VariantID ZeroFunctionArguments{ 704975, 2314598 };
 	}
 
 	namespace BSShaderProperty
@@ -1235,8 +1235,8 @@ namespace RE::ID
 
 	namespace Explosion
 	{
-		inline constexpr REL::VariantID GetActorOwner{ 0, 2236659 };
-		inline constexpr REL::VariantID GetDamage{ 0, 2236658 };
+		inline constexpr REL::VariantID GetActorOwner{ 551996, 2236659 };
+		inline constexpr REL::VariantID GetDamage{ 1270292, 2236658 };
 	}
 
 	namespace ExteriorCellSingleton
@@ -1257,7 +1257,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID ClearFavorite{ 254434, 2190191 };
 		inline constexpr REL::VariantID IsFavorite{ 786568, 2190189 };
 		inline constexpr REL::VariantID IsDamaged{ 116730, 2190224 };
-		inline constexpr REL::VariantID IsItemBroken{ 0, 2190223 };
+		inline constexpr REL::VariantID IsItemBroken{ 382709, 2190223 };
 		inline constexpr REL::VariantID CompareList{ 585876, 2190098 };
 		inline constexpr REL::VariantID SetFavorite{ 534268, 2190188 };
 		inline constexpr REL::VariantID GetPrimitive{ 1271508, 2190427 };
@@ -2364,7 +2364,7 @@ namespace RE::ID
 
 	namespace TESEquipEvent
 	{
-		inline constexpr REL::VariantID GetEventSource{ 0, 2201838 };
+		inline constexpr REL::VariantID GetEventSource{ 1251703, 2201838 };
 	}
 
 	namespace TESFile
@@ -2565,7 +2565,7 @@ namespace RE::ID
 
 	namespace TESObjectWEAP
 	{
-		inline constexpr REL::VariantID GetProjectile{ 0, 2198934 };
+		inline constexpr REL::VariantID GetProjectile{ 1379893, 2198934 };
 		inline constexpr REL::VariantID GetMeleeAttackSpeed{ 817670, 2198957 };
 		inline constexpr REL::VariantID GetMeleeAttackSpeedLabel{ 178784, 2198959 };
 		inline constexpr REL::VariantID Fire{ 1056037, 2198960 };
@@ -2590,7 +2590,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID SetStage{ 952799, 2207743 };
 		inline constexpr REL::VariantID GetAliasedRef{ 847223, 2207810 };
-		inline constexpr REL::VariantID GetActive{ 0, 2207733 };
+		inline constexpr REL::VariantID GetActive{ 690102, 2207733 };
 	}
 
 	namespace TESQuestStageEvent
