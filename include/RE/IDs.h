@@ -36,7 +36,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsFollowing{ 629579, 2230013 };
 		inline constexpr REL::VariantID IsJumping{ 1041558, 2229640 };
 		inline constexpr REL::VariantID IsPathValid{ 1522194, 2230279 };
-		inline constexpr REL::VariantID IsPathing{ 989661, 2234312 };
+		inline constexpr REL::VariantID IsPathing{ 989661, 2230276 };
 		inline constexpr REL::VariantID IsPathingComplete{ 817283, 2230274 };
 		inline constexpr REL::VariantID IsQuadruped{ 1552322, 2229614 };
 		inline constexpr REL::VariantID IsSneaking{ 1173627, 2207655 };
