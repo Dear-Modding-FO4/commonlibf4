@@ -25,6 +25,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::IngredientItem };
 		static constexpr auto VTABLE{ VTABLE::IngredientItem };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kINGR };
+		static constexpr auto TYPE_ID{ BSScript::kIngredient };
 
 		class GameData
 		{

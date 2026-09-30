@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/A/ATTACK_STATE_ENUM.h"
 #include "RE/B/BGSObjectInstance.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTArray.h"
@@ -9,7 +10,6 @@
 
 namespace RE
 {
-	enum class ATTACK_STATE_ENUM;
 	class AimModel;
 	class BSCloneReserver;
 	class MuzzleFlash;

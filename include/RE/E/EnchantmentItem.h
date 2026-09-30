@@ -18,6 +18,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::EnchantmentItem };
 		static constexpr auto VTABLE{ VTABLE::EnchantmentItem };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kENCH };
+		static constexpr auto TYPE_ID{ BSScript::kEnchantment };
 
 		class Data :
 			public MagicItem::Data  // 00

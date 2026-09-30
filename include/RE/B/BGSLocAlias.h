@@ -15,6 +15,8 @@ namespace RE
 	public:
 		static constexpr auto RTTI{ RTTI::BGSLocAlias };
 		static constexpr auto VTABLE{ VTABLE::BGSLocAlias };
+		static constexpr auto TYPE{ "Loc"sv };
+		static constexpr auto TYPE_ID{ BSScript::kLocationAlias };
 
 		// members
 		BGSLocation*  forcedLoc;              // 28

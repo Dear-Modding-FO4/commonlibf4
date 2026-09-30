@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSVoiceType };
 		static constexpr auto VTABLE{ VTABLE::BGSVoiceType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kVTYP };
+		static constexpr auto TYPE_ID{ BSScript::kVoiceType };
 
 		// members
 		VOICE_TYPE_DATA data;          // 20

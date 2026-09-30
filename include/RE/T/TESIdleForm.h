@@ -17,6 +17,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESIdleForm };
 		static constexpr auto VTABLE{ VTABLE::TESIdleForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIDLE };
+		static constexpr auto TYPE_ID{ BSScript::kIdle };
 
 		bool CheckConditions(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef, bool a_recurseUp)
 		{

@@ -6,10 +6,12 @@
 #include "RE/B/BSSimpleList.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/E/ENUM_FORM_ID.h"
+#include "RE/E/ENUM_TYPE_ID.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE
 {
+	class Actor;
 	class MagicTarget;
 	class NiNode;
 	class ReferenceEffect;
@@ -26,6 +28,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::ActiveEffect };
 		static constexpr auto VTABLE{ VTABLE::ActiveEffect };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kActiveEffect };
+		static constexpr auto TYPE_ID{ BSScript::kActiveMagicEffect };
 
 		enum class Flags : std::uint32_t
 		{
@@ -60,6 +63,8 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::ActiveEffect::CheckDisplacementSpellOnTarget };
 			return func(this);
 		}
+
+		[[nodiscard]] Actor* GetTargetActor();
 
 		// members
 		ActiveEffectReferenceEffectController hitEffectController;  // 0C

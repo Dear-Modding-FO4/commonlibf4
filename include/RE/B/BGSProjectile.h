@@ -22,6 +22,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSProjectile };
 		static constexpr auto VTABLE{ VTABLE::BGSProjectile };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPROJ };
+		static constexpr auto TYPE_ID{ BSScript::kProjectile };
 
 		enum class BGSProjectileFlags
 		{

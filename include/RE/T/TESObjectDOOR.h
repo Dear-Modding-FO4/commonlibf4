@@ -29,6 +29,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectDOOR };
 		static constexpr auto VTABLE{ VTABLE::TESObjectDOOR };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDOOR };
+		static constexpr auto TYPE_ID{ BSScript::kDoor };
 
 		// members
 		BGSLocalizedString      altOpenText;      // 108

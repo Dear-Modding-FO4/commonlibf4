@@ -16,6 +16,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSCameraShot };
 		static constexpr auto VTABLE{ VTABLE::BGSCameraShot };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCAMS };
+		static constexpr auto TYPE_ID{ BSScript::kCameraShot };
 
 		enum class CAM_ACTION
 		{

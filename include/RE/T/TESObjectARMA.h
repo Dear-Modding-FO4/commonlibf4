@@ -21,6 +21,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectARMA };
 		static constexpr auto VTABLE{ VTABLE::TESObjectARMA };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kARMA };
+		static constexpr auto TYPE_ID{ BSScript::kArmorAddon };
 
 		// members
 		OBJ_ARMA                             data;                     // 040

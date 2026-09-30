@@ -307,6 +307,13 @@ namespace RE
 			return currentProcess ? currentProcess->GetCurrentAmmo(a_equipIndex) : nullptr;
 		}
 
+		[[nodiscard]] std::uint32_t GetCurrentAmmoCount(BGSEquipIndex a_equipIndex) const
+		{
+			using func_t = decltype(&Actor::GetCurrentAmmoCount);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentAmmoCount };
+			return func(this, a_equipIndex);
+		}
+
 		std::uint32_t GetCurrentCollisionGroup()
 		{
 			using func_t = decltype(&Actor::GetCurrentCollisionGroup);

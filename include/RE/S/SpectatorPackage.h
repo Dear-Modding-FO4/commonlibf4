@@ -17,6 +17,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::SpectatorPackage };
 		static constexpr auto VTABLE{ VTABLE::SpectatorPackage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPACK };
+		static constexpr auto TYPE_ID{ BSScript::kPackage };
 
 		// members
 		std::time_t                   lastPathRequestTime;  // 0C8

@@ -34,6 +34,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectBOOK };
 		static constexpr auto VTABLE{ VTABLE::TESObjectBOOK };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kBOOK };
+		static constexpr auto TYPE_ID{ BSScript::kBook };
 
 		// members
 		OBJ_BOOK       data;                 // 170

@@ -84,12 +84,64 @@ namespace RE
 			{}
 
 			// override (StackDataCompareFunctor)
-			bool CompareData(const BGSInventoryItem::Stack&) override { return true; }  // this->extra == extra; ??
+			bool CompareData(const BGSInventoryItem::Stack& a_stack) override { return a_stack.extra.get() == extra; }  // 00
 
 			// members
 			const ExtraDataList* extra;  // 08
 		};
 		static_assert(sizeof(CheckExtraDataFunctor) == 0x10);
+
+		class alignas(0x08) FindEquippedStackFunctor :
+			public StackDataCompareFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::BGSInventoryItem__FindEquippedStackFunctor };
+			static constexpr auto VTABLE{ VTABLE::BGSInventoryItem__FindEquippedStackFunctor };
+
+			// override (StackDataCompareFunctor)
+			bool CompareData(const BGSInventoryItem::Stack& a_stack) override { return a_stack.IsEquipped(); }  // 00
+		};
+		static_assert(sizeof(FindEquippedStackFunctor) == 0x8);
+
+		class alignas(0x08) HasExtraDataFunctor :
+			public StackDataCompareFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::BGSInventoryItem__HasExtraDataFunctor };
+			static constexpr auto VTABLE{ VTABLE::BGSInventoryItem__HasExtraDataFunctor };
+
+			HasExtraDataFunctor(EXTRA_DATA_TYPE a_type) noexcept :
+				type(a_type)
+			{}
+
+			// override (StackDataCompareFunctor)
+			bool CompareData(const BGSInventoryItem::Stack& a_stack) override { return a_stack.extra->HasType(type.get()); }  // 00
+
+			// members
+			REX::TEnum<EXTRA_DATA_TYPE, std::uint8_t> type;  // 08
+		};
+		static_assert(sizeof(HasExtraDataFunctor) == 0x10);
+
+		class __declspec(novtable) alignas(0x08) IsUIEquivalentStackFunctor :
+			public StackDataCompareFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::BGSInventoryItem__IsUIEquivalentStackFunctor };
+			static constexpr auto VTABLE{ VTABLE::BGSInventoryItem__IsUIEquivalentStackFunctor };
+
+			IsUIEquivalentStackFunctor(BGSInventoryItem::Stack* a_stack) :
+				stack(a_stack)
+			{
+				REX::EMPLACE_VTABLE(this);
+			}
+
+			// override (StackDataCompareFunctor)
+			bool CompareData(const BGSInventoryItem::Stack& a_stack) override;  // 00
+
+			// members
+			BSTSmartPointer<BGSInventoryItem::Stack> stack;  // 08
+		};
+		static_assert(sizeof(IsUIEquivalentStackFunctor) == 0x10);
 
 		class __declspec(novtable) alignas(0x08) StackDataWriteFunctor
 		{
@@ -98,7 +150,7 @@ namespace RE
 			static constexpr auto VTABLE{ VTABLE::BGSInventoryItem__StackDataWriteFunctor };
 
 			// add
-			virtual void WriteDataImpl(TESBoundObject& a_baseObj, BGSInventoryItem::Stack& a_stack) = 0;  // 01
+			virtual void WriteDataImpl(TESBoundObject& a_baseObj, BGSInventoryItem::Stack& a_stack) = 0;  // 00
 
 			// members
 			bool shouldSplitStacks{ true };              // 08
@@ -126,7 +178,7 @@ namespace RE
 			}
 
 			// override (StackDataWriteFunctor)
-			void WriteDataImpl(TESBoundObject&, BGSInventoryItem::Stack&) override;  // 01
+			void WriteDataImpl(TESBoundObject&, BGSInventoryItem::Stack&) override;  // 00
 
 			// members
 			BGSMod::Attachment::Mod* mod;                   // 10
@@ -152,14 +204,75 @@ namespace RE
 			}
 
 			// override (StackDataWriteFunctor)
-			void WriteDataImpl(TESBoundObject&, BGSInventoryItem::Stack&) override;  // 01
+			void WriteDataImpl(TESBoundObject&, BGSInventoryItem::Stack&) override;  // 00
 
 			// members
 			float health;  // 10
 		};
 		static_assert(sizeof(SetHealthFunctor) == 0x18);
 
-		bool FindAndWriteStackData(StackDataCompareFunctor& a_compareFunc, StackDataWriteFunctor& a_writeFunc, bool a_manualMerge, ObjectRefHandle a_owner)
+		class __declspec(novtable) ClearEquipFlagsFunctor :
+			public StackDataWriteFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::BGSInventoryItem__ClearEquipFlagsFunctor };
+			static constexpr auto VTABLE{ VTABLE::BGSInventoryItem__ClearEquipFlagsFunctor };
+
+			ClearEquipFlagsFunctor()
+			{
+				REX::EMPLACE_VTABLE(this);
+			}
+
+			// override (StackDataWriteFunctor)
+			void WriteDataImpl(TESBoundObject&, BGSInventoryItem::Stack&) override;  // 00
+		};
+		static_assert(sizeof(ClearEquipFlagsFunctor) == 0x10);
+
+		class __declspec(novtable) ModCountFunctor :
+			public StackDataWriteFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::BGSInventoryItem__ModCountFunctor };
+			static constexpr auto VTABLE{ VTABLE::BGSInventoryItem__ModCountFunctor };
+
+			ModCountFunctor(std::int32_t a_count) :
+				count(a_count)
+			{
+				REX::EMPLACE_VTABLE(this);
+			}
+
+			// override (StackDataWriteFunctor)
+			void WriteDataImpl(TESBoundObject&, BGSInventoryItem::Stack&) override;  // 00
+
+			// members
+			std::int32_t count;  // 10
+		};
+		static_assert(sizeof(ModCountFunctor) == 0x18);
+
+		class __declspec(novtable) SetFlagFunctor :
+			public StackDataWriteFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::BGSInventoryItem__SetFlagFunctor };
+			static constexpr auto VTABLE{ VTABLE::BGSInventoryItem__SetFlagFunctor };
+
+			SetFlagFunctor(std::uint32_t a_flagIndex, bool a_setFlag) :
+				flagIndex(a_flagIndex),
+				setFlag(a_setFlag)
+			{
+				REX::EMPLACE_VTABLE(this);
+			}
+
+			// override (StackDataWriteFunctor)
+			void WriteDataImpl(TESBoundObject&, BGSInventoryItem::Stack&) override;  // 00
+
+			// members
+			std::uint32_t flagIndex;  // 10
+			bool          setFlag;    // 14
+		};
+		static_assert(sizeof(SetFlagFunctor) == 0x18);
+
+		bool FindAndWriteStackData(StackDataCompareFunctor& a_compareFunc, StackDataWriteFunctor& a_writeFunc, bool a_manualMerge, const ObjectRefHandle& a_owner)
 		{
 			using func_t = decltype(&BGSInventoryItem::FindAndWriteStackData);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::FindAndWriteStackData };

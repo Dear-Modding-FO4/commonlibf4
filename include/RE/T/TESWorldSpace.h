@@ -31,6 +31,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESWorldSpace };
 		static constexpr auto VTABLE{ VTABLE::TESWorldSpace };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWRLD };
+		static constexpr auto TYPE_ID{ BSScript::kWorldSpace };
 
 		enum class PARENT_USE_FLAG
 		{

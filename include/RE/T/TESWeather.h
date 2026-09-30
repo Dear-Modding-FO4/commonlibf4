@@ -19,6 +19,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESWeather };
 		static constexpr auto VTABLE{ VTABLE::TESWeather };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWTHR };
+		static constexpr auto TYPE_ID{ BSScript::kWeather };
 
 		enum class ColorTime
 		{

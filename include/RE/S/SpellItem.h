@@ -24,6 +24,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::SpellItem };
 		static constexpr auto VTABLE{ VTABLE::SpellItem };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSPEL };
+		static constexpr auto TYPE_ID{ BSScript::kSpell };
 
 		class Data :
 			public MagicItem::Data  // 00

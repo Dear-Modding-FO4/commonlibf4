@@ -11,6 +11,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESKey };
 		static constexpr auto VTABLE{ VTABLE::TESKey };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kKEYM };
+		static constexpr auto TYPE_ID{ BSScript::kKey };
 	};
 	static_assert(sizeof(TESKey) == 0x168);
 }

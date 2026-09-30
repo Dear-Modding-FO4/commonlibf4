@@ -84,6 +84,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectREFR };
 		static constexpr auto VTABLE{ VTABLE::TESObjectREFR };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kREFR };
+		static constexpr auto TYPE_ID{ BSScript::kObjectReference };
 
 		class RemoveItemData
 		{

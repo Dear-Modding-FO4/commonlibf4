@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSMaterialSwap };
 		static constexpr auto VTABLE{ VTABLE::BGSMaterialSwap };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMSWP };
+		static constexpr auto TYPE_ID{ BSScript::kMatSwap };
 
 		class Entry
 		{

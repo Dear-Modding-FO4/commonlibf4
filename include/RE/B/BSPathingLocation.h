@@ -8,6 +8,7 @@
 namespace RE
 {
 	class BSNavmeshInfo;
+	class BSPathingCell;
 
 	class BSPathingLocation
 	{

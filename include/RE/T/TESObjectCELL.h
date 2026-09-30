@@ -36,6 +36,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectCELL };
 		static constexpr auto VTABLE{ VTABLE::TESObjectCELL };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCELL };
+		static constexpr auto TYPE_ID{ BSScript::kCell };
 
 		enum class CELL_STATE : std::uint8_t
 		{

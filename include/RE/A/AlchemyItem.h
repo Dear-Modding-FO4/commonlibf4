@@ -30,6 +30,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::AlchemyItem };
 		static constexpr auto VTABLE{ VTABLE::AlchemyItem };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kALCH };
+		static constexpr auto TYPE_ID{ BSScript::kPotion };
 
 		class Data :
 			public MagicItem::Data  // 00

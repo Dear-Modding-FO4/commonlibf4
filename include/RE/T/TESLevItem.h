@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESLevItem };
 		static constexpr auto VTABLE{ VTABLE::TESLevItem };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLVLI };
+		static constexpr auto TYPE_ID{ BSScript::kLeveledItem };
 	};
 	static_assert(sizeof(TESLevItem) == 0x98);
 }

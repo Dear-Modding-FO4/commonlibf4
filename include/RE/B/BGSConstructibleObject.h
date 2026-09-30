@@ -20,6 +20,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSConstructibleObject };
 		static constexpr auto VTABLE{ VTABLE::BGSConstructibleObject };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCOBJ };
+		static constexpr auto TYPE_ID{ BSScript::kConstructibleObject };
 
 		class ConstructibleObjectData
 		{
@@ -32,6 +33,16 @@ namespace RE
 
 		[[nodiscard]] TESForm*      GetCreatedItem() const noexcept { return createdItem; }
 		[[nodiscard]] std::uint16_t GetWorkshopPriority() const noexcept { return data.workshopPriority; }
+
+		// The recipe that builds a form, or null when nothing builds it. Matches
+		// a recipe that creates the form itself, and one that creates a form list
+		// the form belongs to.
+		[[nodiscard]] static BGSConstructibleObject* FindRecipeForCreatedForm(const TESForm* a_form)
+		{
+			using func_t = decltype(&BGSConstructibleObject::FindRecipeForCreatedForm);
+			static REL::Relocation<func_t> func{ ID::BGSConstructibleObject::FindRecipeForCreatedForm };
+			return func(a_form);
+		}
 
 		bool PlayerPassesConditions()
 		{

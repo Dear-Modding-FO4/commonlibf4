@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSScript_Array.h"
+#include "RE/B/BSScript_IStackCallbackFunctor.h"
 #include "RE/B/BSScript_IVirtualMachine.h"
 #include "RE/B/BSScript_Internal_NativeFunctionBase.h"
 #include "RE/B/BSScript_Internal_Stack.h"
@@ -9,7 +10,8 @@
 #include "RE/B/BSScript_StackFrame.h"
 #include "RE/B/BSScript_Struct.h"
 #include "RE/B/BSScript_TypeInfo.h"
-#include "RE/E/ENUM_FORM_ID.h"
+#include "RE/B/BSScript_ZeroFunctionArguments.h"
+#include "RE/E/ENUM_TYPE_ID.h"
 #include "RE/G/GameScript.h"
 #include "RE/T/TESObjectREFR.h"
 
@@ -49,9 +51,7 @@ namespace RE::BSScript
 		}
 	}
 
-	template <
-		REX::TStaticString Object,
-		REX::TStaticString Structure>
+	template <REX::TStaticString Object, REX::TStaticString Structure>
 	class structure_wrapper
 	{
 	private:
@@ -66,7 +66,7 @@ namespace RE::BSScript
 				const auto game = GameVM::GetSingleton();
 				const auto vm = game ? game->GetVM() : nullptr;
 				if (!vm || !vm->CreateStruct(name, _proxy) || !_proxy) {
-					REX::ERROR("failed to create structure of type \"{}\"", name);
+					REX::ERROR("Failed to create struct of type: \"{}\""sv, name);
 					assert(false);
 				}
 			}
@@ -85,7 +85,7 @@ namespace RE::BSScript
 			}
 
 			if (!a_quiet) {
-				REX::ERROR("failed to find var \"{}\" on structure \"{}\"", a_name, name);
+				REX::ERROR("Failed to find var: \"{}\" on struct: \"{}\""sv, a_name, name);
 			}
 
 			return std::nullopt;
@@ -104,7 +104,7 @@ namespace RE::BSScript
 				}
 			}
 
-			REX::ERROR("failed to pack var \"{}\" on structure \"{}\"", a_name, name);
+			REX::ERROR("Failed to pack var: \"{}\" on struct: \"{}\""sv, a_name, name);
 			return false;
 		}
 
@@ -167,20 +167,20 @@ namespace RE::BSScript
 	namespace detail
 	{
 		template <class>
-		struct _is_bstsmartptr :
+		struct _is_smart_pointer :
 			std::false_type
 		{};
 
 		template <class T, template <class> class R>
-		struct _is_bstsmartptr<BSTSmartPointer<T, R>> :
+		struct _is_smart_pointer<BSTSmartPointer<T, R>> :
 			std::true_type
 		{};
 
 		template <class T>
-		using is_bstsmartptr = _is_bstsmartptr<std::remove_cv_t<T>>;
+		using is_smart_pointer = _is_smart_pointer<std::remove_cv_t<T>>;
 
 		template <class T>
-		inline constexpr bool is_bstsmartptr_v = is_bstsmartptr<T>::value;
+		inline constexpr bool is_smart_pointer_v = is_smart_pointer<T>::value;
 
 		template <class>
 		struct _is_structure_wrapper :
@@ -212,34 +212,37 @@ namespace RE::BSScript
 		template <class T>
 		concept static_tag = std::same_as<T, std::monostate>;
 
-		// clang-format off
 		template <class T>
-		concept object =
+		concept form_type =
 			std::derived_from<std::remove_cv_t<T>, TESForm> &&
-			requires { std::remove_cv_t<T>::FORM_ID; };
+			requires { std::remove_cv_t<T>::TYPE_ID; };
 
 		template <class T>
-		concept eobject =
-			std::derived_from<std::remove_cv_t<T>, ActiveEffect>&&
-			requires { std::remove_cv_t<T>::FORM_ID; };
-		// clang-format on
+		concept effect_type =
+			std::derived_from<std::remove_cv_t<T>, ActiveEffect> &&
+			requires { std::remove_cv_t<T>::TYPE_ID; };
 
 		template <class T>
-		concept cobject = std::same_as<std::remove_cv_t<T>, GameScript::RefrOrInventoryObj>;
+		concept alias_type =
+			std::derived_from<std::remove_cv_t<T>, BGSBaseAlias> &&
+			requires { std::remove_cv_t<T>::TYPE_ID; };
 
 		template <class T>
-		concept vmobject = std::same_as<std::remove_cv_t<T>, Object>;
+		concept inventory_type = std::same_as<std::remove_cv_t<T>, GameScript::RefrOrInventoryObj>;
 
 		template <class T>
-		concept vmobject_ptr =
-			is_bstsmartptr_v<T> &&
-			vmobject<typename std::remove_cv_t<T>::element_type>;
+		concept object_type = std::same_as<std::remove_cv_t<T>, Object>;
 
 		template <class T>
-		concept vmvariable = std::same_as<std::remove_cv_t<T>, Variable>;
+		concept object_pointer_type =
+			is_smart_pointer_v<T> &&
+			object_type<typename std::remove_cv_t<T>::element_type>;
 
 		template <class T>
-		concept string =
+		concept variable_type = std::same_as<std::remove_cv_t<T>, Variable>;
+
+		template <class T>
+		concept string_type =
 			std::same_as<
 				typename script_traits<std::remove_cv_t<T>>::is_string,
 				std::true_type> &&
@@ -247,31 +250,29 @@ namespace RE::BSScript
 			std::constructible_from<T, std::string_view>;
 
 		template <class T>
-		concept integral =
+		concept integral_type =
 			(std::integral<T> && !std::same_as<std::remove_cv_t<T>, bool>) ||
 			std::is_enum_v<T>;
 
 		template <class T>
-		concept signed_integral =
+		concept signed_integral_type =
 			(std::signed_integral<T> && !std::same_as<std::remove_cv_t<T>, bool>) ||
 			(std::is_enum_v<T> && std::signed_integral<std::underlying_type_t<T>>);
 
 		template <class T>
-		concept unsigned_integral =
+		concept unsigned_integral_type =
 			(std::unsigned_integral<T> && !std::same_as<std::remove_cv_t<T>, bool>) ||
 			(std::is_enum_v<T> && std::unsigned_integral<std::underlying_type_t<T>>);
 
 		template <class T>
-		concept floating_point = std::floating_point<T>;
+		concept floating_point_type = std::floating_point<T>;
+
+		template <class T>
+		concept boolean_type = std::same_as<std::remove_cv_t<T>, bool>;
 
 		// clang-format off
 		template <class T>
-		concept boolean = std::same_as<std::remove_cv_t<T>, bool>;
-		// clang-format on
-
-		// clang-format off
-		template <class T>
-		concept array =
+		concept array_type =
 			std::same_as<
 				typename script_traits<std::remove_cv_t<T>>::is_array,
 				std::true_type> &&
@@ -286,49 +287,52 @@ namespace RE::BSScript
 		// clang-format on
 
 		template <class T>
-		concept wrapper = is_structure_wrapper_v<T>;
+		concept wrapper_type = is_structure_wrapper_v<T>;
 
 		template <class T>
-		concept nullable =
+		concept nullable_type =
 			std::same_as<
 				typename script_traits<std::remove_cv_t<T>>::is_nullable,
 				std::true_type> &&
 			std::is_default_constructible_v<T> &&
-			((array<typename T::value_type> || wrapper<typename T::value_type>)) &&  //
+			((array_type<typename T::value_type> || wrapper_type<typename T::value_type>)) &&
 			requires(T a_nullable) {
-				// clang-format off
-			static_cast<bool>(a_nullable);
-			{ *static_cast<T&&>(a_nullable) } -> decays_to<typename T::value_type>;
-				// clang-format on
+				static_cast<bool>(a_nullable);
+				{ *static_cast<T&&>(a_nullable) } -> decays_to<typename T::value_type>;
 			};
 
 		template <class T>
 		concept valid_self =
 			static_tag<T> ||
 			((std::is_lvalue_reference_v<T> &&
-				(object<std::remove_reference_t<T>> || vmobject<std::remove_reference_t<T>>))) ||
-			cobject<T> || eobject<std::remove_reference_t<T>>;
+				(form_type<std::remove_reference_t<T>> ||
+					effect_type<std::remove_reference_t<T>> ||
+					alias_type<std::remove_reference_t<T>> ||
+					object_type<std::remove_reference_t<T>>))) ||
+			inventory_type<T>;
 
 		template <class T>
 		concept valid_parameter =
 			(std::is_pointer_v<T> &&
-				(object<std::remove_pointer_t<T>> ||
-					(std::is_const_v<std::remove_pointer_t<T>> && vmvariable<std::remove_pointer_t<T>>))) ||
+				(form_type<std::remove_pointer_t<T>> ||
+					effect_type<std::remove_pointer_t<T>> ||
+					alias_type<std::remove_pointer_t<T>> ||
+					(std::is_const_v<std::remove_pointer_t<T>> && variable_type<std::remove_pointer_t<T>>))) ||
 			(!std::is_reference_v<T> &&
-				(cobject<T> ||
-					vmobject_ptr<T> ||
-					string<T> ||
-					integral<T> ||
-					floating_point<T> ||
-					boolean<T> ||
-					array<T> ||
-					wrapper<T> ||
-					nullable<T>));
+				(form_type<T> ||
+					effect_type<T> ||
+					alias_type<T> ||
+					object_pointer_type<T> ||
+					string_type<T> ||
+					integral_type<T> ||
+					floating_point_type<T> ||
+					boolean_type<T> ||
+					array_type<T> ||
+					wrapper_type<T> ||
+					nullable_type<T>));
 
 		template <class T>
-		concept valid_return =
-			valid_parameter<T> ||
-			std::same_as<T, void>;
+		concept valid_return = std::same_as<T, void> || valid_parameter<T>;
 
 		struct wrapper_accessor
 		{
@@ -341,33 +345,39 @@ namespace RE::BSScript
 
 			template <class T>
 			[[nodiscard]] static auto get_proxy(T&& a_wrapper)  //
-				requires(wrapper<std::remove_reference_t<T>>)
+				requires(wrapper_type<std::remove_reference_t<T>>)
 			{
 				return std::forward<T>(a_wrapper).get_proxy();
 			}
 		};
 	}
 
-	template <detail::object T>
+	template <detail::form_type T>
 	[[nodiscard]] constexpr std::uint32_t GetVMTypeID() noexcept
 	{
-		return static_cast<std::uint32_t>(T::FORM_ID);
+		return static_cast<std::uint32_t>(T::TYPE_ID);
 	}
 
-	template <detail::eobject T>
+	template <detail::effect_type T>
 	[[nodiscard]] constexpr std::uint32_t GetVMTypeID() noexcept
 	{
-		return static_cast<std::uint32_t>(T::FORM_ID);
+		return static_cast<std::uint32_t>(T::TYPE_ID);
 	}
 
-	template <detail::cobject T>
+	template <detail::alias_type T>
+	[[nodiscard]] constexpr std::uint32_t GetVMTypeID() noexcept
+	{
+		return static_cast<std::uint32_t>(T::TYPE_ID);
+	}
+
+	template <detail::inventory_type T>
 	[[nodiscard]] constexpr std::uint32_t GetVMTypeID() noexcept
 	{
 		return GetVMTypeID<TESObjectREFR>();
 	}
 
 	template <class T>
-	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()  //
+	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 		requires(std::same_as<T, void>)
 	{
 		return TypeInfo::RawType::kNone;
@@ -379,7 +389,7 @@ namespace RE::BSScript
 		return TypeInfo::RawType::kNone;
 	}
 
-	template <detail::object T>
+	template <detail::form_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		const auto                      game = GameVM::GetSingleton();
@@ -389,14 +399,14 @@ namespace RE::BSScript
 			!vm->GetScriptObjectType(GetVMTypeID<T>(), typeInfo) ||
 			!typeInfo) {
 			assert(false);
-			REX::ERROR("failed to get type info for object"sv);
+			REX::ERROR("Failed to get type info for Form!"sv);
 			return std::nullopt;
 		} else {
 			return typeInfo.get();
 		}
 	}
 
-	template <detail::eobject T>
+	template <detail::effect_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		const auto                      game = GameVM::GetSingleton();
@@ -406,68 +416,85 @@ namespace RE::BSScript
 			!vm->GetScriptObjectType(GetVMTypeID<T>(), typeInfo) ||
 			!typeInfo) {
 			assert(false);
-			REX::ERROR("failed to get type info for object"sv);
+			REX::ERROR("Failed to get type info for ActiveEffect!"sv);
 			return std::nullopt;
 		} else {
 			return typeInfo.get();
 		}
 	}
 
-	template <detail::cobject T>
+	template <detail::alias_type T>
+	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
+	{
+		const auto                      game = GameVM::GetSingleton();
+		const auto                      vm = game ? game->GetVM() : nullptr;
+		BSTSmartPointer<ObjectTypeInfo> typeInfo;
+		if (!vm ||
+			!vm->GetScriptObjectType(GetVMTypeID<T>(), typeInfo) ||
+			!typeInfo) {
+			assert(false);
+			REX::ERROR("Failed to get type info for Alias!"sv);
+			return std::nullopt;
+		} else {
+			return typeInfo.get();
+		}
+	}
+
+	template <detail::inventory_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		return GetTypeInfo<TESObjectREFR>();
 	}
 
-	template <detail::vmobject T>
+	template <detail::object_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
-		const auto                                 game = GameVM::GetSingleton();
-		const auto                                 vm = game ? game->GetVM() : nullptr;
-		static REL::Relocation<RE::BSFixedString*> baseObjectName{ ID::BSScriptUtil::BaseObjectName };
-		BSTSmartPointer<ObjectTypeInfo>            typeInfo;
+		const auto                      game = GameVM::GetSingleton();
+		const auto                      vm = game ? game->GetVM() : nullptr;
+		RE::BSFixedString               baseObjectName{ "ScriptObject"sv };
+		BSTSmartPointer<ObjectTypeInfo> typeInfo;
 		if (!vm ||
-			!vm->GetScriptObjectType(*baseObjectName, typeInfo) ||
+			!vm->GetScriptObjectType(baseObjectName, typeInfo) ||
 			!typeInfo) {
 			assert(false);
-			REX::ERROR("failed to get type info for vm object"sv);
+			REX::ERROR("Failed to get type info for BSScript::Object!"sv);
 			return std::nullopt;
 		} else {
 			return typeInfo.get();
 		}
 	}
 
-	template <detail::vmvariable T>
+	template <detail::variable_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		return TypeInfo::RawType::kVar;
 	}
 
-	template <detail::string T>
+	template <detail::string_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		return TypeInfo::RawType::kString;
 	}
 
-	template <detail::integral T>
+	template <detail::integral_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		return TypeInfo::RawType::kInt;
 	}
 
-	template <detail::floating_point T>
+	template <detail::floating_point_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		return TypeInfo::RawType::kFloat;
 	}
 
-	template <detail::boolean T>
+	template <detail::boolean_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		return TypeInfo::RawType::kBool;
 	}
 
-	template <detail::array T>
+	template <detail::array_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		using value_type = detail::decay_t<typename std::remove_cv_t<T>::value_type>;
@@ -480,7 +507,7 @@ namespace RE::BSScript
 		return typeInfo;
 	}
 
-	template <detail::wrapper T>
+	template <detail::wrapper_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		const auto game = GameVM::GetSingleton();
@@ -491,7 +518,7 @@ namespace RE::BSScript
 				!vm->GetScriptStructType(T::name, typeInfo) ||
 				!typeInfo) {
 				assert(false);
-				REX::ERROR("failed to get type info for structure"sv);
+				REX::ERROR("Failed to get type info for struct!"sv);
 				return std::nullopt;
 			} else {
 				return typeInfo.get();
@@ -501,7 +528,7 @@ namespace RE::BSScript
 		}
 	}
 
-	template <detail::nullable T>
+	template <detail::nullable_type T>
 	[[nodiscard]] std::optional<TypeInfo> GetTypeInfo()
 	{
 		using value_type = typename std::remove_cv_t<T>::value_type;
@@ -517,7 +544,7 @@ namespace RE::BSScript
 		}
 	}
 
-	template <detail::object T>
+	template <detail::form_type T>
 	void PackVariable(Variable& a_var, const volatile T* a_val)
 	{
 		if (!a_val) {
@@ -562,12 +589,112 @@ namespace RE::BSScript
 
 		if (!success) {
 			assert(false);
-			REX::ERROR("failed to pack variable"sv);
+			REX::ERROR("Failed to pack Form!"sv);
 			a_var = nullptr;
 		}
 	}
 
-	template <detail::cobject T>
+	template <detail::effect_type T>
+	void PackVariable(Variable& a_var, const volatile T* a_val)
+	{
+		if (!a_val) {
+			a_var = nullptr;
+			return;
+		}
+
+		const auto success = [&]() {
+			const auto                      game = GameVM::GetSingleton();
+			const auto                      vm = game ? game->GetVM() : nullptr;
+			BSTSmartPointer<ObjectTypeInfo> typeInfo;
+			if (!vm ||
+				!vm->GetScriptObjectType(GetVMTypeID<T>(), typeInfo) ||
+				!typeInfo) {
+				return false;
+			}
+
+			const auto& handles = vm->GetObjectHandlePolicy();
+			const auto  handle = handles.GetHandleForObject(
+                GetVMTypeID<T>(),
+                const_cast<const void*>(
+                    static_cast<const volatile void*>(a_val)));
+			if (handle == handles.EmptyHandle()) {
+				return false;
+			}
+
+			BSTSmartPointer<Object> object;
+			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, false) &&
+				vm->CreateObject(typeInfo->name, object) &&
+				object) {
+				auto& binding = vm->GetObjectBindPolicy();
+				binding.BindObject(object, handle);
+			}
+
+			if (!object) {
+				return false;
+			}
+
+			a_var = std::move(object);
+			return true;
+		}();
+
+		if (!success) {
+			assert(false);
+			REX::ERROR("Failed to pack ActiveEffect!"sv);
+			a_var = nullptr;
+		}
+	}
+
+	template <detail::alias_type T>
+	void PackVariable(Variable& a_var, const volatile T* a_val)
+	{
+		if (!a_val) {
+			a_var = nullptr;
+			return;
+		}
+
+		const auto success = [&]() {
+			const auto                      game = GameVM::GetSingleton();
+			const auto                      vm = game ? game->GetVM() : nullptr;
+			BSTSmartPointer<ObjectTypeInfo> typeInfo;
+			if (!vm ||
+				!vm->GetScriptObjectType(GetVMTypeID<T>(), typeInfo) ||
+				!typeInfo) {
+				return false;
+			}
+
+			const auto& handles = vm->GetObjectHandlePolicy();
+			const auto  handle = handles.GetHandleForObject(
+                GetVMTypeID<T>(),
+                const_cast<const void*>(
+                    static_cast<const volatile void*>(a_val)));
+			if (handle == handles.EmptyHandle()) {
+				return false;
+			}
+
+			BSTSmartPointer<Object> object;
+			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, false) &&
+				vm->CreateObject(typeInfo->name, object) &&
+				object) {
+				auto& binding = vm->GetObjectBindPolicy();
+				binding.BindObject(object, handle);
+			}
+
+			if (!object) {
+				return false;
+			}
+
+			a_var = std::move(object);
+			return true;
+		}();
+
+		if (!success) {
+			assert(false);
+			REX::ERROR("Failed to pack Alias!"sv);
+			a_var = nullptr;
+		}
+	}
+
+	template <detail::inventory_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
 		const auto success = [&]() {
@@ -609,59 +736,58 @@ namespace RE::BSScript
 
 		if (!success) {
 			assert(false);
-			REX::ERROR("failed to pack cobject"sv);
+			REX::ERROR("Failed to pack RefrOrInventoryObj!"sv);
 			a_var = nullptr;
 		}
 	}
 
-	template <detail::vmobject_ptr T>
+	template <detail::object_pointer_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
 		a_var = a_val ? std::move(a_val) : nullptr;
 	}
 
-	template <detail::vmvariable T>
+	template <detail::variable_type T>
 	void PackVariable(Variable& a_var, const volatile T* a_val)
 	{
 		a_var = a_val ? const_cast<T*>(a_val) : nullptr;
 	}
 
 	template <class T>
-	void PackVariable(Variable& a_var, T&& a_val)  //
-		requires(detail::string<std::remove_reference_t<T>>)
+	void PackVariable(Variable& a_var, T&& a_val)
+		requires(detail::string_type<std::remove_reference_t<T>>)
 	{
 		a_var = BSFixedString(std::forward<T>(a_val));
 	}
 
-	template <detail::signed_integral T>
+	template <detail::signed_integral_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
 		a_var = static_cast<std::int32_t>(a_val);
 	}
 
-	template <detail::unsigned_integral T>
+	template <detail::unsigned_integral_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
 		a_var = static_cast<std::uint32_t>(a_val);
 	}
 
-	template <detail::floating_point T>
+	template <detail::floating_point_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
 		a_var = static_cast<float>(a_val);
 	}
 
-	template <detail::boolean T>
+	template <detail::boolean_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
 		a_var = static_cast<bool>(a_val);
 	}
 
 	template <class T>
-	void PackVariable(Variable& a_var, T&& a_val)  //
-		requires(detail::array<std::remove_reference_t<T>>)
+	void PackVariable(Variable& a_var, T&& a_val)
+		requires(detail::array_type<std::remove_reference_t<T>>)
 	{
-		using value_type = detail::decay_t<typename std::remove_cvref_t<T>::value_type>;
 		using reference_type =
 			std::conditional_t<
 				std::is_lvalue_reference_v<T>,
@@ -692,21 +818,21 @@ namespace RE::BSScript
 
 		if (!success) {
 			assert(false);
-			REX::ERROR("failed to pack array"sv);
+			REX::ERROR("Failed to pack array!"sv);
 			a_var = nullptr;
 		}
 	}
 
 	template <class T>
 	void PackVariable(Variable& a_var, T&& a_val)  //
-		requires(detail::wrapper<std::remove_reference_t<T>>)
+		requires(detail::wrapper_type<std::remove_reference_t<T>>)
 	{
 		a_var = detail::wrapper_accessor::get_proxy(std::forward<T>(a_val));
 	}
 
 	template <class T>
 	void PackVariable(Variable& a_var, T&& a_val)  //
-		requires(detail::nullable<std::remove_reference_t<T>>)
+		requires(detail::nullable_type<std::remove_reference_t<T>>)
 	{
 		if (a_val) {
 			detail::PackVariable(a_var, *std::forward<T>(a_val));
@@ -731,7 +857,7 @@ namespace RE::BSScript
 		return {};
 	}
 
-	template <detail::object T>
+	template <detail::form_type T>
 	[[nodiscard]] T* UnpackVariable(const Variable& a_var)
 	{
 		if (a_var.is<Object>() && get<Object>(a_var) == nullptr) {
@@ -762,13 +888,13 @@ namespace RE::BSScript
 
 		if (!result) {
 			assert(false);
-			REX::ERROR("failed to get object from variable"sv);
+			REX::ERROR("Failed to get Form from variable!"sv);
 		}
 
 		return static_cast<T*>(result);
 	}
 
-	template <detail::eobject T>
+	template <detail::effect_type T>
 	[[nodiscard]] T* UnpackVariable(const Variable& a_var)
 	{
 		const auto result = [&]() -> void* {
@@ -781,7 +907,7 @@ namespace RE::BSScript
 
 			const auto& handles = vm->GetObjectHandlePolicy();
 			const auto  handle = object->GetHandle();
-			if (!handles.HandleIsType(static_cast<uint32_t>(ENUM_FORM_ID::kActiveEffect), handle))
+			if (!handles.HandleIsType(static_cast<uint32_t>(ENUM_TYPE_ID::kActiveMagicEffect), handle))
 				return nullptr;
 
 			return handles.GetObjectForHandle(GetVMTypeID<T>(), handle);
@@ -789,13 +915,47 @@ namespace RE::BSScript
 
 		if (!result) {
 			assert(false);
-			REX::ERROR("failed to get ActiveEffect from variable"sv);
+			REX::ERROR("Failed to get ActiveEffect from variable!"sv);
 		}
 
 		return static_cast<T*>(result);
 	}
 
-	template <detail::cobject T>
+	template <detail::alias_type T>
+	[[nodiscard]] T* UnpackVariable(const Variable& a_var)
+	{
+		const auto result = [&]() -> void* {
+			const auto game = GameVM::GetSingleton();
+			const auto vm = game ? game->GetVM() : nullptr;
+			const auto object = get<Object>(a_var);
+			if (!vm || !object) {
+				return nullptr;
+			}
+
+			std::uint32_t type{ 0 };
+			const auto&   handles = vm->GetObjectHandlePolicy();
+			const auto    handle = object->GetHandle();
+			handles.GetHandleType(handle, type);
+			switch (type) {
+				case ENUM_TYPE_ID::kAlias:
+				case ENUM_TYPE_ID::kReferenceAlias:
+				case ENUM_TYPE_ID::kLocationAlias:
+				case ENUM_TYPE_ID::kRefCollectionAlias:
+					return handles.GetObjectForHandle(GetVMTypeID<T>(), handle);
+				default:
+					return nullptr;
+			}
+		}();
+
+		if (!result) {
+			assert(false);
+			REX::ERROR("Failed to get Alias from variable!"sv);
+		}
+
+		return static_cast<T*>(result);
+	}
+
+	template <detail::inventory_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		const auto result = [&]() -> std::optional<T> {
@@ -826,26 +986,26 @@ namespace RE::BSScript
 
 		if (!result) {
 			assert(false);
-			REX::ERROR("failed to get cobject from variable"sv);
+			REX::ERROR("Failed to get RefrOrInventoryObj from variable!"sv);
 			return T();
 		} else {
 			return *result;
 		}
 	}
 
-	template <detail::vmobject_ptr T>
+	template <detail::object_pointer_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		return get<Object>(a_var);
 	}
 
-	template <detail::vmvariable T>
+	template <detail::variable_type T>
 	[[nodiscard]] const T* UnpackVariable(const Variable& a_var)
 	{
 		return get<Variable>(a_var);
 	}
 
-	template <detail::string T>
+	template <detail::string_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		if (!a_var.is<BSFixedString>()) {
@@ -862,7 +1022,7 @@ namespace RE::BSScript
 		}
 	}
 
-	template <detail::signed_integral T>
+	template <detail::signed_integral_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		if (!a_var.is<std::int32_t>()) {
@@ -873,7 +1033,7 @@ namespace RE::BSScript
 		return static_cast<T>(get<std::int32_t>(a_var));
 	}
 
-	template <detail::unsigned_integral T>
+	template <detail::unsigned_integral_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		if (!a_var.is<std::uint32_t>()) {
@@ -884,7 +1044,7 @@ namespace RE::BSScript
 		return static_cast<T>(get<std::uint32_t>(a_var));
 	}
 
-	template <detail::floating_point T>
+	template <detail::floating_point_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		if (!a_var.is<float>()) {
@@ -895,7 +1055,7 @@ namespace RE::BSScript
 		return static_cast<T>(get<float>(a_var));
 	}
 
-	template <detail::boolean T>
+	template <detail::boolean_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		if (!a_var.is<bool>()) {
@@ -906,7 +1066,7 @@ namespace RE::BSScript
 		return static_cast<T>(get<bool>(a_var));
 	}
 
-	template <detail::array T>
+	template <detail::array_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		if (!a_var.is<Array>()) {
@@ -925,13 +1085,13 @@ namespace RE::BSScript
 		return out;
 	}
 
-	template <detail::wrapper T>
+	template <detail::wrapper_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		return detail::wrapper_accessor::construct<T>(a_var);
 	}
 
-	template <detail::nullable T>
+	template <detail::nullable_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
 		if (a_var.is<std::nullptr_t>()) {
@@ -956,6 +1116,8 @@ namespace RE::BSScript
 			// Must be one of (optionally cv-qualified):
 			//	* A pointer to one of:
 			//		* (optionally cv-qualified) `RE::TESForm` or any subclass thereof
+			//		* (optionally cv-qualified) `RE::ActiveEffect` or any subclass thereof
+			//		* (optionally cv-qualified) `RE::BGSBaseAlias` or any subclass thereof
 			//		* (optionally volatile) `const RE::BSScript::Variable`
 			//	* `RE::BSTSmartPointer<RE::BSScript::Object>`
 			//	* A string type which is one of:
@@ -1017,8 +1179,8 @@ namespace RE::BSScript
 			//		* Additionally, the nullable's `value_type` must be one of:
 			//			* An array type
 			//			* A structure type
-			static_assert(detail::valid_parameter<T>, "invalid parameter type");
-			if constexpr (detail::array<T> || detail::nullable<T>) {
+			static_assert(detail::valid_parameter<T>, "Invalid parameter type");
+			if constexpr (detail::array_type<T> || detail::nullable_type<T>) {
 				return detail::ValidateParameter<typename std::remove_cv_t<T>::value_type>();
 			} else {
 				return true;
@@ -1057,22 +1219,26 @@ namespace RE::BSScript
 				// super::Call should guarantee the self parameter is not none
 				if constexpr (detail::static_tag<S>) {
 					return std::monostate{};
-				} else if constexpr (detail::object<std::remove_cvref_t<S>>) {
+				} else if constexpr (detail::form_type<std::remove_cvref_t<S>>) {
 					auto* const ptr = BSScript::UnpackVariable<std::remove_cvref_t<S>>(a_self);
 					assert(ptr != nullptr);
 					return *ptr;
-				} else if constexpr (detail::eobject<std::remove_cvref_t<S>>) {
+				} else if constexpr (detail::effect_type<std::remove_cvref_t<S>>) {
 					auto* const ptr = BSScript::UnpackVariable<std::remove_cvref_t<S>>(a_self);
 					assert(ptr != nullptr);
 					return *ptr;
-				} else if constexpr (detail::cobject<std::remove_cv_t<S>>) {
+				} else if constexpr (detail::alias_type<std::remove_cvref_t<S>>) {
+					auto* const ptr = BSScript::UnpackVariable<std::remove_cvref_t<S>>(a_self);
+					assert(ptr != nullptr);
+					return *ptr;
+				} else if constexpr (detail::inventory_type<std::remove_cv_t<S>>) {
 					return BSScript::UnpackVariable<std::remove_cv_t<S>>(a_self);
-				} else if constexpr (detail::vmobject<std::remove_cvref_t<S>>) {
+				} else if constexpr (detail::object_type<std::remove_cvref_t<S>>) {
 					const auto obj = get<Object>(a_self);
 					assert(obj != nullptr);
 					return *obj;
 				} else {
-					static_assert(false && sizeof(S), "unhandled case");
+					static_assert(false && sizeof(S), "Unhandled case");
 				}
 			};
 
@@ -1121,13 +1287,14 @@ namespace RE::BSScript
 		// A function which takes a self parameter must be one of (optionally cv-qualified):
 		//	* An lvalue reference to one of:
 		//		* `RE::TESForm` or any subclass thereof
+		//		* `RE::ActiveEffect` or any subclass thereof
+		//		* `RE::BGSBaseAlias` or any subclass thereof
 		//		* `RE::BSScript::Object`
 		//	* `RE::GameScript::RefrOrInventoryObj`
 		// A function which does not take a self parameter (a global function) must tag the self slot with `std::monostate`
-		static_assert(detail::valid_self<S>, "invalid self type");
-
-		static_assert(detail::ValidateReturn<R>());
-		static_assert(((detail::ValidateParameter<Args>(), ...), true));
+		static_assert(detail::valid_self<S>, "Invalid self type");
+		static_assert(detail::ValidateReturn<R>(), "Invalid return type");
+		static_assert(((detail::ValidateParameter<Args>(), ...), true), "Invalid parameter type");
 
 		template <class Fn>
 		NativeFunction(std::string_view a_object, std::string_view a_function, Fn a_func, bool a_isLatent)  //
@@ -1153,7 +1320,7 @@ namespace RE::BSScript
 			const auto stack = a_stackFrame.parent;
 			if (!stack) {
 				assert(false);
-				REX::ERROR("native function called without relevant stack"sv);
+				REX::ERROR("NativeFunction called without relevant stack!"sv);
 				return false;
 			}
 
@@ -1220,7 +1387,7 @@ namespace RE::BSScript
 				std::move(a_func),
 				a_isLatent));
 		if (!success) {
-			REX::ERROR("failed to register method \"{}\" on object \"{}\"", a_function, a_object);
+			REX::ERROR("Failed to register method: \"{}\" on object: \"{}\""sv, a_function, a_object);
 		}
 
 		if (success && a_taskletCallable) {

@@ -5,6 +5,7 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BaseFormComponent.h"
 #include "RE/E/ENUM_FORM_ID.h"
+#include "RE/E/ENUM_TYPE_ID.h"
 #include "RE/F/FORM_ENUM_STRING.h"
 #include "RE/T/TESFile.h"
 #include "RE/T/TESFileContainer.h"
@@ -23,6 +24,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESForm };
 		static constexpr auto VTABLE{ VTABLE::TESForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNONE };
+		static constexpr auto TYPE_ID{ BSScript::kForm };
 
 		class FormSortFunc
 		{

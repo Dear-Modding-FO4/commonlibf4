@@ -15,6 +15,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSSoundCategory };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundCategory };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSNCT };
+		static constexpr auto TYPE_ID{ BSScript::kSoundCategory };
 
 		// members
 		BGSSoundCategory* parentCategory;       // 38

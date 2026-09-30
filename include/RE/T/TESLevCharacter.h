@@ -15,6 +15,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESLevCharacter };
 		static constexpr auto VTABLE{ VTABLE::TESLevCharacter };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLVLN };
+		static constexpr auto TYPE_ID{ BSScript::kLeveledActor };
 	};
 	static_assert(sizeof(TESLevCharacter) == 0xD8);
 }

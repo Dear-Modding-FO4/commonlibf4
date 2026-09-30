@@ -19,6 +19,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSTextureSet };
 		static constexpr auto VTABLE{ VTABLE::BGSTextureSet };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kTXST };
+		static constexpr auto TYPE_ID{ BSScript::kTextureSet };
 
 		F4_HEAP_REDEFINE_NEW(BGSTextureSet);
 

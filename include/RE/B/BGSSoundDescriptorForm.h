@@ -15,6 +15,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSSoundDescriptorForm };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundDescriptorForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSNDR };
+		static constexpr auto TYPE_ID{ BSScript::kSound };
 
 		// members
 		BGSSoundDescriptor* impl;  // 28

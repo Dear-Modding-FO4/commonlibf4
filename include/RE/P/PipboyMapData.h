@@ -97,11 +97,11 @@ namespace RE
 			return func(this, a_result, a_markerId);
 		}
 
-		void UpdateQuestMarkers(PipboyArray& a_questMarkers, BSTHashMap<ObjectRefHandle, PipboyObject*>& a_questMarkerMap, MapMarker::MARKER_SCOPE a_scope, float a_heightReference)
+		void UpdateQuestMarkers(PipboyArray* a_questMarkers, BSTHashMap<ObjectRefHandle, PipboyObject*>* a_questMarkerMap, MapMarker::MARKER_SCOPE a_scope, float a_heightReference)
 		{
 			using func_t = decltype(&PipboyMapData::UpdateQuestMarkers);
 			static REL::Relocation<func_t> func{ ID::PipboyMapData::UpdateQuestMarkers };
-			func(this, a_questMarkers, a_questMarkerMap, a_scope, a_heightReference);
+			return func(this, a_questMarkers, a_questMarkerMap, a_scope, a_heightReference);
 		}
 
 		// members

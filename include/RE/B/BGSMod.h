@@ -167,6 +167,7 @@ namespace RE::BGSMod
 			static constexpr auto RTTI{ RTTI::BGSMod__Attachment__Mod };
 			static constexpr auto VTABLE{ VTABLE::BGSMod__Attachment__Mod };
 			static constexpr auto FORM_ID{ ENUM_FORM_ID::kOMOD };
+			static constexpr auto TYPE_ID{ BSScript::kObjectMod };
 
 			class Data :
 				public Container::Data  // 00

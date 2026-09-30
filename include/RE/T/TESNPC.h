@@ -36,6 +36,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESActorBase };
 		static constexpr auto VTABLE{ VTABLE::TESActorBase };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNPC_ };
+		static constexpr auto TYPE_ID{ BSScript::kActorBase };
 
 		class HeadRelatedData
 		{

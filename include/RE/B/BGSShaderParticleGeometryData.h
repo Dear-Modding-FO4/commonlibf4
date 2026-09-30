@@ -15,6 +15,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSShaderParticleGeometryData };
 		static constexpr auto VTABLE{ VTABLE::BGSShaderParticleGeometryData };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSPGD };
+		static constexpr auto TYPE_ID{ BSScript::kShaderParticleGeometry };
 
 		// members
 		BSTArray<SETTING_VALUE> data;             // 20

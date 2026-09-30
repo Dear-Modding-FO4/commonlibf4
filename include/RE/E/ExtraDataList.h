@@ -178,6 +178,17 @@ namespace RE
 			return func(this);
 		}
 
+		// Whether the health in this list is zero or less, which is what the game
+		// calls a broken item. The counterpart of IsDamaged above, which asks the
+		// weaker question of whether the health is anything below full. Both
+		// answer false for a list carrying no health at all.
+		inline bool IsItemBroken()
+		{
+			using func_t = decltype(&ExtraDataList::IsItemBroken);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::IsItemBroken };
+			return func(this);
+		}
+
 		inline bool CompareList(const ExtraDataList* a_compare, ComparisonQualifier a_qualifier)
 		{
 			using func_t = decltype(&ExtraDataList::CompareList);

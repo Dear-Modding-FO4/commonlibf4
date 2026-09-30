@@ -11,6 +11,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSTalkingActivator };
 		static constexpr auto VTABLE{ VTABLE::BGSTalkingActivator };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kTACT };
+		static constexpr auto TYPE_ID{ BSScript::kTalkingActivator };
 
 		// add
 		virtual bool GetReflectedByAutoWater() { return false; }  // 67

@@ -17,6 +17,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSIdleMarker };
 		static constexpr auto VTABLE{ VTABLE::BGSIdleMarker };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIDLM };
+		static constexpr auto TYPE_ID{ BSScript::kIdleMarker };
 
 		// members
 		BGSKeyword* animArchType;  // D8

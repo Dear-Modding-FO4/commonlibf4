@@ -37,6 +37,22 @@ namespace RE
 			return *singleton;
 		}
 
+		// Whether the actor is allowed to equip the item the handle names, and
+		// what stops it when it is not. Equipping through the Pip-Boy, the
+		// favourites bar or a quick key asks this first and turns anything but
+		// kSuccess into the matching HUD message.
+		//
+		// kItemBroken is the one answer an unmodified game never gives. It comes
+		// from ExtraDataList::IsItemBroken, so it needs an item whose health has
+		// been written down as zero or less, and nothing in the base game writes
+		// an item's health at all.
+		[[nodiscard]] CanEquipResult CanEquip(Actor* a_actor, const std::uint32_t& a_handleID, std::uint32_t a_stackID)
+		{
+			using func_t = decltype(&ActorEquipManager::CanEquip);
+			static REL::Relocation<func_t> func{ ID::ActorEquipManager::CanEquip };
+			return func(this, a_actor, a_handleID, a_stackID);
+		}
+
 		bool EquipObject(
 			Actor*                   a_actor,
 			const BGSObjectInstance& a_object,

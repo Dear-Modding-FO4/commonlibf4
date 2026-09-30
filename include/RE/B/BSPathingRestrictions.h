@@ -2,15 +2,15 @@
 
 #include "RE/B/BSPathingAvoidNodeArray.h"
 #include "RE/B/BSPathingSearchAreaRestrictions.h"
-#include "RE/B/BSTSmartPointer.h"
+#include "RE/N/NiPointer.h"
 
 namespace RE
 {
 	class BSPathingRestrictions
 	{
 	public:
-		BSTSmartPointer<BSPathingAvoidNodeArray> avoidNodeArray;    // 00
-		BSPathingSearchAreaRestrictions          areaRestrictions;  // 08
+		NiPointer<BSPathingAvoidNodeArray> avoidNodeArray;    // 00
+		BSPathingSearchAreaRestrictions    areaRestrictions;  // 08
 	};
 	static_assert(sizeof(BSPathingRestrictions) == 0x18);
 }

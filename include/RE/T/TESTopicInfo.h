@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESTopicInfo };
 		static constexpr auto VTABLE{ VTABLE::TESTopicInfo };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kINFO };
+		static constexpr auto TYPE_ID{ BSScript::kTopicInfo };
 
 		enum Flags
 		{

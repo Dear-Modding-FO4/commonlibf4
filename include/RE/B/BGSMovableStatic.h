@@ -16,6 +16,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSMovableStatic };
 		static constexpr auto VTABLE{ VTABLE::BGSMovableStatic };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMSTT };
+		static constexpr auto TYPE_ID{ BSScript::kMovableStatic };
 
 		// members
 		BGSSoundDescriptorForm* soundLoop;  // 118

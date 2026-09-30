@@ -31,6 +31,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectACTI };
 		static constexpr auto VTABLE{ VTABLE::TESObjectACTI };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kACTI };
+		static constexpr auto TYPE_ID{ BSScript::kActivator };
 
 		enum class ActiFlags
 		{

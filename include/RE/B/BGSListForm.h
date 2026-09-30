@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSListForm };
 		static constexpr auto VTABLE{ VTABLE::BGSListForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFLST };
+		static constexpr auto TYPE_ID{ BSScript::kFormList };
 
 		void AddScriptAddedForm(TESForm* a_form)
 		{

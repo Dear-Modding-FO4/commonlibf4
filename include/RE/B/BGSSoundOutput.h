@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSSoundOutput };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundOutput };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSOPM };
+		static constexpr auto TYPE_ID{ BSScript::kOutputModel };
 
 		enum class SPEAKER_OUTPUT_MODE;
 

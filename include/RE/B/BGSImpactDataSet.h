@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSImpactDataSet };
 		static constexpr auto VTABLE{ VTABLE::BGSImpactDataSet };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIPDS };
+		static constexpr auto TYPE_ID{ BSScript::kImpactDataSet };
 
 		// members
 		BSTHashMap<const BGSMaterialType*, BGSImpactData*> impactMap;  // 28

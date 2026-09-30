@@ -20,6 +20,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::ActorValueInfo };
 		static constexpr auto VTABLE{ VTABLE::ActorValueInfo };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kAVIF };
+		static constexpr auto TYPE_ID{ BSScript::kActorValue };
 
 		using ModifiedCallback_t = void(Actor* a_actor, const ActorValueInfo& a_info, float a_originalValue, float a_delta, Actor* a_actorSource);
 		using DerivationFunction_t = float(const ActorValueOwner* a_actor, const ActorValueInfo& a_info);

@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::AlarmPackage };
 		static constexpr auto VTABLE{ VTABLE::AlarmPackage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPACK };
+		static constexpr auto TYPE_ID{ BSScript::kPackage };
 
 		// members
 		BSSimpleList<Crime*> crimes;      // C8

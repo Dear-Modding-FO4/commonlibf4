@@ -23,6 +23,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESFaction };
 		static constexpr auto VTABLE{ VTABLE::TESFaction };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFACT };
+		static constexpr auto TYPE_ID{ BSScript::kFaction };
 
 		// members
 		BSTHashMap<const TESNPC*, std::uint32_t>* crimeGoldMap;           // 50

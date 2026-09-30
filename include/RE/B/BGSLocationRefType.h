@@ -11,6 +11,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSLocationRefType };
 		static constexpr auto VTABLE{ VTABLE::BGSLocationRefType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLCRT };
+		static constexpr auto TYPE_ID{ BSScript::kLocationRefType };
 	};
 	static_assert(sizeof(BGSLocationRefType) == 0x28);
 }

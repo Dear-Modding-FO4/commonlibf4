@@ -11,6 +11,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSReferenceEffect };
 		static constexpr auto VTABLE{ VTABLE::BGSReferenceEffect };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kRFCT };
+		static constexpr auto TYPE_ID{ BSScript::kVisualEffect };
 
 		enum class Flag
 		{
