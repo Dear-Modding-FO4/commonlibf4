@@ -5,8 +5,8 @@
 
 namespace RE
 {
-	enum class GUN_STATE;
-	enum class INTERACTING_STATE;
+	enum class GUN_STATE : std::uint32_t;
+	enum class INTERACTING_STATE : std::uint32_t;
 	enum class SIT_SLEEP_STATE;
 
 	class __declspec(novtable) ActorState :

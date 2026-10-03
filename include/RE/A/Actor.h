@@ -26,7 +26,7 @@ namespace RE
 	enum class ACTOR_CRITICAL_STAGE;
 	enum class ACTOR_LIFE_STATE;
 	enum class ACTOR_LOS_LOCATION;
-	enum class GUN_STATE;
+	enum class GUN_STATE : std::uint32_t;
 	enum class PACKAGE_OBJECT_TYPE;
 	enum class POWER_ATTACK_TYPE;
 
