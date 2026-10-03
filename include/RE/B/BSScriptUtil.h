@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BGSBaseAlias.h"
 #include "RE/B/BSScript_Array.h"
 #include "RE/B/BSScript_IStackCallbackFunctor.h"
 #include "RE/B/BSScript_IVirtualMachine.h"
