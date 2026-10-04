@@ -2626,6 +2626,17 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsTrue2{ 43452, 2212009 };
 	}
 
+	namespace TESContainer
+	{
+		inline constexpr REL::VariantID AddObject{ 557305, 2192999 };
+		inline constexpr REL::VariantID ContainerCanHoldForm{ 713551, 2193008 };
+		inline constexpr REL::VariantID ContainerCanHoldType{ 633812, 2193007 };
+		inline constexpr REL::VariantID FreeObjectList{ 1275674, 2192998 };
+		inline constexpr REL::VariantID GetObjectCount{ 820166, 2193006 };
+		inline constexpr REL::VariantID HasObject{ 833879, 2193003 };
+		inline constexpr REL::VariantID RemoveContainerObject{ 1379368, 2193002 };
+	}
+
 	namespace TESContainerChangedEvent
 	{
 		inline constexpr REL::VariantID GetEventSource{ 242538, 2201832 };

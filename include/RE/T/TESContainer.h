@@ -2,6 +2,7 @@
 
 #include "RE/B/BaseFormComponent.h"
 #include "RE/C/ContainerObject.h"
+#include "RE/E/ENUM_FORM_ID.h"
 
 namespace RE
 {
@@ -77,6 +78,62 @@ namespace RE
 				CopyObjectList(copiedData);
 			}
 			return true;
+		}
+
+		[[nodiscard]] static bool ContainerCanHoldType(ENUM_FORM_ID a_type)
+		{
+			using func_t = decltype(&TESContainer::ContainerCanHoldType);
+			static REL::Relocation<func_t> func{ ID::TESContainer::ContainerCanHoldType };
+			return func(a_type);
+		}
+
+		[[nodiscard]] static bool ContainerCanHoldForm(const TESForm* a_form)
+		{
+			using func_t = decltype(&TESContainer::ContainerCanHoldForm);
+			static REL::Relocation<func_t> func{ ID::TESContainer::ContainerCanHoldForm };
+			return func(a_form);
+		}
+
+		ContainerObject* AddObjectNative(TESBoundObject* a_object, std::int32_t a_count, const ContainerItemExtra* a_extra = nullptr)
+		{
+			using func_t = decltype(&TESContainer::AddObjectNative);
+			static REL::Relocation<func_t> func{ ID::TESContainer::AddObject };
+			return func(this, a_object, a_count, a_extra);
+		}
+
+		void RemoveContainerObject(ContainerObject* a_entry)
+		{
+			using func_t = decltype(&TESContainer::RemoveContainerObject);
+			static REL::Relocation<func_t> func{ ID::TESContainer::RemoveContainerObject };
+			return func(this, a_entry);
+		}
+
+		[[nodiscard]] bool HasObject(const TESBoundObject* a_object) const
+		{
+			using func_t = decltype(&TESContainer::HasObject);
+			static REL::Relocation<func_t> func{ ID::TESContainer::HasObject };
+			return func(this, a_object);
+		}
+
+		[[nodiscard]] std::int32_t GetObjectCount(const TESBoundObject* a_object) const
+		{
+			using func_t = decltype(&TESContainer::GetObjectCount);
+			static REL::Relocation<func_t> func{ ID::TESContainer::GetObjectCount };
+			return func(this, a_object);
+		}
+
+		std::uint32_t RemoveObject(const TESBoundObject* a_object)
+		{
+			std::uint32_t removed = 0;
+			for (std::uint32_t i = 0; i < numContainerObjects;) {
+				if (const auto entry = containerObjects[i]; entry && entry->obj == a_object) {
+					RemoveContainerObject(entry);
+					++removed;
+				} else {
+					++i;
+				}
+			}
+			return removed;
 		}
 
 		// members
