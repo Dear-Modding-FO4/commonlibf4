@@ -25,6 +25,13 @@ namespace RE
 		using ModifiedCallback_t = void(Actor* a_actor, const ActorValueInfo& a_info, float a_originalValue, float a_delta, Actor* a_actorSource);
 		using DerivationFunction_t = float(const ActorValueOwner* a_actor, const ActorValueInfo& a_info);
 
+		[[nodiscard]] const char* QAbbreviation() const
+		{
+			using func_t = decltype(&ActorValueInfo::QAbbreviation);
+			static REL::Relocation<func_t> func{ ID::ActorValueInfo::QAbbreviation };
+			return func(this);
+		}
+
 		// members
 		std::function<ModifiedCallback_t>               modifiedCallback;          // 048
 		BSString                                        formEditorID;              // 088

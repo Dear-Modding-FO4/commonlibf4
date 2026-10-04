@@ -97,6 +97,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 405390, 2189587 };
 	}
 
+	namespace ActorValueInfo
+	{
+		inline constexpr REL::VariantID QAbbreviation{ 1573976, 2209719 };
+	}
+
 	namespace AIFormulas
 	{
 		inline constexpr REL::VariantID GetBarterValue{ 984344, 2208969 };
