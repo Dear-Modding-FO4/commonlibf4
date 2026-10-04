@@ -57,6 +57,8 @@ namespace RE
 	class MovementMessageUpdateRequestImmediate;
 	class PackageLocation;
 	class PerkEntryVisitor;
+	class PerkEntryVisitor;
+	class PerkRankVisitor;
 	class Perks;
 
 	namespace MagicSystem
@@ -370,6 +372,20 @@ namespace RE
 			using func_t = decltype(&Actor::GetPerkRank);
 			static REL::Relocation<func_t> func{ ID::Actor::GetPerkRank };
 			return func(this, a_perk);
+		}
+
+		[[nodiscard]] float GetMaxCarryWeight()
+		{
+			using func_t = decltype(&Actor::GetMaxCarryWeight);
+			static REL::Relocation<func_t> func{ ID::Actor::GetMaxCarryWeight };
+			return func(this);
+		}
+
+		void ForEachPerk(PerkRankVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachPerk);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachPerk };
+			return func(this, a_visitor);
 		}
 
 		SEX GetSex()
