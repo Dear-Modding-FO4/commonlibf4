@@ -28,6 +28,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetMountHandle{ 313362, 2231230 };
 		inline constexpr REL::VariantID GetLevel{ 661617, 2229734 };
 		inline constexpr REL::VariantID GetPerkRank{ 1368313, 2230125 };
+		inline constexpr REL::VariantID GetMaxCarryWeight{ 362323, 2229868 };
+		inline constexpr REL::VariantID ForEachPerk{ 1423413, 2230120 };
 		inline constexpr REL::VariantID GetSex{ 1216256, 2229674 };
 		inline constexpr REL::VariantID HandleDefaultAnimationSwitch{ 1163130, 2229780 };
 		inline constexpr REL::VariantID HandleItemEquip{ 164912, 2229781 };
