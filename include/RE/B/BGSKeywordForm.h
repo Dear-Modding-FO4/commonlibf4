@@ -40,6 +40,13 @@ namespace RE
 
 		bool AddKeywords(const std::vector<BGSKeyword*>& a_keywords);
 
+		void ClearAllKeywords()
+		{
+			using func_t = decltype(&BGSKeywordForm::ClearAllKeywords);
+			static REL::Relocation<func_t> func{ ID::BGSKeywordForm::ClearAllKeywords };
+			return func(this);
+		}
+
 		[[nodiscard]] bool ContainsKeywordString(std::string_view a_editorID) const;
 		[[nodiscard]] bool HasKeywordID(TESFormID a_formID) const;
 		[[nodiscard]] bool HasKeywordString(std::string_view a_editorID) const;
