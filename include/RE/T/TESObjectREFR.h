@@ -326,6 +326,20 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] BGSEncounterZone* GetEncounterZone() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetEncounterZone);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetEncounterZone };
+			return func(this);
+		}
+
+		[[nodiscard]] TESWorldSpace* GetWorldSpace() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetWorldSpace);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetWorldSpace };
+			return func(this);
+		}
+
 		[[nodiscard]] const char* GetDisplayFullName()
 		{
 			using func_t = decltype(&TESObjectREFR::GetDisplayFullName);

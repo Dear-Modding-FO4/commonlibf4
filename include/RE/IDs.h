@@ -2857,6 +2857,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID Enable{ 1396707, 2201150 };
 		inline constexpr REL::VariantID FindReferenceFor3D{ 766937, 2201082 };
 		inline constexpr REL::VariantID GetCurrentLocation{ 1135470, 2201163 };
+		inline constexpr REL::VariantID GetEncounterZone{ 1413642, 2202627 };
+		inline constexpr REL::VariantID GetWorldSpace{ 576133, 2201167 };
 		inline constexpr REL::VariantID GetDisplayFullName{ 1212056, 2201126 };
 		inline constexpr REL::VariantID GetDistanceFromPoint{ 1332593, 2201172 };
 		inline constexpr REL::VariantID GetDistanceFromReference{ 268887, 2201174 };
