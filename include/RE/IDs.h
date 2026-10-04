@@ -1430,7 +1430,12 @@ namespace RE::ID
 
 	namespace EffectItem
 	{
+		inline constexpr REL::VariantID Ctor{ 1219158, 2189591 };
 		inline constexpr REL::VariantID GetDescription{ 949839, 2189612 };
+		inline constexpr REL::VariantID RecalculateRawCost{ 1202255, 2189613 };
+		inline constexpr REL::VariantID SetArea{ 1415883, 2189603 };
+		inline constexpr REL::VariantID SetDuration{ 884031, 2189605 };
+		inline constexpr REL::VariantID SetMagnitude{ 365771, 2189601 };
 	}
 
 	namespace EquippedWeaponData
