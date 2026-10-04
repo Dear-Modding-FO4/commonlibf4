@@ -55,6 +55,128 @@ namespace RE::BGSMod
 			kPMOD = 0x1
 		};
 
+		enum class WEAPON : std::uint32_t
+		{
+			kSpeed = 0,
+			kReach = 1,
+			kMinRange = 2,
+			kMaxRange = 3,
+			kAttackDelaySec = 4,
+			kOutOfRangeDamageMult = 6,
+			kSecondaryDamage = 7,
+			kCriticalChargeBonus = 8,
+			kHitBehavior = 9,
+			kRank = 10,
+			kAmmoCapacity = 12,
+			kType = 15,
+			kPlayerOnly = 16,
+			kNPCUseAmmo = 17,
+			kCharge = 18,
+			kCrime = 19,
+			kFixedRange = 20,
+			kEffectOnDeath = 21,
+			kAlternateRumble = 22,
+			kNonHostile = 23,
+			kIgnoreResist = 24,
+			kAutomatic = 25,
+			kCantDrop = 26,
+			kNonPlayable = 27,
+			kAttackDamage = 28,
+			kValue = 29,
+			kWeight = 30,
+			kKeywords = 31,
+			kAimModel = 32,
+			kAimModelMinConeDegrees = 33,
+			kAimModelMaxConeDegrees = 34,
+			kAimModelConeIncreasePerShot = 35,
+			kAimModelConeDecreasePerSec = 36,
+			kAimModelConeDecreaseDelayMs = 37,
+			kAimModelConeSneakMultiplier = 38,
+			kAimModelRecoilDiminishSpringForce = 39,
+			kAimModelRecoilDiminishSightsMult = 40,
+			kAimModelRecoilMaxDegPerShot = 41,
+			kAimModelRecoilMinDegPerShot = 42,
+			kAimModelRecoilHipMult = 43,
+			kAimModelRecoilShotsForRunaway = 44,
+			kAimModelRecoilArcDeg = 45,
+			kAimModelRecoilArcRotateDeg = 46,
+			kAimModelConeIronSightsMultiplier = 47,
+			kHasScope = 48,
+			kFOVMult = 49,
+			kFireSeconds = 50,
+			kNumProjectiles = 51,
+			kAttackSound = 52,
+			kAttackSound2D = 53,
+			kAttackLoop = 54,
+			kAttackFailSound = 55,
+			kIdleSound = 56,
+			kEquipSound = 57,
+			kUnEquipSound = 58,
+			kSoundLevel = 59,
+			kImpactDataSet = 60,
+			kAmmo = 61,
+			kEffect = 62,
+			kBlockBashImpactData = 63,
+			kBlockBashMaterial = 64,
+			kEnchantments = 65,
+			kAimModelBaseStability = 66,
+			kZoomData = 67,
+			kZoomOverlay = 68,
+			kZoomImageSpace = 69,
+			kCameraOffsetX = 70,
+			kCameraOffsetY = 71,
+			kCameraOffsetZ = 72,
+			kEquipSlot = 73,
+			kSoundLevelMult = 74,
+			kNPCAddAmmoList = 75,
+			kReloadSpeed = 76,
+			kDamageTypes = 77,
+			kAccuracyBonus = 78,
+			kAttackActionPointCost = 79,
+			kRangedOverrideProjectile = 80,
+			kBoltAction = 81,
+			kStaggerValue = 82,
+			kSightedTransitionSeconds = 83,
+			kFullPowerSeconds = 84,
+			kHoldInputToPower = 85,
+			kRepeatableSingleFire = 86,
+			kMinPowerPerShot = 87,
+			kColorRemappingIndex = 88,
+			kMaterialSwaps = 89,
+			kCriticalDamageMult = 90,
+			kFastEquipSound = 91,
+			kDisableShells = 92,
+			kChargeAttack = 93,
+			kActorValues = 94
+		};
+
+		enum class ARMOR : std::uint32_t
+		{
+			kEnchantments = 0,
+			kBlockBashImpactData = 1,
+			kBlockBashMaterial = 2,
+			kKeywords = 3,
+			kWeight = 4,
+			kValue = 5,
+			kRating = 6,
+			kIndex = 7,
+			kDamageTypes = 9,
+			kActorValues = 10,
+			kHealth = 11,
+			kColorRemappingIndex = 12,
+			kMaterialSwaps = 13
+		};
+
+		enum class NPC : std::uint32_t
+		{
+			kKeywords = 0,
+			kForcedInventory = 1,
+			kXPOffset = 2,
+			kEnchantments = 3,
+			kColorRemappingIndex = 4,
+			kMaterialSwaps = 5
+		};
+
 		class Mod  // id == 1
 		{
 		public:
@@ -102,6 +224,22 @@ namespace RE::BGSMod
 			};
 			static_assert(sizeof(DATATYPE) == 0x8);
 
+			void Initialize(std::uint32_t a_target) noexcept
+			{
+				data.form = nullptr;
+				target = a_target;
+				op = OP::kSet;
+				type = TYPE::kInt;
+				step = 0;
+			}
+
+			void ClearData()
+			{
+				using func_t = decltype(&Mod::ClearData);
+				static REL::Relocation<func_t> func{ ID::BGSMod::Property::Mod::ClearData };
+				return func(this);
+			}
+
 			// members
 			DATATYPE      data;        // 00
 			std::uint32_t target: 11;  // 08:00
@@ -134,6 +272,20 @@ namespace RE::BGSMod
 			using func_t = decltype(&Container::GetData);
 			static REL::Relocation<func_t> func{ ID::BGSMod::Container::GetData };
 			return func(this, a_data);
+		}
+
+		void Set(const Data& a_data)
+		{
+			using func_t = decltype(&Container::Set);
+			static REL::Relocation<func_t> func{ ID::BGSMod::Container::Set };
+			return func(this, a_data);
+		}
+
+		void FreeBuffer()
+		{
+			using func_t = decltype(&Container::FreeBuffer);
+			static REL::Relocation<func_t> func{ ID::BGSMod::Container::FreeBuffer };
+			return func(this);
 		}
 	};
 	static_assert(sizeof(Container) == 0x10);
@@ -271,6 +423,13 @@ namespace RE::BGSMod
 				using func_t = decltype(&Items::CreateInstanceDataForObjectAndExtra);
 				static REL::Relocation<func_t> func{ ID::BGSMod::Template::Items::CreateInstanceDataForObjectAndExtra };
 				return func(a_object, a_extra, a_filter, a_useDefault);
+			}
+
+			static bool CreateInstanceDataForReference(TESObjectREFR* a_reference, const INSTANCE_FILTER* a_filter, bool a_useDefault)
+			{
+				using func_t = decltype(&Items::CreateInstanceDataForReference);
+				static REL::Relocation<func_t> func{ ID::BGSMod::Template::Items::CreateInstanceDataForReference };
+				return func(a_reference, a_filter, a_useDefault);
 			}
 
 			// override (BaseFormComponent)
