@@ -55,8 +55,7 @@ namespace RE
 			if (!GetPerkIndex(a_perk)) {
 				std::vector<PerkRankData> storage{ &perks[0], &perks[perkCount] };
 
-				auto perk = new PerkRankData(a_perk, a_rank);
-				storage.push_back(*perk);
+				storage.emplace_back(a_perk, a_rank);
 
 				AllocatePerkRankArray(static_cast<std::uint32_t>(storage.size()));
 				std::ranges::copy(storage, perks);
