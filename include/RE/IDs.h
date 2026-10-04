@@ -656,6 +656,16 @@ namespace RE::ID
 		inline constexpr REL::VariantID EventIndex{ 1256916, 2663400 };
 	}
 
+	namespace BGSTypedFormValuePair
+	{
+		inline constexpr REL::VariantID Clear{ 1364343, 2193169 };
+		inline constexpr REL::VariantID FindIndexForForm{ 300539, 2193171 };
+		inline constexpr REL::VariantID GetFormValue{ 1513241, 2193164 };
+		inline constexpr REL::VariantID RemoveForm{ 1298877, 2193167 };
+		inline constexpr REL::VariantID SetFormValue{ 1153614, 2193165 };
+		inline constexpr REL::VariantID SetFormValueFloat{ 434898, 2193166 };
+	}
+
 	namespace BGSTerrainManager
 	{
 		inline constexpr REL::VariantID RecomputeQuickCullData{ 1483119, 2213622 };
