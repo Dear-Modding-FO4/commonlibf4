@@ -164,6 +164,7 @@
 #include "RE/B/BGSInventoryInterface.h"
 #include "RE/B/BGSInventoryItem.h"
 #include "RE/B/BGSInventoryItemEvent.h"
+#include "RE/B/BGSInventoryItemUtils.h"
 #include "RE/B/BGSInventoryList.h"
 #include "RE/B/BGSInventoryListEvent.h"
 #include "RE/B/BGSIronSights.h"
