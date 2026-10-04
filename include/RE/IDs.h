@@ -833,6 +833,31 @@ namespace RE::ID
 		inline constexpr REL::VariantID UpdateMorphsFromLip{ 1550953, 2209124 };
 	}
 
+	namespace BSFaceGenManager
+	{
+		inline constexpr REL::VariantID Singleton{ 1472720, 2689027, 4796313 };
+		inline constexpr REL::VariantID CheckNPCUsesPreCalcFace{ 969238, 2209308 };
+		inline constexpr REL::VariantID OverrideHeadPartTextures{ 1158923, 2209306 };
+		inline constexpr REL::VariantID OnFinishUpdateCustomization{ 1215801, 2209318 };
+	}
+
+	namespace BSFaceGenUtils
+	{
+		namespace FaceGenData
+		{
+			inline constexpr REL::VariantID Reset{ 706094, 2209499 };
+		}
+
+		inline constexpr REL::VariantID QCustomizationBufferSize{ 997515, 2209524 };
+		inline constexpr REL::VariantID GenerateFaceCustomizationForNPC{ 1198179, 2209523 };
+		inline constexpr REL::VariantID StartFaceCustomizationGenerationForNPC{ 1436335, 2209525 };
+		inline constexpr REL::VariantID PollFaceCustomizationLoads{ 114103, 2209526 };
+		inline constexpr REL::VariantID RenderFaceCustomizationTextures{ 459377, 2209527 };
+		inline constexpr REL::VariantID UpdateBodyTintColorsOnScene{ 49935, 2209540 };
+		inline constexpr REL::VariantID UpdateFaceCustomizationTexturesOnScene{ 927505, 2209541 };
+		inline constexpr REL::VariantID ApplyBlendedSkinTintToObject{ 724640, 2209549 };
+	}
+
 	namespace BSGameSound
 	{
 		inline constexpr REL::VariantID UpdateFrequencyModifier{ 157156, 2267454 };
@@ -2821,9 +2846,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
 		inline constexpr REL::VariantID GetXPValue{ 1134136, 2207384 };
 		inline constexpr REL::VariantID SetTintingData{ 452734, 2207493 };
-		inline constexpr REL::VariantID GetTintingTemplate{ 1316627, 2207494 };
-		inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
-		inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
+        inline constexpr REL::VariantID GetTintingTemplate{ 1316627, 2207494 };
+        inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
+        inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
+		inline constexpr REL::VariantID CalculateBodyTintColor{ 134537, 2207435 };
 	}
 
 	namespace TESObjectARMO
