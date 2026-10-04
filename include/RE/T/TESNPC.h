@@ -11,6 +11,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/N/NPC_DATA.h"
+#include "RE/N/NiColor.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/P/PerkRankData.h"
 #include "RE/S/SEX.h"
@@ -196,6 +197,18 @@ namespace RE
 			using func_t = decltype(&TESNPC::AddUniqueHeadType);
 			static REL::Relocation<func_t> func{ ID::TESNPC::AddUniqueHeadType };
 			return func(this, a_headPart);
+		}
+
+		// Works out the colour the body is tinted with from the skin tone (slot 12) tint entry, stores it
+		// in bodyTintColorR/G/B/A and returns it in a_color (0-1 per channel). Without a skin tone entry the
+		// colour is opaque grey (128, 128, 128, 255). The entry is taken from a_skinTone when given, otherwise
+		// from the tint entries (the player's own for the player). Unless a_force is set, an NPC whose face is
+		// baked ahead of time (BSFaceGenManager::CheckNPCUsesPreCalcFace) skips this and returns the stored colour.
+		void CalculateBodyTintColor(NiColorA& a_color, const BGSCharacterTint::Entry* a_skinTone, bool a_force)
+		{
+			using func_t = decltype(&TESNPC::CalculateBodyTintColor);
+			static REL::Relocation<func_t> func{ ID::TESNPC::CalculateBodyTintColor };
+			return func(this, a_color, a_skinTone, a_force);
 		}
 
 		// members
