@@ -2744,6 +2744,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID AddScriptAddedLeveledObject{ 860553, 2193269 };
 		inline constexpr REL::VariantID CalculateCurrentFormList{ 603811, 2193259 };
 		inline constexpr REL::VariantID CalculateCurrentFormListForRef{ 507405, 2193260 };
+		inline constexpr REL::VariantID FreeLeveledList{ 645214, 2193257 };
 		inline constexpr REL::VariantID GetUseAll{ 233875, 2193253 };
 	}
 
