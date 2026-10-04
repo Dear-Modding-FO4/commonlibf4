@@ -46,6 +46,53 @@ namespace RE
 		[[nodiscard]] constexpr bool UsesOppositeGenderAnims() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kOppositeGenderanims); }
 		[[nodiscard]] constexpr bool UsesTemplate() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kUsesTemplate); }
 
+		[[nodiscard]] std::int8_t GetFactionRank(const TESFaction* a_faction, bool a_includeTemplates = false) const
+		{
+			using func_t = decltype(&TESActorBaseData::GetFactionRank);
+			static REL::Relocation<func_t> func{ ID::TESActorBaseData::GetFactionRank };
+			return func(this, a_faction, a_includeTemplates);
+		}
+
+		void SetFactionRank(TESFaction* a_faction, std::int8_t a_rank)
+		{
+			using func_t = decltype(&TESActorBaseData::SetFactionRank);
+			static REL::Relocation<func_t> func{ ID::TESActorBaseData::SetFactionRank };
+			return func(this, a_faction, a_rank);
+		}
+
+		[[nodiscard]] bool IsInFaction(const TESFaction* a_faction) const noexcept
+		{
+			return std::ranges::any_of(factions, [&](const FACTION_RANK& a_entry) { return a_entry.faction == a_faction; });
+		}
+
+		void AddFaction(TESFaction* a_faction, std::int8_t a_rank)
+		{
+			if (!a_faction) {
+				return;
+			}
+			for (auto& entry : factions) {
+				if (entry.faction == a_faction) {
+					entry.rank = a_rank;
+					return;
+				}
+			}
+			FACTION_RANK added{};
+			added.faction = a_faction;
+			added.rank = a_rank;
+			factions.push_back(added);
+		}
+
+		bool RemoveFaction(const TESFaction* a_faction)
+		{
+			for (std::uint32_t i = 0; i < factions.size(); ++i) {
+				if (factions[i].faction == a_faction) {
+					factions.erase(factions.begin() + i);
+					return true;
+				}
+			}
+			return false;
+		}
+
 		std::uint16_t GetLevel() const
 		{
 			using func_t = decltype(&TESActorBaseData::GetLevel);

@@ -2673,7 +2673,9 @@ namespace RE::ID
 
 	namespace TESActorBaseData
 	{
+		inline constexpr REL::VariantID GetFactionRank{ 736048, 2192898 };
 		inline constexpr REL::VariantID GetLevel{ 151866, 2192891 };
+		inline constexpr REL::VariantID SetFactionRank{ 1347036, 2192899 };
 	}
 
 	namespace TESAmmo
