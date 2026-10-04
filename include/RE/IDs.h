@@ -176,6 +176,8 @@ namespace RE::ID
 
 	namespace BGSAttachParentArray
 	{
+		inline constexpr REL::VariantID ClearAllParentGroups{ 214135, 2189127 };
+		inline constexpr REL::VariantID GetParentGroupNumber{ 1332771, 2189124 };
 		inline constexpr REL::VariantID SetParentGroupNumber{ 1412266, 2189125 };
 	}
 
