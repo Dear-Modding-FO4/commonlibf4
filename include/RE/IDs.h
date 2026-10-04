@@ -445,7 +445,17 @@ namespace RE::ID
 
 		namespace Container
 		{
+			inline constexpr REL::VariantID FreeBuffer{ 752713, 2197550 };
 			inline constexpr REL::VariantID GetData{ 659507, 2189206 };
+			inline constexpr REL::VariantID Set{ 33420, 2189188 };
+		}
+
+		namespace Property
+		{
+			namespace Mod
+			{
+				inline constexpr REL::VariantID ClearData{ 122164, 2197643 };
+			}
 		}
 
 		namespace Template
@@ -453,6 +463,7 @@ namespace RE::ID
 			namespace Items
 			{
 				inline constexpr REL::VariantID CreateInstanceDataForObjectAndExtra{ 147297, 2189244 };
+				inline constexpr REL::VariantID CreateInstanceDataForReference{ 67834, 2189243 };
 			}
 		}
 	}
