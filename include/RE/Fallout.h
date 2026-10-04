@@ -1220,6 +1220,7 @@
 #include "RE/P/PerkData.h"
 #include "RE/P/PerkPointIncreaseEvent.h"
 #include "RE/P/PerkRankData.h"
+#include "RE/P/PerkRankVisitor.h"
 #include "RE/P/PerkUtilities.h"
 #include "RE/P/PerkValueEvents.h"
 #include "RE/P/PersistentPassList.h"
