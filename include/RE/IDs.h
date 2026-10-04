@@ -393,6 +393,7 @@ namespace RE::ID
 	namespace BGSKeywordForm
 	{
 		inline constexpr REL::VariantID AddKeyword{ 762999, 2192766 };
+		inline constexpr REL::VariantID ClearAllKeywords{ 1121947, 2192765 };
 		inline constexpr REL::VariantID RemoveKeyword{ 921694, 2192767 };
 	}
 
