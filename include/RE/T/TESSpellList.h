@@ -136,6 +136,27 @@ namespace RE
 			return func(this, a_spell);
 		}
 
+		bool AddSpellItem(SpellItem* a_spell)
+		{
+			using func_t = decltype(&TESSpellList::AddSpellItem);
+			static REL::Relocation<func_t> func{ ID::TESSpellList::AddSpellItem };
+			return func(this, a_spell);
+		}
+
+		void RemoveSpell(TESForm* a_spell, bool a_preserveOrder = true)
+		{
+			using func_t = decltype(&TESSpellList::RemoveSpell);
+			static REL::Relocation<func_t> func{ ID::TESSpellList::RemoveSpell };
+			return func(this, a_spell, a_preserveOrder);
+		}
+
+		void RemoveSpellItem(SpellItem* a_spell, bool a_preserveOrder = true)
+		{
+			using func_t = decltype(&TESSpellList::RemoveSpellItem);
+			static REL::Relocation<func_t> func{ ID::TESSpellList::RemoveSpellItem };
+			return func(this, a_spell, a_preserveOrder);
+		}
+
 		// members
 		SpellData* spellData;  // 08
 	};

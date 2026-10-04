@@ -2961,6 +2961,9 @@ namespace RE::ID
 	namespace TESSpellList
 	{
 		inline constexpr REL::VariantID AddSpell{ 1312083, 2193395 };
+		inline constexpr REL::VariantID AddSpellItem{ 1380727, 2193392 };
+		inline constexpr REL::VariantID RemoveSpell{ 220751, 2193399 };
+		inline constexpr REL::VariantID RemoveSpellItem{ 420758, 2193396 };
 	}
 
 	namespace TESSwitchRaceCompleteEvent
