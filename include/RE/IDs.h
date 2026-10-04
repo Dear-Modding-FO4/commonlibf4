@@ -1485,6 +1485,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetOverrideName{ 222303, 2190167 };
 		inline constexpr REL::VariantID SetStartingWorldOrCell{ 603621, 2190506 };
 		inline constexpr REL::VariantID GetHealthPerc{ 196530, 2190226 };
+		inline constexpr REL::VariantID GetHealth{ 289351, 2190225 };
+		inline constexpr REL::VariantID GetInstanceData{ 1345655, 2190186 };
 		inline constexpr REL::VariantID SetHealthPerc{ 1208294, 2190124 };
 		inline constexpr REL::VariantID ClearFavorite{ 254434, 2190191 };
 		inline constexpr REL::VariantID IsFavorite{ 786568, 2190189 };
