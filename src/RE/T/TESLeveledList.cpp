@@ -1,5 +1,6 @@
 #include "RE/T/TESLeveledList.h"
 
+#include "RE/C/ContainerItemExtra.h"
 #include "RE/L/LEVELED_OBJECT.h"
 #include "RE/M/MemoryManager.h"
 
