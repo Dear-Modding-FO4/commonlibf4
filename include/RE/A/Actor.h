@@ -374,11 +374,28 @@ namespace RE
 			return func(this, a_perk);
 		}
 
+		class __declspec(novtable) ForEachSpellVisitor
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::Actor__ForEachSpellVisitor };
+			static constexpr auto VTABLE{ VTABLE::Actor__ForEachSpellVisitor };
+
+			virtual ~ForEachSpellVisitor() = default;            // 00
+			virtual std::int32_t Visit(SpellItem* a_spell) = 0;  // 01
+		};
+
 		[[nodiscard]] float GetMaxCarryWeight()
 		{
 			using func_t = decltype(&Actor::GetMaxCarryWeight);
 			static REL::Relocation<func_t> func{ ID::Actor::GetMaxCarryWeight };
 			return func(this);
+		}
+
+		void ForEachSpell(ForEachSpellVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachSpell);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachSpell };
+			return func(this, a_visitor);
 		}
 
 		void ForEachPerk(PerkRankVisitor& a_visitor) const
