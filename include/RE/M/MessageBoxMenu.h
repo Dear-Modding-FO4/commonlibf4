@@ -30,7 +30,8 @@ namespace RE
 		}
 
 		// members
-		MessageBoxData* currentMessage;  // E8
+		bool            unkE8;           // E8
+		MessageBoxData* currentMessage;  // F0
 	};
-	static_assert(sizeof(MessageBoxMenu) == 0xF0);
+	static_assert(sizeof(MessageBoxMenu) == 0xF8);
 }
