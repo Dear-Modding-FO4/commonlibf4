@@ -21,6 +21,16 @@ namespace RE
 			kGasMask = 0x8
 		};
 
+		enum class DAMAGE_TYPE_POSITION : std::uint32_t
+		{
+			kPhysical = 1,
+			kPoison = 2,
+			kFire = 3,
+			kEnergy = 4,
+			kFrost = 5,
+			kRadiation = 6
+		};
+
 		inline bool DoSlotsOverlap(const TESObjectARMO* a_armor1, const TESObjectARMO* a_armor2)
 		{
 			using func_t = decltype(&DoSlotsOverlap);
