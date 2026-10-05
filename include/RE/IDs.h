@@ -735,6 +735,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Process2{ 820910, 2275932 };
 	}
 
+	namespace BSDFPrePassShader
+	{
+		inline constexpr REL::VariantID CreateCommandBuffer{ 1285447, 2318501 };
+	}
+
 	namespace BSGFxDisplayObject
 	{
 		inline constexpr REL::VariantID RemoveChild{ 1229383, 2287327 };
@@ -766,6 +771,8 @@ namespace RE::ID
 			inline constexpr REL::VariantID End{ 700869, 2276834 };
 			inline constexpr REL::VariantID Lock{ 1087134, 2276828 };
 			inline constexpr REL::VariantID Unlock{ 382332, 2276829 };
+			inline constexpr REL::VariantID FlushConstantGroup{ 1515598, 0 };  // Inlined in NG/AE
+			inline constexpr REL::VariantID GetShaderConstantGroupPS{ 266527, 2317224 };
 		}
 
 		namespace RenderTargetManager
@@ -969,6 +976,11 @@ namespace RE::ID
 	namespace BSScript_ZeroFunctionArguments
 	{
 		inline constexpr REL::VariantID ZeroFunctionArguments{ 704975, 2314598 };
+	}
+
+	namespace BSShader
+	{
+		inline constexpr REL::VariantID BuildCommandBuffer{ 833764, 2318870 };
 	}
 
 	namespace BSShaderProperty

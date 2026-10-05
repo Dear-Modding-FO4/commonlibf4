@@ -70,6 +70,7 @@ namespace RE
 			return nodePtr->get();
 		}
 
+		// Holds loaded near-cell objects; distant object LOD (BTO) lives under GetLandLODRoot().
 		[[nodiscard]] static NiNode* GetObjectLODRoot()
 		{
 			static REL::Relocation<NiPointer<NiNode>*> nodePtr{ ID::Main::ObjectLODRoot };

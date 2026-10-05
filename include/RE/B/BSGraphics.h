@@ -471,6 +471,20 @@ namespace RE
 				return func(this);
 			}
 
+			void FlushConstantGroup(ConstantGroup* a_vertex, ConstantGroup* a_pixel)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::FlushConstantGroup);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::FlushConstantGroup };
+				return func(this, a_vertex, a_pixel);
+			}
+
+			[[nodiscard]] ConstantGroup* GetShaderConstantGroup(PixelShader* a_shader, std::uint32_t a_level)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::GetShaderConstantGroup);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::GetShaderConstantGroupPS };
+				return func(this, a_shader, a_level);
+			}
+
 			// members
 			bool                 skipNextPresent;     // 00
 			ResetRenderTargets_t resetRenderTargets;  // 08
