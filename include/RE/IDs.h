@@ -444,7 +444,6 @@ namespace RE::ID
 			namespace Mod
 			{
 				inline constexpr REL::VariantID FindModsForLooseMod{ 410363, 2197524 };
-				inline constexpr REL::VariantID GetData{ 33658, 0 };  // Inlined in NG/AE
 				inline constexpr REL::VariantID GetLooseMod{ 1359613, 2197514 };
 				inline constexpr REL::VariantID SetLooseMod{ 123132, 2197558 };
 			}
