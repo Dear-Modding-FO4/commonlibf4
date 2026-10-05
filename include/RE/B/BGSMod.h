@@ -343,9 +343,12 @@ namespace RE::BGSMod
 
 			void GetData(Data& a_data) const
 			{
-				using func_t = decltype(&Mod::GetData);
-				static REL::Relocation<func_t> func{ ID::BGSMod::Attachment::Mod::GetData };
-				return func(this, a_data);
+				Container::GetData(&a_data);
+				a_data.targetFormType = targetFormType;
+				a_data.maxRank = static_cast<std::int8_t>(maxRank);
+				a_data.lvlsPerTierScaledOffset = static_cast<std::int8_t>(lvlsPerTierScaledOffset);
+				a_data.optional = optional;
+				a_data.childrenExclusive = childrenExclusive;
 			}
 
 			TESObjectMISC* GetLooseMod()
