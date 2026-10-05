@@ -485,6 +485,27 @@ namespace RE
 				return func(this, a_shader, a_level);
 			}
 
+			void ResetWindow(std::uint32_t a_windowID)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ResetWindow);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ResetWindow };
+				return func(this, a_windowID);
+			}
+
+			void SetShaders(VertexShader* a_vertexShader, HullShader* a_hullShader, DomainShader* a_domainShader, PixelShader* a_pixelShader)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetShaders);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetShaders };
+				return func(this, a_vertexShader, a_hullShader, a_domainShader, a_pixelShader);
+			}
+
+			void RunComputeShader(ComputeShader* a_computeShader, std::uint32_t a_groupCountX, std::uint32_t a_groupCountY, std::uint32_t a_groupCountZ)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::RunComputeShader);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RunComputeShader };
+				return func(this, a_computeShader, a_groupCountX, a_groupCountY, a_groupCountZ);
+			}
+
 			// members
 			bool                 skipNextPresent;     // 00
 			ResetRenderTargets_t resetRenderTargets;  // 08
@@ -548,6 +569,13 @@ namespace RE
 			REX::W32::ID3D11InputLayout*                            particleShaderInputLayout;                 // 2FE0
 		};
 		static_assert(sizeof(Context) == 0x2FF0);
+
+		// Fallback the engine uses when the thread has no installed context.
+		[[nodiscard]] inline Context* GetGlobalContext()
+		{
+			static REL::Relocation<Context**> ptr{ ID::BSGraphics::GlobalContext };
+			return *ptr;
+		}
 
 		class Vertex
 		{
@@ -691,6 +719,21 @@ namespace RE
 		};
 		static_assert(sizeof(CameraStateData) == 0x250);
 
+		namespace detail
+		{
+			template <class T>
+			[[nodiscard]] T& RuntimeField(void* a_object, std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<T*>(static_cast<std::byte*>(a_object) + a_offset);
+			}
+
+			template <class T>
+			[[nodiscard]] const T& RuntimeField(const void* a_object, std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<const T*>(static_cast<const std::byte*>(a_object) + a_offset);
+			}
+		}
+
 		class State
 		{
 		public:
@@ -700,7 +743,38 @@ namespace RE
 				return singleton.get();
 			}
 
-			// members
+			[[nodiscard]] TAA_STATE GetTAAState() const noexcept
+			{
+				return detail::RuntimeField<TAA_STATE>(this, GetTAAOffsets().taaState);
+			}
+
+			void SetTAAState(TAA_STATE a_state) noexcept
+			{
+				detail::RuntimeField<TAA_STATE>(this, GetTAAOffsets().taaState) = a_state;
+			}
+
+			[[nodiscard]] std::uint32_t GetTAADisableCounter() const noexcept
+			{
+				return detail::RuntimeField<std::uint32_t>(this, GetTAAOffsets().taaDisableCounter);
+			}
+
+		private:
+			struct TAAOffsets
+			{
+				std::size_t taaState;
+				std::size_t taaDisableCounter;
+			};
+
+			[[nodiscard]] static TAAOffsets GetTAAOffsets() noexcept
+			{
+				// UpdateTemporalData reads OG [this+A8]/[AC], NG/AE [this+AC]/[B0].
+				constexpr TAAOffsets og{ 0xA8, 0xAC };
+				constexpr TAAOffsets ngae{ 0xAC, 0xB0 };
+				return REX::FModule::IsRuntimeOG() ? og : ngae;
+			}
+
+		public:
+			// members; TAA fields use OG offsets (NG/AE 0AC/0B0), use the accessors
 			std::uint32_t             currentFrame;                      // 000
 			float                     offsetX;                           // 004
 			float                     offsetY;                           // 008
@@ -832,6 +906,21 @@ namespace RE
 				using func_t = decltype(&RenderTargetManager::SetEnableDynamicResolution);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetEnableDynamicResolution };
 				return func(this, a_enableDynamicResolution);
+			}
+
+			void SetUseDynamicResolutionViewportAsDefaultViewport(bool a_useDynamicResolutionViewport)
+			{
+				using func_t = decltype(&RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport };
+				return func(this, a_useDynamicResolutionViewport);
+			}
+
+			// Dereferences the active Context; call only after the renderer is initialized.
+			static void SetCurrentViewportForceToRenderTargetDimensions()
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions };
+				return func();
 			}
 
 			[[nodiscard]] DepthStencilTargetProperties& GetDepthStencilTargetProperties(std::size_t a_index) noexcept
@@ -1017,13 +1106,13 @@ namespace RE
 			template <class T>
 			[[nodiscard]] T& GetRuntimeField(std::size_t a_offset) noexcept
 			{
-				return *reinterpret_cast<T*>(reinterpret_cast<std::byte*>(this) + a_offset);
+				return detail::RuntimeField<T>(this, a_offset);
 			}
 
 			template <class T>
 			[[nodiscard]] const T& GetRuntimeField(std::size_t a_offset) const noexcept
 			{
-				return *reinterpret_cast<const T*>(reinterpret_cast<const std::byte*>(this) + a_offset);
+				return detail::RuntimeField<T>(this, a_offset);
 			}
 
 		public:

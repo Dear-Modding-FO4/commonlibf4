@@ -157,6 +157,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] float GetExteriorWaterHeight() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetExteriorWaterHeight);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetExteriorWaterHeight };
+			return func(this);
+		}
+
 		[[nodiscard]] BGSLocation* GetLocation() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);

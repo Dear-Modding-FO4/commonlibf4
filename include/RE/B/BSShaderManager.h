@@ -125,6 +125,24 @@ namespace RE
 
 		class State
 		{
+		public:
+			[[nodiscard]] static State* GetSingleton()
+			{
+				static REL::Relocation<State*> singleton{ ID::BSShaderManager::State::Singleton };
+				return singleton.get();
+			}
+
+			[[nodiscard]] NiTransform& GetDirectionalAmbientTransform() noexcept
+			{
+				return directionalAmbientTransform;
+			}
+
+			[[nodiscard]] const NiTransform& GetDirectionalAmbientTransform() const noexcept
+			{
+				return directionalAmbientTransform;
+			}
+
+		private:
 			// members
 			ShadowSceneNode*              shadowSceneNode[5];                      // 00
 			float                         timerValues[6];                          // 28
