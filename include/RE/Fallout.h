@@ -1355,6 +1355,7 @@
 #include "RE/S/SFRendererInitializedEvent.h"
 #include "RE/S/SHAPE_TYPES.h"
 #include "RE/S/SIT_SLEEP_STATE.h"
+#include "RE/S/SIZE_TYPE.h"
 #include "RE/S/SOUND_LEVEL.h"
 #include "RE/S/SPECIALMenuEvent.h"
 #include "RE/S/STAGGER_MAGNITUDE.h"
