@@ -162,7 +162,7 @@ namespace RE
 			virtual EntryType GetType();                                                // 28
 
 			// Members
-			Entry*        templateEntry;  // 08
+			Template::Entry* templateEntry;  // 08
 			std::uint16_t idLink;         // 10
 			std::uint8_t  tintingValue;   // 12
 		};
