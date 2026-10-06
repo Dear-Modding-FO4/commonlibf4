@@ -9,6 +9,7 @@ namespace RE
 	class BSIAudioEffectChain;
 	class BSISoundCategory;
 	class BSISoundOutputModel;
+	class NiPoint3;
 
 	class __declspec(novtable) BSGameSound
 	{
