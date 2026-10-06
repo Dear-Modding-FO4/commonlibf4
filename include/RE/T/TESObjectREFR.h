@@ -375,6 +375,27 @@ namespace RE
 			return func(this, a_ref, a_disabled, a_sameSpace, a_diffZHeight);
 		}
 
+		[[nodiscard]] BIPED_OBJECT GetBodyObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetBodyObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetBodyObject };
+			return func(this);
+		}
+
+		[[nodiscard]] BIPED_OBJECT GetPipboyObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetPipboyObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetPipboyObject };
+			return func(this);
+		}
+
+		[[nodiscard]] BIPED_OBJECT GetShieldObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetShieldObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetShieldObject };
+			return func(this);
+		}
+
 		[[nodiscard]] bool GetEditorDead() const
 		{
 			using func_t = decltype(&TESObjectREFR::GetEditorDead);
