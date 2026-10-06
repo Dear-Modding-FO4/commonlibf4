@@ -239,6 +239,7 @@
 #include "RE/B/BGSSaveLoadBuffer.h"
 #include "RE/B/BGSSaveLoadChangesMap.h"
 #include "RE/B/BGSSaveLoadFileEntry.h"
+#include "RE/B/BGSSaveLoadFileLocationTable.h"
 #include "RE/B/BGSSaveLoadFormIDMap.h"
 #include "RE/B/BGSSaveLoadFormInfo.h"
 #include "RE/B/BGSSaveLoadGame.h"
