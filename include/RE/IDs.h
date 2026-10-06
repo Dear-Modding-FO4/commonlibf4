@@ -2394,8 +2394,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetDifficultyLevel{ 922962, 2233056 };
 		inline constexpr REL::VariantID IsGodMode{ 1032309, 2232986 };
 		inline constexpr REL::VariantID IsHolotapePlaying{ 530826, 2233206 };
+		inline constexpr REL::VariantID HideShield{ 380570, 2232892 };
 		inline constexpr REL::VariantID IsImmortal{ 500346, 2232988 };
 		inline constexpr REL::VariantID IsPipboyLightOn{ 426550, 2233202 };
+		inline constexpr REL::VariantID ShowShield{ 1416942, 2232893 };
 		inline constexpr REL::VariantID PauseHolotape{ 1567456, 2233208 };
 		inline constexpr REL::VariantID PlayHolotape{ 1581042, 2233207 };
 		inline constexpr REL::VariantID QueueFastTravel{ 556824, 2232918 };
