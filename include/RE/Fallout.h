@@ -236,6 +236,7 @@
 #include "RE/B/BGSRelationshipChangeRankEvent.h"
 #include "RE/B/BGSRemoveFromPlayerEvent.h"
 #include "RE/B/BGSReverbParameters.h"
+#include "RE/B/BGSSaveFormBuffer.h"
 #include "RE/B/BGSSaveGameBuffer.h"
 #include "RE/B/BGSSaveLoadBuffer.h"
 #include "RE/B/BGSSaveLoadChangesMap.h"
