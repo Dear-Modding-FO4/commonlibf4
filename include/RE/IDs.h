@@ -760,6 +760,15 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetMotion{ 357289, 2277723 };
 	}
 
+	namespace BipedAnim
+	{
+		inline constexpr REL::VariantID GetBipedObject{ 1022008, 2194379 };
+		inline constexpr REL::VariantID GetBipedObjectEquipIndex{ 51303, 2194380 };
+		inline constexpr REL::VariantID GetBodyObject{ 606377, 2194365 };
+		inline constexpr REL::VariantID GetShieldObject{ 965451, 2194364 };
+		inline constexpr REL::VariantID HideHeadExtraGeometry{ 445574, 2194386 };
+	}
+
 	namespace BIPOBJECT
 	{
 		inline constexpr REL::VariantID dtor{ 765242, 2194330 };
