@@ -74,6 +74,20 @@ namespace RE
 			func(this, a_handle, a_file, a_usageFlags, a_priority);
 		}
 
+		bool GetOPMFrequencyOverride(const BSISoundOutputModel* a_model, float& a_frequency)
+		{
+			using func_t = decltype(&BSAudioManager::GetOPMFrequencyOverride);
+			static REL::Relocation<func_t> func{ ID::BSAudioManager::GetOPMFrequencyOverride };
+			return func(this, a_model, a_frequency);
+		}
+
+		void SetOPMFrequencyOverride(const BSISoundOutputModel* a_model, float a_frequency)
+		{
+			using func_t = decltype(&BSAudioManager::SetOPMFrequencyOverride);
+			static REL::Relocation<func_t> func{ ID::BSAudioManager::SetOPMFrequencyOverride };
+			return func(this, a_model, a_frequency);
+		}
+
 		// members
 		std::int32_t                                              messageListIndex;            // 000
 		std::int32_t                                              messageProcessingListIndex;  // 004
