@@ -761,6 +761,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetSoundHandle{ 1419045, 2267105 };
 		inline constexpr REL::VariantID GetSoundHandleByName{ 196484, 2267104 };
 		inline constexpr REL::VariantID GetSoundHandleByFile{ 37039, 2267103 };
+		inline constexpr REL::VariantID SetOPMFrequencyOverride{ 445168, 2267111 };
+		inline constexpr REL::VariantID GetOPMFrequencyOverride{ 165846, 2267112 };
 	}
 
 	namespace BSAwardsSystemUtility
@@ -823,6 +825,12 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID GetRenderPasses{ 1289086, 2316386, 2316386 };
 		inline constexpr REL::VariantID LocalLightEnable{ 121466, 2677717, 4784385 };
+	}
+
+	namespace BSGameSound
+	{
+		inline constexpr REL::VariantID UpdateFrequencyModifier{ 157156, 2267454 };
+		inline constexpr REL::VariantID CalcInitialFrequency{ 1456559, 2267475 };
 	}
 
 	namespace BSGFxDisplayObject
@@ -1179,6 +1187,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Render{ 871921, 2319335 };
 		inline constexpr REL::VariantID UpdateCamerasI{ 1242204, 2319339 };
+	}
+
+	namespace BSSoundCategoryHandle
+	{
+		inline constexpr REL::VariantID SetFrequency{ 1437963, 2267421 };
 	}
 
 	namespace BSSoundHandle
@@ -2607,6 +2620,8 @@ namespace RE::ID
 
 	namespace TESAudio
 	{
+		inline constexpr REL::VariantID UpdateTimeSensitiveAudio{ 455408, 2226932 };
+
 		namespace ScriptedMusicState
 		{
 			inline constexpr REL::VariantID Singleton{ 1216761, 2691985, 4799278 };
@@ -3090,6 +3105,9 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 570121, 2690444, 4797733 };
 		inline constexpr REL::VariantID CanActivateCriticals{ 1057603, 2237208 };
+		inline constexpr REL::VariantID SetMagicTimeSlowdown{ 249054, 2237201 };
+		inline constexpr REL::VariantID GetPlayerUpdateMult{ 767429, 2237202 };
+		inline constexpr REL::VariantID GetUpdateMult{ 819285, 2237204 };
 	}
 
 	namespace WorkbenchMenuBase

@@ -6,6 +6,13 @@ namespace RE
 {
 	namespace TESAudio
 	{
+		inline void UpdateTimeSensitiveAudio()
+		{
+			using func_t = decltype(&TESAudio::UpdateTimeSensitiveAudio);
+			static REL::Relocation<func_t> func{ ID::TESAudio::UpdateTimeSensitiveAudio };
+			return func();
+		}
+
 		enum class CategoryDuckingType : std::int32_t
 		{
 			kHolotapeProgram = 0x0,
