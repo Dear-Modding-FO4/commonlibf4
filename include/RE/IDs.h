@@ -509,6 +509,15 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetNumMods{ 1526690, 2189019 };
 	}
 
+	namespace BGSObjectVisibilityManager
+	{
+		inline constexpr REL::VariantID Singleton{ 1229449, 2192469 };
+		inline constexpr REL::VariantID ctor{ 584591, 2194267 };
+		inline constexpr REL::VariantID AddReference{ 10580, 2194272 };
+		inline constexpr REL::VariantID RemoveReference{ 1099652, 2194273 };
+		inline constexpr REL::VariantID CalculateVisibilityCount{ 1445067, 2194274 };
+	}
+
 	namespace BGSOnActorAttachEvent
 	{
 		inline constexpr REL::VariantID EventIndex{ 66772, 2663431 };
@@ -2068,6 +2077,14 @@ namespace RE::ID
 	namespace Moon
 	{
 		inline constexpr REL::VariantID Init{ 114988, 2208804 };
+	}
+
+	namespace NavMeshObstacleCoverManager
+	{
+		inline constexpr REL::VariantID Singleton{ 1308718, 2192470 };
+		inline constexpr REL::VariantID ctor{ 463901, 2196118 };
+		inline constexpr REL::VariantID IsObstacle{ 982270, 2196120 };
+		inline constexpr REL::VariantID GetObstacleCoverData{ 834246, 2196123 };
 	}
 
 	namespace NiAlphaProperty
