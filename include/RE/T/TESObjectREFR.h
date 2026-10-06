@@ -367,6 +367,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] float GetFade(float a_baseFade) const
+		{
+			using func_t = decltype(&TESObjectREFR::GetFade);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetFade };
+			return func(this, a_baseFade);
+		}
+
 		[[nodiscard]] TESBoundObject* GetObjectReference() const noexcept { return data.objectReference; }
 
 		[[nodiscard]] TESForm* GetOwner()

@@ -2679,6 +2679,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetDistanceSqFromPoint{ 361891, 2201173 };
 		inline constexpr REL::VariantID GetDistanceSqFromReference{ 1225962, 2201175 };
 		inline constexpr REL::VariantID GetEditorDead{ 941388, 2200781 };
+		inline constexpr REL::VariantID GetFade{ 141848, 2202609 };
 		inline constexpr REL::VariantID GetOwner{ 1323437, 2202616 };
 		inline constexpr REL::VariantID GetGoldAmount{ 564356, 2200923 };
 		inline constexpr REL::VariantID GetHandle{ 1573130, 2201196 };
