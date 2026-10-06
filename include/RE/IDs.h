@@ -758,6 +758,7 @@ namespace RE::ID
 	namespace BSDFTiledLighting
 	{
 		inline constexpr REL::VariantID AddLight{ 1250844, 2318542 };
+		inline constexpr REL::VariantID UpdateLightListTiledPackingCallback{ 999390, 2317525 };
 	}
 
 	namespace BSGFxDisplayObject
