@@ -33,6 +33,17 @@ namespace RE
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWRLD };
 		static constexpr auto TYPE_ID{ BSScript::kWorldSpace };
 
+		enum class FLAG : std::uint8_t
+		{
+			kCantTravelFrom = 1u << 1,
+			kHasBorderRegion = 1u << 2,
+			kNoLODWater = 1u << 3,
+			kNoLand = 1u << 4,
+			kNoSky = 1u << 5,
+			kFixedDimensions = 1u << 6,
+			kNoGrass = 1u << 7
+		};
+
 		enum class PARENT_USE_FLAG
 		{
 			kLand = 1u << 0,
@@ -104,7 +115,7 @@ namespace RE
 		TESObjectCELL*                                                 persistentCell;           // 0x070
 		BGSTerrainManager*                                             terrainManager;           // 0x078
 		TESClimate*                                                    climate;                  // 0x080
-		std::int8_t                                                    flags;                    // 0x088
+		REX::TEnumSet<FLAG, std::uint8_t>                              flags;                    // 0x088
 		REX::TEnumSet<PARENT_USE_FLAG, std::uint16_t>                  parentUseFlags;           // 0x08A
 		std::int8_t                                                    worldFlags;               // 0x08C
 		ShortPoint                                                     fixedCenter;              // 0x08E

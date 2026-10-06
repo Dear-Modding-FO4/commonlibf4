@@ -807,6 +807,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID SetUseDynamicResolutionViewportAsDefaultViewport{ 676851, 2277194 };
 			inline constexpr REL::VariantID UpdateDynamicResolution{ 1115215, 2277195 };
 			inline constexpr REL::VariantID SetCurrentViewportForceToRenderTargetDimensions{ 1208720, 2277193 };
+			inline constexpr REL::VariantID QShadowMapArrayDepthStencil{ 638475, 2277185 };
 		}
 
 		namespace State
@@ -863,10 +864,20 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetLuminanceAtPoint{ 170662, 2318428 };
 	}
 
+	namespace BSLightingShaderProperty
+	{
+		inline constexpr REL::VariantID GetRenderPasses_ShadowMapOrMask{ 757582, 2316434 };
+	}
+
 	namespace BSModelDB
 	{
 		inline constexpr REL::VariantID Demand1{ 1066398, 2275153 };
 		inline constexpr REL::VariantID Demand2{ 1225688, 2275154 };
+	}
+
+	namespace BSPreCulledObjects
+	{
+		inline constexpr REL::VariantID QEnabled{ 917969, 2317322 };
 	}
 
 	namespace BSPointerHandle
@@ -1063,6 +1074,14 @@ namespace RE::ID
 	namespace BSShaderUtil
 	{
 		inline constexpr REL::VariantID SetMaterialAlpha{ 211260, 2317566 };
+		inline constexpr REL::VariantID AccumulateScene{ 1551978, 2317574 };
+		inline constexpr REL::VariantID RenderScene{ 1310228, 2317576 };
+	}
+
+	namespace BSShadowDirectionalLight
+	{
+		inline constexpr REL::VariantID Render{ 871921, 2319335 };
+		inline constexpr REL::VariantID UpdateCamerasI{ 1242204, 2319339 };
 	}
 
 	namespace BSSoundHandle
@@ -1908,6 +1927,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID WorldPtToScreenPt3{ 109441, 2270344 };
 		inline constexpr REL::VariantID ViewPointToRay{ 460613, 2270338 };
 		inline constexpr REL::VariantID ctor{ 1182532, 2270332 };
+		inline constexpr REL::VariantID SetViewFrustum{ 24787, 2270334 };
 	}
 
 	namespace NiControllerManager
@@ -2244,6 +2264,19 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID ItemIsPowerConnection{ 17704, 2195078, 2195078 };
 		inline constexpr REL::VariantID ItemIsPowerReceiver{ 210626, 2195060, 2195060 };
+	}
+
+	namespace Precipitation
+	{
+		inline constexpr REL::VariantID RenderOcclusionMap{ 1114882, 2208812 };
+		inline constexpr REL::VariantID RenderOcclusionMapImpl{ 856638, 2208823 };
+		inline constexpr REL::VariantID ComputeProjection{ 362730, 2208824 };
+		inline constexpr REL::VariantID UpdateRainOcclusionData{ 1171599, 2208825 };
+		inline constexpr REL::VariantID CreatePrecip{ 338325, 2208822 };
+		inline constexpr REL::VariantID OcclusionEnabled{ 834419, 2692284, 4799576 };
+		inline constexpr REL::VariantID BoxSize{ 153127, 2692285, 4799577 };
+		inline constexpr REL::VariantID Direction{ 348873, 2692288, 4799580 };
+		inline constexpr REL::VariantID OcclusionMatrix{ 817636, 2713095 };
 	}
 
 	namespace ProcessLists
