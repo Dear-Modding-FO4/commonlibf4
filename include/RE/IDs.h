@@ -17,8 +17,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetAimVector{ 554863, 2230378 };
 		inline constexpr REL::VariantID GetClosestBone{ 1180004, 2230051 };
 		inline constexpr REL::VariantID GetCollisionFilter{ 1474995, 2229991 };
+		inline constexpr REL::VariantID GetBlocking{ 652826, 2230405 };
 		inline constexpr REL::VariantID GetCombatStyle{ 1270929, 2231053 };
 		inline constexpr REL::VariantID GetCurrentAmmoCount{ 33890, 2229950 };
+		inline constexpr REL::VariantID GetCurrentShield{ 1567941, 2231101 };
 		inline constexpr REL::VariantID SetCurrentAmmoCount{ 725546, 2229952 };
 		inline constexpr REL::VariantID GetCurrentCollisionGroup{ 410500, 2229993 };
 		inline constexpr REL::VariantID GetCurrentFireLocation{ 663107, 2231167 };

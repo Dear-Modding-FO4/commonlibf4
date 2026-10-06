@@ -6,6 +6,7 @@
 #include "RE/A/ActorState.h"
 #include "RE/A/ActorValueStorage.h"
 #include "RE/B/BGSEquipIndex.h"
+#include "RE/B/BGSObjectInstance.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
@@ -297,6 +298,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] bool GetBlocking()
+		{
+			using func_t = decltype(&Actor::GetBlocking);
+			static REL::Relocation<func_t> func{ ID::Actor::GetBlocking };
+			return func(this);
+		}
+
 		TESCombatStyle* GetCombatStyle()
 		{
 			using func_t = decltype(&Actor::GetCombatStyle);
@@ -314,6 +322,13 @@ namespace RE
 			using func_t = decltype(&Actor::GetCurrentAmmoCount);
 			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentAmmoCount };
 			return func(this, a_equipIndex);
+		}
+
+		[[nodiscard]] BGSObjectInstance GetCurrentShield()
+		{
+			using func_t = decltype(&Actor::GetCurrentShield);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentShield };
+			return func(this);
 		}
 
 		std::uint32_t GetCurrentCollisionGroup()
