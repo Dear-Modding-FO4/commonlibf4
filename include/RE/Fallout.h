@@ -242,6 +242,7 @@
 #include "RE/B/BGSSaveLoadFormIDMap.h"
 #include "RE/B/BGSSaveLoadFormInfo.h"
 #include "RE/B/BGSSaveLoadGame.h"
+#include "RE/B/BGSSaveLoadGlobalData.h"
 #include "RE/B/BGSSaveLoadHistory.h"
 #include "RE/B/BGSSaveLoadManager.h"
 #include "RE/B/BGSSaveLoadQueuedSubBufferMap.h"
