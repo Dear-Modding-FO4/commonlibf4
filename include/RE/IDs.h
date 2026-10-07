@@ -748,6 +748,7 @@ namespace RE::ID
 	namespace BSDFLightShader
 	{
 		inline constexpr REL::VariantID SetupGeometry{ 976849, 2319150 };
+		inline constexpr REL::VariantID SetupPointLightGeometry{ 212931, 2319153 };
 	}
 
 	namespace BSDFPrePassShader
