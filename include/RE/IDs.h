@@ -467,6 +467,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetNumericID{ 1527703, 2228200 };
 	}
 
+	namespace BaseExtraList
+	{
+		inline constexpr REL::VariantID RemoveAll{ 787543, 2190078 };
+	}
+
 	namespace BGSObjectInstance
 	{
 		inline constexpr REL::VariantID ctor{ 1095748, 2197563 };
@@ -2336,6 +2341,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID CompileAndRun{ 526625, 2204287 };
 		inline constexpr REL::VariantID GetProcessScripts{ 44950, 2204310 };
 		inline constexpr REL::VariantID SetProcessScripts{ 1188642, 2204309 };
+		inline constexpr REL::VariantID ClearCachedValues{ 1524552, 2204189 };
 	}
 
 	namespace ScriptCompiler
@@ -2495,6 +2501,7 @@ namespace RE::ID
 	namespace TESCondition
 	{
 		inline constexpr REL::VariantID IsTrue{ 1275731, 2211989 };
+		inline constexpr REL::VariantID IsTrue_Params{ 743921, 2211990 };
 		inline constexpr REL::VariantID IsTrueForAllButFunction{ 1182457, 0 };  // Inlined in NG/AE
 		inline constexpr REL::VariantID ClearAllConditionItems{ 757713, 2211988 };
 	}
@@ -2699,6 +2706,7 @@ namespace RE::ID
 
 	namespace TESObjectREFR
 	{
+		inline constexpr REL::VariantID ctor{ 198196, 2200719 };
 		inline constexpr REL::VariantID ActivateRef{ 753531, 2201147 };
 		inline constexpr REL::VariantID AddInventoryItem{ 78185, 2200949 };
 		inline constexpr REL::VariantID AddKeyword{ 640674, 2200860 };

@@ -15,6 +15,7 @@
 #include "RE/I/IAnimationGraphManagerHolder.h"
 #include "RE/I/IKeywordFormBase.h"
 #include "RE/I/ITEM_REMOVE_REASON.h"
+#include "RE/M/MemoryManager.h"
 #include "RE/M/MapMarkerData.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/O/OBJ_REFR.h"
@@ -608,6 +609,12 @@ namespace RE
 			return func(this, a_type);
 		}
 
+		[[nodiscard]] static TESObjectREFR* Create()
+		{
+			auto reference = static_cast<TESObjectREFR*>(aligned_alloc(0x10, sizeof(TESObjectREFR)));
+			return reference ? reference->ctor() : nullptr;
+		}
+
 		// members
 		TESObjectCELL*                 parentCell;     // 0x0B8
 		OBJ_REFR                       data;           // 0x0C0
@@ -617,6 +624,14 @@ namespace RE
 		std::uint16_t                  refScale;       // 0x018
 		std::int8_t                    modelState;     // 0x10A
 		bool                           predestroyed;   // 0x10B
+
+	private:
+		TESObjectREFR* ctor()
+		{
+			using func_t = decltype(&TESObjectREFR::ctor);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::ctor };
+			return func(this);
+		}
 	};
 	static_assert(sizeof(TESObjectREFR) == 0x110);
 }

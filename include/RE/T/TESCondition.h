@@ -18,9 +18,16 @@ namespace RE
 
 		[[nodiscard]] bool IsTrue(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const
 		{
-			using func_t = decltype(&TESCondition::IsTrue);
+			using func_t = bool(const TESCondition*, TESObjectREFR*, TESObjectREFR*);
 			static REL::Relocation<func_t> func{ ID::TESCondition::IsTrue };
 			return func(this, a_actionRef, a_targetRef);
+		}
+
+		[[nodiscard]] bool IsTrue(ConditionCheckParams& a_paramData) const
+		{
+			using func_t = bool(const TESCondition*, ConditionCheckParams&);
+			static REL::Relocation<func_t> func{ ID::TESCondition::IsTrue_Params };
+			return func(this, a_paramData);
 		}
 
 		[[nodiscard]] bool IsTrueForAllButFunction(ConditionCheckParams& a_paramData, SCRIPT_OUTPUT a_function) const

@@ -78,6 +78,13 @@ namespace RE
 			return nullptr;
 		}
 
+		void RemoveAll(bool a_deleteData)
+		{
+			using func_t = decltype(&BaseExtraList::RemoveAll);
+			static REL::Relocation<func_t> func{ ID::BaseExtraList::RemoveAll };
+			return func(this, a_deleteData);
+		}
+
 	private:
 		static constexpr std::size_t N = (std::to_underlying(EXTRA_DATA_TYPE::kTotal) / 8) + 1;
 
