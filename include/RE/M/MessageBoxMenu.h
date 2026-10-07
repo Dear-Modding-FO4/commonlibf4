@@ -2,6 +2,7 @@
 
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GameMenuBase.h"
+#include "REX/FModule.h"
 
 namespace RE
 {
@@ -22,6 +23,26 @@ namespace RE
 		virtual void               MapCodeObjectFunctions() override;    // 02
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage&) override;  // 03
 
+		struct RuntimeData
+		{
+			MessageBoxData* currentMessage;  // 00
+		};
+		static_assert(sizeof(RuntimeData) == 0x8);
+
+		[[nodiscard]] RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) noexcept
+		{
+			return *reinterpret_cast<RuntimeData*>(
+				reinterpret_cast<std::byte*>(this) + (a_runtime == REX::FModule::Runtime::kAE ? 0xF0 : 0xE8));
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) const noexcept
+		{
+			return *reinterpret_cast<const RuntimeData*>(
+				reinterpret_cast<const std::byte*>(this) + (a_runtime == REX::FModule::Runtime::kAE ? 0xF0 : 0xE8));
+		}
+
 		void ShowMessage()
 		{
 			using func_t = decltype(&MessageBoxMenu::ShowMessage);
@@ -30,8 +51,10 @@ namespace RE
 		}
 
 		// members
-		bool            unkE8;           // E8
-		MessageBoxData* currentMessage;  // F0
+		// AE layout; use GetRuntimeData across runtimes.
+		bool            canCancel;          // E8
+		MessageBoxData* currentMessage;     // F0 (E8 on OG/NG)
+		std::uint32_t   cancelButtonIndex;  // F8
 	};
-	static_assert(sizeof(MessageBoxMenu) == 0xF8);
+	static_assert(sizeof(MessageBoxMenu) == 0x100);
 }
