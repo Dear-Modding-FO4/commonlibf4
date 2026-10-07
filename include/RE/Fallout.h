@@ -326,6 +326,7 @@
 #include "RE/B/BSDeferredDecal.h"
 #include "RE/B/BSDistantTreeShader.h"
 #include "RE/B/BSEffectShader.h"
+#include "RE/B/BSEffectShaderData.h"
 #include "RE/B/BSEventFlag.h"
 #include "RE/B/BSExternalAudioIO.h"
 #include "RE/B/BSExtraData.h"

@@ -142,6 +142,11 @@ namespace RE
 				return directionalAmbientTransform;
 			}
 
+			[[nodiscard]] ShadowSceneNode* GetShadowSceneNode(std::size_t a_index) const noexcept
+			{
+				return a_index < std::size(shadowSceneNode) ? shadowSceneNode[a_index] : nullptr;
+			}
+
 		private:
 			// members
 			ShadowSceneNode*              shadowSceneNode[5];                      // 00

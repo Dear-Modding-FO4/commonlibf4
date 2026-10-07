@@ -25,6 +25,12 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::NiAVObject };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::NiAVObject };
 
+		enum class Flag : std::uint64_t
+		{
+			kAppCulled = 1ull << 0,
+			kMeshLOD = 1ull << 12  // set by the BSMeshLODTriShape constructor
+		};
+
 		NiAVObject();
 		virtual ~NiAVObject();  // NOLINT(modernize-use-override) 00
 
@@ -48,6 +54,7 @@ namespace RE
 		virtual void        PostAttachUpdate();                                                                                 // 38
 		virtual void        OnVisible([[maybe_unused]] NiCullingProcess& a_culler) { return; }                                  // 39
 
+		[[nodiscard]] bool           HasFlag(Flag a_flag) const noexcept { return flags.flags & static_cast<std::uint64_t>(a_flag); }
 		bool                         GetAppCulled() const noexcept { return flags.flags & 1; }
 		NiPointer<NiCollisionObject> GetCollisionObject() const noexcept { return collisionObject; }
 		std::uint64_t                GetFlags() const noexcept { return flags.flags; }
