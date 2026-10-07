@@ -49,6 +49,13 @@ namespace RE
 			return func(this, a_level, a_count, a_chanceNone, a_item, a_itemExtra);
 		}
 
+		void AddScriptAddedLeveledObject(TESForm* a_owner, std::uint16_t a_level, std::uint16_t a_count, TESForm* a_form)
+		{
+			using func_t = decltype(&TESLeveledList::AddScriptAddedLeveledObject);
+			static REL::Relocation<func_t> func{ ID::TESLeveledList::AddScriptAddedLeveledObject };
+			return func(this, a_owner, a_level, a_count, a_form);
+		}
+
 		void CalculateCurrentFormList(
 			std::uint16_t                a_level,
 			std::uint16_t                a_count,
