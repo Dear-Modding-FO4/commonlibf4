@@ -22,6 +22,21 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::BSPreCulledObjects::QEnabled };
 			return func();
 		}
+
+		[[nodiscard]] static bool QTempDisabled()
+		{
+			using func_t = decltype(&BSPreCulledObjects::QTempDisabled);
+			static REL::Relocation<func_t> func{ ID::BSPreCulledObjects::QTempDisabled };
+			return func();
+		}
+
+		// a_notify runs the pre-cull state-change listeners
+		static void SetTempDisabled(bool a_disabled, bool a_notify)
+		{
+			using func_t = decltype(&BSPreCulledObjects::SetTempDisabled);
+			static REL::Relocation<func_t> func{ ID::BSPreCulledObjects::SetTempDisabled };
+			func(a_disabled, a_notify);
+		}
 	};
 	static_assert(std::is_empty_v<BSPreCulledObjects>);
 }

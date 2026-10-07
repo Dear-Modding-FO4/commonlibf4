@@ -885,6 +885,8 @@ namespace RE::ID
 	namespace BSPreCulledObjects
 	{
 		inline constexpr REL::VariantID QEnabled{ 917969, 2317322 };
+		inline constexpr REL::VariantID QTempDisabled{ 824819, 2317325 };
+		inline constexpr REL::VariantID SetTempDisabled{ 1263609, 2317326 };
 	}
 
 	namespace BSPointerHandle
