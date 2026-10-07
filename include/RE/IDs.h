@@ -1354,6 +1354,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID DeferredLightsImpl{ 1108521, 2318312 };
 		inline constexpr REL::VariantID DeferredComposite{ 728427, 2318313 };
 		inline constexpr REL::VariantID QTiledLighting{ 1154650, 2318371 };
+		inline constexpr REL::VariantID SetInterface3DRenderFunc{ 304631, 2318358 };
+		inline constexpr REL::VariantID SetCompanionLocalMapRenderFunc{ 1182240, 2318360 };
 	}
 
 	namespace EffectItem

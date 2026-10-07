@@ -908,6 +908,11 @@ namespace RE
 				return func(this, a_enableDynamicResolution);
 			}
 
+			[[nodiscard]] bool IsUsingDynamicResolutionViewportAsDefaultViewport() const noexcept
+			{
+				return GetRuntimeField<bool>(GetDynamicResolutionOffsets().viewportAsDefault);
+			}
+
 			void SetUseDynamicResolutionViewportAsDefaultViewport(bool a_useDynamicResolutionViewport)
 			{
 				using func_t = decltype(&RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport);
@@ -1072,6 +1077,7 @@ namespace RE
 				std::size_t widthRatio;
 				std::size_t heightRatio;
 				std::size_t isActivated;
+				std::size_t viewportAsDefault;
 			};
 
 			[[nodiscard]] static RenderTargetOffsets GetRenderTargetOffsets() noexcept
@@ -1098,8 +1104,8 @@ namespace RE
 			[[nodiscard]] static DynamicResolutionOffsets GetDynamicResolutionOffsets() noexcept
 			{
 				// Fallout4RE cs-rtm-dynamic-res-offsets.json @ a124812; RE-note-sourced OG offsets need live validation.
-				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8 };
-				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5 };
+				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8, 0xFA7 };
+				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5, 0xFE4 };
 				return REX::FModule::IsRuntimeOG() ? og : ngae;
 			}
 
