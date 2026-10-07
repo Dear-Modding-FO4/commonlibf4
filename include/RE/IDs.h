@@ -1061,6 +1061,11 @@ namespace RE::ID
 	namespace BSShaderProperty
 	{
 		inline constexpr REL::VariantID SetMaterial{ 706318, 2316285 };
+
+		namespace RenderPassArray
+		{
+			inline constexpr REL::VariantID Add{ 563779, 2316273 };
+		}
 	}
 
 	namespace BSShaderRenderTargets
@@ -1186,6 +1191,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID SendUIStringMessage{ 1270833, 2284977 };
 		inline constexpr REL::VariantID SendUIPtrMessage{ 1374542, 2284982 };
 		inline constexpr REL::VariantID SendUIStringUIntMessage{ 99795, 2284979 };
+	}
+
+	namespace BSUtilityShader
+	{
+		inline constexpr REL::VariantID CreateCommandBuffer{ 768994, 2319078 };
+		inline constexpr REL::VariantID Singleton{ 562442, 2713259 };
 	}
 
 	namespace BSUtilities

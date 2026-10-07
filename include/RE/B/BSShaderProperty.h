@@ -7,7 +7,10 @@
 namespace RE
 {
 	class BSEffectShaderData;
+	class BSGeometry;
+	class BSLight;
 	class BSRenderPass;
+	class BSShader;
 	class BSShaderAccumulator;
 	class BSShaderMaterial;
 	class NiTexture;
@@ -112,6 +115,13 @@ namespace RE
 		{
 		public:
 			constexpr RenderPassArray() noexcept {}  // NOLINT(modernize-use-equals-default)
+
+			BSRenderPass* Add(BSShader* a_shader, BSShaderProperty* a_property, BSGeometry* a_geometry, std::uint32_t a_passEnum, std::uint8_t a_passType, BSLight* a_light0, BSLight* a_light1, BSLight* a_light2, BSLight* a_light3)
+			{
+				using func_t = decltype(&RenderPassArray::Add);
+				static REL::Relocation<func_t> func{ ID::BSShaderProperty::RenderPassArray::Add };
+				return func(this, a_shader, a_property, a_geometry, a_passEnum, a_passType, a_light0, a_light1, a_light2, a_light3);
+			}
 
 			// members
 			BSRenderPass* passList{ nullptr };  // 0

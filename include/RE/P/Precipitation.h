@@ -50,7 +50,8 @@ namespace RE
 		}
 
 		// Reads the camera's previous world rotation before rewriting it.
-		void ComputeProjection(NiPointer<NiCamera>& a_camera)
+		// The callee releases its camera reference on return.
+		void ComputeProjection(NiPointer<NiCamera> a_camera)
 		{
 			using func_t = decltype(&Precipitation::ComputeProjection);
 			static REL::Relocation<func_t> func{ ID::Precipitation::ComputeProjection };
