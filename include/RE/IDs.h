@@ -2984,6 +2984,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetRelevantWaterHeight{ 6866, 2201189 };
 		inline constexpr REL::VariantID CanBeMoved{ 683719, 2200898 };
 		inline constexpr REL::VariantID HasLocationRefType{ 845267, 2202676 };
+		inline constexpr REL::VariantID GetVisibleDistant{ 109874, 2200805 };
+		inline constexpr REL::VariantID Is3DHighPriority{ 1239016, 2201047 };
+		inline constexpr REL::VariantID MustBeVisibleDistant{ 375876, 2200804 };
+		inline constexpr REL::VariantID SetVisibleDistant{ 1425899, 2200806 };
 		inline constexpr REL::VariantID RemoveLight{ 162205, 2200909 };
 		inline constexpr REL::VariantID SetSequencePosition{ 854236, 2200766 };
 	}

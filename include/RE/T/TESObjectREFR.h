@@ -333,6 +333,34 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] bool GetVisibleDistant() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetVisibleDistant };
+			return func(this);
+		}
+
+		[[nodiscard]] bool Is3DHighPriority() const
+		{
+			using func_t = decltype(&TESObjectREFR::Is3DHighPriority);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::Is3DHighPriority };
+			return func(this);
+		}
+
+		[[nodiscard]] bool MustBeVisibleDistant() const
+		{
+			using func_t = decltype(&TESObjectREFR::MustBeVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::MustBeVisibleDistant };
+			return func(this);
+		}
+
+		void SetVisibleDistant(bool a_visibleDistant)
+		{
+			using func_t = decltype(&TESObjectREFR::SetVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::SetVisibleDistant };
+			return func(this, a_visibleDistant);
+		}
+
 		[[nodiscard]] TESWorldSpace* GetWorldSpace() const
 		{
 			using func_t = decltype(&TESObjectREFR::GetWorldSpace);
