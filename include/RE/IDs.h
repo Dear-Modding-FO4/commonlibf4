@@ -2395,6 +2395,14 @@ namespace RE::ID
 		inline constexpr REL::VariantID UpdateData{ 1370368, 2224273 };
 	}
 
+	namespace PlayBinkMenu
+	{
+		inline constexpr REL::VariantID AdvanceMovie{ 618642, 2224281 };
+		inline constexpr REL::VariantID HandleEvent{ 777788, 2224283 };
+		inline constexpr REL::VariantID ProcessEvent{ 1295661, 2224284 };
+		inline constexpr REL::VariantID ProcessMessage{ 1178079, 2224280, 4483015 };
+	}
+
 	namespace PlayerCamera
 	{
 		inline constexpr REL::VariantID Singleton{ 1171980, 2688801, 4796065 };

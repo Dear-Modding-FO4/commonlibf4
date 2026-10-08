@@ -1278,6 +1278,7 @@
 #include "RE/P/PipboyValue.h"
 #include "RE/P/PipboyWorkshopData.h"
 #include "RE/P/PipboyWorkshopMenu.h"
+#include "RE/P/PlayBinkMenu.h"
 #include "RE/P/PlayerActivatePickRefEvent.h"
 #include "RE/P/PlayerActiveEffectChanged.h"
 #include "RE/P/PlayerAddicted.h"
