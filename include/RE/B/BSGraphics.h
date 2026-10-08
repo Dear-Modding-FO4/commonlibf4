@@ -532,6 +532,20 @@ namespace RE
 				func(this, a_buffer, a_source, a_stride, a_count);
 			}
 
+			bool MapTexture(Texture* a_texture, REX::W32::D3D11_MAP a_mapType, REX::W32::D3D11_MAPPED_SUBRESOURCE* a_mapped)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::MapTexture);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::MapTexture };
+				return func(this, a_texture, a_mapType, a_mapped);
+			}
+
+			void UnmapTexture(Texture* a_texture)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::UnmapTexture);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::UnmapTexture };
+				return func(this, a_texture);
+			}
+
 			// members
 			bool                 skipNextPresent;     // 00
 			ResetRenderTargets_t resetRenderTargets;  // 08
