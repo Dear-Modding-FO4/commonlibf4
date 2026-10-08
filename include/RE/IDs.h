@@ -1782,6 +1782,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID DisableAll{ 1470633, 2222521 };
 		inline constexpr REL::VariantID Release{ 74749, 2222520 };
 		inline constexpr REL::VariantID SetViewport{ 825410, 2222552 };
+		inline constexpr REL::VariantID RenderPrepassesAndMenus{ 1189309, 2222566 };
 	}
 
 	namespace Inventory3DManager
