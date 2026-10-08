@@ -43,6 +43,12 @@ namespace RE
 			return singleton.get();
 		}
 
+		[[nodiscard]] static float QGameDeltaTime()
+		{
+			static REL::Relocation<float*> value{ ID::BSTimer::QGameDeltaTime };
+			return *value;
+		}
+
 		[[nodiscard]] static float QGlobalTimeMultiplier()
 		{
 			static REL::Relocation<float*> value{ ID::BSTimer::QGlobalTimeMultiplier };
