@@ -2099,6 +2099,16 @@ namespace RE::ID
 		inline constexpr REL::VariantID Update{ 783050, 2300585 };
 	}
 
+	namespace MoviePlayer
+	{
+		inline constexpr REL::VariantID Singleton{ 1429717, 2710691 };
+		inline constexpr REL::VariantID Play{ 1044086, 2300558 };
+		inline constexpr REL::VariantID PlayBackground{ 59594, 2300559 };
+		inline constexpr REL::VariantID Update{ 830178, 2300560 };
+		inline constexpr REL::VariantID Stop{ 1082359, 2300561 };
+		inline constexpr REL::VariantID RequestStop{ 1480257, 2300565 };
+	}
+
 	namespace NavMeshObstacleCoverManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1308718, 2192470 };
