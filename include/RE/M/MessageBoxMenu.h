@@ -2,7 +2,7 @@
 
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GameMenuBase.h"
-#include "REX/FModule.h"
+#include "RE/R/RelocateMember.h"
 
 namespace RE
 {
@@ -23,24 +23,15 @@ namespace RE
 		virtual void               MapCodeObjectFunctions() override;    // 02
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage&) override;  // 03
 
-		struct RuntimeData
+		// currentMessage is at E8 on OG/NG and F0 on AE
+		[[nodiscard]] MessageBoxData*& GetCurrentMessage() noexcept
 		{
-			MessageBoxData* currentMessage;  // 00
-		};
-		static_assert(sizeof(RuntimeData) == 0x8);
-
-		[[nodiscard]] RuntimeData& GetRuntimeData(
-			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) noexcept
-		{
-			return *reinterpret_cast<RuntimeData*>(
-				reinterpret_cast<std::byte*>(this) + (a_runtime == REX::FModule::Runtime::kAE ? 0xF0 : 0xE8));
+			return REL::RelocateMember<MessageBoxData*>(this, REL::Offset{ 0xE8, 0xE8, 0xF0 });
 		}
 
-		[[nodiscard]] const RuntimeData& GetRuntimeData(
-			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) const noexcept
+		[[nodiscard]] MessageBoxData* const& GetCurrentMessage() const noexcept
 		{
-			return *reinterpret_cast<const RuntimeData*>(
-				reinterpret_cast<const std::byte*>(this) + (a_runtime == REX::FModule::Runtime::kAE ? 0xF0 : 0xE8));
+			return REL::RelocateMember<MessageBoxData*>(this, REL::Offset{ 0xE8, 0xE8, 0xF0 });
 		}
 
 		void ShowMessage()
@@ -51,7 +42,7 @@ namespace RE
 		}
 
 		// members
-		// AE layout; use GetRuntimeData across runtimes.
+		// AE layout; use GetCurrentMessage across runtimes.
 		bool            canCancel;          // E8
 		MessageBoxData* currentMessage;     // F0 (E8 on OG/NG)
 		std::uint32_t   cancelButtonIndex;  // F8

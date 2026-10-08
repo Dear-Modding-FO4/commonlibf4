@@ -1311,6 +1311,7 @@
 #include "RE/R/ReferenceEffect.h"
 #include "RE/R/ReferenceEffectController.h"
 #include "RE/R/RelativeMarkerHeight.h"
+#include "RE/R/RelocateMember.h"
 #include "RE/R/RepairFailureCallback.h"
 #include "RE/R/RepeaterData.h"
 #include "RE/R/ResponseListWrapper.h"
