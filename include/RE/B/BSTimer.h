@@ -74,9 +74,9 @@ namespace RE
 		float         clampRemainder;                 // 0C
 		float         delta;                          // 10
 		float         realTimeDelta;                  // 14
-		std::uint64_t lastTime;                       // 18
-		// AE-only tail; use GetRuntimeData across runtimes.
-		std::byte     unk20[0x10];                    // 20
+		std::uint64_t realDeltaMs;                    // 18
+		std::uint64_t lastTime;                       // 20
+		std::uint64_t lastRawTime;                    // 28
 		std::uint64_t firstTime;                      // 30
 		std::uint64_t disabledLastTime;               // 38
 		std::uint64_t disabledFirstTime;              // 40
