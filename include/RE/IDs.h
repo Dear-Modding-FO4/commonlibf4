@@ -827,6 +827,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID LocalLightEnable{ 121466, 2677717, 4784385 };
 	}
 
+	namespace BSFaceGenAnimationData
+	{
+		inline constexpr REL::VariantID Update{ 3139, 2209139 };
+		inline constexpr REL::VariantID UpdateMorphsFromLip{ 1550953, 2209124 };
+	}
+
 	namespace BSGameSound
 	{
 		inline constexpr REL::VariantID UpdateFrequencyModifier{ 157156, 2267454 };
