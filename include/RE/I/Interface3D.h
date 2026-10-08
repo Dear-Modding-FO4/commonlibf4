@@ -392,7 +392,6 @@ namespace RE
 				func(this, a_ui, a_renderArea);
 			}
 
-			// Offscreen model draw and post effects for this renderer.
 			void RenderPrepassesAndMenus()
 			{
 				using func_t = decltype(&Renderer::RenderPrepassesAndMenus);
