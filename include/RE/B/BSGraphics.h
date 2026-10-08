@@ -920,6 +920,14 @@ namespace RE
 				return func(this, a_useDynamicResolutionViewport);
 			}
 
+			// Writes shadow state for the active Context; a_logicalID -1 unbinds the slot.
+			void SetCurrentRenderTarget(std::int32_t a_slot, std::int32_t a_logicalID, SetRenderTargetMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentRenderTarget };
+				return func(this, a_slot, a_logicalID, a_mode);
+			}
+
 			// Dereferences the active Context; call only after the renderer is initialized.
 			static void SetCurrentViewportForceToRenderTargetDimensions()
 			{

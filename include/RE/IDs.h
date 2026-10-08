@@ -744,6 +744,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID LoadTechniquesFromStream{ 166975, 2319682 };
 	}
 
+	namespace BSCubeMapCamera
+	{
+		inline constexpr REL::VariantID Ctor{ 941893, 2318825 };
+		inline constexpr REL::VariantID AddCubeMapScene{ 1420188, 2213983 };
+	}
+
 	namespace BSCullingProcess
 	{
 		inline constexpr REL::VariantID Process1{ 409428, 2275931 };
@@ -814,6 +820,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID SetUseDynamicResolutionViewportAsDefaultViewport{ 676851, 2277194 };
 			inline constexpr REL::VariantID UpdateDynamicResolution{ 1115215, 2277195 };
 			inline constexpr REL::VariantID SetCurrentViewportForceToRenderTargetDimensions{ 1208720, 2277193 };
+			inline constexpr REL::VariantID SetCurrentRenderTarget{ 1502425, 2277188 };
 			inline constexpr REL::VariantID QShadowMapArrayDepthStencil{ 638475, 2277185 };
 		}
 
@@ -1355,6 +1362,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID DeferredLightsImpl{ 1108521, 2318312 };
 		inline constexpr REL::VariantID DeferredComposite{ 728427, 2318313 };
 		inline constexpr REL::VariantID QTiledLighting{ 1154650, 2318371 };
+		inline constexpr REL::VariantID SetUpdateWaterFunc{ 570869, 2318355 };
 		inline constexpr REL::VariantID SetInterface3DRenderFunc{ 304631, 2318358 };
 		inline constexpr REL::VariantID SetCompanionLocalMapRenderFunc{ 1182240, 2318360 };
 	}
