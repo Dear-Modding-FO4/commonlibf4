@@ -299,6 +299,7 @@
 #include "RE/B/BGSUnloadedFromBuffer.h"
 #include "RE/B/BGSVoiceType.h"
 #include "RE/B/BGSZoomData.h"
+#include "RE/B/BINKTEXTURESET.h"
 #include "RE/B/BIPED_MODEL.h"
 #include "RE/B/BIPED_OBJECT.h"
 #include "RE/B/BIPED_PART.h"
