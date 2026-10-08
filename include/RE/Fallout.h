@@ -624,6 +624,7 @@
 #include "RE/B/BaseLoadedInventoryModel.h"
 #include "RE/B/BaseTreeData.h"
 #include "RE/B/BeamProjectile.h"
+#include "RE/B/BinkMovieStoppedPlayingEvent.h"
 #include "RE/B/BipedAnim.h"
 #include "RE/B/Bleedout.h"
 #include "RE/B/BlockPipboyOpeningEvent.h"
