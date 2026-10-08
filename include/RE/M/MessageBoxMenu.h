@@ -43,6 +43,8 @@ namespace RE
 
 		// members
 		// AE layout; use GetCurrentMessage across runtimes.
+		// canCancel and cancelButtonIndex exist on AE only; do not read them on OG/NG.
+		// sizeof is the AE size (OG/NG is 0xF0).
 		bool            canCancel;          // E8
 		MessageBoxData* currentMessage;     // F0 (E8 on OG/NG)
 		std::uint32_t   cancelButtonIndex;  // F8
