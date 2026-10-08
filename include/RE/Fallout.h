@@ -197,6 +197,7 @@
 #include "RE/B/BGSModelMaterialSwap.h"
 #include "RE/B/BGSMovableStatic.h"
 #include "RE/B/BGSMovementType.h"
+#include "RE/B/BGSMoviePlayer.h"
 #include "RE/B/BGSMusicTrackFormWrapper.h"
 #include "RE/B/BGSMusicType.h"
 #include "RE/B/BGSNativeTerminalForm.h"
