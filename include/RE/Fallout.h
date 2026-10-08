@@ -1123,6 +1123,7 @@
 #include "RE/M/MovementMessage.h"
 #include "RE/M/MovementTweenerOutputData.h"
 #include "RE/M/MovementVector.h"
+#include "RE/M/Movie.h"
 #include "RE/M/MultiActivateRolloverMode.h"
 #include "RE/M/MultiActivateUseRolloverEvent.h"
 #include "RE/N/NEW_REFR_DATA.h"

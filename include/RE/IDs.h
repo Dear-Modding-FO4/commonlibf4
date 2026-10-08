@@ -2092,6 +2092,13 @@ namespace RE::ID
 		inline constexpr REL::VariantID Init{ 114988, 2208804 };
 	}
 
+	namespace Movie
+	{
+		inline constexpr REL::VariantID OpenBink{ 1435418, 2300583 };
+		inline constexpr REL::VariantID LoadBink{ 1235476, 2300584 };
+		inline constexpr REL::VariantID Update{ 783050, 2300585 };
+	}
+
 	namespace NavMeshObstacleCoverManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1308718, 2192470 };
