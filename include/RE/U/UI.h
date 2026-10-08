@@ -96,6 +96,8 @@ namespace RE
 			return Scaleform::Ptr{ static_cast<T*>(ptr.get()) };
 		}
 
+		[[nodiscard]] bool GameIsPaused() const noexcept { return menuMode != 0; }
+
 		[[nodiscard]] bool GetMenuOpen(const BSFixedString& a_name) const
 		{
 			const auto menu = GetMenu(a_name);
