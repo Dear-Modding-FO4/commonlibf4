@@ -1182,6 +1182,7 @@ namespace RE::ID
 	namespace BSTimer
 	{
 		inline constexpr REL::VariantID Singleton{ 1256126, 2703179 };
+		inline constexpr REL::VariantID QGameDeltaTime{ 112550, 2703181 };
 		inline constexpr REL::VariantID QGlobalTimeMultiplier{ 365546, 2666307 };
 		inline constexpr REL::VariantID QGlobalTimeMultiplierTarget{ 1266509, 2666308 };
 		inline constexpr REL::VariantID SetGlobalTimeMultiplier{ 1419977, 2267970 };
