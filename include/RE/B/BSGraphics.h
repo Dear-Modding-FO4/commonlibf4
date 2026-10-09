@@ -928,6 +928,21 @@ namespace RE
 				return func(this, a_slot, a_logicalID, a_mode);
 			}
 
+			// Maps a pooled logical target to a platform slot until ReleaseRenderTarget.
+			void AcquireRenderTarget(std::int32_t a_logicalID)
+			{
+				using func_t = decltype(&RenderTargetManager::AcquireRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::AcquireRenderTarget };
+				return func(this, a_logicalID);
+			}
+
+			void ReleaseRenderTarget(std::int32_t a_logicalID)
+			{
+				using func_t = decltype(&RenderTargetManager::ReleaseRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::ReleaseRenderTarget };
+				return func(this, a_logicalID);
+			}
+
 			// Dereferences the active Context; call only after the renderer is initialized.
 			static void SetCurrentViewportForceToRenderTargetDimensions()
 			{

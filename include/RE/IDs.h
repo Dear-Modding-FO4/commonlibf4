@@ -821,6 +821,8 @@ namespace RE::ID
 			inline constexpr REL::VariantID UpdateDynamicResolution{ 1115215, 2277195 };
 			inline constexpr REL::VariantID SetCurrentViewportForceToRenderTargetDimensions{ 1208720, 2277193 };
 			inline constexpr REL::VariantID SetCurrentRenderTarget{ 1502425, 2277188 };
+			inline constexpr REL::VariantID AcquireRenderTarget{ 1468639, 2277219 };
+			inline constexpr REL::VariantID ReleaseRenderTarget{ 1374956, 2277220 };
 			inline constexpr REL::VariantID QShadowMapArrayDepthStencil{ 638475, 2277185 };
 		}
 
