@@ -816,6 +816,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID SetShaders{ 894905, 2276942 };
 			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904 };
 			inline constexpr REL::VariantID ResetWindow{ 796949, 2276825 };
+			inline constexpr REL::VariantID ResetState{ 405603, 2276966 };
 		}
 
 		namespace RenderTargetManager

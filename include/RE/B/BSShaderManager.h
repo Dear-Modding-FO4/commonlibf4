@@ -147,6 +147,11 @@ namespace RE
 				return a_index < std::size(shadowSceneNode) ? shadowSceneNode[a_index] : nullptr;
 			}
 
+			[[nodiscard]] eSceneGraphEnum GetSceneGraph() const noexcept
+			{
+				return static_cast<eSceneGraphEnum>(sceneGraph);
+			}
+
 		private:
 			// members
 			ShadowSceneNode*              shadowSceneNode[5];                      // 00
