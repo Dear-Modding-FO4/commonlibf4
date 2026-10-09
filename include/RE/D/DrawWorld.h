@@ -2,13 +2,25 @@
 
 namespace RE
 {
+	class BSGeometryListCullingProcess;
+
 	namespace DrawWorld
 	{
+		// Render_PreUI calls the registered callback first, before any world setup.
+		using UpdateWaterFunc = void (*)(BSGeometryListCullingProcess*);
+
 		inline void Begin()
 		{
 			using func_t = decltype(&DrawWorld::Begin);
 			static REL::Relocation<func_t> func{ ID::DrawWorld::Begin };
 			return func();
+		}
+
+		inline void SetUpdateWaterFunc(UpdateWaterFunc a_func)
+		{
+			using func_t = decltype(&DrawWorld::SetUpdateWaterFunc);
+			static REL::Relocation<func_t> func{ ID::DrawWorld::SetUpdateWaterFunc };
+			return func(a_func);
 		}
 
 		inline void Imagespace()
