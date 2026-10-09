@@ -471,6 +471,21 @@ namespace RE
 				return func(this);
 			}
 
+			// Saves one previous color for RestorePreviousClearColor; calls do not nest.
+			void SetClearColor(float a_red, float a_green, float a_blue, float a_alpha)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetClearColor);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetClearColor };
+				return func(this, a_red, a_green, a_blue, a_alpha);
+			}
+
+			void RestorePreviousClearColor()
+			{
+				using func_t = decltype(&BSGraphics::Renderer::RestorePreviousClearColor);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RestorePreviousClearColor };
+				return func(this);
+			}
+
 			void FlushConstantGroup(ConstantGroup* a_vertex, ConstantGroup* a_pixel)
 			{
 				using func_t = decltype(&BSGraphics::Renderer::FlushConstantGroup);
@@ -928,6 +943,14 @@ namespace RE
 				return func(this, a_slot, a_logicalID, a_mode);
 			}
 
+			// While set, only this face RTV and the depth target are bound; a_logicalID -1,
+			// or a 2D bind that changes a slot or uses a mode other than 3, leaves cube mode.
+			void SetCurrentCubeMapRenderTarget(std::int32_t a_logicalID, SetRenderTargetMode a_mode, std::int32_t a_face)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentCubeMapRenderTarget };
+				return func(this, a_logicalID, a_mode, a_face);
+			}
 			// Maps a pooled logical target to a platform slot until ReleaseRenderTarget.
 			void AcquireRenderTarget(std::int32_t a_logicalID)
 			{

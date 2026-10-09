@@ -647,6 +647,9 @@ namespace RE::ID
 	namespace BGSTerrainManager
 	{
 		inline constexpr REL::VariantID RecomputeQuickCullData{ 1483119, 2213622 };
+		inline constexpr REL::VariantID LandNode{ 1389619, 2693295, 4800587 };
+		inline constexpr REL::VariantID ObjectsNode{ 26566, 2693296, 4800588 };
+		inline constexpr REL::VariantID TreesNode{ 732104, 2693292, 4800584 };
 	}
 
 	namespace bhkCharacterController
@@ -804,6 +807,8 @@ namespace RE::ID
 			inline constexpr REL::VariantID End{ 700869, 2276834 };
 			inline constexpr REL::VariantID Lock{ 1087134, 2276828 };
 			inline constexpr REL::VariantID Unlock{ 382332, 2276829 };
+			inline constexpr REL::VariantID SetClearColor{ 1391151, 2276836 };
+			inline constexpr REL::VariantID RestorePreviousClearColor{ 593605, 2276837 };
 			inline constexpr REL::VariantID FlushConstantGroup{ 1515598, 0 };  // Inlined in NG/AE
 			inline constexpr REL::VariantID GetShaderConstantGroupPS{ 266527, 2317224 };
 			inline constexpr REL::VariantID DrawTriShape{ 763320, 2276846 };
@@ -821,6 +826,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID UpdateDynamicResolution{ 1115215, 2277195 };
 			inline constexpr REL::VariantID SetCurrentViewportForceToRenderTargetDimensions{ 1208720, 2277193 };
 			inline constexpr REL::VariantID SetCurrentRenderTarget{ 1502425, 2277188 };
+			inline constexpr REL::VariantID SetCurrentCubeMapRenderTarget{ 1049522, 2277190 };
 			inline constexpr REL::VariantID AcquireRenderTarget{ 1468639, 2277219 };
 			inline constexpr REL::VariantID ReleaseRenderTarget{ 1374956, 2277220 };
 			inline constexpr REL::VariantID QShadowMapArrayDepthStencil{ 638475, 2277185 };

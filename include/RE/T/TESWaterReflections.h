@@ -14,7 +14,7 @@ namespace RE
 
 		enum class Flags
 		{
-			kDirty = 0x0,
+			kDirty = 0x1,
 			kStaticCubemap = 0x2,
 			kDynamicCubemap = 0x4,
 			kInterior = 0x8,
@@ -30,7 +30,7 @@ namespace RE
 		};
 
 		// members
-		std::uint8_t                                                             flags;                  // 10
+		REX::TEnumSet<Flags, std::uint16_t>                                      flags;                  // 10
 		NiPlane                                                                  reflectWaterPlane;      // 14
 		NiPointer<BSCubeMapCamera>                                               cubeMapCamera;          // 28
 		NiPointer<BSShaderAccumulator>                                           sorter;                 // 30
