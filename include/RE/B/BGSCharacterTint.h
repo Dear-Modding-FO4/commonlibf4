@@ -91,7 +91,7 @@ namespace RE
 				BGSLocalizedString                                       name;               // 08
 				TESCondition                                             chargenConditions;  // 10
 				REX::TEnumSet<BGSCharacterTint::EntrySlot, std::int32_t> slot;               // 18
-				const std::uint16_t                                      uniqueID{ 0 };      // 1C
+				std::uint16_t                                            uniqueID{ 0 };      // 1C
 				std::int8_t                                              flags;              // 1E
 			};
 			static_assert(sizeof(Entry) == 0x20);
@@ -122,6 +122,30 @@ namespace RE
 			};
 			static_assert(sizeof(Groups) == 0x18);
 
+			class __declspec(novtable) Mask :
+				public Entry
+			{
+			public:
+				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__Mask };
+				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__Mask };
+
+				[[nodiscard]] static Mask* Create(std::uint16_t a_uniqueID = 0)
+				{
+					const auto entry = static_cast<Mask*>(RE::malloc(sizeof(Mask)));
+					if (entry) {
+						std::memset(static_cast<void*>(entry), 0, sizeof(Mask));
+						REX::EMPLACE_VTABLE(entry);
+						entry->uniqueID = a_uniqueID;
+					}
+					return entry;
+				}
+
+				// members
+				BSFixedString maskTexture;  // 20
+				BlendOp       blendOp;      // 28
+			};
+			static_assert(sizeof(Mask) == 0x30);
+
 			class __declspec(novtable) Palette :
 				public Entry
 			{
@@ -135,16 +159,54 @@ namespace RE
 					BGSColorForm* color;     // 00
 					float         value;     // 08
 					BlendOp       blendOp;   // 0C
-					std::uint16_t swatchID;  // 01
+					std::uint16_t swatchID;  // 10
 				};
 				static_assert(sizeof(ColorValue) == 0x18);
 
+				[[nodiscard]] static Palette* Create(std::uint16_t a_uniqueID = 0)
+				{
+					const auto entry = static_cast<Palette*>(RE::malloc(sizeof(Palette)));
+					if (entry) {
+						std::memset(static_cast<void*>(entry), 0, sizeof(Palette));
+						REX::EMPLACE_VTABLE(entry);
+						entry->uniqueID = a_uniqueID;
+					}
+					return entry;
+				}
+
 				// Members
-				BSFixedString        maskTextureName;
-				std::uint32_t        defaultIndex;
-				BSTArray<ColorValue> colorValues;
+				BSFixedString        maskTextureName;  // 20
+				std::uint32_t        defaultIndex;     // 28
+				BSTArray<ColorValue> colorValues;      // 30
 			};
 			static_assert(sizeof(Palette) == 0x48);
+
+			class __declspec(novtable) TextureSet :
+				public Entry
+			{
+			public:
+				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__TextureSet };
+				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__TextureSet };
+
+				[[nodiscard]] static TextureSet* Create(std::uint16_t a_uniqueID = 0)
+				{
+					const auto entry = static_cast<TextureSet*>(RE::malloc(sizeof(TextureSet)));
+					if (entry) {
+						std::memset(static_cast<void*>(entry), 0, sizeof(TextureSet));
+						REX::EMPLACE_VTABLE(entry);
+						entry->uniqueID = a_uniqueID;
+					}
+					return entry;
+				}
+
+				// members
+				BSFixedString diffuseTexture;   // 20
+				BSFixedString normalTexture;    // 28
+				BSFixedString specularTexture;  // 30
+				BlendOp       blendOp;          // 38
+				float         defaultValue;     // 3C
+			};
+			static_assert(sizeof(TextureSet) == 0x40);
 		}
 
 		class __declspec(novtable) Entry
@@ -161,10 +223,17 @@ namespace RE
 			virtual bool      GetMatchesTemplateDefault(const Template::Entry* entry);  // 20
 			virtual EntryType GetType();                                                // 28
 
+			[[nodiscard]] static Entry* CreateFromHeader(std::uint32_t a_header)
+			{
+				using func_t = decltype(&Entry::CreateFromHeader);
+				static REL::Relocation<func_t> func{ ID::BGSCharacterTint::Entry::CreateFromHeader };
+				return func(a_header);
+			}
+
 			// Members
 			Template::Entry* templateEntry;  // 08
-			std::uint16_t idLink;         // 10
-			std::uint8_t  tintingValue;   // 12
+			std::uint16_t idLink;            // 10
+			std::uint8_t  tintingValue;      // 12
 		};
 		static_assert(sizeof(Entry) == 0x18);
 
@@ -176,6 +245,20 @@ namespace RE
 				using func_t = decltype(&BGSCharacterTint::Entries::GetEntryByID);
 				static REL::Relocation<func_t> func{ ID::BGSCharacterTint::Entries::GetEntryByID };
 				return func(this, a_uniqueID);
+			}
+
+			void Clear()
+			{
+				using func_t = decltype(&BGSCharacterTint::Entries::Clear);
+				static REL::Relocation<func_t> func{ ID::BGSCharacterTint::Entries::Clear };
+				return func(this);
+			}
+
+			void CopyFrom(Entries& a_rhs)
+			{
+				using func_t = decltype(&BGSCharacterTint::Entries::CopyFrom);
+				static REL::Relocation<func_t> func{ ID::BGSCharacterTint::Entries::CopyFrom };
+				return func(this, a_rhs);
 			}
 
 			// members
