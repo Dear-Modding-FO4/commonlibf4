@@ -714,6 +714,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID Getbhk{ 730034, 2277919 };
 	}
 
+	namespace BSShaderData
+	{
+		inline constexpr REL::VariantID Ctor{ 60728, 2316334 };
+		inline constexpr REL::VariantID Dtor{ 287580, 2203699 };
+	}
+
 	namespace hknpBodyCinfo
 	{
 		inline constexpr REL::VariantID ctor{ 718403, 2255967 };
