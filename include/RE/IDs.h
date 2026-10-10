@@ -935,6 +935,8 @@ namespace RE::ID
 			inline constexpr REL::VariantID ResetState{ 405603, 2276966 };
 			inline constexpr REL::VariantID MapTexture{ 1366848, 2276920 };
 			inline constexpr REL::VariantID UnmapTexture{ 835184, 2276921 };
+			inline constexpr REL::VariantID CreateTriShape{ 351724, 2276843 };
+			inline constexpr REL::VariantID Singleton{ 1378294, 2704525 };
 		}
 
 		namespace RenderTargetManager

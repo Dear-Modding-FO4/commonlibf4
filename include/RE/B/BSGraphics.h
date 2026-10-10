@@ -25,6 +25,7 @@ namespace RE
 		class StructuredBuffer;
 		enum class Format;
 		class Texture;
+		class TriShape;
 
 		enum class AlphaBlendAlphaToCoverage : std::int32_t;
 		enum class AlphaBlendMode : std::int32_t;
@@ -430,6 +431,19 @@ namespace RE
 		{
 		public:
 			using ResetRenderTargets_t = void (*)();
+
+			[[nodiscard]] static Renderer* GetSingleton()
+			{
+				static REL::Relocation<Renderer*> singleton{ ID::BSGraphics::Renderer::Singleton };
+				return singleton.get();
+			}
+
+			[[nodiscard]] TriShape* CreateTriShape(std::uint32_t& a_dataSize, const void* a_data, std::uint64_t a_vertexDesc, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::CreateTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::CreateTriShape };
+				return func(this, a_dataSize, a_data, a_vertexDesc, a_indexBuffer);
+			}
 
 			void IncRef(Buffer* a_vertexBuffer)
 			{
