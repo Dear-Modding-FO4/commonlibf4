@@ -391,6 +391,7 @@
 #include "RE/B/BSLog.h"
 #include "RE/B/BSMTAManager.h"
 #include "RE/B/BSMagicShaderParticles.h"
+#include "RE/B/BSMaterialDB.h"
 #include "RE/B/BSMaterialObject.h"
 #include "RE/B/BSMemStorage.h"
 #include "RE/B/BSModelDB.h"
