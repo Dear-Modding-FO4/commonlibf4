@@ -2,6 +2,8 @@
 
 #include "RE/N/NiPoint2.h"
 
+#include <intrin.h>
+
 namespace RE
 {
 	class NiPoint3
@@ -237,6 +239,27 @@ namespace RE
 	constexpr float NiPoint3::SqrLength() const noexcept
 	{
 		return x * x + y * y + z * z;
+	}
+
+	inline void NiPoint3::Normalize() noexcept
+	{
+		float length = SqrLength();
+
+		if (length <= 0.000001f) 
+		{
+			x = 0.0f;
+			y = 0.0f;
+			z = 0.0f;
+		} 
+		else 
+		{
+			__m128 temp = _mm_set_ss(length);
+			temp = _mm_rsqrt_ss(temp);
+			auto mag = _mm_cvtss_f32(temp);
+			x *= mag;
+			y *= mag;
+			z *= mag;
+		}
 	}
 
 	inline const NiPoint3  NiPoint3::ZERO = { 0.0F, 0.0F, 0.0F };
