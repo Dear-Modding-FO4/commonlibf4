@@ -794,6 +794,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetBodyObject{ 606377, 2194365 };
 		inline constexpr REL::VariantID GetShieldObject{ 965451, 2194364 };
 		inline constexpr REL::VariantID HideHeadExtraGeometry{ 445574, 2194386 };
+		inline constexpr REL::VariantID AttachSkinnedObject{ 1575810, 2194388 };
 	}
 
 	namespace BIPOBJECT
