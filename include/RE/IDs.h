@@ -1236,6 +1236,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetMaterialAlpha{ 211260, 2317566 };
 		inline constexpr REL::VariantID AccumulateScene{ 1551978, 2317574 };
 		inline constexpr REL::VariantID RenderScene{ 1310228, 2317576 };
+		inline constexpr REL::VariantID ClearRenderPasses{ 613616, 2317600 };
 	}
 
 	namespace BSShadowDirectionalLight

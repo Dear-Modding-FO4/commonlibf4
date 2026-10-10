@@ -9,8 +9,17 @@ namespace RE
 	class NiCullingProcess;
 	class NiSwitchNode;
 
+	class NiAVObject;
+
 	namespace BSShaderUtil
 	{
+		inline void ClearRenderPasses(NiAVObject* a_object)
+		{
+			using func_t = decltype(&BSShaderUtil::ClearRenderPasses);
+			static REL::Relocation<func_t> func{ ID::BSShaderUtil::ClearRenderPasses };
+			return func(a_object);
+		}
+
 		inline void SetMaterialAlpha(NiAvObject* a_object, float a_alpha, bool a_onlyFade)
 		{
 			using func_t = decltype(&BSShaderUtil::SetMaterialAlpha);
