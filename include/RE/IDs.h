@@ -2002,6 +2002,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetEventSource{ 594991, 2249292 };
 	}
 
+	namespace LooksMenu
+	{
+		inline constexpr REL::VariantID LoadCharacterParameters{ 513878, 2223356 };
+	}
+
 	namespace MagicTarget
 	{
 		inline constexpr REL::VariantID IsTakingHealthDamageFromActiveEffect{ 999442, 2226397 };
