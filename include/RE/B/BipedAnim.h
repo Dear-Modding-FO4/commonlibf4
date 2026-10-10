@@ -8,6 +8,7 @@
 
 namespace RE
 {
+	class NiAVObject;
 	class NiNode;
 	class TESForm;
 	class TESObjectREFR;
@@ -57,6 +58,13 @@ namespace RE
 			using func_t = decltype(&BipedAnim::GetShieldObject);
 			static REL::Relocation<func_t> func{ ID::BipedAnim::GetShieldObject };
 			return func(this);
+		}
+
+		NiAVObject* AttachSkinnedObject(NiNode* a_root, NiNode* a_parent, BIPED_OBJECT a_bipedObject, bool a_firstPerson)
+		{
+			using func_t = decltype(&BipedAnim::AttachSkinnedObject);
+			static REL::Relocation<func_t> func{ ID::BipedAnim::AttachSkinnedObject };
+			return func(this, a_root, a_parent, a_bipedObject, a_firstPerson);
 		}
 
 		void HideHeadExtraGeometry(BIPED_OBJECT a_bipedObject)
