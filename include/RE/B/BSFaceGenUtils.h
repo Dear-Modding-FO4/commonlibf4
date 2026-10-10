@@ -102,5 +102,17 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::BSFaceGenUtils::ApplyBlendedSkinTintToObject };
 			return func(a_root);
 		}
+
+		[[nodiscard]] inline std::uint32_t& CustomizationTextureWidth()
+		{
+			static REL::Relocation<std::uint32_t*> width{ ID::BSFaceGenUtils::CustomizationTextureWidth };
+			return *width;
+		}
+
+		[[nodiscard]] inline std::uint32_t& CustomizationTextureHeight()
+		{
+			static REL::Relocation<std::uint32_t*> height{ ID::BSFaceGenUtils::CustomizationTextureHeight };
+			return *height;
+		}
 	}
 }
