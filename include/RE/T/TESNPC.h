@@ -157,6 +157,27 @@ namespace RE
 			return func(this);
 		}
 
+		void SetFacialBoneMorphIntensity(float a_intensity)
+		{
+			using func_t = decltype(&TESNPC::SetFacialBoneMorphIntensity);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetFacialBoneMorphIntensity };
+			return func(this, a_intensity);
+		}
+
+		void SetMorphSliderValue(std::uint32_t a_key, float a_value)
+		{
+			using func_t = decltype(&TESNPC::SetMorphSliderValue);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetMorphSliderValue };
+			return func(this, a_key, a_value);
+		}
+
+		void SetFacialBoneRegionTransform(std::uint32_t a_regionIndex, BGSCharacterMorph::Transform& a_transform)
+		{
+			using func_t = decltype(&TESNPC::SetFacialBoneRegionTransform);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetFacialBoneRegionTransform };
+			return func(this, a_regionIndex, a_transform);
+		}
+
 		void SetHairColor(BGSColorForm* a_col)
 		{
 			using func_t = decltype(&TESNPC::SetHairColor);
