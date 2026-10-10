@@ -6,7 +6,7 @@
 namespace RE
 {
 	class __declspec(novtable) NiAlphaProperty :
-		public NiProperty  // 00
+	    public NiProperty  // 00
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::NiAlphaProperty };
@@ -92,12 +92,27 @@ namespace RE
 			return func(this, b);
 		}
 
-		[[nodiscard]] bool GetAlphaBlending() const noexcept { return flags.flags & 0x1; }
-		[[nodiscard]] bool GetAlphaTesting() const noexcept { return flags.flags & 0x200; }
+		[[nodiscard]] bool          GetAlphaBlending() const noexcept { return flags.flags & 0x1; }
+		[[nodiscard]] bool          GetAlphaTesting() const noexcept { return flags.flags & 0x200; }
+		[[nodiscard]] AlphaFunction GetSrcBlendMode() const noexcept
+		{
+			return static_cast<AlphaFunction>((flags.flags >> 1) & 0xF);
+		}
+		[[nodiscard]] AlphaFunction GetDestBlendMode() const noexcept
+		{
+			return static_cast<AlphaFunction>((flags.flags >> 5) & 0xF);
+		}
+		[[nodiscard]] bool IsSrcAlphaAdditive() const noexcept
+		{
+			return GetAlphaBlending() && GetSrcBlendMode() == AlphaFunction::kSrcAlpha &&
+			       GetDestBlendMode() == AlphaFunction::kOne;
+		}
 
 		// members
 		NiTFlags<std::uint16_t, NiProperty> flags;         // 28
 		std::int8_t                         alphaTestRef;  // 2A
 	};
+	static_assert(offsetof(NiAlphaProperty, flags) == 0x28);
+	static_assert(offsetof(NiAlphaProperty, alphaTestRef) == 0x2A);
 	static_assert(sizeof(NiAlphaProperty) == 0x30);
 }

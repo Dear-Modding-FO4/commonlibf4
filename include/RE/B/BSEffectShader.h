@@ -9,5 +9,12 @@ namespace RE
 	public:
 		static constexpr auto RTTI{ RTTI::BSEffectShader };
 		static constexpr auto VTABLE{ VTABLE::BSEffectShader };
+
+		void SetupGeometry(BSRenderPass* a_pass) override
+		{
+			using func_t = decltype(&BSEffectShader::SetupGeometry);
+			static REL::Relocation<func_t> func{ ID::BSEffectShader::SetupGeometry };
+			func(this, a_pass);
+		}
 	};
 }

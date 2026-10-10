@@ -11,7 +11,7 @@ namespace RE
 	class FlattenedGeometryData;
 
 	class __declspec(novtable) BSFadeNode :
-		public NiNode  // 000
+	    public NiNode  // 000
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::BSFadeNode };
@@ -43,5 +43,6 @@ namespace RE
 		float                                                            currentShaderLODLevel;   // 1B8
 		float                                                            previousShaderLODLevel;  // 1BC
 	};
+	static_assert(offsetof(BSFadeNode, lightData) == 0x140);
 	static_assert(sizeof(BSFadeNode) == 0x1C0);
 }

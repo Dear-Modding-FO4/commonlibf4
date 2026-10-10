@@ -10,6 +10,7 @@
 
 namespace RE
 {
+	class BSGeometry;
 	class BSEffectShaderPropertyColorController;
 	class BSEffectShaderPropertyFloatController;
 	class BSLightingShaderPropertyColorController;
@@ -24,9 +25,23 @@ namespace RE
 	}
 
 	class BSShaderData :
-		public BSIntrusiveRefCounted  // 000
+	    public BSIntrusiveRefCounted  // 000
 	{
 	public:
+		static void LoadAndApplyMaterialData(BSGeometry* a_geometry)
+		{
+			using func_t = decltype(&BSShaderData::LoadAndApplyMaterialData);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::LoadAndApplyMaterialData };
+			func(a_geometry);
+		}
+
+		void ApplyMaterialData(BSGeometry* a_geometry, bool a_flag)
+		{
+			using func_t = decltype(&BSShaderData::ApplyMaterialData);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::ApplyMaterialData };
+			func(this, a_geometry, a_flag);
+		}
+
 		enum class LightingShaderEnum
 		{
 			kStandard = 0x0,

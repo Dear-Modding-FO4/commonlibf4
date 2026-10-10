@@ -51,5 +51,7 @@ namespace RE
 		std::uint8_t                               numLights;                // 50
 		std::byte                                  unk51[7];                 // 51, unknown storage, not padding
 	};
+	static_assert(offsetof(BSRenderPass, sceneLights) == 0x30);
+	static_assert(offsetof(BSRenderPass, numLights) == 0x50);
 	static_assert(sizeof(BSRenderPass) == 0x58);
 }

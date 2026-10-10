@@ -739,6 +739,7 @@ namespace RE::ID
 
 	namespace BSBatchRenderer
 	{
+		inline constexpr REL::VariantID Draw{ 1152191, 2318696, 2318696 };
 		inline constexpr REL::VariantID RenderPassImmediately{ 244233, 2318699 };
 	}
 
@@ -772,8 +773,25 @@ namespace RE::ID
 
 	namespace BSDFTiledLighting
 	{
-		inline constexpr REL::VariantID AddLight{ 1250844, 2318542 };
-		inline constexpr REL::VariantID UpdateLightListTiledPackingCallback{ 999390, 2317525 };
+		inline constexpr REL::VariantID AddLight{ 1250844, 2318542, 2318542 };
+		inline constexpr REL::VariantID UpdateLightListTiledPackingCallback{ 999390, 2317525, 2317525 };
+		inline constexpr REL::VariantID WriteSide{ 1577505, 2713010, 2713010 };
+		inline constexpr REL::VariantID LightCounts{ 1366811, 2713007, 2713007 };
+		inline constexpr REL::VariantID LightRecords{ 223744, 2713009, 2713009 };
+		inline constexpr REL::VariantID LightBuffers{ 489494, 2713003, 2713003 };
+		inline constexpr REL::VariantID ComputeShaderDeferredTiledLightingSetting{ 1268028, 2677971, 4784639 };
+		inline constexpr REL::VariantID TiledLightingMinLightsSetting{ 343723, 2677973, 4784641 };
+	}
+
+	namespace BSEffectShader
+	{
+		inline constexpr REL::VariantID SetupGeometry{ 1089917, 2318786, 2318786 };
+	}
+
+	namespace BSEffectShaderProperty
+	{
+		inline constexpr REL::VariantID GetRenderPasses{ 1289086, 2316386, 2316386 };
+		inline constexpr REL::VariantID LocalLightEnable{ 121466, 2677717, 4784385 };
 	}
 
 	namespace BSGFxDisplayObject
@@ -814,7 +832,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID DrawTriShape{ 763320, 2276846 };
 			inline constexpr REL::VariantID RunComputeShader{ 1108829, 2276940 };
 			inline constexpr REL::VariantID SetShaders{ 894905, 2276942 };
-			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904 };
+			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904, 2276904 };
 			inline constexpr REL::VariantID ResetWindow{ 796949, 2276825 };
 			inline constexpr REL::VariantID ResetState{ 405603, 2276966 };
 		}
@@ -841,6 +859,7 @@ namespace RE::ID
 
 		namespace Utility
 		{
+			inline constexpr REL::VariantID PackDynamicParticleData{ 854665, 2277107, 2277107 };
 			inline constexpr REL::VariantID ConvertHALFToNiPoint3Stream{ 463129, 2277113 };
 			inline constexpr REL::VariantID ConvertNiPoint3ToHALFStream{ 1247946, 2277114 };
 			inline constexpr REL::VariantID PackVertexData{ 156126, 2277106 };
@@ -883,8 +902,11 @@ namespace RE::ID
 
 	namespace BSLight
 	{
-		inline constexpr REL::VariantID TestFrustumCull{ 1440624, 2318414 };
-		inline constexpr REL::VariantID GetLuminanceAtPoint{ 170662, 2318428 };
+		inline constexpr REL::VariantID Ctor{ 604564, 2318412, 2318412 };
+		inline constexpr REL::VariantID TestFrustumCull{ 1440624, 2318414, 2318414 };
+		inline constexpr REL::VariantID GetLuminanceAtPoint{ 170662, 2318428, 2318428 };
+		inline constexpr REL::VariantID AddFadeNode{ 439201, 2318419, 2318420 };
+		inline constexpr REL::VariantID AddFadeNodeLocked{ 1210164, 2318420, 2318419 };
 	}
 
 	namespace BSLightingShaderProperty
@@ -1068,8 +1090,22 @@ namespace RE::ID
 		inline constexpr REL::VariantID RenderAlphaGeometry{ 1445970, 2317903 };
 	}
 
+	namespace BSShaderData
+	{
+		inline constexpr REL::VariantID LoadAndApplyMaterialData{ 1172558, 2316351, 2316351 };
+		inline constexpr REL::VariantID ApplyMaterialData{ 108626, 2316352, 2316352 };
+	}
+
+	namespace BSShaderPropertyLightData
+	{
+		inline constexpr REL::VariantID AttachLight{ 37746, 2319060, 2319060 };
+		inline constexpr REL::VariantID CreateActiveLightList{ 1312870, 2319067, 2319067 };
+	}
+
 	namespace BSShaderManager
 	{
+		inline constexpr REL::VariantID SetEmittanceRecurse{ 857081, 2316544, 2316544 };
+		inline constexpr REL::VariantID SetExternalEmittanceRecurse{ 591313, 2316545, 2316545 };
 		namespace State
 		{
 			inline constexpr REL::VariantID Singleton{ 1327069, 2712479 };
@@ -1363,6 +1399,10 @@ namespace RE::ID
 
 	namespace DrawWorld
 	{
+		inline constexpr REL::VariantID SetDoTiledLighting{ 716351, 2318370, 2318370 };
+		inline constexpr REL::VariantID LightUpdate{ 102390, 2318287, 2318287 };
+		inline constexpr REL::VariantID MainAccum{ 718911, 2318292, 2318292 };
+		inline constexpr REL::VariantID BuildSceneLists{ 1138818, 2318289, 2318289 };
 		inline constexpr REL::VariantID Begin{ 502840, 2318286 };
 		inline constexpr REL::VariantID Imagespace{ 587723, 2318322 };
 		inline constexpr REL::VariantID Render_PreUI{ 984743, 2318321 };
@@ -1962,6 +2002,21 @@ namespace RE::ID
 		inline constexpr REL::VariantID Update{ 121052, 2270101 };
 	}
 
+	namespace NiBillboardNode
+	{
+		inline constexpr REL::VariantID CreateObject{ 616101, 2270556, 2270556 };
+	}
+
+	namespace NiParticleSystem
+	{
+		inline constexpr REL::VariantID UpdateSystemTransform{ 965631, 2273759, 2273759 };
+	}
+
+	namespace NiPointLight
+	{
+		inline constexpr REL::VariantID Ctor{ 1127119, 2270227, 2270227 };
+	}
+
 	namespace NiCamera
 	{
 		inline constexpr REL::VariantID BoundInFrustum{ 781526, 2194525 };
@@ -2412,8 +2467,15 @@ namespace RE::ID
 
 	namespace ShadowSceneNode
 	{
-		inline constexpr REL::VariantID AddLight{ 1109421, 2317457 };
-		inline constexpr REL::VariantID RemoveLight{ 1410391, 2317464 };
+		inline constexpr REL::VariantID AddLight{ 1109421, 2317457, 2317457 };
+		inline constexpr REL::VariantID AddLightWithBool{ 1029787, 2317456, 2317456 };
+		inline constexpr REL::VariantID RemoveLight{ 1410391, 2317464, 2317464 };
+		inline constexpr REL::VariantID AddQueuedLight{ 1385930, 2317459, 2317459 };
+		inline constexpr REL::VariantID UpdateQueuedLight{ 222957, 2317472, 2317472 };
+		inline constexpr REL::VariantID ProcessQueuedLights{ 1369106, 2317467, 2317467 };
+		inline constexpr REL::VariantID ProcessAllQueuedLights{ 1421093, 2317469, 2317469 };
+		inline constexpr REL::VariantID UpdateLightList{ 1479977, 2317500, 2317500 };
+		inline constexpr REL::VariantID GetLuminanceAtPoint{ 216861, 2317485, 2317485 };
 	}
 
 	namespace SitWaitMenu
@@ -2686,9 +2748,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
 		inline constexpr REL::VariantID GetXPValue{ 1134136, 2207384 };
 		inline constexpr REL::VariantID SetTintingData{ 452734, 2207493 };
-        inline constexpr REL::VariantID GetTintingTemplate{ 1316627, 2207494 };
-        inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
-        inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
+		inline constexpr REL::VariantID GetTintingTemplate{ 1316627, 2207494 };
+		inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
+		inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
 	}
 
 	namespace TESObjectARMO

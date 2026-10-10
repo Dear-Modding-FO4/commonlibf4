@@ -1,11 +1,46 @@
 #pragma once
 
+#include "RE/B/BSTArray.h"
+
 namespace RE
 {
 	class BSGeometryListCullingProcess;
+	class BSCullingProcess;
+	class BSCullingGroup;
 
 	namespace DrawWorld
 	{
+		inline void BuildSceneLists(BSCullingProcess* a_process, BSCullingGroup& a_group1,
+			BSCullingGroup& a_group2, BSCullingGroup& a_group3,
+			BSTArray<BSCullingGroup, BSTAlignedHeapArrayAllocator<0x10>::Allocator>& a_groups,
+			bool                                                                     a_flag)
+		{
+			using func_t = decltype(&BuildSceneLists);
+			static REL::Relocation<func_t> func{ ID::DrawWorld::BuildSceneLists };
+			func(a_process, a_group1, a_group2, a_group3, a_groups, a_flag);
+		}
+
+		inline void SetDoTiledLighting(bool a_enabled)
+		{
+			using func_t = decltype(&SetDoTiledLighting);
+			static REL::Relocation<func_t> func{ ID::DrawWorld::SetDoTiledLighting };
+			func(a_enabled);
+		}
+
+		inline void LightUpdate()
+		{
+			using func_t = decltype(&LightUpdate);
+			static REL::Relocation<func_t> func{ ID::DrawWorld::LightUpdate };
+			func();
+		}
+
+		inline void MainAccum()
+		{
+			using func_t = decltype(&MainAccum);
+			static REL::Relocation<func_t> func{ ID::DrawWorld::MainAccum };
+			func();
+		}
+
 		// Render_PreUI calls the registered callback first, before any world setup.
 		using UpdateWaterFunc = void (*)(BSGeometryListCullingProcess*);
 

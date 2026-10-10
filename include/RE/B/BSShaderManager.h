@@ -14,6 +14,20 @@ namespace RE
 	class BSShaderManager
 	{
 	public:
+		static void SetEmittanceRecurse(NiAVObject* a_object, NiColor& a_color)
+		{
+			using func_t = decltype(&BSShaderManager::SetEmittanceRecurse);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::SetEmittanceRecurse };
+			func(a_object, a_color);
+		}
+
+		static void SetExternalEmittanceRecurse(NiAVObject* a_object, NiColor* a_color)
+		{
+			using func_t = decltype(&BSShaderManager::SetExternalEmittanceRecurse);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::SetExternalEmittanceRecurse };
+			func(a_object, a_color);
+		}
+
 		enum class BSShaderTimerMode : std::uint32_t
 		{
 			kDefault = 0x0,

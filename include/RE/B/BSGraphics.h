@@ -15,12 +15,14 @@
 
 namespace RE
 {
+	class NiParticles;
 	class BSD3DResourceCreator;
 	class BSEventFlag;
 	class NiCamera;
 
 	namespace BSGraphics
 	{
+		class StructuredBuffer;
 		enum class Format;
 		class Texture;
 
@@ -122,14 +124,14 @@ namespace RE
 		static_assert(sizeof(Buffer) == 0x50);
 
 		class VertexBuffer :
-			public Buffer
+		    public Buffer
 		{
 		public:
 		};
 		static_assert(sizeof(VertexBuffer) == 0x50);
 
 		class IndexBuffer :
-			public Buffer
+		    public Buffer
 		{
 		public:
 		};
@@ -519,6 +521,15 @@ namespace RE
 				using func_t = decltype(&BSGraphics::Renderer::RunComputeShader);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RunComputeShader };
 				return func(this, a_computeShader, a_groupCountX, a_groupCountY, a_groupCountZ);
+			}
+
+			// A zero count uploads the buffer's full capacity.
+			void UpdateStructuredBuffer(StructuredBuffer* a_buffer, const void* a_source,
+				std::uint32_t a_stride, std::uint32_t a_count)
+			{
+				using func_t = decltype(&Renderer::UpdateStructuredBuffer);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::UpdateStructuredBuffer };
+				func(this, a_buffer, a_source, a_stride, a_count);
 			}
 
 			// members
@@ -1171,8 +1182,8 @@ namespace RE
 			// members
 			RenderTargetProperties renderTargetData[100];  // 000
 			// OG-only layout from this point; use matching accessors across runtimes.
-			DepthStencilTargetProperties  depthStencilTargetData[12];                     // C80
-			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];                     // DA0
+			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
+			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
 			// ID member offsets are OG-only; use the accessors.
 			std::uint32_t                 renderTargetID[100];                            // DC4
 			std::uint32_t                 depthStencilTargetID[12];                       // F54
@@ -1212,6 +1223,13 @@ namespace RE
 
 		namespace Utility
 		{
+			inline void PackDynamicParticleData(std::uint32_t a_count, NiParticles* a_particles, void* a_mappedVertices)
+			{
+				using func_t = decltype(&PackDynamicParticleData);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Utility::PackDynamicParticleData };
+				func(a_count, a_particles, a_mappedVertices);
+			}
+
 			inline void ConvertHALFToNiPoint3Stream(const std::uint16_t* a_src, NiPoint3* a_dst, std::uint32_t a_count, std::uint32_t a_stride)
 			{
 				using func_t = decltype(&ConvertHALFToNiPoint3Stream);
