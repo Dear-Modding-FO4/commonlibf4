@@ -32,6 +32,13 @@ namespace RE
 			kNoAnim
 		};
 
+		bool UpdateMorphsFromLip(float a_delta)
+		{
+			using func_t = decltype(&BSFaceGenAnimationData::UpdateMorphsFromLip);
+			static REL::Relocation<func_t> func{ ID::BSFaceGenAnimationData::UpdateMorphsFromLip };
+			return func(this, a_delta);
+		}
+
 		// members
 		float         finalExpression[54];					// 018
 		float         speechExpression[54];					// 0F0

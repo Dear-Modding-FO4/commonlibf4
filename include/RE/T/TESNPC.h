@@ -11,6 +11,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/N/NPC_DATA.h"
+#include "RE/N/NiColor.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/P/PerkRankData.h"
 #include "RE/S/SEX.h"
@@ -55,8 +56,7 @@ namespace RE
 			if (!GetPerkIndex(a_perk)) {
 				std::vector<PerkRankData> storage{ &perks[0], &perks[perkCount] };
 
-				auto perk = new PerkRankData(a_perk, a_rank);
-				storage.push_back(*perk);
+				storage.emplace_back(a_perk, a_rank);
 
 				AllocatePerkRankArray(static_cast<std::uint32_t>(storage.size()));
 				std::ranges::copy(storage, perks);
@@ -157,6 +157,27 @@ namespace RE
 			return func(this);
 		}
 
+		void SetFacialBoneMorphIntensity(float a_intensity)
+		{
+			using func_t = decltype(&TESNPC::SetFacialBoneMorphIntensity);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetFacialBoneMorphIntensity };
+			return func(this, a_intensity);
+		}
+
+		void SetMorphSliderValue(std::uint32_t a_key, float a_value)
+		{
+			using func_t = decltype(&TESNPC::SetMorphSliderValue);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetMorphSliderValue };
+			return func(this, a_key, a_value);
+		}
+
+		void SetFacialBoneRegionTransform(std::uint32_t a_regionIndex, BGSCharacterMorph::Transform& a_transform)
+		{
+			using func_t = decltype(&TESNPC::SetFacialBoneRegionTransform);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetFacialBoneRegionTransform };
+			return func(this, a_regionIndex, a_transform);
+		}
+
 		void SetHairColor(BGSColorForm* a_col)
 		{
 			using func_t = decltype(&TESNPC::SetHairColor);
@@ -197,6 +218,18 @@ namespace RE
 			using func_t = decltype(&TESNPC::AddUniqueHeadType);
 			static REL::Relocation<func_t> func{ ID::TESNPC::AddUniqueHeadType };
 			return func(this, a_headPart);
+		}
+
+		// Works out the colour the body is tinted with from the skin tone (slot 12) tint entry, stores it
+		// in bodyTintColorR/G/B/A and returns it in a_color (0-1 per channel). Without a skin tone entry the
+		// colour is opaque grey (128, 128, 128, 255). The entry is taken from a_skinTone when given, otherwise
+		// from the tint entries (the player's own for the player). Unless a_force is set, an NPC whose face is
+		// baked ahead of time (BSFaceGenManager::CheckNPCUsesPreCalcFace) skips this and returns the stored colour.
+		void CalculateBodyTintColor(NiColorA& a_color, const BGSCharacterTint::Entry* a_skinTone, bool a_force)
+		{
+			using func_t = decltype(&TESNPC::CalculateBodyTintColor);
+			static REL::Relocation<func_t> func{ ID::TESNPC::CalculateBodyTintColor };
+			return func(this, a_color, a_skinTone, a_force);
 		}
 
 		// members

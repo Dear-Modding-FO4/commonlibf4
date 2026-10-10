@@ -25,19 +25,39 @@ namespace RE
 	public:
 		void AddKeyword(BGSKeyword* a_keyword)
 		{
-			if (a_keyword && !HasKeyword(a_keyword)) {
+			if (a_keyword && !HasKeyword(a_keyword) && detail::BGSKeywordGetIndexForTypedKeyword(a_keyword, TYPE) != 0xFFFF) {
 				MemoryManager&              mm = MemoryManager::GetSingleton();
 				BGSTypedKeywordValue<TYPE>* newArray = (BGSTypedKeywordValue<TYPE>*)mm.Allocate(2 * (size + 1), 0, false);
 				for (int i = 0; i < size; ++i) {
 					newArray[i] = array[i];
 				}
 				BGSTypedKeywordValue<TYPE> newValue;
-				newValue.keywordIndex = detail::BGSKeywordGetIndexForTypedKeyword(a_keyword, KeywordType::kAttachPoint);
+				newValue.keywordIndex = detail::BGSKeywordGetIndexForTypedKeyword(a_keyword, TYPE);
 				newArray[size] = newValue;
 				mm.Deallocate(array, false);
 				array = newArray;
 				++size;
 			}
+		}
+
+		bool RemoveKeyword(BGSKeyword* a_keyword)
+		{
+			for (std::uint32_t i = 0; i < size; ++i) {
+				if (detail::BGSKeywordGetTypedKeywordByIndex(TYPE, array[i].keywordIndex) != a_keyword) {
+					continue;
+				}
+
+				for (std::uint32_t j = i + 1; j < size; ++j) {
+					array[j - 1] = array[j];
+				}
+				--size;
+				if (size == 0) {
+					MemoryManager::GetSingleton().Deallocate(array, false);
+					array = nullptr;
+				}
+				return true;
+			}
+			return false;
 		}
 
 		[[nodiscard]] bool HasKeyword(BGSKeyword* a_keyword)

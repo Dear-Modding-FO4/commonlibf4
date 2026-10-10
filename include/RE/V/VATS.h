@@ -48,6 +48,27 @@ namespace RE
 			return *singleton;
 		}
 
+		void SetMagicTimeSlowdown(float a_magicTimeSlowdown, float a_playerMagicTimeSlowdown)
+		{
+			using func_t = decltype(&VATS::SetMagicTimeSlowdown);
+			static REL::Relocation<func_t> func{ ID::VATS::SetMagicTimeSlowdown };
+			return func(this, a_magicTimeSlowdown, a_playerMagicTimeSlowdown);
+		}
+
+		float GetPlayerUpdateMult()
+		{
+			using func_t = decltype(&VATS::GetPlayerUpdateMult);
+			static REL::Relocation<func_t> func{ ID::VATS::GetPlayerUpdateMult };
+			return func(this);
+		}
+
+		float GetUpdateMult(TESObjectREFR* a_ref)
+		{
+			using func_t = decltype(&VATS::GetUpdateMult);
+			static REL::Relocation<func_t> func{ ID::VATS::GetUpdateMult };
+			return func(this, a_ref);
+		}
+
 		// members
 		BSTArray<BSTSmartPointer<VATSCommand>>       commands;                 // 28
 		REX::TEnumSet<VATS_MODE_ENUM, std::uint32_t> mode;                     // 40

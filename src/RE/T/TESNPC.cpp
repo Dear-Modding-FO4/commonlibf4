@@ -24,8 +24,7 @@ namespace RE
 		std::vector<PerkRankData> copiedData{ perks, perks + perkCount };
 		std::ranges::for_each(a_perks, [&](auto& perk) {
 			if (!GetPerkIndex(perk)) {
-				const auto newPerk = new PerkRankData(perk, a_rank);
-				copiedData.push_back(*newPerk);
+				copiedData.emplace_back(perk, a_rank);
 			}
 		});
 		CopyPerkRankArray(copiedData);

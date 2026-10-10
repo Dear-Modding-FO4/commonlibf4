@@ -326,6 +326,48 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] BGSEncounterZone* GetEncounterZone() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetEncounterZone);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetEncounterZone };
+			return func(this);
+		}
+
+		[[nodiscard]] bool GetVisibleDistant() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetVisibleDistant };
+			return func(this);
+		}
+
+		[[nodiscard]] bool Is3DHighPriority() const
+		{
+			using func_t = decltype(&TESObjectREFR::Is3DHighPriority);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::Is3DHighPriority };
+			return func(this);
+		}
+
+		[[nodiscard]] bool MustBeVisibleDistant() const
+		{
+			using func_t = decltype(&TESObjectREFR::MustBeVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::MustBeVisibleDistant };
+			return func(this);
+		}
+
+		void SetVisibleDistant(bool a_visibleDistant)
+		{
+			using func_t = decltype(&TESObjectREFR::SetVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::SetVisibleDistant };
+			return func(this, a_visibleDistant);
+		}
+
+		[[nodiscard]] TESWorldSpace* GetWorldSpace() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetWorldSpace);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetWorldSpace };
+			return func(this);
+		}
+
 		[[nodiscard]] const char* GetDisplayFullName()
 		{
 			using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
@@ -359,6 +401,27 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::GetDistanceSqFromReference);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetDistanceSqFromReference };
 			return func(this, a_ref, a_disabled, a_sameSpace, a_diffZHeight);
+		}
+
+		[[nodiscard]] BIPED_OBJECT GetBodyObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetBodyObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetBodyObject };
+			return func(this);
+		}
+
+		[[nodiscard]] BIPED_OBJECT GetPipboyObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetPipboyObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetPipboyObject };
+			return func(this);
+		}
+
+		[[nodiscard]] BIPED_OBJECT GetShieldObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetShieldObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetShieldObject };
+			return func(this);
 		}
 
 		[[nodiscard]] bool GetEditorDead() const
