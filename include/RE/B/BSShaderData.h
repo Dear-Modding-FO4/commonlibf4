@@ -6,6 +6,7 @@
 #include "RE/N/NiAlphaProperty.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiPoint2.h"
+#include "RE/B/BSShaderTextureSet.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE
@@ -13,6 +14,7 @@ namespace RE
 	class BSGeometry;
 	class BSEffectShaderPropertyColorController;
 	class BSEffectShaderPropertyFloatController;
+	class BSGeometry;
 	class BSLightingShaderPropertyColorController;
 	class BSLightingShaderPropertyFloatController;
 	class BSLightingShaderPropertyUShortController;
@@ -50,6 +52,23 @@ namespace RE
 			kSky = 0x3,
 			kTallGrass = 0x4
 		};
+
+		BSShaderData()
+		{
+			using func_t = void (*)(BSShaderData*);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::Ctor };
+			func(this);
+		}
+
+		~BSShaderData()
+		{
+			using func_t = void (*)(BSShaderData*);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::Dtor };
+			func(this);
+		}
+
+		BSShaderData(const BSShaderData&) = delete;
+		BSShaderData& operator=(const BSShaderData&) = delete;
 
 		// members
 		REX::TEnumSet<LightingShaderEnum, std::int32_t>             lightingShader;                                 // 004
