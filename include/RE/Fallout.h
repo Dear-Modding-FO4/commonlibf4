@@ -553,6 +553,7 @@
 #include "RE/B/BSShadowDirectionalLight.h"
 #include "RE/B/BSShadowLight.h"
 #include "RE/B/BSSimpleList.h"
+#include "RE/B/BSSkinInstance.h"
 #include "RE/B/BSSkyShader.h"
 #include "RE/B/BSSoundCategoryHandle.h"
 #include "RE/B/BSSoundHandle.h"
