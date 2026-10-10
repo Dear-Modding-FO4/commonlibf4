@@ -5,6 +5,8 @@
 
 namespace RE
 {
+	class BSParticleShaderCubeEmitter;
+
 	class __declspec(novtable) BSEffectShaderProperty : public BSShaderProperty
 	{
 	public:
@@ -13,6 +15,17 @@ namespace RE
 		static constexpr auto Ni_RTTI{ Ni_RTTI::BSEffectShaderProperty };
 
 		BSEffectShaderProperty() = delete;
+
+		[[nodiscard]] static BSEffectShaderProperty* Create()
+		{
+			const auto prop = static_cast<BSEffectShaderProperty*>(RE::malloc(sizeof(BSEffectShaderProperty)));
+			if (prop) {
+				using func_t = void (*)(BSEffectShaderProperty*);
+				static REL::Relocation<func_t> func{ ID::BSEffectShaderProperty::Ctor };
+				func(prop);
+			}
+			return prop;
+		}
 
 		RenderPassArray* GetRenderPasses(BSGeometry* a_geometry, std::uint32_t a_renderMode,
 			BSShaderAccumulator* a_accumulator) override
@@ -28,9 +41,9 @@ namespace RE
 			return *value;
 		}
 
-		void*     emitter;            // 70 - pointee type is unestablished
-		NiColor*  externalEmittance;  // 78 - borrowed storage
-		std::byte unk80[8];           // 80
+		BSParticleShaderCubeEmitter*  emitter;                    // 70 - pointee type is unestablished
+		NiColor*                      externalEmittance;          // 78 - borrowed storage
+		std::uint32_t                 baseTextureIndex;           // 80
 	};
 	static_assert(sizeof(BSEffectShaderProperty) == 0x88);
 	static_assert(offsetof(BSEffectShaderProperty, emitter) == 0x70);

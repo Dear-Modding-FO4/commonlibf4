@@ -729,6 +729,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Getbhk{ 730034, 2277919 };
 	}
 
+	namespace BSEffectShaderProperty
+	{
+		inline constexpr REL::VariantID Ctor{ 187126, 2316383 };
+	}
+
 	namespace BSLightingShaderProperty
 	{
 		inline constexpr REL::VariantID Ctor{ 174980, 2316416 };
