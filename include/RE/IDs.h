@@ -977,6 +977,7 @@ namespace RE::ID
 		namespace RenderTargetManager
 		{
 			inline constexpr REL::VariantID Singleton{ 1508457, 2666735 };
+			inline constexpr REL::VariantID CreateRenderTarget{ 43433, 2277176 };
 			inline constexpr REL::VariantID SetEnableDynamicResolution{ 116947, 2277197 };
 			inline constexpr REL::VariantID SetUseDynamicResolutionViewportAsDefaultViewport{ 676851, 2277194 };
 			inline constexpr REL::VariantID UpdateDynamicResolution{ 1115215, 2277195 };
