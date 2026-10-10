@@ -904,6 +904,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID UpdateBodyTintColorsOnScene{ 49935, 2209540 };
 		inline constexpr REL::VariantID UpdateFaceCustomizationTexturesOnScene{ 927505, 2209541 };
 		inline constexpr REL::VariantID ApplyBlendedSkinTintToObject{ 724640, 2209549 };
+		inline constexpr REL::VariantID PrepareHeadPartForShaders{ 1434907, 2209538 };
+		inline constexpr REL::VariantID CustomizationTextureWidth{ 1307816, 2666739 };
+		inline constexpr REL::VariantID CustomizationTextureHeight{ 626669, 2666740 };
 	}
 
 	namespace BSGameSound
