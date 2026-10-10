@@ -2909,6 +2909,9 @@ namespace RE::ID
         inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
         inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
 		inline constexpr REL::VariantID CalculateBodyTintColor{ 134537, 2207435 };
+		inline constexpr REL::VariantID SetFacialBoneMorphIntensity{ 1256673, 2207415 };
+		inline constexpr REL::VariantID SetMorphSliderValue{ 1432151, 2207410 };
+		inline constexpr REL::VariantID SetFacialBoneRegionTransform{ 1125036, 2207413 };
 	}
 
 	namespace TESObjectARMO
