@@ -219,6 +219,14 @@ namespace RE::ID
 		inline constexpr REL::VariantID EventIndex{ 528859, 2663401 };
 	}
 
+	namespace BGSChargenUtils
+	{
+		inline constexpr REL::VariantID Instances{ 933771, 2696603, 4803944 };
+		inline constexpr REL::VariantID CurrentIndex{ 229165, 2696597, 4803938 };
+		inline constexpr REL::VariantID TemplateNPC0{ 579951, 2692123, 4799415 };
+		inline constexpr REL::VariantID TemplateNPC1{ 626647, 2692121, 4799413 };
+	}
+
 	namespace BGSClearLocationEvent
 	{
 		inline constexpr REL::VariantID EventIndex{ 1406072, 2663402 };
