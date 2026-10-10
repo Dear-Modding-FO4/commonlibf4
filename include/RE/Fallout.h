@@ -384,6 +384,7 @@
 #include "RE/B/BSLightingShader.h"
 #include "RE/B/BSLightingShaderMaterial.h"
 #include "RE/B/BSLightingShaderMaterialBase.h"
+#include "RE/B/BSLightingShaderMaterialSkinTint.h"
 #include "RE/B/BSLightingShaderProperty.h"
 #include "RE/B/BSLog.h"
 #include "RE/B/BSMTAManager.h"
