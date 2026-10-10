@@ -14,6 +14,24 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BSLightingShaderProperty };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::BSLightingShaderProperty };
 
+		[[nodiscard]] static BSLightingShaderProperty* Create()
+		{
+			const auto prop = static_cast<BSLightingShaderProperty*>(RE::malloc(sizeof(BSLightingShaderProperty)));
+			if (prop) {
+				using func_t = void (*)(BSLightingShaderProperty*);
+				static REL::Relocation<func_t> func{ ID::BSLightingShaderProperty::Ctor };
+				func(prop);
+			}
+			return prop;
+		}
+
+		void LoadTextureSet(std::uint32_t a_unk = 0)
+		{
+			using func_t = decltype(&BSLightingShaderProperty::LoadTextureSet);
+			static REL::Relocation<func_t> func{ ID::BSLightingShaderProperty::LoadTextureSet };
+			return func(this, a_unk);
+		}
+
 		// members
 		NiColorA        projectedUVParams;           // 70
 		NiColorA        projectedUVColor;            // 80
