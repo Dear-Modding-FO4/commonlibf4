@@ -722,6 +722,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Getbhk{ 730034, 2277919 };
 	}
 
+	namespace BSMaterialDB
+	{
+		inline constexpr REL::VariantID Demand{ 1007580, 2274963 };
+	}
+
 	namespace BSShaderData
 	{
 		inline constexpr REL::VariantID Ctor{ 60728, 2316334 };
