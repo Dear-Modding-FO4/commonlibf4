@@ -46,6 +46,8 @@ namespace RE
 		constexpr float    GetSquaredDistance(const NiPoint3& a_point) const noexcept;
 		constexpr float    SqrLength() const noexcept;
 
+		inline void        Normalize() noexcept;
+
 		float    GetDistance(const NiPoint3& a_point) const noexcept;
 		float    GetZAngleFromVector() const;
 		float    Length() const noexcept;
