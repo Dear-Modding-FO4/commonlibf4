@@ -5,6 +5,7 @@ namespace RE::ID
 	namespace ActiveEffect
 	{
 		inline constexpr REL::VariantID CheckDisplacementSpellOnTarget{ 1415178, 2226001 };
+		inline constexpr REL::VariantID EvaluateConditions{ 1228998, 2226003 };
 	}
 
 	namespace Actor
@@ -164,6 +165,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetCapsOwedByPlayer{ 672405, 2222714 };
 	}
 
+	namespace BGSAIWorldLocationRefRadius
+	{
+		inline constexpr REL::VariantID Ctor{ 964254, 2188379 };
+	}
+
 	namespace BGSAddToPlayerInventoryEvent
 	{
 		inline constexpr REL::VariantID EventIndex{ 1163657, 2663407 };
@@ -316,6 +322,11 @@ namespace RE::ID
 	namespace BGSEntryPoint
 	{
 		inline constexpr REL::VariantID HandleEntryPoint{ 714336, 2206243 };
+	}
+
+	namespace BGSEntryPointPerkEntry
+	{
+		inline constexpr REL::VariantID CheckConditionFilters{ 1055546, 2206531 };
 	}
 
 	namespace BGSEscapeJailEvent
@@ -622,6 +633,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID BuildSaveGameList{ 1342984, 2228053 };
 		inline constexpr REL::VariantID GetSaveDirectoryPath{ 1569549, 2228028 };
 		inline constexpr REL::VariantID QueueSaveLoadTask{ 1487308, 2228080 };
+	}
+
+	namespace BGSSaveLoadUtilities
+	{
+		inline constexpr REL::VariantID CompressBuffer{ 104318, 2228204 };
 	}
 
 	namespace BGSSaveLoadGame
