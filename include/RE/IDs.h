@@ -1115,6 +1115,7 @@ namespace RE::ID
 	namespace BSShaderProperty
 	{
 		inline constexpr REL::VariantID SetMaterial{ 706318, 2316285 };
+		inline constexpr REL::VariantID SetFlag{ 1251793, 2316281 };
 
 		namespace RenderPassArray
 		{

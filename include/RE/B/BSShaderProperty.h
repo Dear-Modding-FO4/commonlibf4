@@ -158,6 +158,14 @@ namespace RE
 			return func(this, a_material, a_unique);
 		}
 
+		// Dirties the pass cache (lastRenderPassState) when the bit changes.
+		void SetFlag(EShaderPropertyFlag a_flag, bool a_value)
+		{
+			using func_t = void (*)(BSShaderProperty*, std::uint8_t, bool);
+			static REL::Relocation<func_t> func{ ID::BSShaderProperty::SetFlag };
+			return func(this, static_cast<std::uint8_t>(std::countr_zero(static_cast<std::uint64_t>(a_flag))), a_value);
+		}
+
 		// members
 		float                                             alpha;                  // 28
 		std::int32_t                                      lastRenderPassState;    // 2C
