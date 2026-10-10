@@ -243,6 +243,13 @@ namespace RE::ID
 		namespace Entries
 		{
 			inline constexpr REL::VariantID GetEntryByID{ 1292903, 2196508 };
+			inline constexpr REL::VariantID Clear{ 1146439, 2196606 };
+			inline constexpr REL::VariantID CopyFrom{ 1120072, 2196507 };
+		}
+
+		namespace Entry
+		{
+			inline constexpr REL::VariantID CreateFromHeader{ 1539229, 2196524 };
 		}
 
 		namespace Template
