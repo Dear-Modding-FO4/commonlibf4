@@ -71,6 +71,31 @@ namespace RE
 		};
 		static_assert(sizeof(UndoData) == 0x70);
 
+		[[nodiscard]] static BGSChargenUtils** GetInstances()
+		{
+			static REL::Relocation<BGSChargenUtils**> instances{ ID::BGSChargenUtils::Instances };
+			return instances.get();
+		}
+
+		[[nodiscard]] static std::uint32_t& GetCurrentIndex()
+		{
+			static REL::Relocation<std::uint32_t*> index{ ID::BGSChargenUtils::CurrentIndex };
+			return *index;
+		}
+
+		[[nodiscard]] static BGSChargenUtils* GetCurrent()
+		{
+			const auto index = GetCurrentIndex();
+			return index < 2 ? GetInstances()[index] : nullptr;
+		}
+
+		[[nodiscard]] static TESNPC*& GetTemplateNPC(std::size_t a_index)
+		{
+			static REL::Relocation<TESNPC**> npc0{ ID::BGSChargenUtils::TemplateNPC0 };
+			static REL::Relocation<TESNPC**> npc1{ ID::BGSChargenUtils::TemplateNPC1 };
+			return a_index == 0 ? *npc0 : *npc1;
+		}
+
 		// members
 		Actor*                                                                            targetActor;                                                // 058
 		TESNPC*                                                                           targetNPC;                                                  // 060
