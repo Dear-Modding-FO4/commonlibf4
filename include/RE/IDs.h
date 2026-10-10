@@ -133,6 +133,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
 		inline constexpr REL::VariantID GetActorLightLevel{ 898888, 2231981 };
+		inline constexpr REL::VariantID Set3DUpdateFlag{ 236542, 2232389 };
+		inline constexpr REL::VariantID Update3DModel{ 986782, 2231882 };
 	}
 
 	namespace AITimer
