@@ -1055,6 +1055,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Demand1{ 1066398, 2275153 };
 		inline constexpr REL::VariantID Demand2{ 1225688, 2275154 };
+		inline constexpr REL::VariantID TESProcessor{ 684147, 2689142, 4796429 };
 	}
 
 	namespace BSPreCulledObjects

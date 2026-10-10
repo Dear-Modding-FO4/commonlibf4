@@ -50,6 +50,39 @@ namespace RE
 		};
 		static_assert(sizeof(HandelListHead) == 0x8);
 
+		class ModelData
+		{
+		public:
+			enum Flags : std::uint8_t
+			{
+				kForceResult = 1 << 0,
+				kDynamic = 1 << 1,
+				kPostProcess = 1 << 3,
+				kFadeNode = 1 << 4,
+				kFlagRoot = 1 << 5
+			};
+
+			// members
+			std::uint32_t lodMultType;  // 00
+			std::uint32_t loadLevel;    // 04
+			std::uint8_t  flags;        // 08
+		};
+
+		class BSModelProcessor
+		{
+		public:
+			virtual ~BSModelProcessor() = default;  // 00
+
+			// add
+			virtual void Process(ModelData* a_modelData, const char* a_modelName, NiPointer<NiNode>* a_root, std::uint32_t* a_typeOut) = 0;  // 01
+		};
+
+		[[nodiscard]] static BSModelProcessor*& GetTESProcessor()
+		{
+			static REL::Relocation<BSModelProcessor**> processor{ ID::BSModelDB::TESProcessor };
+			return *processor;
+		}
+
 		static BSResource::ErrorCode Demand(
 			const char*               a_name,
 			Handle&                   a_result,
