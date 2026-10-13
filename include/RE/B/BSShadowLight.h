@@ -16,8 +16,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BSShadowLight };
 		static constexpr auto VTABLE{ VTABLE::BSShadowLight };
 
-		// The telemetry probe verifies this slot on AE only.
-		static constexpr std::size_t UPDATE_CAMERAS_I_SLOT_AE = 0x0E;
+		static constexpr std::size_t UPDATE_CAMERAS_I_SLOT = 0x0E;
 
 		class ShadowMapData
 		{

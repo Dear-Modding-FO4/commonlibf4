@@ -43,11 +43,13 @@ CommonLibF4 is intended to replace F4SE as a static dependency. However, the run
 Directional, frustum, and parabolic wrappers expose `UpdateCamerasI`; directional
 wrappers also expose temporal directions, split distances, and `GetFitBounds()`.
 These are mapped prefixes, not complete allocation layouts. The named update
-vtable slot is verified only on AE; frustum clip accessors are OG/AE-only.
+vtable slot and frustum clip accessors are verified on OG, NG, and AE.
 
 `ShadowSettings` returns the native setting objects with their verified collection
-types. `BSShaderManager` exposes the derived shadow caches separately: changing a
-setting does not rebuild shadow resources or refresh those caches.
+types. `BSShaderManager` exposes the shadow caches initialized by `Initialize()`;
+`BSShadowDirectionalLight` exposes the threshold-cosine cache lazily initialized
+by its constructor. Changing a setting does not rebuild shadow resources or
+refresh those caches.
 `BSGraphics::RenderTargetManager::QShadowMapArrayDepthStencil()` queries the
 logical shadow target; raster bias constants describe the native selector-8 state.
 IDs without typed wrappers do not establish callable signatures.

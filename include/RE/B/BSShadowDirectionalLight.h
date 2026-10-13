@@ -13,6 +13,12 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BSShadowDirectionalLight };
 		static constexpr auto VTABLE{ VTABLE::BSShadowDirectionalLight };
 
+		[[nodiscard]] static float& GetCachedSunAngularThresholdCosine()
+		{
+			static REL::Relocation<float*> value{ ID::BSShadowDirectionalLight::CachedSunAngularThresholdCosine };
+			return *value;
+		}
+
 		struct FitBounds
 		{
 			NiPoint3 minimum;

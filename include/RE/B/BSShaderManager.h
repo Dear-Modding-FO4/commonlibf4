@@ -13,14 +13,6 @@ namespace RE
 
 	class BSShaderManager
 	{
-	private:
-		template <class T, const REL::VariantID& ID>
-		[[nodiscard]] static T& GetCachedValue()
-		{
-			static REL::Relocation<T*> value{ ID };
-			return *value;
-		}
-
 	public:
 		static void Initialize()
 		{
@@ -31,32 +23,32 @@ namespace RE
 
 		[[nodiscard]] static std::int32_t& GetCachedShadowMapResolution()
 		{
-			return GetCachedValue<std::int32_t, ID::BSShaderManager::CachedShadowMapResolution>();
+			static REL::Relocation<std::int32_t*> value{ ID::BSShaderManager::CachedShadowMapResolution };
+			return *value;
 		}
 
 		[[nodiscard]] static float& GetCachedLocalShadowDistance()
 		{
-			return GetCachedValue<float, ID::BSShaderManager::CachedLocalShadowDistance>();
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedLocalShadowDistance };
+			return *value;
 		}
 
 		[[nodiscard]] static float& GetCachedLocalShadowDistanceSquared()
 		{
-			return GetCachedValue<float, ID::BSShaderManager::CachedLocalShadowDistanceSquared>();
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedLocalShadowDistanceSquared };
+			return *value;
 		}
 
 		[[nodiscard]] static float& GetCachedDirectionalShadowDistance()
 		{
-			return GetCachedValue<float, ID::BSShaderManager::CachedDirectionalShadowDistance>();
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedDirectionalShadowDistance };
+			return *value;
 		}
 
 		[[nodiscard]] static float& GetCachedDirectionalBlendWidth()
 		{
-			return GetCachedValue<float, ID::BSShaderManager::CachedDirectionalBlendWidth>();
-		}
-
-		[[nodiscard]] static float& GetCachedSunAngularThresholdCosine()
-		{
-			return GetCachedValue<float, ID::BSShaderManager::CachedSunAngularThresholdCosine>();
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedDirectionalBlendWidth };
+			return *value;
 		}
 
 		static void SetEmittanceRecurse(NiAVObject* a_object, NiColor& a_color)

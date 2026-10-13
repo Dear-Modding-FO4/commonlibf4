@@ -20,16 +20,13 @@ namespace RE
 			return func(this, a_camera);
 		}
 
-		// SetFrustumFOV fields are verified on OG/AE, not NG.
-		[[nodiscard]] float& GetNearClipOGAE() noexcept
+		[[nodiscard]] float& GetNearClip() noexcept
 		{
-			assert(!REX::FModule::IsRuntimeNG());
 			return *REX::ADJUST_POINTER<float>(this, 0x200);
 		}
 
-		[[nodiscard]] float& GetFarClipOverrideOGAE() noexcept
+		[[nodiscard]] float& GetFarClipOverride() noexcept
 		{
-			assert(!REX::FModule::IsRuntimeNG());
 			return *REX::ADJUST_POINTER<float>(this, 0x204);
 		}
 	};

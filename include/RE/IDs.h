@@ -1112,7 +1112,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID CachedLocalShadowDistanceSquared{ 1458999, 2713319, 2713319 };
 		inline constexpr REL::VariantID CachedDirectionalShadowDistance{ 777729, 2713320, 2713320 };
 		inline constexpr REL::VariantID CachedDirectionalBlendWidth{ 996623, 2713322, 2713322 };
-		inline constexpr REL::VariantID CachedSunAngularThresholdCosine{ 84894, 2678313, 4784981 };
 		inline constexpr REL::VariantID SetEmittanceRecurse{ 857081, 2316544, 2316544 };
 		inline constexpr REL::VariantID SetExternalEmittanceRecurse{ 591313, 2316545, 2316545 };
 		namespace State
@@ -1156,6 +1155,7 @@ namespace RE::ID
 
 	namespace BSShadowDirectionalLight
 	{
+		inline constexpr REL::VariantID CachedSunAngularThresholdCosine{ 84894, 2678313, 4784981 };
 		inline constexpr REL::VariantID Ctor{ 1113565, 2319332, 2319332 };
 		inline constexpr REL::VariantID Render{ 871921, 2319335, 2319335 };
 		inline constexpr REL::VariantID UpdateCamerasI{ 1242204, 2319339, 2319339 };

@@ -4,93 +4,99 @@
 
 namespace RE::ShadowSettings
 {
-	namespace detail
-	{
-		template <class T, const REL::VariantID& ID>
-		[[nodiscard]] inline T* GetSettingObject()
-		{
-			static REL::Relocation<T*> value{ ID };
-			return value.get();
-		}
-	}
-
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetShadowMapResolution()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::iShadowMapResolution>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::iShadowMapResolution };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetDirShadowSplits()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::iDirShadowSplits>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::iDirShadowSplits };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetDirShadowDistance()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::fDirShadowDistance>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::fDirShadowDistance };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetShadowDistance()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::fShadowDistance>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::fShadowDistance };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetBlendSplitDirShadow()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::fBlendSplitDirShadow>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::fBlendSplitDirShadow };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetShadowBiasScale()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::fShadowBiasScale>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::fShadowBiasScale };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetShadowFilter()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::uiShadowFilter>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::uiShadowFilter };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetOrthoShadowFilter()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::uiOrthoShadowFilter>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::uiOrthoShadowFilter };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetLocalShadowMapHalveEveryXUnit()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::flocalShadowMapHalveEveryXUnit>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::flocalShadowMapHalveEveryXUnit };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetMaxFocusShadows()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::iMaxFocusShadows>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::iMaxFocusShadows };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetMaxFocusShadowsDialogue()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::iMaxFocusShadowsDialogue>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::iMaxFocusShadowsDialogue };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INISettingCollection>* GetSunUpdateThreshold()
 	{
-		return detail::GetSettingObject<SettingT<INISettingCollection>, ID::ShadowSettings::fSunUpdateThreshold>();
+		static REL::Relocation<SettingT<INISettingCollection>*> value{ ID::ShadowSettings::fSunUpdateThreshold };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INISettingCollection>* GetSunShadowUpdateTime()
 	{
-		return detail::GetSettingObject<SettingT<INISettingCollection>, ID::ShadowSettings::fSunShadowUpdateTime>();
+		static REL::Relocation<SettingT<INISettingCollection>*> value{ ID::ShadowSettings::fSunShadowUpdateTime };
+		return value.get();
 	}
 
 	[[nodiscard]] inline Setting* GetSunShadowMinAngle()
 	{
-		return detail::GetSettingObject<Setting, ID::ShadowSettings::fSunShadowMinAngle>();
+		static REL::Relocation<Setting*> value{ ID::ShadowSettings::fSunShadowMinAngle };
+		return value.get();
 	}
 
 	[[nodiscard]] inline Setting* GetSunShadowScale()
 	{
-		return detail::GetSettingObject<Setting, ID::ShadowSettings::fSunShadowScale>();
+		static REL::Relocation<Setting*> value{ ID::ShadowSettings::fSunShadowScale };
+		return value.get();
 	}
 
 	[[nodiscard]] inline SettingT<INIPrefSettingCollection>* GetSinglePassDirShadow()
 	{
-		return detail::GetSettingObject<SettingT<INIPrefSettingCollection>, ID::ShadowSettings::bSinglePassDirShadow>();
+		static REL::Relocation<SettingT<INIPrefSettingCollection>*> value{ ID::ShadowSettings::bSinglePassDirShadow };
+		return value.get();
 	}
 }
