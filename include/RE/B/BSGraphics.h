@@ -22,6 +22,11 @@ namespace RE
 
 	namespace BSGraphics
 	{
+		inline constexpr std::int32_t SHADOW_RASTER_DEPTH_BIAS_INDEX = 8;
+		inline constexpr std::int32_t SHADOW_RASTER_DEPTH_BIAS = 12;
+		inline constexpr float        SHADOW_RASTER_SLOPE_SCALED_DEPTH_BIAS = 6.0F;
+		inline constexpr float        SHADOW_RASTER_DEPTH_BIAS_CLAMP = -100.0F;
+
 		class StructuredBuffer;
 		enum class Format;
 		class Texture;
@@ -932,6 +937,13 @@ namespace RE
 				using func_t = decltype(&RenderTargetManager::SetEnableDynamicResolution);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetEnableDynamicResolution };
 				return func(this, a_enableDynamicResolution);
+			}
+
+			[[nodiscard]] static std::uint32_t QShadowMapArrayDepthStencil()
+			{
+				using func_t = decltype(&RenderTargetManager::QShadowMapArrayDepthStencil);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::QShadowMapArrayDepthStencil };
+				return func();
 			}
 
 			[[nodiscard]] bool IsUsingDynamicResolutionViewportAsDefaultViewport() const noexcept

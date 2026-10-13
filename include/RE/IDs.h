@@ -817,6 +817,8 @@ namespace RE::ID
 
 	namespace BSGraphics
 	{
+		inline constexpr REL::VariantID CreateRasterStateObjects{ 286739, 2277495, 2277495 };
+
 		namespace Renderer
 		{
 			inline constexpr REL::VariantID IncRef{ 1337764, 2276869 };
@@ -848,7 +850,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID SetCurrentCubeMapRenderTarget{ 1049522, 2277190 };
 			inline constexpr REL::VariantID AcquireRenderTarget{ 1468639, 2277219 };
 			inline constexpr REL::VariantID ReleaseRenderTarget{ 1374956, 2277220 };
-			inline constexpr REL::VariantID QShadowMapArrayDepthStencil{ 638475, 2277185 };
+			inline constexpr REL::VariantID QShadowMapArrayDepthStencil{ 638475, 2277185, 2277185 };
 		}
 
 		namespace State
@@ -1104,6 +1106,13 @@ namespace RE::ID
 
 	namespace BSShaderManager
 	{
+		inline constexpr REL::VariantID Initialize{ 545406, 2316538, 2316538 };
+		inline constexpr REL::VariantID CachedShadowMapResolution{ 1239715, 2713317, 2713317 };
+		inline constexpr REL::VariantID CachedLocalShadowDistance{ 558248, 2713318, 2713318 };
+		inline constexpr REL::VariantID CachedLocalShadowDistanceSquared{ 1458999, 2713319, 2713319 };
+		inline constexpr REL::VariantID CachedDirectionalShadowDistance{ 777729, 2713320, 2713320 };
+		inline constexpr REL::VariantID CachedDirectionalBlendWidth{ 996623, 2713322, 2713322 };
+		inline constexpr REL::VariantID CachedSunAngularThresholdCosine{ 84894, 2678313, 4784981 };
 		inline constexpr REL::VariantID SetEmittanceRecurse{ 857081, 2316544, 2316544 };
 		inline constexpr REL::VariantID SetExternalEmittanceRecurse{ 591313, 2316545, 2316545 };
 		namespace State
@@ -1147,8 +1156,32 @@ namespace RE::ID
 
 	namespace BSShadowDirectionalLight
 	{
-		inline constexpr REL::VariantID Render{ 871921, 2319335 };
-		inline constexpr REL::VariantID UpdateCamerasI{ 1242204, 2319339 };
+		inline constexpr REL::VariantID Ctor{ 1113565, 2319332, 2319332 };
+		inline constexpr REL::VariantID Render{ 871921, 2319335, 2319335 };
+		inline constexpr REL::VariantID UpdateCamerasI{ 1242204, 2319339, 2319339 };
+		inline constexpr REL::VariantID ComputeCullingPlanesFromHull{ 1015816, 2319340, 2319340 };
+	}
+
+	namespace BSShadowFrustumLight
+	{
+		inline constexpr REL::VariantID Ctor{ 191363, 2319635, 2319635 };
+		inline constexpr REL::VariantID Render{ 56471, 2319638, 2319638 };
+		inline constexpr REL::VariantID UpdateCameraFocused{ 122284, 2319640, 2319640 };
+		inline constexpr REL::VariantID UpdateCamerasI{ 398907, 2319641, 2319641 };
+	}
+
+	namespace BSShadowLight
+	{
+		inline constexpr REL::VariantID Ctor{ 162780, 2319304, 2319304 };
+		inline constexpr REL::VariantID RenderShadowMap{ 1144068, 2319309, 2319309 };
+	}
+
+	namespace BSShadowParabolicLight
+	{
+		inline constexpr REL::VariantID Ctor{ 1166515, 2319644, 2319644 };
+		inline constexpr REL::VariantID UpdateCamerasI{ 472256, 2319646, 2319646 };
+		inline constexpr REL::VariantID Accumulate{ 656208, 2319647, 2319647 };
+		inline constexpr REL::VariantID Render{ 973717, 2319648, 2319648 };
 	}
 
 	namespace BSSoundHandle
@@ -1251,6 +1284,7 @@ namespace RE::ID
 
 	namespace BSUtilityShader
 	{
+		inline constexpr REL::VariantID SetupTechnique{ 194247, 2319074, 2319074 };
 		inline constexpr REL::VariantID CreateCommandBuffer{ 768994, 2319078 };
 		inline constexpr REL::VariantID Singleton{ 562442, 2713259 };
 	}
@@ -2466,6 +2500,31 @@ namespace RE::ID
 		}
 	}
 
+	namespace ShadowPipeline
+	{
+		inline constexpr REL::VariantID PostRenderMatrixWriter{ 1204055, 2318435, 2318435 };
+	}
+
+	namespace ShadowSettings
+	{
+		inline constexpr REL::VariantID iShadowMapResolution{ 1453895, 2678200, 4784868 };
+		inline constexpr REL::VariantID iDirShadowSplits{ 979636, 2678044, 4784712 };
+		inline constexpr REL::VariantID fDirShadowDistance{ 962234, 2678305, 4784973 };
+		inline constexpr REL::VariantID fShadowDistance{ 304115, 2678303, 4784971 };
+		inline constexpr REL::VariantID fBlendSplitDirShadow{ 217780, 2677964, 4784632 };
+		inline constexpr REL::VariantID fShadowBiasScale{ 1354254, 2678311, 4784979 };
+		inline constexpr REL::VariantID uiShadowFilter{ 359045, 2678292, 4784960 };
+		inline constexpr REL::VariantID uiOrthoShadowFilter{ 1017245, 2678294, 4784962 };
+		inline constexpr REL::VariantID flocalShadowMapHalveEveryXUnit{ 553647, 2678339, 4785007 };
+		inline constexpr REL::VariantID iMaxFocusShadows{ 1534122, 2677967, 4784635 };
+		inline constexpr REL::VariantID iMaxFocusShadowsDialogue{ 609963, 2677969, 4784637 };
+		inline constexpr REL::VariantID fSunUpdateThreshold{ 37988, 2678307, 4784975 };
+		inline constexpr REL::VariantID fSunShadowUpdateTime{ 696709, 2678309, 4784977 };
+		inline constexpr REL::VariantID fSunShadowMinAngle{ 928447, 928447, 928447 };
+		inline constexpr REL::VariantID fSunShadowScale{ 3739, 3739, 3739 };
+		inline constexpr REL::VariantID bSinglePassDirShadow{ 1141804, 2677963, 4784631 };
+	}
+
 	namespace ShadowSceneNode
 	{
 		inline constexpr REL::VariantID AddLight{ 1109421, 2317457, 2317457 };
@@ -2801,8 +2860,14 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetEventSource{ 609604, 2201853 };
 	}
 
+	namespace TESObjectLAND
+	{
+		inline constexpr REL::VariantID CreateGeometry{ 624032, 2200097, 2200097 };
+	}
+
 	namespace TESObjectREFR
 	{
+		inline constexpr REL::VariantID GetNeverFades{ 689506, 2200779, 2200779 };
 		inline constexpr REL::VariantID ctor{ 198196, 2200719 };
 		inline constexpr REL::VariantID ActivateRef{ 753531, 2201147 };
 		inline constexpr REL::VariantID AddInventoryItem{ 78185, 2200949 };

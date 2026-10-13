@@ -13,7 +13,52 @@ namespace RE
 
 	class BSShaderManager
 	{
+	private:
+		template <class T, const REL::VariantID& ID>
+		[[nodiscard]] static T& GetCachedValue()
+		{
+			static REL::Relocation<T*> value{ ID };
+			return *value;
+		}
+
 	public:
+		static void Initialize()
+		{
+			using func_t = decltype(&BSShaderManager::Initialize);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::Initialize };
+			func();
+		}
+
+		[[nodiscard]] static std::int32_t& GetCachedShadowMapResolution()
+		{
+			return GetCachedValue<std::int32_t, ID::BSShaderManager::CachedShadowMapResolution>();
+		}
+
+		[[nodiscard]] static float& GetCachedLocalShadowDistance()
+		{
+			return GetCachedValue<float, ID::BSShaderManager::CachedLocalShadowDistance>();
+		}
+
+		[[nodiscard]] static float& GetCachedLocalShadowDistanceSquared()
+		{
+			return GetCachedValue<float, ID::BSShaderManager::CachedLocalShadowDistanceSquared>();
+		}
+
+		[[nodiscard]] static float& GetCachedDirectionalShadowDistance()
+		{
+			return GetCachedValue<float, ID::BSShaderManager::CachedDirectionalShadowDistance>();
+		}
+
+		[[nodiscard]] static float& GetCachedDirectionalBlendWidth()
+		{
+			return GetCachedValue<float, ID::BSShaderManager::CachedDirectionalBlendWidth>();
+		}
+
+		[[nodiscard]] static float& GetCachedSunAngularThresholdCosine()
+		{
+			return GetCachedValue<float, ID::BSShaderManager::CachedSunAngularThresholdCosine>();
+		}
+
 		static void SetEmittanceRecurse(NiAVObject* a_object, NiColor& a_color)
 		{
 			using func_t = decltype(&BSShaderManager::SetEmittanceRecurse);

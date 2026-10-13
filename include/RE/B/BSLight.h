@@ -23,6 +23,11 @@ namespace RE
 		BSLight& operator=(const BSLight&) = delete;
 		BSLight& operator=(BSLight&&) = delete;
 
+		[[nodiscard]] NiLight* GetSourceLight() const noexcept
+		{
+			return light.get();
+		}
+
 		std::uint32_t TestFrustumCull(NiCullingProcess* a_process)
 		{
 			using func_t = decltype(&BSLight::TestFrustumCull);

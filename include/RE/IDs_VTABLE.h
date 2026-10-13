@@ -3710,10 +3710,10 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  BSShaderResourceManager{ REL::ID(187043) };
 		inline constexpr std::array<REL::ID, 1>  BSShaderTextureSet{ REL::ID(279449) };
 		inline constexpr std::array<REL::ID, 1>  BSShaderUtil__SetTexturesCanDegrade__2__functor{ REL::ID(1142344) };
-		inline constexpr std::array<REL::ID, 1>  BSShadowDirectionalLight{ REL::ID(97945) };
-		inline constexpr std::array<REL::ID, 1>  BSShadowFrustumLight{ REL::ID(67506) };
-		inline constexpr std::array<REL::ID, 1>  BSShadowLight{ REL::ID(456935) };
-		inline constexpr std::array<REL::ID, 1>  BSShadowParabolicLight{ REL::ID(585920) };
+		inline constexpr std::array<REL::ID, 1>  BSShadowDirectionalLight{ REL::ID{ 97945, 97945, 97945 } };
+		inline constexpr std::array<REL::ID, 1>  BSShadowFrustumLight{ REL::ID{ 67506, 67506, 67506 } };
+		inline constexpr std::array<REL::ID, 1>  BSShadowLight{ REL::ID{ 456935, 456935, 456935 } };
+		inline constexpr std::array<REL::ID, 1>  BSShadowParabolicLight{ REL::ID{ 585920, 585920, 585920 } };
 		inline constexpr std::array<REL::ID, 1>  BSShapeConstructor{ REL::ID(351933) };
 		inline constexpr std::array<REL::ID, 1>  BSSimpleScaleController{ REL::ID(1151340) };
 		inline constexpr std::array<REL::ID, 1>  BSSkin__BoneData{ REL::ID(704887) };

@@ -7,11 +7,18 @@ namespace RE
 	class BSRenderPass;
 
 	class __declspec(novtable) BSUtilityShader :
-		public BSShader  // 000
+	    public BSShader  // 000
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::BSUtilityShader };
 		static constexpr auto VTABLE{ VTABLE::BSUtilityShader };
+
+		bool SetupTechnique(std::uint32_t a_currentPass) override
+		{
+			using func_t = decltype(&BSUtilityShader::SetupTechnique);
+			static REL::Relocation<func_t> func{ ID::BSUtilityShader::SetupTechnique };
+			return func(this, a_currentPass);
+		}
 
 		// Technique bits, named from BSUtilityShaderMacros::Get.
 		enum class Flags : std::uint32_t

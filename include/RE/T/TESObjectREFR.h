@@ -15,8 +15,8 @@
 #include "RE/I/IAnimationGraphManagerHolder.h"
 #include "RE/I/IKeywordFormBase.h"
 #include "RE/I/ITEM_REMOVE_REASON.h"
-#include "RE/M/MemoryManager.h"
 #include "RE/M/MapMarkerData.h"
+#include "RE/M/MemoryManager.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/O/OBJ_REFR.h"
 #include "RE/T/TESForm.h"
@@ -71,15 +71,15 @@ namespace RE
 	}
 
 	class __declspec(novtable) TESObjectREFR :
-		public TESForm,                                                  // 000
-		public BSHandleRefObject,                                        // 020
-		public BSTEventSink<BSActiveGraphIfInactiveEvent>,               // 030
-		public BSTEventSink<BSAnimationGraphEvent>,                      // 038
-		public BSTEventSink<BGSInventoryListEvent::Event>,               // 040
-		public IAnimationGraphManagerHolder,                             // 048
-		public IKeywordFormBase,                                         // 050
-		public ActorValueOwner,                                          // 058
-		public BSTEventSource<ActorValueEvents::ActorValueChangedEvent>  // 060
+	    public TESForm,                                                  // 000
+	    public BSHandleRefObject,                                        // 020
+	    public BSTEventSink<BSActiveGraphIfInactiveEvent>,               // 030
+	    public BSTEventSink<BSAnimationGraphEvent>,                      // 038
+	    public BSTEventSink<BGSInventoryListEvent::Event>,               // 040
+	    public IAnimationGraphManagerHolder,                             // 048
+	    public IKeywordFormBase,                                         // 050
+	    public ActorValueOwner,                                          // 058
+	    public BSTEventSource<ActorValueEvents::ActorValueChangedEvent>  // 060
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::TESObjectREFR };
@@ -330,6 +330,13 @@ namespace RE
 		{
 			using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetDisplayFullName };
+			return func(this);
+		}
+
+		[[nodiscard]] bool GetNeverFades() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetNeverFades);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetNeverFades };
 			return func(this);
 		}
 

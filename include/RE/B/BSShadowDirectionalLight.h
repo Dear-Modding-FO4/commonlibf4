@@ -2,23 +2,56 @@
 
 #include "RE/B/BSShadowLight.h"
 
+#include "REX/CAST.h"
+
 namespace RE
 {
-	// BSLight base is unmapped; only proven fields are declared.
-	class __declspec(novtable) BSShadowDirectionalLight
+	// Mapped prefix; the complete allocation extent is not established.
+	class __declspec(novtable) BSShadowDirectionalLight : public BSShadowLight
 	{
 	public:
-		using ShadowMapData = BSShadowLight::ShadowMapData;
+		static constexpr auto RTTI{ RTTI::BSShadowDirectionalLight };
+		static constexpr auto VTABLE{ VTABLE::BSShadowDirectionalLight };
+
+		struct FitBounds
+		{
+			NiPoint3 minimum;
+			NiPoint3 maximum;
+		};
+		static_assert(sizeof(FitBounds) == 0x18);
+		static_assert(offsetof(FitBounds, maximum) == 0xC);
+
+		bool UpdateCamerasI(NiCamera* a_camera)
+		{
+			using func_t = decltype(&BSShadowDirectionalLight::UpdateCamerasI);
+			static REL::Relocation<func_t> func{ ID::BSShadowDirectionalLight::UpdateCamerasI };
+			return func(this, a_camera);
+		}
+
+		[[nodiscard]] std::span<FitBounds> GetFitBounds() noexcept
+		{
+			// The fitter indexes +260 by map count; total storage is unverified.
+			return { REX::ADJUST_POINTER<FitBounds>(this, 0x260), shadowMapCount };
+		}
+
+		[[nodiscard]] std::span<const FitBounds> GetFitBounds() const noexcept
+		{
+			return { REX::ADJUST_POINTER<FitBounds>(this, 0x260), shadowMapCount };
+		}
 
 		// members
-		std::byte      field_0x00[0x190];  // 000 - BSLight and BSShadowLight base
-		std::uint32_t  shadowMapCount;     // 190
-		std::byte      field_0x194[0x4];   // 194
-		ShadowMapData* shadowMapData;      // 198 - shadowMapCount entries
-		std::byte      field_0x1A0[0xB0];  // 1A0
-		float          splitDistances[4];  // 250
+		NiPoint3  acceptedDirection;      // 200
+		std::byte unk20C[0x4];            // 20C
+		NiPoint3  priorDirection;         // 210
+		std::byte unk21C[0x4];            // 21C
+		float     interpolationProgress;  // 220
+		std::byte unk224[0x2C];           // 224 - unverified cascade state
+		float     splitDistances[4];      // 250
 	};
 	static_assert(offsetof(BSShadowDirectionalLight, shadowMapCount) == 0x190);
 	static_assert(offsetof(BSShadowDirectionalLight, shadowMapData) == 0x198);
+	static_assert(offsetof(BSShadowDirectionalLight, acceptedDirection) == 0x200);
+	static_assert(offsetof(BSShadowDirectionalLight, priorDirection) == 0x210);
+	static_assert(offsetof(BSShadowDirectionalLight, interpolationProgress) == 0x220);
 	static_assert(offsetof(BSShadowDirectionalLight, splitDistances) == 0x250);
 }
