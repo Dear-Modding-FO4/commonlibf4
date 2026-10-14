@@ -103,6 +103,20 @@ namespace RE
 			}
 		}
 
+		void ReleaseLowResMaxHeightData()
+		{
+			using func_t = decltype(&TESWorldSpace::ReleaseLowResMaxHeightData);
+			static REL::Relocation<func_t> func{ ID::TESWorldSpace::ReleaseLowResMaxHeightData };
+			return func(this);
+		}
+
+		bool FindCellInFile(TESFile* a_file, std::int32_t a_x, std::int32_t a_y)
+		{
+			using func_t = decltype(&TESWorldSpace::FindCellInFile);
+			static REL::Relocation<func_t> func{ ID::TESWorldSpace::FindCellInFile };
+			return func(this, a_file, a_x, a_y);
+		}
+
 		void AdjustMapMarkerCoord(NiPoint3* a_mapCoord, bool a_inverse)
 		{
 			using func_t = decltype(&TESWorldSpace::AdjustMapMarkerCoord);

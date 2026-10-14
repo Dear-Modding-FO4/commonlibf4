@@ -24,6 +24,14 @@ namespace RE
 	public:
 		class InteriorCellOffsetDataStruct;
 
+		// The engine owns the thread-keyed file and cursor.
+		[[nodiscard]] TESFile* GetThreadSafeFile(std::uint32_t a_bufferSize)
+		{
+			using func_t = decltype(&TESFile::GetThreadSafeFile);
+			static REL::Relocation<func_t> func{ ID::TESFile::GetThreadSafeFile };
+			return func(this, a_bufferSize);
+		}
+
 		enum class RecordFlag
 		{
 			kNone = 0,

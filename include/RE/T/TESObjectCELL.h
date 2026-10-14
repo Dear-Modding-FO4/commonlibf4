@@ -227,6 +227,13 @@ namespace RE
 			return func(this);
 		}
 
+		static bool FindLandDataInFile(TESFile* a_file)
+		{
+			using func_t = decltype(&TESObjectCELL::FindLandDataInFile);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::FindLandDataInFile };
+			return func(a_file);
+		}
+
 		EXTERIOR_DATA*              GetCoordinates() const;
 		[[nodiscard]] TESWaterForm* GetWaterType() const noexcept;
 		[[nodiscard]] bool          HasWater() const noexcept { return cellFlags.all(Flag::kHasWater); }

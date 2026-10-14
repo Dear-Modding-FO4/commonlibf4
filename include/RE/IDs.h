@@ -644,12 +644,32 @@ namespace RE::ID
 		inline constexpr REL::VariantID EventIndex{ 1256916, 2663400 };
 	}
 
+	namespace BGSTerrainChunk
+	{
+		inline constexpr REL::VariantID Attach{ 1118335, 2213538, 2213538 };
+		inline constexpr REL::VariantID Detach{ 824959, 2213540, 2213540 };
+		inline constexpr REL::VariantID Prepare{ 1339886, 2213552, 2213552 };
+	}
+
+	namespace BGSBtrDB
+	{
+		// NG/AE inline the callback into the enclosing resource-cache iteration.
+		inline constexpr REL::VariantID WaterRegistration{ 748921, 2213558, 2213558 };
+	}
+
 	namespace BGSTerrainManager
 	{
+		inline constexpr REL::VariantID WaterNode{ 1021890, 2698037, 2698037 };
 		inline constexpr REL::VariantID RecomputeQuickCullData{ 1483119, 2213622 };
 		inline constexpr REL::VariantID LandNode{ 1389619, 2693295, 4800587 };
 		inline constexpr REL::VariantID ObjectsNode{ 26566, 2693296, 4800588 };
 		inline constexpr REL::VariantID TreesNode{ 732104, 2693292, 4800584 };
+	}
+
+	namespace BGSTerrainNode
+	{
+		inline constexpr REL::VariantID UpdateWaterVisibility{ 529133, 2213664, 2213664 };
+		inline constexpr REL::VariantID BuildCellCache{ 1079398, 2213679, 2213679 };
 	}
 
 	namespace bhkCharacterController
@@ -815,6 +835,16 @@ namespace RE::ID
 		inline constexpr REL::VariantID EnableShadedBackground{ 278402, 2287022 };
 	}
 
+	namespace BSGeometrySegmentData
+	{
+		inline constexpr REL::VariantID EnableAllSegments{ 246125, 2270009, 2270009 };
+		inline constexpr REL::VariantID EnableSegment{ 1134184, 2270017, 2270017 };
+		inline constexpr REL::VariantID DisableSegment{ 1466142, 2270018, 2270018 };
+		inline constexpr REL::VariantID GetSegmentEnabled{ 747791, 2270019, 2270019 };
+		inline constexpr REL::VariantID GetSegmentEmpty{ 654568, 2270020, 2270020 };
+		inline constexpr REL::VariantID UpdateDrawData{ 305668, 2270032, 2270032 };
+	}
+
 	namespace BSGraphics
 	{
 		inline constexpr REL::VariantID CreateRasterStateObjects{ 286739, 2277495, 2277495 };
@@ -920,6 +950,12 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Demand1{ 1066398, 2275153 };
 		inline constexpr REL::VariantID Demand2{ 1225688, 2275154 };
+	}
+
+	namespace BSPrecomputedVisibility::MultiCellVisibilityData
+	{
+		inline constexpr REL::VariantID Singleton{ 787073, 2689095, 4796381 };
+		inline constexpr REL::VariantID IsCellVisibilityActive{ 708710, 2317378, 2317378 };
 	}
 
 	namespace BSPreCulledObjects
@@ -2607,6 +2643,8 @@ namespace RE::ID
 
 	namespace TES
 	{
+		inline constexpr REL::VariantID SetWorldSpace{ 1217659, 2192046, 2192046 };
+		inline constexpr REL::VariantID IsCellLoaded{ 1566182, 2192040, 2192040 };
 		inline constexpr REL::VariantID Singleton{ 1194835, 2698044 };
 		inline constexpr REL::VariantID UpdateMultiBoundVisibility{ 1281872, 2192134 };
 	}
@@ -2706,6 +2744,7 @@ namespace RE::ID
 
 	namespace TESFile
 	{
+		inline constexpr REL::VariantID GetThreadSafeFile{ 1287817, 2192556, 2192556 };
 		inline constexpr REL::VariantID CloseTES{ 766555, 2192491 };
 		inline constexpr REL::VariantID GetChunkData{ 188910, 2192538 };
 		inline constexpr REL::VariantID GetTESChunk{ 641361, 2192536 };
@@ -2821,6 +2860,7 @@ namespace RE::ID
 
 	namespace TESObjectCELL
 	{
+		inline constexpr REL::VariantID FindLandDataInFile{ 898709, 2200370, 2200370 };
 		inline constexpr REL::VariantID GetbhkWorld{ 1326073, 2200260 };
 		inline constexpr REL::VariantID GetCantWaitHere{ 376940, 2200287 };
 		inline constexpr REL::VariantID GetDataX{ 445210, 2200213 };
@@ -3048,6 +3088,18 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetEventSource{ 907679, 2201883 };
 	}
 
+	namespace TESWaterSystem
+	{
+		inline constexpr REL::VariantID Singleton{ 1006049, 2689094, 4796380 };
+		inline constexpr REL::VariantID AddWater{ 1169411, 2213934, 2213934 };
+		inline constexpr REL::VariantID RemoveWater{ 1284068, 2213937, 2213937 };
+		inline constexpr REL::VariantID AddLODWater{ 759998, 2213947, 2213947 };
+		inline constexpr REL::VariantID RemoveLODWater{ 1357255, 2213948, 2213948 };
+		inline constexpr REL::VariantID Enable{ 120736, 2213949, 2213949 };
+		inline constexpr REL::VariantID UpdateWaterSystem{ 1496807, 2213929, 2213929 };
+		inline constexpr REL::VariantID UpdateWaterDisplacementGeometry{ 281128, 2213930, 2213930 };
+	}
+
 	namespace TESWaterDisplacement
 	{
 		inline constexpr REL::VariantID SetStencilBit{ 705016, 2213923 };
@@ -3060,6 +3112,8 @@ namespace RE::ID
 
 	namespace TESWorldSpace
 	{
+		inline constexpr REL::VariantID ReleaseLowResMaxHeightData{ 1484325, 2202930, 2202930 };
+		inline constexpr REL::VariantID FindCellInFile{ 1012650, 2202847, 2202847 };
 		inline constexpr REL::VariantID DefaultWater{ 289864, 2691845, 4799138 };
 		inline constexpr REL::VariantID GetSkyCell{ 903020, 2202924 };
 		inline constexpr REL::VariantID AdjustMapMarkerCoord{ 896772, 2202880 };

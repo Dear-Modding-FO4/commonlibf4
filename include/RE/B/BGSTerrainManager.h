@@ -34,6 +34,12 @@ namespace RE
 			NiPoint2 frustFarRight;   // 018
 		};
 
+		[[nodiscard]] static NiNode* GetWaterNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::WaterNode };
+			return *node;
+		}
+
 		// Static LOD scene roots built by the constructor; null without a terrain manager.
 		[[nodiscard]] static NiNode* GetLandNode()
 		{
