@@ -2549,6 +2549,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 484694, 2192448 };
 		inline constexpr REL::VariantID ForceWeather{ 698558, 2208861 };
 		inline constexpr REL::VariantID ResetWeather{ 6511, 2208860 };
+		inline constexpr REL::VariantID SetWeather{ 1244028, 2208859, 2208859 };
 	}
 
 	namespace SplineUtils

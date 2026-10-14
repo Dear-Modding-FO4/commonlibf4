@@ -112,6 +112,14 @@ namespace RE
 			return func(this);
 		}
 
+		// Sky::SetWeatherExternal; forces the weather when none is current yet.
+		void SetWeather(TESWeather* a_weather, bool a_override, bool a_accelerate)
+		{
+			using func_t = decltype(&Sky::SetWeather);
+			static REL::Relocation<func_t> func{ ID::Sky::SetWeather };
+			return func(this, a_weather, a_override, a_accelerate);
+		}
+
 		// members
 		NiPointer<BSMultiBoundNode>         root;                             // 008
 		NiPointer<NiNode>                   moonsRoot;                        // 010
