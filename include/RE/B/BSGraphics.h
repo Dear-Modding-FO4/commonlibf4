@@ -148,12 +148,25 @@ namespace RE
 			// members
 			std::uint16_t height = 0;    // 0
 			std::uint16_t width = 0;     // 2
-			std::uint8_t  mipCount = 0;  // 3
+			std::uint8_t  mipCount = 0;  // 4
 			std::uint8_t  format = 0;    // 5
 			std::uint8_t  flags = 0;     // 6
 			std::uint8_t  tilemode = 0;  // 7
 		};
 		static_assert(sizeof(TextureHeader) == 0x8);
+
+		class Texture
+		{
+		public:
+			// members
+			REX::W32::ID3D11ShaderResourceView*  srView;   // 00
+			REX::W32::ID3D11Texture2D*           texture;  // 08
+			REX::W32::ID3D11UnorderedAccessView* uaView;   // 10
+			std::uint64_t                        unk18;    // 18
+			void*                                unk20;    // 20
+			TextureHeader                        header;   // 28 - format is the created DXGI format
+		};
+		static_assert(offsetof(Texture, header) == 0x28);
 
 		class ConstantGroup
 		{
