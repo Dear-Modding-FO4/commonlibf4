@@ -37,6 +37,15 @@ namespace RE
 				reinterpret_cast<const std::byte*>(this) + GetRuntimeSize(a_runtime) - sizeof(RuntimeData));
 		}
 
+		// lastTime is at 0x18 on OG/NG; the member layout is AE-only.
+		[[nodiscard]] std::uint64_t QLastTime(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) const noexcept
+		{
+			const auto offset = a_runtime == REX::FModule::Runtime::kAE ? 0x20 : 0x18;
+			return *reinterpret_cast<const std::uint64_t*>(
+				reinterpret_cast<const std::byte*>(this) + offset);
+		}
+
 		[[nodiscard]] static BSTimer* GetSingleton()
 		{
 			static REL::Relocation<BSTimer*> singleton{ ID::BSTimer::Singleton };
