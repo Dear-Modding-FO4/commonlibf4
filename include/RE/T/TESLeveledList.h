@@ -28,6 +28,13 @@ namespace RE
 			kShiftUp = 2,
 		};
 
+		enum class LEVELED_LIST_FLAGS : std::uint8_t
+		{
+			kCalculateFromAllLevelsLessOrEqualToPlayer = 1 << 0,  // GetCalcAllBelow
+			kCalculateForEachItemInCount = 1 << 1,                // GetMultCalc
+			kUseAll = 1 << 2                                      // GetUseAll
+		};
+
 		// add
 		virtual std::int8_t  GetChanceNone();                                          // 07
 		virtual bool         GetMultCalc();                                            // 08
@@ -40,6 +47,13 @@ namespace RE
 			using func_t = decltype(&TESLeveledList::AddLeveledObject);
 			static REL::Relocation<func_t> func{ ID::TESLeveledList::AddLeveledObject };
 			return func(this, a_level, a_count, a_chanceNone, a_item, a_itemExtra);
+		}
+
+		void AddScriptAddedLeveledObject(TESForm* a_owner, std::uint16_t a_level, std::uint16_t a_count, TESForm* a_form)
+		{
+			using func_t = decltype(&TESLeveledList::AddScriptAddedLeveledObject);
+			static REL::Relocation<func_t> func{ ID::TESLeveledList::AddScriptAddedLeveledObject };
+			return func(this, a_owner, a_level, a_count, a_form);
 		}
 
 		void CalculateCurrentFormList(
@@ -68,6 +82,23 @@ namespace RE
 			using func_t = decltype(&TESLeveledList::GetUseAll);
 			static REL::Relocation<func_t> func{ ID::TESLeveledList::GetUseAll };
 			return func(this);
+		}
+
+		void FreeLeveledList()
+		{
+			using func_t = decltype(&TESLeveledList::FreeLeveledList);
+			static REL::Relocation<func_t> func{ ID::TESLeveledList::FreeLeveledList };
+			return func(this);
+		}
+
+		std::uint32_t RemoveLeveledObjects(const std::function<bool(const LEVELED_OBJECT&)>& a_predicate);
+
+		[[nodiscard]] bool HasFlag(LEVELED_LIST_FLAGS a_flag) const noexcept { return (static_cast<std::uint8_t>(llFlags) & static_cast<std::uint8_t>(a_flag)) != 0; }
+
+		void SetFlag(LEVELED_LIST_FLAGS a_flag, bool a_set) noexcept
+		{
+			const auto bit = static_cast<std::uint8_t>(a_flag);
+			llFlags = static_cast<std::int8_t>(a_set ? (static_cast<std::uint8_t>(llFlags) | bit) : (static_cast<std::uint8_t>(llFlags) & ~bit));
 		}
 
 		// members

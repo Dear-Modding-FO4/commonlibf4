@@ -206,6 +206,20 @@ namespace RE
 
 		bool IsLockedOutOfTerminal(ObjectRefHandle a_handle);
 
+		void HideShield()
+		{
+			using func_t = decltype(&PlayerCharacter::HideShield);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::HideShield };
+			return func(this);
+		}
+
+		void ShowShield()
+		{
+			using func_t = decltype(&PlayerCharacter::ShowShield);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::ShowShield };
+			return func(this);
+		}
+
 		bool IsPipboyLightOn()
 		{
 			using func_t = decltype(&PlayerCharacter::IsPipboyLightOn);

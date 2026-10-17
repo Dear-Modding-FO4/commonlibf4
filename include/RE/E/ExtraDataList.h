@@ -150,6 +150,20 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] inline float GetHealth(TESBoundObject* a_object)
+		{
+			using func_t = decltype(&ExtraDataList::GetHealth);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetHealth };
+			return func(this, a_object);
+		}
+
+		[[nodiscard]] inline TBO_InstanceData* GetInstanceData()
+		{
+			using func_t = decltype(&ExtraDataList::GetInstanceData);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetInstanceData };
+			return func(this);
+		}
+
 		inline void SetHealthPerc(float a_healthPerc)
 		{
 			using func_t = decltype(&ExtraDataList::SetHealthPerc);
