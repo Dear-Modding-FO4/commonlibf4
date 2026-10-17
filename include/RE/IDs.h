@@ -577,8 +577,8 @@ namespace RE::ID
 
 	namespace BGSSaveLoadGame
 	{
-		inline constexpr REL::VariantID Singleton{ 177947, 2697789, 2697789 };
-		inline constexpr REL::VariantID GetChange{ 688165, 2227898, 2227898 };
+		inline constexpr REL::VariantID Singleton{ 177947, 2697789 };
+		inline constexpr REL::VariantID GetChange{ 688165, 2227898 };
 	}
 
 	namespace BGSScene
@@ -646,20 +646,20 @@ namespace RE::ID
 
 	namespace BGSTerrainChunk
 	{
-		inline constexpr REL::VariantID Attach{ 1118335, 2213538, 2213538 };
-		inline constexpr REL::VariantID Detach{ 824959, 2213540, 2213540 };
-		inline constexpr REL::VariantID Prepare{ 1339886, 2213552, 2213552 };
+		inline constexpr REL::VariantID Attach{ 1118335, 2213538 };
+		inline constexpr REL::VariantID Detach{ 824959, 2213540 };
+		inline constexpr REL::VariantID Prepare{ 1339886, 2213552 };
 	}
 
 	namespace BGSBtrDB
 	{
 		// NG/AE inline the callback into the enclosing resource-cache iteration.
-		inline constexpr REL::VariantID WaterRegistration{ 748921, 2213558, 2213558 };
+		inline constexpr REL::VariantID WaterRegistration{ 748921, 2213558 };
 	}
 
 	namespace BGSTerrainManager
 	{
-		inline constexpr REL::VariantID WaterNode{ 1021890, 2698037, 2698037 };
+		inline constexpr REL::VariantID WaterNode{ 1021890, 2698037 };
 		inline constexpr REL::VariantID RecomputeQuickCullData{ 1483119, 2213622 };
 		inline constexpr REL::VariantID LandNode{ 1389619, 2693295, 4800587 };
 		inline constexpr REL::VariantID ObjectsNode{ 26566, 2693296, 4800588 };
@@ -668,8 +668,8 @@ namespace RE::ID
 
 	namespace BGSTerrainNode
 	{
-		inline constexpr REL::VariantID UpdateWaterVisibility{ 529133, 2213664, 2213664 };
-		inline constexpr REL::VariantID BuildCellCache{ 1079398, 2213679, 2213679 };
+		inline constexpr REL::VariantID UpdateWaterVisibility{ 529133, 2213664 };
+		inline constexpr REL::VariantID BuildCellCache{ 1079398, 2213679 };
 	}
 
 	namespace bhkCharacterController
@@ -759,7 +759,7 @@ namespace RE::ID
 
 	namespace BSBatchRenderer
 	{
-		inline constexpr REL::VariantID Draw{ 1152191, 2318696, 2318696 };
+		inline constexpr REL::VariantID Draw{ 1152191, 2318696 };
 		inline constexpr REL::VariantID RenderPassImmediately{ 244233, 2318699 };
 	}
 
@@ -793,24 +793,24 @@ namespace RE::ID
 
 	namespace BSDFTiledLighting
 	{
-		inline constexpr REL::VariantID AddLight{ 1250844, 2318542, 2318542 };
-		inline constexpr REL::VariantID UpdateLightListTiledPackingCallback{ 999390, 2317525, 2317525 };
-		inline constexpr REL::VariantID WriteSide{ 1577505, 2713010, 2713010 };
-		inline constexpr REL::VariantID LightCounts{ 1366811, 2713007, 2713007 };
-		inline constexpr REL::VariantID LightRecords{ 223744, 2713009, 2713009 };
-		inline constexpr REL::VariantID LightBuffers{ 489494, 2713003, 2713003 };
+		inline constexpr REL::VariantID AddLight{ 1250844, 2318542 };
+		inline constexpr REL::VariantID UpdateLightListTiledPackingCallback{ 999390, 2317525 };
+		inline constexpr REL::VariantID WriteSide{ 1577505, 2713010 };
+		inline constexpr REL::VariantID LightCounts{ 1366811, 2713007 };
+		inline constexpr REL::VariantID LightRecords{ 223744, 2713009 };
+		inline constexpr REL::VariantID LightBuffers{ 489494, 2713003 };
 		inline constexpr REL::VariantID ComputeShaderDeferredTiledLightingSetting{ 1268028, 2677971, 4784639 };
 		inline constexpr REL::VariantID TiledLightingMinLightsSetting{ 343723, 2677973, 4784641 };
 	}
 
 	namespace BSEffectShader
 	{
-		inline constexpr REL::VariantID SetupGeometry{ 1089917, 2318786, 2318786 };
+		inline constexpr REL::VariantID SetupGeometry{ 1089917, 2318786 };
 	}
 
 	namespace BSEffectShaderProperty
 	{
-		inline constexpr REL::VariantID GetRenderPasses{ 1289086, 2316386, 2316386 };
+		inline constexpr REL::VariantID GetRenderPasses{ 1289086, 2316386 };
 		inline constexpr REL::VariantID LocalLightEnable{ 121466, 2677717, 4784385 };
 	}
 
@@ -837,17 +837,17 @@ namespace RE::ID
 
 	namespace BSGeometrySegmentData
 	{
-		inline constexpr REL::VariantID EnableAllSegments{ 246125, 2270009, 2270009 };
-		inline constexpr REL::VariantID EnableSegment{ 1134184, 2270017, 2270017 };
-		inline constexpr REL::VariantID DisableSegment{ 1466142, 2270018, 2270018 };
-		inline constexpr REL::VariantID GetSegmentEnabled{ 747791, 2270019, 2270019 };
-		inline constexpr REL::VariantID GetSegmentEmpty{ 654568, 2270020, 2270020 };
-		inline constexpr REL::VariantID UpdateDrawData{ 305668, 2270032, 2270032 };
+		inline constexpr REL::VariantID EnableAllSegments{ 246125, 2270009 };
+		inline constexpr REL::VariantID EnableSegment{ 1134184, 2270017 };
+		inline constexpr REL::VariantID DisableSegment{ 1466142, 2270018 };
+		inline constexpr REL::VariantID GetSegmentEnabled{ 747791, 2270019 };
+		inline constexpr REL::VariantID GetSegmentEmpty{ 654568, 2270020 };
+		inline constexpr REL::VariantID UpdateDrawData{ 305668, 2270032 };
 	}
 
 	namespace BSGraphics
 	{
-		inline constexpr REL::VariantID CreateRasterStateObjects{ 286739, 2277495, 2277495 };
+		inline constexpr REL::VariantID CreateRasterStateObjects{ 286739, 2277495 };
 
 		namespace Renderer
 		{
@@ -864,7 +864,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID DrawTriShape{ 763320, 2276846 };
 			inline constexpr REL::VariantID RunComputeShader{ 1108829, 2276940 };
 			inline constexpr REL::VariantID SetShaders{ 894905, 2276942 };
-			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904, 2276904 };
+			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904 };
 			inline constexpr REL::VariantID ResetWindow{ 796949, 2276825 };
 			inline constexpr REL::VariantID ResetState{ 405603, 2276966 };
 		}
@@ -892,7 +892,7 @@ namespace RE::ID
 
 		namespace Utility
 		{
-			inline constexpr REL::VariantID PackDynamicParticleData{ 854665, 2277107, 2277107 };
+			inline constexpr REL::VariantID PackDynamicParticleData{ 854665, 2277107 };
 			inline constexpr REL::VariantID ConvertHALFToNiPoint3Stream{ 463129, 2277113 };
 			inline constexpr REL::VariantID ConvertNiPoint3ToHALFStream{ 1247946, 2277114 };
 			inline constexpr REL::VariantID PackVertexData{ 156126, 2277106 };
@@ -935,11 +935,11 @@ namespace RE::ID
 
 	namespace BSLight
 	{
-		inline constexpr REL::VariantID Ctor{ 604564, 2318412, 2318412 };
-		inline constexpr REL::VariantID TestFrustumCull{ 1440624, 2318414, 2318414 };
-		inline constexpr REL::VariantID GetLuminanceAtPoint{ 170662, 2318428, 2318428 };
-		inline constexpr REL::VariantID AddFadeNode{ 439201, 2318419, 2318419 };
-		inline constexpr REL::VariantID AddFadeNodeLocked{ 1210164, 2318420, 2318420 };
+		inline constexpr REL::VariantID Ctor{ 604564, 2318412 };
+		inline constexpr REL::VariantID TestFrustumCull{ 1440624, 2318414 };
+		inline constexpr REL::VariantID GetLuminanceAtPoint{ 170662, 2318428 };
+		inline constexpr REL::VariantID AddFadeNode{ 439201, 2318419 };
+		inline constexpr REL::VariantID AddFadeNodeLocked{ 1210164, 2318420 };
 	}
 
 	namespace BSLightingShaderProperty
@@ -956,7 +956,7 @@ namespace RE::ID
 	namespace BSPrecomputedVisibility::MultiCellVisibilityData
 	{
 		inline constexpr REL::VariantID Singleton{ 787073, 2689095, 4796381 };
-		inline constexpr REL::VariantID IsCellVisibilityActive{ 708710, 2317378, 2317378 };
+		inline constexpr REL::VariantID IsCellVisibilityActive{ 708710, 2317378 };
 	}
 
 	namespace BSPreCulledObjects
@@ -1131,8 +1131,8 @@ namespace RE::ID
 
 	namespace BSShaderData
 	{
-		inline constexpr REL::VariantID LoadAndApplyMaterialData{ 1172558, 2316351, 2316351 };
-		inline constexpr REL::VariantID ApplyMaterialData{ 108626, 2316352, 2316352 };
+		inline constexpr REL::VariantID LoadAndApplyMaterialData{ 1172558, 2316351 };
+		inline constexpr REL::VariantID ApplyMaterialData{ 108626, 2316352 };
 	}
 
 	namespace BSShaderPropertyLightData
@@ -1143,14 +1143,14 @@ namespace RE::ID
 
 	namespace BSShaderManager
 	{
-		inline constexpr REL::VariantID Initialize{ 545406, 2316538, 2316538 };
-		inline constexpr REL::VariantID CachedShadowMapResolution{ 1239715, 2713317, 2713317 };
-		inline constexpr REL::VariantID CachedLocalShadowDistance{ 558248, 2713318, 2713318 };
-		inline constexpr REL::VariantID CachedLocalShadowDistanceSquared{ 1458999, 2713319, 2713319 };
-		inline constexpr REL::VariantID CachedDirectionalShadowDistance{ 777729, 2713320, 2713320 };
-		inline constexpr REL::VariantID CachedDirectionalBlendWidth{ 996623, 2713322, 2713322 };
-		inline constexpr REL::VariantID SetEmittanceRecurse{ 857081, 2316544, 2316544 };
-		inline constexpr REL::VariantID SetExternalEmittanceRecurse{ 591313, 2316545, 2316545 };
+		inline constexpr REL::VariantID Initialize{ 545406, 2316538 };
+		inline constexpr REL::VariantID CachedShadowMapResolution{ 1239715, 2713317 };
+		inline constexpr REL::VariantID CachedLocalShadowDistance{ 558248, 2713318 };
+		inline constexpr REL::VariantID CachedLocalShadowDistanceSquared{ 1458999, 2713319 };
+		inline constexpr REL::VariantID CachedDirectionalShadowDistance{ 777729, 2713320 };
+		inline constexpr REL::VariantID CachedDirectionalBlendWidth{ 996623, 2713322 };
+		inline constexpr REL::VariantID SetEmittanceRecurse{ 857081, 2316544 };
+		inline constexpr REL::VariantID SetExternalEmittanceRecurse{ 591313, 2316545 };
 		namespace State
 		{
 			inline constexpr REL::VariantID Singleton{ 1327069, 2712479 };
@@ -1193,32 +1193,32 @@ namespace RE::ID
 	namespace BSShadowDirectionalLight
 	{
 		inline constexpr REL::VariantID CachedSunAngularThresholdCosine{ 84894, 2678313, 4784981 };
-		inline constexpr REL::VariantID Ctor{ 1113565, 2319332, 2319332 };
-		inline constexpr REL::VariantID Render{ 871921, 2319335, 2319335 };
-		inline constexpr REL::VariantID UpdateCamerasI{ 1242204, 2319339, 2319339 };
-		inline constexpr REL::VariantID ComputeCullingPlanesFromHull{ 1015816, 2319340, 2319340 };
+		inline constexpr REL::VariantID Ctor{ 1113565, 2319332 };
+		inline constexpr REL::VariantID Render{ 871921, 2319335 };
+		inline constexpr REL::VariantID UpdateCamerasI{ 1242204, 2319339 };
+		inline constexpr REL::VariantID ComputeCullingPlanesFromHull{ 1015816, 2319340 };
 	}
 
 	namespace BSShadowFrustumLight
 	{
-		inline constexpr REL::VariantID Ctor{ 191363, 2319635, 2319635 };
-		inline constexpr REL::VariantID Render{ 56471, 2319638, 2319638 };
-		inline constexpr REL::VariantID UpdateCameraFocused{ 122284, 2319640, 2319640 };
-		inline constexpr REL::VariantID UpdateCamerasI{ 398907, 2319641, 2319641 };
+		inline constexpr REL::VariantID Ctor{ 191363, 2319635 };
+		inline constexpr REL::VariantID Render{ 56471, 2319638 };
+		inline constexpr REL::VariantID UpdateCameraFocused{ 122284, 2319640 };
+		inline constexpr REL::VariantID UpdateCamerasI{ 398907, 2319641 };
 	}
 
 	namespace BSShadowLight
 	{
-		inline constexpr REL::VariantID Ctor{ 162780, 2319304, 2319304 };
-		inline constexpr REL::VariantID RenderShadowMap{ 1144068, 2319309, 2319309 };
+		inline constexpr REL::VariantID Ctor{ 162780, 2319304 };
+		inline constexpr REL::VariantID RenderShadowMap{ 1144068, 2319309 };
 	}
 
 	namespace BSShadowParabolicLight
 	{
-		inline constexpr REL::VariantID Ctor{ 1166515, 2319644, 2319644 };
-		inline constexpr REL::VariantID UpdateCamerasI{ 472256, 2319646, 2319646 };
-		inline constexpr REL::VariantID Accumulate{ 656208, 2319647, 2319647 };
-		inline constexpr REL::VariantID Render{ 973717, 2319648, 2319648 };
+		inline constexpr REL::VariantID Ctor{ 1166515, 2319644 };
+		inline constexpr REL::VariantID UpdateCamerasI{ 472256, 2319646 };
+		inline constexpr REL::VariantID Accumulate{ 656208, 2319647 };
+		inline constexpr REL::VariantID Render{ 973717, 2319648 };
 	}
 
 	namespace BSSoundHandle
@@ -1321,7 +1321,7 @@ namespace RE::ID
 
 	namespace BSUtilityShader
 	{
-		inline constexpr REL::VariantID SetupTechnique{ 194247, 2319074, 2319074 };
+		inline constexpr REL::VariantID SetupTechnique{ 194247, 2319074 };
 		inline constexpr REL::VariantID CreateCommandBuffer{ 768994, 2319078 };
 		inline constexpr REL::VariantID Singleton{ 562442, 2713259 };
 	}
@@ -1471,10 +1471,10 @@ namespace RE::ID
 
 	namespace DrawWorld
 	{
-		inline constexpr REL::VariantID SetDoTiledLighting{ 716351, 2318370, 2318370 };
-		inline constexpr REL::VariantID LightUpdate{ 102390, 2318287, 2318287 };
-		inline constexpr REL::VariantID MainAccum{ 718911, 2318292, 2318292 };
-		inline constexpr REL::VariantID BuildSceneLists{ 1138818, 2318289, 2318289 };
+		inline constexpr REL::VariantID SetDoTiledLighting{ 716351, 2318370 };
+		inline constexpr REL::VariantID LightUpdate{ 102390, 2318287 };
+		inline constexpr REL::VariantID MainAccum{ 718911, 2318292 };
+		inline constexpr REL::VariantID BuildSceneLists{ 1138818, 2318289 };
 		inline constexpr REL::VariantID Begin{ 502840, 2318286 };
 		inline constexpr REL::VariantID Imagespace{ 587723, 2318322 };
 		inline constexpr REL::VariantID Render_PreUI{ 984743, 2318321 };
@@ -2436,8 +2436,8 @@ namespace RE::ID
 
 	namespace PowerUtils
 	{
-		inline constexpr REL::VariantID ItemIsPowerConnection{ 17704, 2195078, 2195078 };
-		inline constexpr REL::VariantID ItemIsPowerReceiver{ 210626, 2195060, 2195060 };
+		inline constexpr REL::VariantID ItemIsPowerConnection{ 17704, 2195078 };
+		inline constexpr REL::VariantID ItemIsPowerReceiver{ 210626, 2195060 };
 	}
 
 	namespace Precipitation
@@ -2545,7 +2545,7 @@ namespace RE::ID
 
 	namespace ShadowPipeline
 	{
-		inline constexpr REL::VariantID PostRenderMatrixWriter{ 1204055, 2318435, 2318435 };
+		inline constexpr REL::VariantID PostRenderMatrixWriter{ 1204055, 2318435 };
 	}
 
 	namespace ShadowSettings
@@ -2563,22 +2563,22 @@ namespace RE::ID
 		inline constexpr REL::VariantID iMaxFocusShadowsDialogue{ 609963, 2677969, 4784637 };
 		inline constexpr REL::VariantID fSunUpdateThreshold{ 37988, 2678307, 4784975 };
 		inline constexpr REL::VariantID fSunShadowUpdateTime{ 696709, 2678309, 4784977 };
-		inline constexpr REL::VariantID fSunShadowMinAngle{ 928447, 928447, 928447 };
-		inline constexpr REL::VariantID fSunShadowScale{ 3739, 3739, 3739 };
+		inline constexpr REL::VariantID fSunShadowMinAngle{ 928447 };
+		inline constexpr REL::VariantID fSunShadowScale{ 3739 };
 		inline constexpr REL::VariantID bSinglePassDirShadow{ 1141804, 2677963, 4784631 };
 	}
 
 	namespace ShadowSceneNode
 	{
-		inline constexpr REL::VariantID AddLight{ 1109421, 2317457, 2317457 };
-		inline constexpr REL::VariantID AddLightWithBool{ 1029787, 2317456, 2317456 };
-		inline constexpr REL::VariantID RemoveLight{ 1410391, 2317464, 2317464 };
-		inline constexpr REL::VariantID AddQueuedLight{ 1385930, 2317459, 2317459 };
-		inline constexpr REL::VariantID UpdateQueuedLight{ 222957, 2317472, 2317472 };
-		inline constexpr REL::VariantID ProcessQueuedLights{ 1369106, 2317467, 2317467 };
-		inline constexpr REL::VariantID ProcessAllQueuedLights{ 1421093, 2317469, 2317469 };
-		inline constexpr REL::VariantID UpdateLightList{ 1479977, 2317500, 2317500 };
-		inline constexpr REL::VariantID GetLuminanceAtPoint{ 216861, 2317485, 2317485 };
+		inline constexpr REL::VariantID AddLight{ 1109421, 2317457 };
+		inline constexpr REL::VariantID AddLightWithBool{ 1029787, 2317456 };
+		inline constexpr REL::VariantID RemoveLight{ 1410391, 2317464 };
+		inline constexpr REL::VariantID AddQueuedLight{ 1385930, 2317459 };
+		inline constexpr REL::VariantID UpdateQueuedLight{ 222957, 2317472 };
+		inline constexpr REL::VariantID ProcessQueuedLights{ 1369106, 2317467 };
+		inline constexpr REL::VariantID ProcessAllQueuedLights{ 1421093, 2317469 };
+		inline constexpr REL::VariantID UpdateLightList{ 1479977, 2317500 };
+		inline constexpr REL::VariantID GetLuminanceAtPoint{ 216861, 2317485 };
 	}
 
 	namespace SitWaitMenu
@@ -2592,7 +2592,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 484694, 2192448 };
 		inline constexpr REL::VariantID ForceWeather{ 698558, 2208861 };
 		inline constexpr REL::VariantID ResetWeather{ 6511, 2208860 };
-		inline constexpr REL::VariantID SetWeather{ 1244028, 2208859, 2208859 };
+		inline constexpr REL::VariantID SetWeather{ 1244028, 2208859 };
 	}
 
 	namespace SplineUtils
@@ -2650,8 +2650,8 @@ namespace RE::ID
 
 	namespace TES
 	{
-		inline constexpr REL::VariantID SetWorldSpace{ 1217659, 2192046, 2192046 };
-		inline constexpr REL::VariantID IsCellLoaded{ 1566182, 2192040, 2192040 };
+		inline constexpr REL::VariantID SetWorldSpace{ 1217659, 2192046 };
+		inline constexpr REL::VariantID IsCellLoaded{ 1566182, 2192040 };
 		inline constexpr REL::VariantID Singleton{ 1194835, 2698044 };
 		inline constexpr REL::VariantID UpdateMultiBoundVisibility{ 1281872, 2192134 };
 	}
@@ -2751,7 +2751,7 @@ namespace RE::ID
 
 	namespace TESFile
 	{
-		inline constexpr REL::VariantID GetThreadSafeFile{ 1287817, 2192556, 2192556 };
+		inline constexpr REL::VariantID GetThreadSafeFile{ 1287817, 2192556 };
 		inline constexpr REL::VariantID CloseTES{ 766555, 2192491 };
 		inline constexpr REL::VariantID GetChunkData{ 188910, 2192538 };
 		inline constexpr REL::VariantID GetTESChunk{ 641361, 2192536 };
@@ -2868,7 +2868,7 @@ namespace RE::ID
 	namespace TESObjectCELL
 	{
 		inline constexpr REL::VariantID DecQueuedDistantRefCount{ 865141, 2200424 };
-		inline constexpr REL::VariantID FindLandDataInFile{ 898709, 2200370, 2200370 };
+		inline constexpr REL::VariantID FindLandDataInFile{ 898709, 2200370 };
 		inline constexpr REL::VariantID GetbhkWorld{ 1326073, 2200260 };
 		inline constexpr REL::VariantID GetCantWaitHere{ 376940, 2200287 };
 		inline constexpr REL::VariantID GetDataX{ 445210, 2200213 };
@@ -2912,12 +2912,12 @@ namespace RE::ID
 
 	namespace TESObjectLAND
 	{
-		inline constexpr REL::VariantID CreateGeometry{ 624032, 2200097, 2200097 };
+		inline constexpr REL::VariantID CreateGeometry{ 624032, 2200097 };
 	}
 
 	namespace TESObjectREFR
 	{
-		inline constexpr REL::VariantID GetNeverFades{ 689506, 2200779, 2200779 };
+		inline constexpr REL::VariantID GetNeverFades{ 689506, 2200779 };
 		inline constexpr REL::VariantID ctor{ 198196, 2200719 };
 		inline constexpr REL::VariantID ActivateRef{ 753531, 2201147 };
 		inline constexpr REL::VariantID AddInventoryItem{ 78185, 2200949 };
@@ -3100,13 +3100,13 @@ namespace RE::ID
 	namespace TESWaterSystem
 	{
 		inline constexpr REL::VariantID Singleton{ 1006049, 2689094, 4796380 };
-		inline constexpr REL::VariantID AddWater{ 1169411, 2213934, 2213934 };
-		inline constexpr REL::VariantID RemoveWater{ 1284068, 2213937, 2213937 };
-		inline constexpr REL::VariantID AddLODWater{ 759998, 2213947, 2213947 };
-		inline constexpr REL::VariantID RemoveLODWater{ 1357255, 2213948, 2213948 };
+		inline constexpr REL::VariantID AddWater{ 1169411, 2213934 };
+		inline constexpr REL::VariantID RemoveWater{ 1284068, 2213937 };
+		inline constexpr REL::VariantID AddLODWater{ 759998, 2213947 };
+		inline constexpr REL::VariantID RemoveLODWater{ 1357255, 2213948 };
 		inline constexpr REL::VariantID Enable{ 120736, 2213949, 2213949 };
-		inline constexpr REL::VariantID UpdateWaterSystem{ 1496807, 2213929, 2213929 };
-		inline constexpr REL::VariantID UpdateWaterDisplacementGeometry{ 281128, 2213930, 2213930 };
+		inline constexpr REL::VariantID UpdateWaterSystem{ 1496807, 2213929 };
+		inline constexpr REL::VariantID UpdateWaterDisplacementGeometry{ 281128, 2213930 };
 	}
 
 	namespace TESWaterDisplacement
@@ -3121,8 +3121,8 @@ namespace RE::ID
 
 	namespace TESWorldSpace
 	{
-		inline constexpr REL::VariantID ReleaseLowResMaxHeightData{ 1484325, 2202930, 2202930 };
-		inline constexpr REL::VariantID FindCellInFile{ 1012650, 2202847, 2202847 };
+		inline constexpr REL::VariantID ReleaseLowResMaxHeightData{ 1484325, 2202930 };
+		inline constexpr REL::VariantID FindCellInFile{ 1012650, 2202847 };
 		inline constexpr REL::VariantID DefaultWater{ 289864, 2691845, 4799138 };
 		inline constexpr REL::VariantID GetSkyCell{ 903020, 2202924 };
 		inline constexpr REL::VariantID AdjustMapMarkerCoord{ 896772, 2202880 };
