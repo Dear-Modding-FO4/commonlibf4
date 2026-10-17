@@ -738,6 +738,7 @@
 #include "RE/D/DoBeforeNewOrLoadCompletedEvent.h"
 #include "RE/D/DoorTeleportData.h"
 #include "RE/D/DrawWorld.h"
+#include "RE/D/DynamicNavmesh.h"
 #include "RE/D/_D3DBLEND.h"
 #include "RE/D/_D3DBLENDOP.h"
 #include "RE/D/_D3DCMPFUNC.h"

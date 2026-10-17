@@ -1488,6 +1488,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetCompanionLocalMapRenderFunc{ 1182240, 2318360 };
 	}
 
+	namespace DynamicNavmesh
+	{
+		inline constexpr REL::VariantID ForceUpdate{ 854653, 2301428 };
+		inline constexpr REL::VariantID Singleton{ 908540, 2690147, 4797436 };
+	}
+
 	namespace EffectItem
 	{
 		inline constexpr REL::VariantID GetDescription{ 949839, 2189612 };
@@ -2861,6 +2867,7 @@ namespace RE::ID
 
 	namespace TESObjectCELL
 	{
+		inline constexpr REL::VariantID DecQueuedDistantRefCount{ 865141, 2200424 };
 		inline constexpr REL::VariantID FindLandDataInFile{ 898709, 2200370, 2200370 };
 		inline constexpr REL::VariantID GetbhkWorld{ 1326073, 2200260 };
 		inline constexpr REL::VariantID GetCantWaitHere{ 376940, 2200287 };
@@ -2870,6 +2877,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetLocation{ 868663, 2200179 };
 		inline constexpr REL::VariantID GetOwner{ 910422, 2200236 };
 		inline constexpr REL::VariantID GetRegionList{ 1565031, 2200265 };
+		inline constexpr REL::VariantID IncQueuedDistantRefCount{ 519873, 2200423 };
 		inline constexpr REL::VariantID Pick{ 434717, 2200263 };
 		inline constexpr REL::VariantID SetCullCellMarkers{ 192259, 2192259 };
 		inline constexpr REL::VariantID UpdateAllRefsLoaded{ 374552, 2200415 };
@@ -3186,6 +3194,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetSelectedWorkshopMenuNode{ 763948, 2195024 };
 		inline constexpr REL::VariantID InitializePlacementReference{ 1577199, 0 };  // Inlined in NG/AE
 		inline constexpr REL::VariantID IsLocationWithinBuildableArea{ 990965, 2194956 };
+		inline constexpr REL::VariantID IsWorkshopItem{ 1386903, 2194912 };
 		inline constexpr REL::VariantID PlaceCurrentReference{ 1058211, 2195155 };
 		inline constexpr REL::VariantID RegisterForItemDestroyed{ 1367004, 2194930 };
 		inline constexpr REL::VariantID RegisterForItemMoved{ 835323, 2194932 };
