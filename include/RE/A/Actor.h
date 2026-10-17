@@ -6,6 +6,7 @@
 #include "RE/A/ActorState.h"
 #include "RE/A/ActorValueStorage.h"
 #include "RE/B/BGSEquipIndex.h"
+#include "RE/B/BGSObjectInstance.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
@@ -57,6 +58,8 @@ namespace RE
 	class MovementMessageUpdateRequestImmediate;
 	class PackageLocation;
 	class PerkEntryVisitor;
+	class PerkEntryVisitor;
+	class PerkRankVisitor;
 	class Perks;
 
 	namespace MagicSystem
@@ -295,6 +298,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] bool GetBlocking()
+		{
+			using func_t = decltype(&Actor::GetBlocking);
+			static REL::Relocation<func_t> func{ ID::Actor::GetBlocking };
+			return func(this);
+		}
+
 		TESCombatStyle* GetCombatStyle()
 		{
 			using func_t = decltype(&Actor::GetCombatStyle);
@@ -312,6 +322,13 @@ namespace RE
 			using func_t = decltype(&Actor::GetCurrentAmmoCount);
 			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentAmmoCount };
 			return func(this, a_equipIndex);
+		}
+
+		[[nodiscard]] BGSObjectInstance GetCurrentShield()
+		{
+			using func_t = decltype(&Actor::GetCurrentShield);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentShield };
+			return func(this);
 		}
 
 		std::uint32_t GetCurrentCollisionGroup()
@@ -370,6 +387,37 @@ namespace RE
 			using func_t = decltype(&Actor::GetPerkRank);
 			static REL::Relocation<func_t> func{ ID::Actor::GetPerkRank };
 			return func(this, a_perk);
+		}
+
+		class __declspec(novtable) ForEachSpellVisitor
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::Actor__ForEachSpellVisitor };
+			static constexpr auto VTABLE{ VTABLE::Actor__ForEachSpellVisitor };
+
+			virtual ~ForEachSpellVisitor() = default;            // 00
+			virtual std::int32_t Visit(SpellItem* a_spell) = 0;  // 01
+		};
+
+		[[nodiscard]] float GetMaxCarryWeight()
+		{
+			using func_t = decltype(&Actor::GetMaxCarryWeight);
+			static REL::Relocation<func_t> func{ ID::Actor::GetMaxCarryWeight };
+			return func(this);
+		}
+
+		void ForEachSpell(ForEachSpellVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachSpell);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachSpell };
+			return func(this, a_visitor);
+		}
+
+		void ForEachPerk(PerkRankVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachPerk);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachPerk };
+			return func(this, a_visitor);
 		}
 
 		SEX GetSex()

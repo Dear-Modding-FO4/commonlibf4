@@ -17,6 +17,12 @@ namespace RE
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSNCT };
 		static constexpr auto TYPE_ID{ BSScript::kSoundCategory };
 
+		enum class CATEGORY_FLAGS : std::uint32_t
+		{
+			kBlockSpeedChange = 1u << 2,
+			kSkipOPMOverrides = 1u << 5
+		};
+
 		// members
 		BGSSoundCategory* parentCategory;       // 38
 		BGSSoundCategory* sliderCategory;       // 40
