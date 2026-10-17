@@ -938,8 +938,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID Ctor{ 604564, 2318412, 2318412 };
 		inline constexpr REL::VariantID TestFrustumCull{ 1440624, 2318414, 2318414 };
 		inline constexpr REL::VariantID GetLuminanceAtPoint{ 170662, 2318428, 2318428 };
-		inline constexpr REL::VariantID AddFadeNode{ 439201, 2318419, 2318420 };
-		inline constexpr REL::VariantID AddFadeNodeLocked{ 1210164, 2318420, 2318419 };
+		inline constexpr REL::VariantID AddFadeNode{ 439201, 2318419, 2318419 };
+		inline constexpr REL::VariantID AddFadeNodeLocked{ 1210164, 2318420, 2318420 };
 	}
 
 	namespace BSLightingShaderProperty
