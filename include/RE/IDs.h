@@ -915,6 +915,7 @@ namespace RE::ID
 	namespace BSEffectShader
 	{
 		inline constexpr REL::VariantID SetupGeometry{ 1089917, 2318786 };
+		inline constexpr REL::VariantID SetupMaterial{ 695910, 2318784 };
 	}
 
 	namespace BSEffectShaderProperty
@@ -1020,6 +1021,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID UnmapTexture{ 835184, 2276921 };
 			inline constexpr REL::VariantID CreateTriShape{ 351724, 2276843 };
 			inline constexpr REL::VariantID Singleton{ 1378294, 2704525 };
+			inline constexpr REL::VariantID SetTexture{ 1126697, 0 };  // Inlined in NG/AE
 		}
 
 		namespace RenderTargetManager
