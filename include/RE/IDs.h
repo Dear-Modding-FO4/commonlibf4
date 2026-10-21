@@ -1035,6 +1035,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID SetCurrentRenderTarget{ 1502425, 2277188 };
 			inline constexpr REL::VariantID SetCurrentCubeMapRenderTarget{ 1049522, 2277190 };
 			inline constexpr REL::VariantID CreateCubeMapRenderTarget{ 1397856, 2277178 };
+			inline constexpr REL::VariantID CreateDepthStencilTarget{ 1159619, 2277177 };
 			inline constexpr REL::VariantID AcquireRenderTarget{ 1468639, 2277219 };
 			inline constexpr REL::VariantID ReleaseRenderTarget{ 1374956, 2277220 };
 			inline constexpr REL::VariantID QShadowMapArrayDepthStencil{ 638475, 2277185, 2277185 };
