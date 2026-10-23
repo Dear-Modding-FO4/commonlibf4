@@ -17,7 +17,9 @@
 
 namespace RE
 {
+	class BSGeometrySegmentData;
 	class NiParticles;
+	class NiTransform;
 	class BSD3DResourceCreator;
 	class BSEventFlag;
 	class NiCamera;
@@ -762,6 +764,26 @@ namespace RE
 			using func_t = decltype(&SetDirtyStates);
 			static REL::Relocation<func_t> func{ ID::BSGraphics::SetDirtyStates };
 			func(a_outputStateOnly, a_compute);
+		}
+
+		// One queued opaque Z-prepass draw; world points into its geometry.
+		struct ZPrePassDrawData
+		{
+			TriShape*              shape;          // 00
+			const NiTransform*     world;          // 08
+			BSGeometrySegmentData* segments;       // 10
+			std::uint32_t          indexCount;     // 18
+			std::uint16_t          cullMode;       // 1C
+			std::uint16_t          depthBiasMode;  // 1E
+		};
+		static_assert(sizeof(ZPrePassDrawData) == 0x20);
+
+		// The trailing references cache the last bound layout and raster state.
+		inline void RenderZPrePass(RendererShadowState& a_state, ZPrePassDrawData& a_data, std::uint64_t& a_vertexDesc, std::uint16_t& a_cullMode, std::uint16_t& a_depthBiasMode)
+		{
+			using func_t = decltype(&RenderZPrePass);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::RenderZPrePass };
+			func(a_state, a_data, a_vertexDesc, a_cullMode, a_depthBiasMode);
 		}
 
 		[[nodiscard]] inline RendererData* GetRendererData()
