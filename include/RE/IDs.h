@@ -902,7 +902,10 @@ namespace RE::ID
 	namespace BSBatchRenderer
 	{
 		inline constexpr REL::VariantID Draw{ 1152191, 2318696 };
+		inline constexpr REL::VariantID RenderBatches{ 1083446, 2318697 };
+		inline constexpr REL::VariantID RenderBatchesInOrder{ 1242640, 2318698 };
 		inline constexpr REL::VariantID RenderPassImmediately{ 244233, 2318699 };
+		inline constexpr REL::VariantID RenderPassImpl{ 1543785, 2318710 };
 	}
 
 	namespace BSComputeShader
@@ -1377,7 +1380,13 @@ namespace RE::ID
 
 	namespace BSShaderAccumulator
 	{
+		inline constexpr REL::VariantID RenderAllBatches{ 703478, 2317893 };
 		inline constexpr REL::VariantID RenderAlphaGeometry{ 1445970, 2317903 };
+		inline constexpr REL::VariantID RenderBatches{ 1048494, 2317894 };
+		inline constexpr REL::VariantID RenderBatchesInOrder{ 1127844, 2317895 };
+		inline constexpr REL::VariantID RenderBlendedDecals{ 761249, 2317872 };
+		inline constexpr REL::VariantID RenderGeometryGroup{ 1379976, 2317897 };
+		inline constexpr REL::VariantID RenderOpaqueDecals{ 163409, 2317871 };
 	}
 
 	namespace BSShaderData
@@ -3329,9 +3338,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
 		inline constexpr REL::VariantID GetXPValue{ 1134136, 2207384 };
 		inline constexpr REL::VariantID SetTintingData{ 452734, 2207493 };
-        inline constexpr REL::VariantID GetTintingTemplate{ 1316627, 2207494 };
-        inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
-        inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
+		inline constexpr REL::VariantID GetTintingTemplate{ 1316627, 2207494 };
+		inline constexpr REL::VariantID RemoveHeadPart{ 880456, 2207431 };
+		inline constexpr REL::VariantID AddUniqueHeadType{ 466269, 2207463 };
 		inline constexpr REL::VariantID CalculateBodyTintColor{ 134537, 2207435 };
 		inline constexpr REL::VariantID SetFacialBoneMorphIntensity{ 1256673, 2207415 };
 		inline constexpr REL::VariantID SetMorphSliderValue{ 1432151, 2207410 };
