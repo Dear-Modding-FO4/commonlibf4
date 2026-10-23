@@ -34,10 +34,52 @@ namespace RE
 		class Texture;
 		class TriShape;
 
-		enum class AlphaBlendAlphaToCoverage : std::int32_t;
-		enum class AlphaBlendMode : std::int32_t;
-		enum class AlphaBlendWriteMode : std::int32_t;
-		enum class DepthStencilDepthMode : std::int32_t;
+		enum class AlphaBlendAlphaToCoverage : std::int32_t
+		{
+			kDisabled,
+			kEnabled
+		};
+
+		enum class AlphaBlendMode : std::int32_t
+		{
+			kDisabled,
+			kAlpha,               // SRC_ALPHA, INV_SRC_ALPHA
+			kAdditiveAlpha,       // SRC_ALPHA, ONE
+			kMultiply,            // DEST_COLOR, ZERO; alpha ONE, ZERO
+			kPremultipliedAlpha,  // ONE, INV_SRC_ALPHA
+			kAdditive,            // ONE, ONE
+			kMultiplyIndependent  // independent: RT0 kMultiply, RT1-7 kAlpha
+		};
+
+		// Masks apply to RT0-3; non-independent states extend RT0's to RT4-7.
+		enum class AlphaBlendWriteMode : std::int32_t
+		{
+			kNone,
+			kRGB,
+			kRGBA,
+			kRG,
+			kBA,
+			kR,
+			kG,
+			kB,
+			kA,
+			kAlphaOnlyRT0,  // independent: RT0 A, RT1-3 RGB, RT4-7 none
+			kAlphaOnlyRT1,
+			kAlphaOnlyRT2,
+			kAlphaOnlyRT3
+		};
+
+		enum class DepthStencilDepthMode : std::int32_t
+		{
+			kDisabled,
+			kTest,              // LESS_EQUAL, no write
+			kWrite,             // ALWAYS, write
+			kTestWrite,         // LESS_EQUAL, write
+			kTestEqual,         // EQUAL, no write
+			kTestGreaterEqual,  // GREATER_EQUAL, no write
+			kTestGreater        // GREATER, no write
+		};
+
 		enum class DepthStencilExtraMode : std::int32_t;
 		enum class DepthStencilStencilMode : std::int32_t;
 		enum class RasterStateCullMode : std::int32_t;
