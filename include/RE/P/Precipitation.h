@@ -23,12 +23,15 @@ namespace RE
 			OcclusionMapData();
 
 			// members
-			std::byte                      field_0x0[0x40];  // 00 - unused
+			std::byte                      field_0x0[0x40];  // 00
 			NiPointer<NiCamera>            camera;           // 40
 			NiPointer<BSShaderAccumulator> accumulator;      // 48 - render mode 14
-			std::byte                      field_0x50[0x8];  // 50 - unused
+			std::byte                      field_0x50[0x8];  // 50
 			BSCullingProcess*              cullingProcess;   // 58 - owning
 		};
+		static_assert(offsetof(OcclusionMapData, camera) == 0x40);
+		static_assert(offsetof(OcclusionMapData, accumulator) == 0x48);
+		static_assert(offsetof(OcclusionMapData, cullingProcess) == 0x58);
 		static_assert(sizeof(OcclusionMapData) == 0x60);
 
 		using OcclusionMatrix = float[4][4];
@@ -85,16 +88,18 @@ namespace RE
 		}
 
 		// members
-		std::byte             field_0x8[0x8];              // 08 - unused
-		OcclusionMapData      occlusionData;               // 10
-		BSFixedString         wetnessEnvMap;               // 70
+		std::byte             field_0x8[0x8];                     // 08
+		OcclusionMapData      occlusionData;                      // 10
+		BSFixedString         wetnessEnvMap;                      // 70
 		std::byte             wetnessEnvMapTexture[0x80 - 0x78];  // 78 - BSResource::RHandleType<...NiTexture...>
-		NiPointer<BSGeometry> precipParticleGeometry;      // 80
-		NiPointer<BSGeometry> prevPrecipParticleGeometry;  // 88
-		float                 precipUpdateValue;           // 90 - constructed 4096.0f
-		float                 precipFadeScale;             // 94 - constructed 1.0f
-		float                 prevPrecipFade;              // 98 - constructed 1.0f
-		float                 prevPrecipOcclusion;         // 9C - constructed 0.0f
+		NiPointer<BSGeometry> precipParticleGeometry;             // 80
+		NiPointer<BSGeometry> prevPrecipParticleGeometry;         // 88
+		float                 precipUpdateValue;                  // 90 - constructed 4096.0f
+		float                 precipFadeScale;                    // 94 - constructed 1.0f
+		float                 prevPrecipFade;                     // 98 - constructed 1.0f
+		float                 wetness;                            // 9C
 	};
+	static_assert(offsetof(Precipitation, occlusionData) == 0x10);
+	static_assert(offsetof(Precipitation, wetness) == 0x9C);
 	static_assert(sizeof(Precipitation) == 0xA0);
 }

@@ -50,4 +50,5 @@ namespace RE
 	static_assert(offsetof(BGSTerrainChunk, attached) == 0x21);
 	static_assert(offsetof(BGSTerrainChunk, waterAttached) == 0x22);
 	static_assert(offsetof(BGSTerrainChunk, prepared) == 0x23);
+	static_assert(sizeof(BGSTerrainChunk) == 0x28);
 }

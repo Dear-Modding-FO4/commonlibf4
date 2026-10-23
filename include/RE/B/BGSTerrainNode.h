@@ -38,14 +38,22 @@ namespace RE
 
 		// members
 		BGSTerrainManager* manager;      // 00
-		std::byte          unk08[0x38];  // 08
+		std::byte          unk08[0x28];  // 08
+		BGSTerrainNode*    children;     // 30 - four contiguous nodes
+		BGSTerrainNode*    parent;       // 38
 		std::uint32_t      flags;        // 40
-		std::uint32_t      unk44;        // 44
+		std::uint32_t      nodeNumber;   // 44
 		std::int16_t       baseCellX;    // 48
 		std::int16_t       baseCellY;    // 4A
+		float              fadeAmount;   // 4C
 	};
 	static_assert(offsetof(BGSTerrainNode, manager) == 0x00);
+	static_assert(offsetof(BGSTerrainNode, children) == 0x30);
+	static_assert(offsetof(BGSTerrainNode, parent) == 0x38);
 	static_assert(offsetof(BGSTerrainNode, flags) == 0x40);
+	static_assert(offsetof(BGSTerrainNode, nodeNumber) == 0x44);
 	static_assert(offsetof(BGSTerrainNode, baseCellX) == 0x48);
 	static_assert(offsetof(BGSTerrainNode, baseCellY) == 0x4A);
+	static_assert(offsetof(BGSTerrainNode, fadeAmount) == 0x4C);
+	static_assert(sizeof(BGSTerrainNode) == 0x50);
 }
