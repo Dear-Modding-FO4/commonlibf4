@@ -23,12 +23,9 @@ namespace RE
 		virtual bool IsRequestProcessing(const BSTSmartPointer<BSPathingRequest>& a_request) const = 0;  // 05
 		virtual bool IsRequestBuilding(const BSTSmartPointer<BSPathingRequest>& a_request) const = 0;    // 06
 
-	protected:
-		// Unknown signatures reserve engine slots without exposing unsafe calls.
 		virtual void Unk_07() = 0;  // 07
 		virtual void Unk_08() = 0;  // 08
 
-	public:
 		virtual bool DidPathingFail() const = 0;     // 09
 		virtual bool IsPathingComplete() const = 0;  // 0A
 		virtual bool IsPathing() const = 0;          // 0B

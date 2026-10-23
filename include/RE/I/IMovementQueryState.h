@@ -11,8 +11,6 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::IMovementQueryState };
 		static constexpr auto VTABLE{ VTABLE::IMovementQueryState };
 
-	protected:
-		// Unknown signatures reserve engine slots without exposing unsafe calls.
 		virtual void Unk_01() = 0;  // 01
 		virtual void Unk_02() = 0;  // 02
 	};

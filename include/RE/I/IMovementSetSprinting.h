@@ -11,8 +11,6 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::IMovementSetSprinting };
 		static constexpr auto VTABLE{ VTABLE::IMovementSetSprinting };
 
-	protected:
-		// Unknown signatures reserve engine slots without exposing unsafe calls.
 		virtual void Unk_01() = 0;  // 01
 		virtual void Unk_02() = 0;  // 02
 		virtual void Unk_03() = 0;  // 03

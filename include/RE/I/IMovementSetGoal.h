@@ -22,8 +22,6 @@ namespace RE
 		virtual void ClearGoal() = 0;                                                                                                    // 04
 		virtual void ForceRepath() = 0;                                                                                                  // 05
 
-	protected:
-		// Unknown signatures reserve engine slots without exposing unsafe calls.
 		virtual void Unk_06() = 0;  // 06
 	};
 	static_assert(sizeof(IMovementSetGoal) == 0x8);

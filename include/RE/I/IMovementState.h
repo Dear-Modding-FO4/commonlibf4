@@ -12,7 +12,7 @@ namespace RE
 	class NiPoint3;
 
 	class __declspec(novtable) IMovementState :
-		public IMovementInterface  // 0
+	    public IMovementInterface  // 0
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::IMovementState };
