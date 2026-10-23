@@ -1147,6 +1147,7 @@
 #include "RE/M/MovementActorAvoidanceParameters.h"
 #include "RE/M/MovementAgentPathFollowerVirtual.h"
 #include "RE/M/MovementArbiter.h"
+#include "RE/M/MovementControllerAI.h"
 #include "RE/M/MovementControllerNPC.h"
 #include "RE/M/MovementCorrection.h"
 #include "RE/M/MovementCorrectionData.h"
