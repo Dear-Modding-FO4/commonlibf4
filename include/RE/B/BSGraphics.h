@@ -30,6 +30,7 @@ namespace RE
 		inline constexpr float        SHADOW_RASTER_DEPTH_BIAS_CLAMP = -100.0F;
 
 		class DynamicTriShape;
+		class DynamicTriShapeDrawData;
 		class StructuredBuffer;
 		enum class Format;
 		class Texture;
@@ -665,6 +666,59 @@ namespace RE
 				return func(this, a_vertexShader, a_hullShader, a_domainShader, a_pixelShader);
 			}
 
+			void DrawTriShape(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShape };
+				return func(this, a_shape, a_startIndex, a_numTriangles);
+			}
+
+			// A null index buffer draws with the shape's own.
+			void DrawTriShapeIndexed(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShapeIndexed);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShapeIndexed };
+				return func(this, a_shape, a_startIndex, a_numTriangles, a_indexBuffer);
+			}
+
+			void DrawTriShapeLargeIndices(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShapeLargeIndices);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShapeLargeIndices };
+				return func(this, a_shape, a_startIndex, a_numTriangles);
+			}
+
+			// A non-null instance buffer binds as the second vertex stream.
+			void DrawInstancedTriShape(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, std::uint32_t a_instanceCount, std::uint64_t a_vertexDesc, VertexBuffer* a_instanceBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawInstancedTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawInstancedTriShape };
+				return func(this, a_shape, a_startIndex, a_numTriangles, a_instanceCount, a_vertexDesc, a_instanceBuffer);
+			}
+
+			void DrawDynamicTriShape(DynamicTriShape* a_shape, DynamicTriShapeDrawData& a_drawData, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawDynamicTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawDynamicTriShape };
+				return func(this, a_shape, a_drawData, a_startIndex, a_numTriangles, a_indexBuffer);
+			}
+
+			// Draws quads of four 48-byte vertices.
+			void DrawParticleShaderTriShape(const void* a_vertices, std::uint32_t a_vertexCount)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawParticleShaderTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawParticleShaderTriShape };
+				return func(this, a_vertices, a_vertexCount);
+			}
+
+			// Replays a null-terminated array of command-buffer records.
+			void ProcessCommandBuffer(char** a_records)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ProcessCommandBuffer);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ProcessCommandBuffer };
+				return func(this, a_records);
+			}
+
 			void RunComputeShader(ComputeShader* a_computeShader, std::uint32_t a_groupCountX, std::uint32_t a_groupCountY, std::uint32_t a_groupCountZ)
 			{
 				using func_t = decltype(&BSGraphics::Renderer::RunComputeShader);
@@ -701,6 +755,14 @@ namespace RE
 			RendererData         data;                // 10
 		};
 		static_assert(sizeof(Renderer) == 0x25D0);
+
+		// Submits pending state; output-only skips IA and shader-stage slots.
+		inline void SetDirtyStates(bool a_outputStateOnly, bool a_compute)
+		{
+			using func_t = decltype(&SetDirtyStates);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::SetDirtyStates };
+			func(a_outputStateOnly, a_compute);
+		}
 
 		[[nodiscard]] inline RendererData* GetRendererData()
 		{
