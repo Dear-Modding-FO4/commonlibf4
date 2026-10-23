@@ -17,6 +17,16 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::NiLight };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::NiLight };
 
+		[[nodiscard]] float GetRadius() const noexcept
+		{
+			return spec.r;
+		}
+
+		void SetRadius(float a_radius) noexcept
+		{
+			spec = { a_radius, a_radius, a_radius };
+		}
+
 		// members
 		NiColor amb;   // 120
 		NiColor diff;  // 12C

@@ -2,6 +2,7 @@
 
 #include "RE/B/BSSpinLock.h"
 #include "RE/N/NiLight.h"
+#include "RE/N/NiMatrix3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiRefObject.h"
 
@@ -10,18 +11,62 @@ namespace RE
 	class BSFadeNode;
 	class NiCullingProcess;
 
-	// Mapped native prefix; the complete allocation extent is not established.
 	class __declspec(novtable) BSLight : public NiRefObject
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::BSLight };
 		static constexpr auto VTABLE{ VTABLE::BSLight };
 
+		enum class Shape : std::uint32_t
+		{
+			kNone = 0,
+			kDirectional = 1,
+			kUnk1 = kDirectional,
+			kPoint = 2,
+			kHemisphere = 3,
+			kUnk4 = 4,
+			kBox = 5,
+			kCone = 6
+		};
+
+		struct BoxShape
+		{
+			NiPoint3 center;       // 00
+			NiPoint3 halfExtents;  // 0C
+		};
+		static_assert(sizeof(BoxShape) == 0x18);
+		static_assert(offsetof(BoxShape, halfExtents) == 0xC);
+
+		struct ConeShape
+		{
+			float     exponent;      // 00
+			float     cosineCutoff;  // 04
+			std::byte unk08[0x10];   // 08
+		};
+		static_assert(sizeof(ConeShape) == 0x18);
+		static_assert(offsetof(ConeShape, cosineCutoff) == 0x4);
+
 		BSLight() = delete;
 		BSLight(const BSLight&) = delete;
 		BSLight(BSLight&&) = delete;
 		BSLight& operator=(const BSLight&) = delete;
 		BSLight& operator=(BSLight&&) = delete;
+
+		// add
+		virtual void SetLight(NiLight* a_light);  // 02
+		virtual bool IsShadowLight();             // 03
+
+		[[nodiscard]] Shape GetShape() const noexcept
+		{
+			return static_cast<Shape>(shape);
+		}
+
+		void InvalidateSpotCone()
+		{
+			if (GetShape() == Shape::kCone) {
+				spotConeGeometry.reset();
+			}
+		}
 
 		[[nodiscard]] NiLight* GetSourceLight() const noexcept
 		{
@@ -56,47 +101,63 @@ namespace RE
 			return func(this, a_point, a_ignoreLight);
 		}
 
-		float              currentFade;                // 010
-		std::byte          unk014[4];                  // 014
-		std::uint32_t      cullResult;                 // 018
-		std::byte          unk01C[0x84];               // 01C
-		float              angularExponent;            // 0A0
-		std::byte          unk0A4[0x14];               // 0A4
-		NiPointer<NiLight> light;                      // 0B8
-		void*              associationHead;            // 0C0
-		void*              associationTail;            // 0C8
-		std::uint32_t      associationCount;           // 0D0
-		std::byte          unk0D4[4];                  // 0D4
-		void*              associationAllocator;       // 0D8
-		BSSpinLock         associationLock;            // 0E0
-		std::byte          unk0E8[0x70];               // 0E8
-		void*              projectedTexture;           // 158
-		std::byte          unk160[0x11];               // 160
-		bool               specialList;                // 171
-		bool               field172;                   // 172 - creation policy is unnamed
-		bool               field173;                   // 173 - creation policy is unnamed
-		std::byte          unk174;                     // 174
-		bool               field175;                   // 175
-		bool               field176;                   // 176
-		bool               field177;                   // 177
-		bool               specular;                   // 178
-		bool               attenuationOnly;            // 179
-		bool               zeroRoughness;              // 17A
-		bool               suppressRim;                // 17B
-		std::byte          unk17C[2];                  // 17C
-		bool               excludeFromPointLuminance;  // 17E
-		std::byte          unk17F;                     // 17F
-		std::uint32_t      shape;                      // 180
+		float         currentFade;   // 010
+		float         luminance;     // 014
+		std::uint32_t cullResult;    // 018
+		std::byte     unk01C[0x44];  // 01C
+		NiMatrix3     rotation;      // 060
+		std::byte     unk090[0x10];  // 090
+		union
+		{
+			float     angularExponent;
+			BoxShape  box;
+			ConeShape cone;
+		};  // 0A0
+		NiPointer<NiLight>    light;                      // 0B8
+		void*                 associationHead;            // 0C0
+		void*                 associationTail;            // 0C8
+		std::uint32_t         associationCount;           // 0D0
+		std::byte             unk0D4[4];                  // 0D4
+		void*                 associationAllocator;       // 0D8
+		BSSpinLock            associationLock;            // 0E0
+		std::byte             unk0E8[0x60];               // 0E8
+		NiPointer<NiAVObject> spotConeGeometry;           // 148
+		std::byte             unk150[8];                  // 150
+		void*                 projectedTexture;           // 158
+		std::byte             unk160[0x11];               // 160
+		bool                  specialList;                // 171
+		bool                  field172;                   // 172 - creation policy is unnamed
+		bool                  field173;                   // 173 - creation policy is unnamed
+		std::byte             unk174;                     // 174
+		bool                  field175;                   // 175
+		bool                  field176;                   // 176
+		bool                  field177;                   // 177
+		bool                  specular;                   // 178
+		bool                  attenuationOnly;            // 179
+		bool                  zeroRoughness;              // 17A
+		bool                  suppressRim;                // 17B
+		std::byte             unk17C[2];                  // 17C
+		bool                  excludeFromPointLuminance;  // 17E
+		std::byte             unk17F;                     // 17F
+		std::uint32_t         shape;                      // 180
+		std::byte             unk184[0xC];                // 184
 	};
 	static_assert(offsetof(BSLight, currentFade) == 0x10);
+	static_assert(offsetof(BSLight, luminance) == 0x14);
 	static_assert(offsetof(BSLight, cullResult) == 0x18);
+	static_assert(offsetof(BSLight, rotation) == 0x60);
 	static_assert(offsetof(BSLight, angularExponent) == 0xA0);
+	static_assert(offsetof(BSLight, box) == 0xA0);
+	static_assert(offsetof(BSLight, cone) == 0xA0);
+	static_assert(offsetof(BSLight, box) + offsetof(BSLight::BoxShape, halfExtents) == 0xAC);
+	static_assert(offsetof(BSLight, cone) + offsetof(BSLight::ConeShape, cosineCutoff) == 0xA4);
 	static_assert(offsetof(BSLight, light) == 0xB8);
 	static_assert(offsetof(BSLight, associationHead) == 0xC0);
 	static_assert(offsetof(BSLight, associationTail) == 0xC8);
 	static_assert(offsetof(BSLight, associationCount) == 0xD0);
 	static_assert(offsetof(BSLight, associationAllocator) == 0xD8);
 	static_assert(offsetof(BSLight, associationLock) == 0xE0);
+	static_assert(offsetof(BSLight, spotConeGeometry) == 0x148);
 	static_assert(offsetof(BSLight, projectedTexture) == 0x158);
 	static_assert(offsetof(BSLight, specialList) == 0x171);
 	static_assert(offsetof(BSLight, field172) == 0x172);
@@ -110,4 +171,5 @@ namespace RE
 	static_assert(offsetof(BSLight, suppressRim) == 0x17B);
 	static_assert(offsetof(BSLight, excludeFromPointLuminance) == 0x17E);
 	static_assert(offsetof(BSLight, shape) == 0x180);
+	static_assert(sizeof(BSLight) == 0x190);
 }

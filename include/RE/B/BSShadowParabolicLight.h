@@ -4,7 +4,6 @@
 
 namespace RE
 {
-	// No derived member layout is established by the shadow reports.
 	class __declspec(novtable) BSShadowParabolicLight : public BSShadowLight
 	{
 	public:
@@ -17,7 +16,15 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::BSShadowParabolicLight::UpdateCamerasI };
 			return func(this, a_camera);
 		}
+
+		void Render(std::uint32_t a_mask)
+		{
+			using func_t = decltype(&BSShadowParabolicLight::Render);
+			static REL::Relocation<func_t> func{ ID::BSShadowParabolicLight::Render };
+			func(this, a_mask);
+		}
 	};
+	static_assert(sizeof(BSShadowParabolicLight) == 0x200);
 	static_assert(offsetof(BSShadowParabolicLight, shadowMapCount) == 0x190);
 	static_assert(offsetof(BSShadowParabolicLight, shadowMapData) == 0x198);
 }

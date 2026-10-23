@@ -1036,6 +1036,7 @@ namespace RE::ID
 	namespace BSGraphics
 	{
 		inline constexpr REL::VariantID CreateRasterStateObjects{ 286739, 2277495 };
+		inline constexpr REL::VariantID SamplerStateTable{ 44312, 2704455 };
 
 		namespace Renderer
 		{
@@ -1788,6 +1789,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Imagespace{ 587723, 2318322 };
 		inline constexpr REL::VariantID Render_PreUI{ 984743, 2318321 };
 		inline constexpr REL::VariantID Forward{ 656535, 2318315 };
+		inline constexpr REL::VariantID ForwardAlphaImpl{ 338205, 0 };  // Inlined in NG/AE Forward
 		inline constexpr REL::VariantID DeferredPrePass{ 56596, 2318301 };
 		inline constexpr REL::VariantID DeferredLightsImpl{ 1108521, 2318312 };
 		inline constexpr REL::VariantID DeferredComposite{ 728427, 2318313 };
@@ -1796,6 +1798,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetInterface3DRenderFunc{ 304631, 2318358 };
 		inline constexpr REL::VariantID SetCompanionLocalMapRenderFunc{ 1182240, 2318360 };
 		inline constexpr REL::VariantID Move1stPersonToOrigin{ 76526, 2318293 };
+		inline constexpr REL::VariantID EndOfFrameImagespaceEffectsEnabled{ 1327954, 2677855, 4784523 };
 	}
 
 	namespace DynamicNavmesh

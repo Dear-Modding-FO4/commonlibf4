@@ -1,8 +1,10 @@
 #pragma once
 
+#include "RE/B/BSFixedString.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTArray.h"
 #include "RE/N/NiPointer.h"
+#include "RE/N/NiTPointerMap.h"
 
 namespace RE
 {
@@ -17,6 +19,7 @@ namespace RE
 	class TESWaterObject;
 	class TESWaterReflections;
 	class TESWorldSpace;
+	class WadingWaterData;
 
 	class TESWaterSystem
 	{
@@ -79,20 +82,42 @@ namespace RE
 		}
 
 		// members
-		std::byte                                 unk00[0x18];   // 000
-		BSTArray<NiPointer<TESWaterObject>>       water;         // 018
-		BSTArray<NiPointer<TESWaterReflections>>  reflections;   // 030
-		BSTArray<NiPointer<TESWaterNormals>>      normals;       // 048
-		BSTArray<NiPointer<TESWaterDisplacement>> displacement;  // 060
-		std::byte                                 unk78[0x30];   // 078
-		bool                                      enabled;       // 0A8
-		std::byte                                 unkA9[0x6F];   // 0A9
-		BSSpinLock                                lock;          // 118
+		std::byte                                 unk00[0x8];        // 000
+		BSFixedString*                            type;              // 008
+		std::byte                                 unk10[0x8];        // 010
+		BSTArray<NiPointer<TESWaterObject>>       water;             // 018
+		BSTArray<NiPointer<TESWaterReflections>>  reflections;       // 030
+		BSTArray<NiPointer<TESWaterNormals>>      normals;           // 048
+		BSTArray<NiPointer<TESWaterDisplacement>> displacement;      // 060
+		std::byte                                 unk78[0x10];       // 078
+		NiPointer<NiNode>                         waterRoot;         // 088
+		std::byte                                 unk90[0x18];       // 090
+		bool                                      enabled;           // 0A8
+		std::byte                                 unkA9[0x7];        // 0A9
+		bool                                      underwater;        // 0B0
+		std::byte                                 unkB1[0x7];        // 0B1
+		float                                     underwaterHeight;  // 0B8
+		std::byte                                 unkBC[0x14];       // 0BC
+		// Keyed by the native ActorHandle value.
+		NiTPointerMap<std::uint32_t, WadingWaterData*> wadingWaterData;                 // 0D0
+		std::byte                                      unkF0[0x18];                     // 0F0
+		bool                                           skipNextUpdate;                  // 108
+		std::byte                                      unk109[0xF];                     // 109
+		BSSpinLock                                     lock;                            // 118
+		NiPointer<NiAVObject>                          defaultDisplacementWaterObject;  // 120
 	};
+	// Static-buffer spacing cannot distinguish a 0x128 from a 0x130 object.
+	static_assert(offsetof(TESWaterSystem, type) == 0x8);
 	static_assert(offsetof(TESWaterSystem, water) == 0x18);
 	static_assert(offsetof(TESWaterSystem, reflections) == 0x30);
 	static_assert(offsetof(TESWaterSystem, normals) == 0x48);
 	static_assert(offsetof(TESWaterSystem, displacement) == 0x60);
+	static_assert(offsetof(TESWaterSystem, waterRoot) == 0x88);
 	static_assert(offsetof(TESWaterSystem, enabled) == 0xA8);
+	static_assert(offsetof(TESWaterSystem, underwater) == 0xB0);
+	static_assert(offsetof(TESWaterSystem, underwaterHeight) == 0xB8);
+	static_assert(offsetof(TESWaterSystem, wadingWaterData) == 0xD0);
+	static_assert(offsetof(TESWaterSystem, skipNextUpdate) == 0x108);
 	static_assert(offsetof(TESWaterSystem, lock) == 0x118);
+	static_assert(offsetof(TESWaterSystem, defaultDisplacementWaterObject) == 0x120);
 }
