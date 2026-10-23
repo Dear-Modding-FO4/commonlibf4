@@ -52,6 +52,11 @@ namespace RE
 		std::byte                                  unk51[7];                 // 51, unknown storage, not padding
 	};
 	static_assert(offsetof(BSRenderPass, sceneLights) == 0x30);
+	static_assert(offsetof(BSRenderPass, passEnum) == 0x48);
+	static_assert(offsetof(BSRenderPass, unk4D) == 0x4D);
+	static_assert(offsetof(BSRenderPass, lodMode) == 0x4E);
+	static_assert(offsetof(BSRenderPass, unk4F) == 0x4F);
 	static_assert(offsetof(BSRenderPass, numLights) == 0x50);
+	static_assert(offsetof(BSRenderPass, unk51) == 0x51);
 	static_assert(sizeof(BSRenderPass) == 0x58);
 }
