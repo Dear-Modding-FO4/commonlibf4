@@ -106,6 +106,7 @@ namespace RE
 		BSSpinLock                                     lock;                            // 118
 		NiPointer<NiAVObject>                          defaultDisplacementWaterObject;  // 120
 	};
+	// Static-buffer spacing cannot distinguish a 0x128 from a 0x130 object.
 	static_assert(offsetof(TESWaterSystem, type) == 0x8);
 	static_assert(offsetof(TESWaterSystem, water) == 0x18);
 	static_assert(offsetof(TESWaterSystem, reflections) == 0x30);

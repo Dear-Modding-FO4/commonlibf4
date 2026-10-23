@@ -3,8 +3,6 @@
 #include "RE/B/BSShadowLight.h"
 #include "RE/N/NiCamera.h"
 
-#include "REX/CAST.h"
-
 namespace RE
 {
 	class BSGeometryListCullingProcess;
@@ -45,12 +43,12 @@ namespace RE
 
 		[[nodiscard]] std::span<FitBounds> GetFitBounds() noexcept
 		{
-			return { REX::ADJUST_POINTER<FitBounds>(this, 0x260), shadowMapCount };
+			return { fitBounds, shadowMapCount };
 		}
 
 		[[nodiscard]] std::span<const FitBounds> GetFitBounds() const noexcept
 		{
-			return { REX::ADJUST_POINTER<FitBounds>(this, 0x260), shadowMapCount };
+			return { fitBounds, shadowMapCount };
 		}
 
 		// members
@@ -59,9 +57,9 @@ namespace RE
 		NiPoint3                      priorDirection;         // 210
 		std::byte                     unk21C[0x4];            // 21C
 		float                         interpolationProgress;  // 220
-		std::byte                     unk224[0x2C];           // 224 - unverified cascade state
+		std::byte                     unk224[0x2C];           // 224
 		float                         splitDistances[4];      // 250
-		std::byte                     unk260[0x60];           // 260 - fitter indexes 0x18-byte records
+		FitBounds                     fitBounds[4];           // 260
 		NiPointer<NiCamera>           shadowCamera;           // 2C0
 		BSGeometryListCullingProcess* cullingProcess;         // 2C8
 		std::byte                     unk2D0[0x10];           // 2D0
@@ -73,6 +71,7 @@ namespace RE
 	static_assert(offsetof(BSShadowDirectionalLight, priorDirection) == 0x210);
 	static_assert(offsetof(BSShadowDirectionalLight, interpolationProgress) == 0x220);
 	static_assert(offsetof(BSShadowDirectionalLight, splitDistances) == 0x250);
+	static_assert(offsetof(BSShadowDirectionalLight, fitBounds) == 0x260);
 	static_assert(offsetof(BSShadowDirectionalLight, shadowCamera) == 0x2C0);
 	static_assert(offsetof(BSShadowDirectionalLight, cullingProcess) == 0x2C8);
 }
