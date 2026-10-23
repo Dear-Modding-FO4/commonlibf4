@@ -1071,6 +1071,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID DrawInstancedTriShape{ 1240292, 2276849 };
 			inline constexpr REL::VariantID DrawDynamicTriShape{ 891634, 2276857 };
 			inline constexpr REL::VariantID DrawParticleShaderTriShape{ 611952, 2276858 };
+			inline constexpr REL::VariantID ProcessCommandBuffer{ 673619, 2276979 };
 			inline constexpr REL::VariantID RunComputeShader{ 1108829, 2276940 };
 			inline constexpr REL::VariantID SetShaders{ 894905, 2276942 };
 			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904 };
