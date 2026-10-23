@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstring>
+
 #include "RE/B/BSCriticalSection.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTAtomicValue.h"
@@ -62,6 +64,67 @@ namespace RE
 			kInit = 0x5
 		};
 
+		// Logical IDs; pooled targets must be acquired before platform lookup.
+		enum class RenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kFrameBuffer = 0,
+			kMain = 1,
+			kMainCopy = 2,
+			kSSRPrepass = 4,
+			kSSR = 5,
+			kSSRBlurred0 = 6,
+			kSSRBlurred1 = 7,
+			kSSRDepth = 8,
+			kRefractionNormals = 14,
+			kMenuBackground = 15,
+			kHUDGlass = 24,
+			kHUDGlassSwap = 25,
+			kGBufferAlbedoSpecular = 26,
+			kGBufferNormal = 27,
+			kGBufferEnvironment = 29,
+			kGBufferAmbient = 30,
+			kGBufferEmissive = 31,
+			kGBufferMotionVectors = 32,
+			kDiffuseLight = 33,
+			kDiffuseSpecular = 34,
+			kDiffuseLightTiled = 35,
+			kDiffuseSpecularTiled = 36,
+			kAmbientOcclusion = 37,
+			kAmbientOcclusionHalf = 39,
+			kSAOCameraZ = 40,
+			kPipboy = 60,
+			kPipboySwap = 61,
+			kHDRBlurSwap = 68,
+			kHDRDownsample0 = 70,
+			kRainOcclusion = 86,
+			kCount = 100
+		};
+
+		enum class DepthStencilTargetID : std::int32_t
+		{
+			kUnbound = -1,
+			kNone = 0,
+			kMain = 1,
+			kCubemapReflections = 7,
+			kRainOcclusion = 8,
+			kCount = 12
+		};
+
+		enum class CubeMapRenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kReflections = 0,
+			kCount = 1
+		};
+
+		enum class RenderTargetCreationMode : std::uint8_t
+		{
+			kPooled = 0,
+			kPersistent = 1,
+			kOnDemand = 2
+		};
+
 		enum class TAA_STATE : std::int32_t
 		{
 			kDisabled,
@@ -97,6 +160,16 @@ namespace RE
 			kWrap_S_Clamp_T = 0x2,
 			kWrap_S_Wrap_T = 0x3,
 		};
+
+		using SamplerStateTable = REX::W32::ID3D11SamplerState* [4][5][16];
+		static_assert(sizeof(SamplerStateTable) == 0xA00);
+
+		// Indexed by address mode, filter mode, then integral MinLOD (0..15).
+		[[nodiscard]] inline SamplerStateTable& GetSamplerStateTable()
+		{
+			static REL::Relocation<SamplerStateTable*> table{ ID::BSGraphics::SamplerStateTable };
+			return *table;
+		}
 
 		enum class Usage : std::int32_t
 		{
@@ -160,13 +233,14 @@ namespace RE
 		{
 		public:
 			// members
-			REX::W32::ID3D11ShaderResourceView*  srView;   // 00
-			REX::W32::ID3D11Texture2D*           texture;  // 08
-			REX::W32::ID3D11UnorderedAccessView* uaView;   // 10
-			std::uint64_t                        unk18;    // 18
-			void*                                unk20;    // 20
-			TextureHeader                        header;   // 28 - format is the created DXGI format
+			REX::W32::ID3D11ShaderResourceView*  srView;       // 00
+			REX::W32::ID3D11Texture2D*           texture;      // 08
+			REX::W32::ID3D11UnorderedAccessView* uaView;       // 10
+			std::byte                            pad18[0x10];  // 18
+			TextureHeader                        header;       // 28 - format is the created DXGI format
+			std::byte                            pad30[0x10];  // 30
 		};
+		static_assert(sizeof(Texture) == 0x40);
 		static_assert(offsetof(Texture, header) == 0x28);
 
 		class ConstantGroup
@@ -692,6 +766,7 @@ namespace RE
 				DESC_MASK_FLAGS = ~(DESC_MASK_OFFSET)
 			};
 		};
+		static_assert(sizeof(Vertex) == 0x1);
 
 		class VertexDesc
 		{
@@ -836,6 +911,7 @@ namespace RE
 				std::size_t taaState;
 				std::size_t taaDisableCounter;
 			};
+			static_assert(sizeof(TAAOffsets) == 0x10);
 
 			[[nodiscard]] static TAAOffsets GetTAAOffsets() noexcept
 			{
@@ -894,6 +970,7 @@ namespace RE
 		};
 		static_assert(sizeof(State) == 0x3C0);
 
+		// Value-initialize creation properties; pool matching reads unnamed bytes.
 		class RenderTargetProperties
 		{
 		public:
@@ -901,16 +978,24 @@ namespace RE
 			std::uint32_t width;                   // 00
 			std::uint32_t height;                  // 04
 			Format        format;                  // 08
-			std::uint32_t multiSample;             // 0C
+			std::byte     pad0C[4];                // 0C
 			bool          copyable;                // 10
 			bool          supportUnorderedAccess;  // 11
 			bool          allowMipGeneration;      // 12
-			bool          forceLinear;             // 13
+			std::byte     pad13;                   // 13
 			std::int32_t  mipLevel;                // 14
 			std::uint32_t textureTarget;           // 18
-			bool          enableFastClear;         // 1C
+			std::byte     pad1C[4];                // 1C
 		};
 		static_assert(sizeof(RenderTargetProperties) == 0x20);
+		static_assert(offsetof(RenderTargetProperties, width) == 0x00);
+		static_assert(offsetof(RenderTargetProperties, height) == 0x04);
+		static_assert(offsetof(RenderTargetProperties, format) == 0x08);
+		static_assert(offsetof(RenderTargetProperties, copyable) == 0x10);
+		static_assert(offsetof(RenderTargetProperties, supportUnorderedAccess) == 0x11);
+		static_assert(offsetof(RenderTargetProperties, allowMipGeneration) == 0x12);
+		static_assert(offsetof(RenderTargetProperties, mipLevel) == 0x14);
+		static_assert(offsetof(RenderTargetProperties, textureTarget) == 0x18);
 
 		class DepthStencilTargetProperties
 		{
@@ -919,30 +1004,42 @@ namespace RE
 			std::uint32_t width;           // 00
 			std::uint32_t height;          // 04
 			std::uint32_t arraySize;       // 08
-			std::uint32_t multiSample;     // 0C
-			std::int32_t  alias;           // 10
-			bool          sampleable;      // 14
-			bool          htile;           // 15
+			std::byte     pad0C[0xA];      // 0C
 			bool          stencil;         // 16
 			bool          use16BitsDepth;  // 17
 		};
+		// Common prefix and OG stride; NG/AE append four bytes.
 		static_assert(sizeof(DepthStencilTargetProperties) == 0x18);
+		static_assert(offsetof(DepthStencilTargetProperties, width) == 0x00);
+		static_assert(offsetof(DepthStencilTargetProperties, height) == 0x04);
+		static_assert(offsetof(DepthStencilTargetProperties, arraySize) == 0x08);
+		static_assert(offsetof(DepthStencilTargetProperties, stencil) == 0x16);
+		static_assert(offsetof(DepthStencilTargetProperties, use16BitsDepth) == 0x17);
+
+		// Creation storage covers both runtime strides without extending OG views.
+		class DepthStencilTargetCreationProperties
+		{
+		public:
+			DepthStencilTargetProperties properties;  // 00
+			std::byte                    pad18[4];    // 18 - NG/AE only
+		};
+		static_assert(sizeof(DepthStencilTargetCreationProperties) == 0x1C);
+		static_assert(offsetof(DepthStencilTargetCreationProperties, properties) == 0x00);
+		static_assert(offsetof(DepthStencilTargetCreationProperties, pad18) == 0x18);
 
 		class CubeMapRenderTargetProperties
 		{
 		public:
 			// members
-			std::uint32_t width;           // 00
-			std::uint32_t height;          // 04
-			Format        format;          // 08
-			std::uint32_t multiSample;     // 0C
-			bool          sampleable;      // 10
-			std::int32_t  alias;           // 14
-			std::int32_t  _360Alias;       // 18
-			std::int32_t  _360Group;       // 1C
-			std::int32_t  _360TileHeight;  // 20
+			std::uint32_t width;        // 00
+			std::uint32_t height;       // 04
+			Format        format;       // 08
+			std::byte     pad0C[0x18];  // 0C
 		};
 		static_assert(sizeof(CubeMapRenderTargetProperties) == 0x24);
+		static_assert(offsetof(CubeMapRenderTargetProperties, width) == 0x00);
+		static_assert(offsetof(CubeMapRenderTargetProperties, height) == 0x04);
+		static_assert(offsetof(CubeMapRenderTargetProperties, format) == 0x08);
 
 		class DynamicTriShapeData
 		{
@@ -971,6 +1068,36 @@ namespace RE
 			{
 				static REL::Relocation<RenderTargetManager*> singleton{ ID::BSGraphics::RenderTargetManager::Singleton };
 				return singleton.get();
+			}
+
+			void CreateRenderTarget(RenderTargetID a_logicalID, const RenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateDepthStencilTarget(DepthStencilTargetID a_logicalID, const DepthStencilTargetCreationProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateDepthStencilTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateDepthStencilTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateCubeMapRenderTarget(CubeMapRenderTargetID a_logicalID, const CubeMapRenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateCubeMapRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			// Preserve the NG/AE tail when recreating an existing depth target.
+			[[nodiscard]] DepthStencilTargetCreationProperties GetDepthStencilTargetCreationProperties(std::size_t a_logicalID) const noexcept
+			{
+				const auto                           offsets = GetRenderTargetOffsets();
+				DepthStencilTargetCreationProperties properties{};
+				std::memcpy(&properties, &GetDepthStencilTargetProperties(a_logicalID), offsets.depthStencilTargetStride);
+				return properties;
 			}
 
 			void SetEnableDynamicResolution(bool a_enableDynamicResolution)
@@ -1181,6 +1308,7 @@ namespace RE
 				std::size_t depthStencilTargetID;
 				std::size_t cubeMapRenderTargetID;
 			};
+			static_assert(sizeof(RenderTargetOffsets) == 0x30);
 
 			struct DynamicResolutionOffsets
 			{
@@ -1189,6 +1317,7 @@ namespace RE
 				std::size_t isActivated;
 				std::size_t viewportAsDefault;
 			};
+			static_assert(sizeof(DynamicResolutionOffsets) == 0x20);
 
 			[[nodiscard]] static RenderTargetOffsets GetRenderTargetOffsets() noexcept
 			{
@@ -1213,7 +1342,6 @@ namespace RE
 
 			[[nodiscard]] static DynamicResolutionOffsets GetDynamicResolutionOffsets() noexcept
 			{
-				// Fallout4RE cs-rtm-dynamic-res-offsets.json @ a124812; RE-note-sourced OG offsets need live validation.
 				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8, 0xFA7 };
 				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5, 0xFE4 };
 				return REX::FModule::IsRuntimeOG() ? og : ngae;
@@ -1258,6 +1386,7 @@ namespace RE
 			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;                      // FB4
 			Create_T                      create;                                         // FB8
 		};
+		static_assert(sizeof(RenderTargetManager) == 0xFC0);
 		static_assert(offsetof(RenderTargetManager, renderTargetData) == 0x000);
 		static_assert(offsetof(RenderTargetManager, depthStencilTargetData) == 0xC80);
 		static_assert(offsetof(RenderTargetManager, cubeMapRenderTargetData) == 0xDA0);
