@@ -29,6 +29,7 @@ namespace RE
 		inline constexpr float        SHADOW_RASTER_SLOPE_SCALED_DEPTH_BIAS = 6.0F;
 		inline constexpr float        SHADOW_RASTER_DEPTH_BIAS_CLAMP = -100.0F;
 
+		class DynamicTriShape;
 		class StructuredBuffer;
 		enum class Format;
 		class Texture;

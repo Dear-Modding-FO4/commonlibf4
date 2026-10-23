@@ -1066,6 +1066,11 @@ namespace RE::ID
 			inline constexpr REL::VariantID FlushConstantGroup{ 1515598, 0 };  // Inlined in NG/AE
 			inline constexpr REL::VariantID GetShaderConstantGroupPS{ 266527, 2317224 };
 			inline constexpr REL::VariantID DrawTriShape{ 763320, 2276846 };
+			inline constexpr REL::VariantID DrawTriShapeIndexed{ 1533773, 2276847 };
+			inline constexpr REL::VariantID DrawTriShapeLargeIndices{ 815221, 2276848 };
+			inline constexpr REL::VariantID DrawInstancedTriShape{ 1240292, 2276849 };
+			inline constexpr REL::VariantID DrawDynamicTriShape{ 891634, 2276857 };
+			inline constexpr REL::VariantID DrawParticleShaderTriShape{ 611952, 2276858 };
 			inline constexpr REL::VariantID RunComputeShader{ 1108829, 2276940 };
 			inline constexpr REL::VariantID SetShaders{ 894905, 2276942 };
 			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904 };
