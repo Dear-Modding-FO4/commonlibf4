@@ -15,7 +15,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID CanUseIdle{ 1223707, 2229592 };
 		inline constexpr REL::VariantID ClearAttackStates{ 1525555, 2229773 };
 		inline constexpr REL::VariantID EndInterruptPackage{ 575188, 2229892 };
-		inline constexpr REL::VariantID EvaluatePackage{ 0, 2229802 };
 		inline constexpr REL::VariantID ExitCover{ 770035, 2231166 };
 		inline constexpr REL::VariantID GetAimVector{ 554863, 2230378 };
 		inline constexpr REL::VariantID GetClosestBone{ 1180004, 2230051 };
@@ -44,7 +43,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsCrippled{ 1238666, 2230998 };
 		inline constexpr REL::VariantID IsFollowing{ 629579, 2230013 };
 		inline constexpr REL::VariantID IsJumping{ 1041558, 2229640 };
-		inline constexpr REL::VariantID IsOnNavmesh{ 0, 2230282 };
 		inline constexpr REL::VariantID IsPathValid{ 1522194, 2230279 };
 		inline constexpr REL::VariantID IsPathing{ 989661, 2230276 };
 		inline constexpr REL::VariantID IsPathingComplete{ 817283, 2230274 };
@@ -81,64 +79,18 @@ namespace RE::ID
 		inline constexpr REL::VariantID DoHitMe{ 881215, 2231148 };
 		inline constexpr REL::VariantID SetCommandState{ 1512511, 2229916 };
 		inline constexpr REL::VariantID SetSneaking{ 400155, 2230404 };
-		inline constexpr REL::VariantID GetActorMover{ 1329664, 2230242 };
-		inline constexpr REL::VariantID GetActorMoverResolver{ 0, 2230241 };  // ActorMover* resolve(Actor*), handles mount indirection via actor+0x308
-		inline constexpr REL::VariantID GetMovementControllerNPC{ 1398256, 2230235 };
-		inline constexpr REL::VariantID CreateActorMover{ 369824, 2230491 };
-		inline constexpr REL::VariantID DestroyActorMover{ 0, 2230492 };
-		inline constexpr REL::VariantID ReleaseMovementControllerNPC{ 0, 2230236 };
-		inline constexpr REL::VariantID SetPathfindingGoal_REFR{ 0, 2230248 };   // void(Actor*, TESObjectREFR*, float, BSPathingAvoidNodeArray*)
-		inline constexpr REL::VariantID SetPathfindingGoal_Checked{ 0, 2230259 }; // bool(Actor*, undefined4, longlong*, float)
-		inline constexpr REL::VariantID SetPathfindingGoalPos_NiPoint3{ 0, 2230256 };  // bool(Actor*, NiPoint3*, float)
-		inline constexpr REL::VariantID SetPathfindingGoalPos_Checked{ 0, 2230258 }; // bool(Actor*, NiPoint3*, longlong*, float)
-		inline constexpr REL::VariantID ClearPath{ 0, 2230253 };  // void(Actor*, BSTSmartPointer<PathingRequest>&)
-		// SetPathfindingGoalPos with full TargetData struct (8 params). This is the version
-		// called by AI package dispatch (65+ callers via FUN_140c9bca0, RVA 0xC9BCA0).
-		// Distinct from SetPathfindingGoalPos_NiPoint3 (ID 2230256, RVA 0xC9B590).
-		inline constexpr REL::VariantID SetPathfindingGoalPos_TargetData{ 0, 2230266 };
-		// Per-frame pathing update dispatcher: calls ActorMover::UpdatePathing (ID 2234296)
-		// via CALL at offset +0xD9 from entry. RVA 0xC9B9F0
-		inline constexpr REL::VariantID DispatchUpdatePathing{ 0, 2230262 };
+		inline constexpr REL::VariantID GetCurrentActorMover{ 1199471, 2230241, 2230241 };
+		inline constexpr REL::VariantID SetPathfindingGoal_REFR{ 612394, 2230246, 2230246 };
+		inline constexpr REL::VariantID ClearPath{ 927158, 2230263, 2230263 };
 	}
 
 	namespace ActorMover
 	{
-		inline constexpr REL::VariantID ctor{ 4155763, 2234288 };
-		inline constexpr REL::VariantID dtor{ 12252, 4485111 };
-		inline constexpr REL::VariantID IsPathing{ 4090716, 2234290 };
-		inline constexpr REL::VariantID ClearPath{ 4660091, 2234295 };						// NOTE: IDs.h previously had 2234298 here - is actually SetPathfindingGoalPos
-		inline constexpr REL::VariantID SetPathfindingGoal{ 142993, 2234292 };
-		inline constexpr REL::VariantID SetPathfindingGoalEx{ 1113466, 2234294 };
-		inline constexpr REL::VariantID IsActorPathing{ 0, 2234289 };						// bool(ActorMover*, BSTSmartPointer<PathingRequest>&)
-		inline constexpr REL::VariantID SetPathfindingGoalPos_Inner{ 0, 2234291 };			// void(ActorMover*, Actor*, float, uint64_t)
-		inline constexpr REL::VariantID SetPathfindingGoal2{ 0, 2234293 };					// void(ActorMover*, TESObjectREFR*, float, float, BSPathingAvoidNodeArray*)
-		inline constexpr REL::VariantID UpdatePathing{ 0, 2234296 };						// void(ActorMover*, float)
-		inline constexpr REL::VariantID RequestPath{ 0, 2234297 };							// void(ActorMover*)
-		inline constexpr REL::VariantID SetPathfindingGoalPos{ 0, 2234299 };				// void(ActorMover*, NiPoint3*, uint32_t, float, float, uint32_t)
-		inline constexpr REL::VariantID SetPathfindingGoalActor{ 0, 2234300 };				// void(ActorMover*, Actor*, float, float)
-		inline constexpr REL::VariantID IsPathValid{ 0, 2234301 };							// bool(ActorMover*)
-		inline constexpr REL::VariantID StopMoving{ 0, 2234302 };							// void(ActorMover*)
-		inline constexpr REL::VariantID SetPathfindingPos_Hdg{ 0, 2234303 };				// ulonglong(ActorMover*, float heading, float speed)
-		inline constexpr REL::VariantID SetPathfindingPos_NiPoint3{ 0, 2234304 };			// bool(ActorMover*, NiPoint3*, float speed)
-		inline constexpr REL::VariantID SetPathfindingGoal_CheckMoveOnly{ 0, 2234305 };		// bool(ActorMover*, uint, void*, float)
-		inline constexpr REL::VariantID SetPathfindingGoalPos_CheckMoveOnly{ 0, 2234306 };	// bool(ActorMover*, NiPoint3*, void*, float)
-		inline constexpr REL::VariantID PathingRequest_IsComplete{ 0, 2234307 };			// uint8_t(ActorMover*)
-		inline constexpr REL::VariantID PathingRequest_CheckPathStatus{ 0, 2234308 };		// uint8_t(ActorMover*)
-		inline constexpr REL::VariantID ComparePathDestination{ 0, 2234309 };				// bool(ActorMover*, void*, uint8_t*)
-		inline constexpr REL::VariantID CompareAndResendPath{ 0, 2234310 };					// bool(ActorMover*, void*, uint8_t*)
-		inline constexpr REL::VariantID GetPathingState{ 0, 2234311 };        				// uint8_t(ActorMover*)
-		inline constexpr REL::VariantID IsPathing_MC{ 0, 2234312 };           				// bool(ActorMover*) via MovementController event sink
-		inline constexpr REL::VariantID IsPathing_MC_CheckType{ 0, 2234313 }; 				// bool(ActorMover*)
-		inline constexpr REL::VariantID Activate3D{ 0, 2234375 };           				// void(MovementControllerNPC*) - Activate for 3D-loaded actors
-		inline constexpr REL::VariantID Activate3DNotLoaded{ 0, 2234376 };  				// void(MovementControllerNPC*) - Activate when 3D not yet loaded
-	}
-
-	namespace IMovementSetGoal
-	{
-		// Concrete implementation on MovementControllerNPC.
-		// Every path submission (SetGoal/RrequestPath) converges through these.
-		inline constexpr REL::VariantID SetGoal{ 0, 2301642 };
-		inline constexpr REL::VariantID RequestPath{ 0, 2301645 };
+		inline constexpr REL::VariantID SetGoal{ 1438155, 2234291, 2234291 };
+		inline constexpr REL::VariantID SetGoalPos{ 1026812, 2234290, 2234290 };
+		inline constexpr REL::VariantID ClearPath{ 903222, 2234297, 2234297 };
+		inline constexpr REL::VariantID IsPathing{ 203246, 2234312, 2234312 };
+		inline constexpr REL::VariantID IsPathValid{ 800997, 2234314, 2234314 };
 	}
 
 	namespace ActorEquipManager
@@ -2499,6 +2451,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Init{ 114988, 2208804 };
 		inline constexpr REL::VariantID Update{ 4410, 2208806 };
+	}
+
+	namespace MovementControllerNPC
+	{
+		inline constexpr REL::VariantID QueryInterface{ 1132418, 2301643, 2301643 };
 	}
 
 	namespace MovementPlannerAgentWarp

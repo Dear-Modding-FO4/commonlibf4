@@ -7039,7 +7039,6 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  IMovementParameters{ REL::ID(1136103) };
 		inline constexpr std::array<REL::ID, 1>  IMovementPathManagerAgent{ REL::ID(229619) };
 		inline constexpr std::array<REL::ID, 1>  IMovementPathManagerDataTracker{ REL::ID(360858) };
-		inline constexpr std::array<REL::ID, 1>  IMovementPlannerAgent{ REL::ID(917416) };
 		inline constexpr std::array<REL::ID, 1>  IMovementPlannerDirectControl{ REL::ID(1442069) };
 		inline constexpr std::array<REL::ID, 1>  IMovementPlannerSetArbitration{ REL::ID(1123899) };
 		inline constexpr std::array<REL::ID, 1>  IMovementPlayIdleResult{ REL::ID(21100) };

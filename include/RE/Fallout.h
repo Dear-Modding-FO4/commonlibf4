@@ -437,7 +437,6 @@
 #include "RE/B/BSPathingLockData.h"
 #include "RE/B/BSPathingNode.h"
 #include "RE/B/BSPathingRequest.h"
-#include "RE/B/BSPathingRequestRotate.h"
 #include "RE/B/BSPathingRestrictions.h"
 #include "RE/B/BSPathingSearchAreaRestrictions.h"
 #include "RE/B/BSPathingSearchParameters.h"
