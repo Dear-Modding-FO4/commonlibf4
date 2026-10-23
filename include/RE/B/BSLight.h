@@ -20,7 +20,8 @@ namespace RE
 		enum class Shape : std::uint32_t
 		{
 			kNone = 0,
-			kUnk1 = 1,
+			kDirectional = 1,
+			kUnk1 = kDirectional,
 			kPoint = 2,
 			kHemisphere = 3,
 			kUnk4 = 4,
