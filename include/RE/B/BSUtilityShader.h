@@ -65,9 +65,26 @@ namespace RE
 			return func(this, a_pass);
 		}
 
-		// members
-		std::uint32_t currentTechniqueID;  // 118
-		std::uint32_t currentDecl;         // 11C
+		struct RuntimeData
+		{
+			std::uint32_t currentTechniqueID;  // 00
+			std::uint32_t currentDecl;         // 04
+		};
+		static_assert(sizeof(RuntimeData) == 0x8);
+
+		[[nodiscard]] RuntimeData& GetRuntimeData() noexcept
+		{
+			return REL::RelocateMember<RuntimeData>(this, REL::Offset{ 0x118, 0x190 });
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData() const noexcept
+		{
+			return REL::RelocateMember<RuntimeData>(this, REL::Offset{ 0x118, 0x190 });
+		}
+
+	private:
+		// OG storage; use GetRuntimeData across runtimes.
+		std::byte unk118[0x8];  // 118
 	};
 	static_assert(sizeof(BSUtilityShader) == 0x120);
 }
