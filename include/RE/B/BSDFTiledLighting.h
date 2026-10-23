@@ -45,13 +45,34 @@ namespace RE
 			LightBuffers&  buffers;
 		};
 
-		[[nodiscard]] inline TiledLightFrameView GetFrameView()
+		[[nodiscard]] inline std::uint32_t& GetWriteSide()
 		{
 			static REL::Relocation<std::uint32_t*> side{ ID::BSDFTiledLighting::WriteSide };
-			static REL::Relocation<LightCounts*>   counts{ ID::BSDFTiledLighting::LightCounts };
-			static REL::Relocation<LightRecords*>  records{ ID::BSDFTiledLighting::LightRecords };
-			static REL::Relocation<LightBuffers*>  buffers{ ID::BSDFTiledLighting::LightBuffers };
-			return { *side, *counts, *records, *buffers };
+			return *side;
+		}
+
+		[[nodiscard]] inline LightCounts& GetLightCounts()
+		{
+			static REL::Relocation<LightCounts*> counts{ ID::BSDFTiledLighting::LightCounts };
+			return *counts;
+		}
+
+		[[nodiscard]] inline LightRecords& GetLightRecords()
+		{
+			static REL::Relocation<LightRecords*> records{ ID::BSDFTiledLighting::LightRecords };
+			return *records;
+		}
+
+		[[nodiscard]] inline LightBuffers& GetLightBuffers()
+		{
+			static REL::Relocation<LightBuffers*> buffers{ ID::BSDFTiledLighting::LightBuffers };
+			return *buffers;
+		}
+
+		[[nodiscard]] inline TiledLightFrameView GetFrameView()
+		{
+			return { GetWriteSide(), GetLightCounts(), GetLightRecords(),
+				GetLightBuffers() };
 		}
 
 		// Native append does not enforce the cumulative 625-record capacity.

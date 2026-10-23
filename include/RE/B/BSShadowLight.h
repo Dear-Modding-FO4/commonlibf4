@@ -47,7 +47,6 @@ namespace RE
 		static_assert(offsetof(ShadowMapData, cullingProcess) == 0xE0);
 
 		// members
-		std::byte      unk188[0x8];      // 188 - unmapped BSLight tail
 		std::uint32_t  shadowMapCount;   // 190
 		std::byte      unk194[0x4];      // 194
 		ShadowMapData* shadowMapData;    // 198
