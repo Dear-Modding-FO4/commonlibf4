@@ -11,6 +11,13 @@ namespace RE
 	class BSBatchRenderer
 	{
 	public:
+		static void Draw(BSRenderPass* a_pass)
+		{
+			using func_t = decltype(&BSBatchRenderer::Draw);
+			static REL::Relocation<func_t> func{ ID::BSBatchRenderer::Draw };
+			func(a_pass);
+		}
+
 		static constexpr auto RTTI{ RTTI::BSBatchRenderer };
 		static constexpr auto VTABLE{ VTABLE::BSBatchRenderer };
 

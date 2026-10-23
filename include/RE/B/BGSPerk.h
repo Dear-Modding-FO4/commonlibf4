@@ -23,6 +23,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSPerk };
 		static constexpr auto VTABLE{ VTABLE::BGSPerk };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPERK };
+		static constexpr auto TYPE_ID{ BSScript::kPerk };
 
 		// members
 		PerkData                data;            // 58

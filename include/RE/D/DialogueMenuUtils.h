@@ -18,6 +18,13 @@ namespace RE
 			return func();
 		}
 
+		inline void ShowButtons()
+		{
+			using func_t = decltype(&DialogueMenuUtils::ShowButtons);
+			static REL::Relocation<func_t> func{ ID::DialogueMenuUtils::ShowButtons };
+			return func();
+		}
+
 		inline void ShowSpeechChallengeAnim()
 		{
 			using func_t = decltype(&DialogueMenuUtils::ShowSpeechChallengeAnim);

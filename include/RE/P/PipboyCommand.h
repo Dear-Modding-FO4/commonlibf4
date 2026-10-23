@@ -1,5 +1,10 @@
 #pragma once
 
+namespace Json
+{
+	class Value;
+}
+
 namespace RE
 {
 	class PipboyCommandResult;

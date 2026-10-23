@@ -14,6 +14,7 @@
 
 namespace RE
 {
+	class Actor;
 	class ActorCause;
 	class NiLight;
 	class NonActorMagicCaster;
@@ -73,6 +74,33 @@ namespace RE
 		virtual void Initialize();           // C6
 		virtual void Update(float a_delta);  // C7
 		virtual void FindTargets();          // C8
+
+		// Whoever set the blast off, or null when the owner has gone away or is
+		// not an actor. This is the aggressor the engine credits an explosion's
+		// blows to.
+		[[nodiscard]] Actor* GetActorOwner()
+		{
+			using func_t = decltype(&Explosion::GetActorOwner);
+			static REL::Relocation<func_t> func{ ID::Explosion::GetActorOwner };
+			return func(this);
+		}
+
+		// What the blast is worth. Worked out from the explosion record's damage
+		// and this explosion's damageMult the first time anything asks, then kept
+		// in calculatedDamage and handed back unchanged after that.
+		//
+		// Every question the engine asks about a live blast is answered from
+		// here, from whether it is worth looking for targets at all to what each
+		// of them loses. The item card is the one thing that does not come
+		// through it, because a weapon being looked at has set nothing off, so
+		// CombatFormulas::GetWeaponDisplayDamage reads the explosion record
+		// instead and the two arrive at the same number by different routes.
+		[[nodiscard]] float GetDamage()
+		{
+			using func_t = decltype(&Explosion::GetDamage);
+			static REL::Relocation<func_t> func{ ID::Explosion::GetDamage };
+			return func(this);
+		}
 
 		// members
 		hknpClosestUniqueBodyIdHitCollector collector;           // 110

@@ -4,7 +4,9 @@
 
 namespace RE
 {
+	class Actor;
 	class TESCondition;
+	class TESObjectREFR;
 
 	class __declspec(novtable) BGSRefAlias :
 		public BGSBaseAlias  // 00
@@ -13,6 +15,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSRefAlias };
 		static constexpr auto VTABLE{ VTABLE::BGSRefAlias };
 		static constexpr auto TYPE{ "Ref"sv };
+		static constexpr auto TYPE_ID{ BSScript::kReferenceAlias };
 
 		enum class FILL_TYPE
 		{
@@ -33,6 +36,9 @@ namespace RE
 			std::uint64_t data[3];
 		};
 		static_assert(sizeof(GenericFillData) == 0x18);
+
+		[[nodiscard]] TESObjectREFR* GetReference() const;
+		[[nodiscard]] Actor*         GetActorReference() const;
 
 		// members
 		GenericFillData fillData;    // 28

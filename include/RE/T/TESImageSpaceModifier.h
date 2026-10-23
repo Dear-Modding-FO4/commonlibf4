@@ -17,6 +17,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESImageSpaceModifier };
 		static constexpr auto VTABLE{ VTABLE::TESImageSpaceModifier };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIMAD };
+		static constexpr auto TYPE_ID{ BSScript::kImageSpaceModifier };
 
 		enum class ImageSpaceModifierOperations
 		{

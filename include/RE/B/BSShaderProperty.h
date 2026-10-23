@@ -7,7 +7,10 @@
 namespace RE
 {
 	class BSEffectShaderData;
+	class BSGeometry;
+	class BSLight;
 	class BSRenderPass;
+	class BSShader;
 	class BSShaderAccumulator;
 	class BSShaderMaterial;
 	class NiTexture;
@@ -113,6 +116,13 @@ namespace RE
 		public:
 			constexpr RenderPassArray() noexcept {}  // NOLINT(modernize-use-equals-default)
 
+			BSRenderPass* Add(BSShader* a_shader, BSShaderProperty* a_property, BSGeometry* a_geometry, std::uint32_t a_passEnum, std::uint8_t a_passType, BSLight* a_light0, BSLight* a_light1, BSLight* a_light2, BSLight* a_light3)
+			{
+				using func_t = decltype(&RenderPassArray::Add);
+				static REL::Relocation<func_t> func{ ID::BSShaderProperty::RenderPassArray::Add };
+				return func(this, a_shader, a_property, a_geometry, a_passEnum, a_passType, a_light0, a_light1, a_light2, a_light3);
+			}
+
 			// members
 			BSRenderPass* passList{ nullptr };  // 0
 		};
@@ -146,6 +156,14 @@ namespace RE
 			using func_t = decltype(&BSShaderProperty::SetMaterial);
 			static REL::Relocation<func_t> func{ ID::BSShaderProperty::SetMaterial };
 			return func(this, a_material, a_unique);
+		}
+
+		// Dirties the pass cache (lastRenderPassState) when the bit changes.
+		void SetFlag(EShaderPropertyFlag a_flag, bool a_value)
+		{
+			using func_t = void (*)(BSShaderProperty*, std::uint8_t, bool);
+			static REL::Relocation<func_t> func{ ID::BSShaderProperty::SetFlag };
+			return func(this, static_cast<std::uint8_t>(std::countr_zero(static_cast<std::uint64_t>(a_flag))), a_value);
 		}
 
 		// members

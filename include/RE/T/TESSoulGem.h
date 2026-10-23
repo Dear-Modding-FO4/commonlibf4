@@ -11,6 +11,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESSoulGem };
 		static constexpr auto VTABLE{ VTABLE::TESSoulGem };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSLGM };
+		static constexpr auto TYPE_ID{ BSScript::kSoulGem };
 
 		// members
 		TESSoulGem* linkedSoulGem;  // 168

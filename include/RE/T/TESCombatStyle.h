@@ -18,6 +18,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESCombatStyle };
 		static constexpr auto VTABLE{ VTABLE::TESCombatStyle };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCSTY };
+		static constexpr auto TYPE_ID{ BSScript::kCombatStyle };
 
 		enum class FLAG : std::uint32_t
 		{

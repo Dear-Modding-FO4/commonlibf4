@@ -25,6 +25,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSLocation };
 		static constexpr auto VTABLE{ VTABLE::BGSLocation };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLCTN };
+		static constexpr auto TYPE_ID{ BSScript::kLocation };
 
 		class KEYWORD_DATA
 		{

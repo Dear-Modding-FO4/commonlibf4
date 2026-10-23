@@ -41,6 +41,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectARMO };
 		static constexpr auto VTABLE{ VTABLE::TESObjectARMO };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kARMO };
+		static constexpr auto TYPE_ID{ BSScript::kArmor };
 
 		class __declspec(novtable) InstanceData :
 			public TBO_InstanceData  // 00

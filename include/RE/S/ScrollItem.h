@@ -21,6 +21,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::ScrollItem };
 		static constexpr auto VTABLE{ VTABLE::ScrollItem };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSCRL };
+		static constexpr auto TYPE_ID{ BSScript::kScroll };
 	};
 	static_assert(sizeof(ScrollItem) == 0x1B8);
 }

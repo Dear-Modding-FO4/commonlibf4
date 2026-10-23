@@ -1,5 +1,10 @@
 #pragma once
 
+namespace Json
+{
+	class Value;
+}
+
 namespace RE
 {
 	class __declspec(novtable) PipboyCommandResult

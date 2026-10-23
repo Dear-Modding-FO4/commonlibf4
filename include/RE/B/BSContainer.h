@@ -6,8 +6,8 @@ namespace RE
 	{
 		enum class ForEachResult
 		{
-			kContinue = 0x0,
-			kStop = 0x1
+			kStop = 0x0,
+			kContinue = 0x1
 		};
 	}
 }

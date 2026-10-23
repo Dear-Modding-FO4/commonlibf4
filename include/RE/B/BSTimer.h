@@ -1,14 +1,61 @@
 #pragma once
 
+#include "REX/FModule.h"
+
 namespace RE
 {
 	class BSTimer
 	{
 	public:
+		struct RuntimeData
+		{
+			std::uint64_t firstTime;                      // 00
+			std::uint64_t disabledLastTime;               // 08
+			std::uint64_t disabledFirstTime;              // 10
+			std::uint32_t disableCounter;                 // 18
+			bool          useGlobalTimeMultiplierTarget;  // 1C
+		};
+		static_assert(sizeof(RuntimeData) == 0x20);
+
+		[[nodiscard]] static constexpr std::size_t GetRuntimeSize(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) noexcept
+		{
+			return a_runtime == REX::FModule::Runtime::kAE ? 0x50 : 0x40;
+		}
+
+		[[nodiscard]] RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) noexcept
+		{
+			return *reinterpret_cast<RuntimeData*>(
+				reinterpret_cast<std::byte*>(this) + GetRuntimeSize(a_runtime) - sizeof(RuntimeData));
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) const noexcept
+		{
+			return *reinterpret_cast<const RuntimeData*>(
+				reinterpret_cast<const std::byte*>(this) + GetRuntimeSize(a_runtime) - sizeof(RuntimeData));
+		}
+
+		// lastTime is at 0x18 on OG/NG; the member layout is AE-only.
+		[[nodiscard]] std::uint64_t QLastTime(
+			REX::FModule::Runtime a_runtime = REX::FModule::GetRuntimeIndex()) const noexcept
+		{
+			const auto offset = a_runtime == REX::FModule::Runtime::kAE ? 0x20 : 0x18;
+			return *reinterpret_cast<const std::uint64_t*>(
+				reinterpret_cast<const std::byte*>(this) + offset);
+		}
+
 		[[nodiscard]] static BSTimer* GetSingleton()
 		{
 			static REL::Relocation<BSTimer*> singleton{ ID::BSTimer::Singleton };
 			return singleton.get();
+		}
+
+		[[nodiscard]] static float QGameDeltaTime()
+		{
+			static REL::Relocation<float*> value{ ID::BSTimer::QGameDeltaTime };
+			return *value;
 		}
 
 		[[nodiscard]] static float QGlobalTimeMultiplier()
@@ -36,8 +83,9 @@ namespace RE
 		float         clampRemainder;                 // 0C
 		float         delta;                          // 10
 		float         realTimeDelta;                  // 14
-		std::uint64_t lastTime;                       // 18
-		std::byte     unk20[0x10];                    // 20
+		std::uint64_t realDeltaMs;                    // 18
+		std::uint64_t lastTime;                       // 20
+		std::uint64_t lastRawTime;                    // 28
 		std::uint64_t firstTime;                      // 30
 		std::uint64_t disabledLastTime;               // 38
 		std::uint64_t disabledFirstTime;              // 40

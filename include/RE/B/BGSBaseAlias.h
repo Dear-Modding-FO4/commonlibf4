@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/E/ENUM_TYPE_ID.h"
 
 namespace RE
 {
@@ -9,6 +10,7 @@ namespace RE
 	public:
 		static constexpr auto RTTI{ RTTI::ExtraReferenceHandles };
 		static constexpr auto VTABLE{ VTABLE::ExtraReferenceHandles };
+		static constexpr auto TYPE_ID{ BSScript::kAlias };
 
 		enum class FLAGS : unsigned
 		{
@@ -49,7 +51,8 @@ namespace RE
 		virtual void                               UpdateFromExternalAlias() const = 0;  // 06
 		[[nodiscard]] virtual BGSBaseAlias*        GetLinkedAlias() const = 0;           // 07
 
-		[[nodiscard]] bool IsQuestObject() const noexcept { return flags.all(FLAGS::kQuestObject); }
+		[[nodiscard]] VMTypeID GetVMTypeID() const;
+		[[nodiscard]] bool     IsQuestObject() const noexcept { return flags.all(FLAGS::kQuestObject); }
 
 		// mmebers
 		BSFixedString                       aliasName;    // 08

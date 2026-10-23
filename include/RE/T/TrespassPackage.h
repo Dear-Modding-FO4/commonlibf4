@@ -11,6 +11,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TrespassPackage };
 		static constexpr auto VTABLE{ VTABLE::TrespassPackage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPACK };
+		static constexpr auto TYPE_ID{ BSScript::kPackage };
 
 		// members
 		float        warningtimer;  // C8

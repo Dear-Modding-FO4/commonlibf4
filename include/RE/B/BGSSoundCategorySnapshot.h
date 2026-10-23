@@ -12,6 +12,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSSoundCategorySnapshot };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundCategorySnapshot };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSCSN };
+		static constexpr auto TYPE_ID{ BSScript::kSoundCategorySnapshot };
 
 		// members
 		BSTHashMap<BGSSoundCategory*, float> categoryMult;  // 20

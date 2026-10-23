@@ -87,7 +87,7 @@ namespace RE
 	{
 		[[nodiscard]] std::uint32_t operator()(std::basic_string_view<CharT> a_data) const noexcept
 		{
-			return detail::GenerateCRC32({ a_data.data(), a_data.length() });
+			return detail::GenerateCRC32({ reinterpret_cast<const std::uint8_t*>(a_data.data()), a_data.length() });
 		}
 	};
 

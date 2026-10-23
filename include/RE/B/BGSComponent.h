@@ -17,6 +17,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSComponent };
 		static constexpr auto VTABLE{ VTABLE::BGSComponent };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCMPO };
+		static constexpr auto TYPE_ID{ BSScript::kComponent };
 
 		// members
 		TESObjectMISC* scrapItem;       // 98

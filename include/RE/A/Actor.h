@@ -7,6 +7,7 @@
 #include "RE/A/ActorState.h"
 #include "RE/A/ActorValueStorage.h"
 #include "RE/B/BGSEquipIndex.h"
+#include "RE/B/BGSObjectInstance.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
@@ -27,7 +28,7 @@ namespace RE
 	enum class ACTOR_CRITICAL_STAGE;
 	enum class ACTOR_LIFE_STATE;
 	enum class ACTOR_LOS_LOCATION;
-	enum class GUN_STATE;
+	enum class GUN_STATE : std::uint32_t;
 	enum class PACKAGE_OBJECT_TYPE;
 	enum class POWER_ATTACK_TYPE;
 
@@ -44,6 +45,7 @@ namespace RE
 	class bhkCharacterStateChangeEvent;
 	class bhkNonSupportContactEvent;
 	class BSMovementDataChangedEvent;
+	class BSSoundHandle;
 	class BSSubGraphActivationUpdate;
 	class BSTransformDeltaEvent;
 	class CastPowerItem;
@@ -57,6 +59,8 @@ namespace RE
 	class MovementMessageUpdateRequestImmediate;
 	class PackageLocation;
 	class PerkEntryVisitor;
+	class PerkEntryVisitor;
+	class PerkRankVisitor;
 	class Perks;
 
 	namespace MagicSystem
@@ -295,6 +299,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] bool GetBlocking()
+		{
+			using func_t = decltype(&Actor::GetBlocking);
+			static REL::Relocation<func_t> func{ ID::Actor::GetBlocking };
+			return func(this);
+		}
+
 		TESCombatStyle* GetCombatStyle()
 		{
 			using func_t = decltype(&Actor::GetCombatStyle);
@@ -305,6 +316,20 @@ namespace RE
 		[[nodiscard]] TESAmmo* GetCurrentAmmo(BGSEquipIndex a_equipIndex) const
 		{
 			return currentProcess ? currentProcess->GetCurrentAmmo(a_equipIndex) : nullptr;
+		}
+
+		[[nodiscard]] std::uint32_t GetCurrentAmmoCount(BGSEquipIndex a_equipIndex) const
+		{
+			using func_t = decltype(&Actor::GetCurrentAmmoCount);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentAmmoCount };
+			return func(this, a_equipIndex);
+		}
+
+		[[nodiscard]] BGSObjectInstance GetCurrentShield()
+		{
+			using func_t = decltype(&Actor::GetCurrentShield);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentShield };
+			return func(this);
 		}
 
 		std::uint32_t GetCurrentCollisionGroup()
@@ -363,6 +388,37 @@ namespace RE
 			using func_t = decltype(&Actor::GetPerkRank);
 			static REL::Relocation<func_t> func{ ID::Actor::GetPerkRank };
 			return func(this, a_perk);
+		}
+
+		class __declspec(novtable) ForEachSpellVisitor
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::Actor__ForEachSpellVisitor };
+			static constexpr auto VTABLE{ VTABLE::Actor__ForEachSpellVisitor };
+
+			virtual ~ForEachSpellVisitor() = default;            // 00
+			virtual std::int32_t Visit(SpellItem* a_spell) = 0;  // 01
+		};
+
+		[[nodiscard]] float GetMaxCarryWeight()
+		{
+			using func_t = decltype(&Actor::GetMaxCarryWeight);
+			static REL::Relocation<func_t> func{ ID::Actor::GetMaxCarryWeight };
+			return func(this);
+		}
+
+		void ForEachSpell(ForEachSpellVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachSpell);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachSpell };
+			return func(this, a_visitor);
+		}
+
+		void ForEachPerk(PerkRankVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachPerk);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachPerk };
+			return func(this, a_visitor);
 		}
 
 		SEX GetSex()
@@ -485,6 +541,13 @@ namespace RE
 			using func_t = decltype(&Actor::PerformAction);
 			static REL::Relocation<func_t> func{ ID::Actor::PerformAction };
 			return func(this, a_action, a_target);
+		}
+
+		BSSoundHandle& PlaySoundByEditorName(BSSoundHandle& a_handle, const char* a_editorName, bool a_loop, std::uint32_t a_usageFlags) const
+		{
+			using func_t = decltype(&Actor::PlaySoundByEditorName);
+			static REL::Relocation<func_t> func{ ID::Actor::PlaySoundByEditorName };
+			return func(this, a_handle, a_editorName, a_loop, a_usageFlags);
 		}
 
 		void RemovePerk(BGSPerk* a_perk)

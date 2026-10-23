@@ -113,6 +113,14 @@ namespace RE
 			return func(this);
 		}
 
+		// reports kTaggedComponents as soon as any required component is already tagged, before testing whether the count is short
+		[[nodiscard]] TAG_FOR_SEARCH_RESULT ShouldShowTagForSearch()
+		{
+			using func_t = decltype(&WorkshopMenu::ShouldShowTagForSearch);
+			static REL::Relocation<func_t> func{ ID::WorkshopMenu::ShouldShowTagForSearch };
+			return func(this);
+		}
+
 		// members
 		BSTArray<NiPoint3>                                                                          item3DPositions[4];                      // 100
 		BSTArray<BSTTuple<DisplayItemModel, TESObjectREFR*>>                                        displayItemModels;                       // 160

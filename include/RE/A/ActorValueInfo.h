@@ -20,9 +20,17 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::ActorValueInfo };
 		static constexpr auto VTABLE{ VTABLE::ActorValueInfo };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kAVIF };
+		static constexpr auto TYPE_ID{ BSScript::kActorValue };
 
 		using ModifiedCallback_t = void(Actor* a_actor, const ActorValueInfo& a_info, float a_originalValue, float a_delta, Actor* a_actorSource);
 		using DerivationFunction_t = float(const ActorValueOwner* a_actor, const ActorValueInfo& a_info);
+
+		[[nodiscard]] const char* QAbbreviation() const
+		{
+			using func_t = decltype(&ActorValueInfo::QAbbreviation);
+			static REL::Relocation<func_t> func{ ID::ActorValueInfo::QAbbreviation };
+			return func(this);
+		}
 
 		// members
 		std::function<ModifiedCallback_t>               modifiedCallback;          // 048

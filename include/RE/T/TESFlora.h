@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESFlora };
 		static constexpr auto VTABLE{ VTABLE::TESFlora };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFLOR };
+		static constexpr auto TYPE_ID{ BSScript::kFlora };
 	};
 	static_assert(sizeof(TESFlora) == 0x168);
 }

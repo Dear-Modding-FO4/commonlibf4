@@ -65,9 +65,11 @@ namespace RE
 							_head = iter->next;
 						}
 
-						if (!_tail || *_tail == iter) {
+						if (!_tail || _tail == std::addressof(iter->next)) {
 							_tail = std::addressof(prev ? prev->next : _head);
 						}
+
+						iter->next = nullptr;
 
 						MarkType(a_type, false);
 						return std::unique_ptr<BSExtraData>{ iter };
@@ -76,6 +78,13 @@ namespace RE
 			}
 
 			return nullptr;
+		}
+
+		void RemoveAll(bool a_deleteData)
+		{
+			using func_t = decltype(&BaseExtraList::RemoveAll);
+			static REL::Relocation<func_t> func{ ID::BaseExtraList::RemoveAll };
+			return func(this, a_deleteData);
 		}
 
 	private:

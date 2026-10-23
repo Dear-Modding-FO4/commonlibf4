@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::FleePackage };
 		static constexpr auto VTABLE{ VTABLE::FleePackage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPACK };
+		static constexpr auto TYPE_ID{ BSScript::kPackage };
 
 		// members
 		BSTArray<ObjectRefHandle> avoidRefs;      // 0C8

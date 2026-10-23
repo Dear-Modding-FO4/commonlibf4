@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSMusicType };
 		static constexpr auto VTABLE{ VTABLE::BGSMusicType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMUSC };
+		static constexpr auto TYPE_ID{ BSScript::kMusicType };
 
 		// members
 		BSFixedString formEditorID;  // 70

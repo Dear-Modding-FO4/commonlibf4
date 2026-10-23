@@ -14,6 +14,57 @@ namespace RE
 	class BSShaderManager
 	{
 	public:
+		static void Initialize()
+		{
+			using func_t = decltype(&BSShaderManager::Initialize);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::Initialize };
+			func();
+		}
+
+		[[nodiscard]] static std::int32_t& GetCachedShadowMapResolution()
+		{
+			static REL::Relocation<std::int32_t*> value{ ID::BSShaderManager::CachedShadowMapResolution };
+			return *value;
+		}
+
+		[[nodiscard]] static float& GetCachedLocalShadowDistance()
+		{
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedLocalShadowDistance };
+			return *value;
+		}
+
+		[[nodiscard]] static float& GetCachedLocalShadowDistanceSquared()
+		{
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedLocalShadowDistanceSquared };
+			return *value;
+		}
+
+		[[nodiscard]] static float& GetCachedDirectionalShadowDistance()
+		{
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedDirectionalShadowDistance };
+			return *value;
+		}
+
+		[[nodiscard]] static float& GetCachedDirectionalBlendWidth()
+		{
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedDirectionalBlendWidth };
+			return *value;
+		}
+
+		static void SetEmittanceRecurse(NiAVObject* a_object, NiColor& a_color)
+		{
+			using func_t = decltype(&BSShaderManager::SetEmittanceRecurse);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::SetEmittanceRecurse };
+			func(a_object, a_color);
+		}
+
+		static void SetExternalEmittanceRecurse(NiAVObject* a_object, NiColor* a_color)
+		{
+			using func_t = decltype(&BSShaderManager::SetExternalEmittanceRecurse);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::SetExternalEmittanceRecurse };
+			func(a_object, a_color);
+		}
+
 		enum class BSShaderTimerMode : std::uint32_t
 		{
 			kDefault = 0x0,
@@ -125,6 +176,34 @@ namespace RE
 
 		class State
 		{
+		public:
+			[[nodiscard]] static State* GetSingleton()
+			{
+				static REL::Relocation<State*> singleton{ ID::BSShaderManager::State::Singleton };
+				return singleton.get();
+			}
+
+			[[nodiscard]] NiTransform& GetDirectionalAmbientTransform() noexcept
+			{
+				return directionalAmbientTransform;
+			}
+
+			[[nodiscard]] const NiTransform& GetDirectionalAmbientTransform() const noexcept
+			{
+				return directionalAmbientTransform;
+			}
+
+			[[nodiscard]] ShadowSceneNode* GetShadowSceneNode(std::size_t a_index) const noexcept
+			{
+				return a_index < std::size(shadowSceneNode) ? shadowSceneNode[a_index] : nullptr;
+			}
+
+			[[nodiscard]] eSceneGraphEnum GetSceneGraph() const noexcept
+			{
+				return static_cast<eSceneGraphEnum>(sceneGraph);
+			}
+
+		private:
 			// members
 			ShadowSceneNode*              shadowSceneNode[5];                      // 00
 			float                         timerValues[6];                          // 28

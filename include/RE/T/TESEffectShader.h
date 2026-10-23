@@ -18,6 +18,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESEffectShader };
 		static constexpr auto VTABLE{ VTABLE::TESEffectShader };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEFSH };
+		static constexpr auto TYPE_ID{ BSScript::kEffectShader };
 
 		// members
 		EffectShaderData      data;                  // 050

@@ -11,6 +11,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSAction };
 		static constexpr auto VTABLE{ VTABLE::BGSAction };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kAACT };
+		static constexpr auto TYPE_ID{ BSScript::kAction };
 
 		// members
 		std::uint32_t index;  // 28

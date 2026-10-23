@@ -1,18 +1,16 @@
 #pragma once
 
-#include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 
 namespace RE
 {
 	class BGSSaveLoadFormIDMap
 	{
-	public:	
-		BSTHashMap<unsigned int, unsigned int> FormIDToIndexMap;
-		BSTHashMap<unsigned int, unsigned int> IndexToFormIDMap;
-		unsigned int iCurrentIndex;
+	public:
+		// members
+		BSTHashMap<std::uint32_t, std::uint32_t> FormIDToIndexMap;  // 00
+		BSTHashMap<std::uint32_t, std::uint32_t> IndexToFormIDMap;  // 30
+		std::uint32_t                            iCurrentIndex;     // 60
 	};
-
 	static_assert(sizeof(BGSSaveLoadFormIDMap) == 0x68);
 }
-

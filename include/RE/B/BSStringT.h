@@ -32,7 +32,7 @@ namespace RE
 			}
 		}
 
-		void deallocate(value_type* a_ptr, size_type a_count)
+		void deallocate([[maybe_unused]] value_type* a_ptr, [[maybe_unused]] size_type a_count)
 		{
 			assert(a_ptr == _buffer);
 			assert(a_count <= N);

@@ -206,6 +206,20 @@ namespace RE
 
 		bool IsLockedOutOfTerminal(ObjectRefHandle a_handle);
 
+		void HideShield()
+		{
+			using func_t = decltype(&PlayerCharacter::HideShield);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::HideShield };
+			return func(this);
+		}
+
+		void ShowShield()
+		{
+			using func_t = decltype(&PlayerCharacter::ShowShield);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::ShowShield };
+			return func(this);
+		}
+
 		bool IsPipboyLightOn()
 		{
 			using func_t = decltype(&PlayerCharacter::IsPipboyLightOn);
@@ -320,6 +334,27 @@ namespace RE
 			return func(this, a_enable);
 		}
 
+		void UpdateAnimation(float a_delta)
+		{
+			using func_t = decltype(&PlayerCharacter::UpdateAnimation);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::UpdateAnimation };
+			return func(this, a_delta);
+		}
+
+		bool HandlePositionPlayerRequest()
+		{
+			using func_t = decltype(&PlayerCharacter::HandlePositionPlayerRequest);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::HandlePositionPlayerRequest };
+			return func(this);
+		}
+
+		void SetTintingData(std::int16_t a_uniqueID, float a_tintingValue, std::uint32_t a_color)
+		{
+			using func_t = decltype(&PlayerCharacter::SetTintingData);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::SetTintingData };
+			return func(this, a_uniqueID, a_tintingValue, a_color);
+		}
+
 		// members
 		BSSpinLock                                                     actorToDisplayOnHUDLock;              // 628
 		BSSpinLock                                                     questTargetLock;                      // 630
@@ -339,7 +374,7 @@ namespace RE
 		BSTArray<ImageSpaceModifierInstanceForm*>                      animationImageSpaceInstances;         // 798
 		BSTArray<BSTTuple<NiPointer<NiLight>, bool>>                   playerLights;                         // 7B0
 		BSSimpleList<TESQuestStageItem*>                               questLog;                             // 7C8
-		BSTArray<BGSInstancedQuestObjective>                           objectives;                           // 7D9
+		BSTArray<BGSInstancedQuestObjective>                           objectives;                           // 7D8
 		BSTHashMap<TESQuest*, QuestTargetArray*>                       questTargets;                         // 7F0
 		BSTHashMap<std::uint32_t, SayOnceTimeStampStruct>              currentSayOnceInfosMap;               // 820
 		BSTHashMap<std::uint32_t, SayOnceTimeStampStruct>              currentSpeechRepeatMap;               // 850

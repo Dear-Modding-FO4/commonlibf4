@@ -22,6 +22,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSExplosion };
 		static constexpr auto VTABLE{ VTABLE::BGSExplosion };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEXPL };
+		static constexpr auto TYPE_ID{ BSScript::kExplosion };
 
 		enum class EXPLOSION_TYPE
 		{

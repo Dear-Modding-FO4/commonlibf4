@@ -19,6 +19,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESShout };
 		static constexpr auto VTABLE{ VTABLE::TESShout };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSHOU };
+		static constexpr auto TYPE_ID{ BSScript::kShout };
 
 		class Variation
 		{

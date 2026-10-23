@@ -20,6 +20,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectSTAT };
 		static constexpr auto VTABLE{ VTABLE::TESObjectSTAT };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSTAT };
+		static constexpr auto TYPE_ID{ BSScript::kStatic };
 
 		// members
 		TESObjectSTATData data;  // D0

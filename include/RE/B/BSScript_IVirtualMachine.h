@@ -10,6 +10,9 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTObjectArena.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/msvc/LegacyFunction.h"
+
+#include <REX/FModule.h>
 
 namespace RE
 {
@@ -67,15 +70,18 @@ namespace RE
 			virtual bool                                     GetScriptStructType(const BSFixedString& a_structTypeName, BSTSmartPointer<StructTypeInfo>& a_structType) = 0;                                                                                                                                                                                 // 13
 			virtual bool                                     GetScriptStructTypeNoLoad(const BSFixedString& a_structTypeName, BSTSmartPointer<StructTypeInfo>& a_structType) const = 0;                                                                                                                                                                     // 14
 			virtual bool                                     GetChildStructTypes(const BSFixedString& a_parentObjectName, BSTObjectArena<BSFixedString>& a_structTypes) const = 0;                                                                                                                                                                          // 15
-			virtual bool                                     CreateObject(const BSFixedString& a_objectTypeName, const BSTScrapHashMap<BSFixedString, Variable>& a_properties, BSTSmartPointer<Object>& a_newObj) = 0;                                                                                                                                      // 16
 			virtual bool                                     CreateObject(const BSFixedString& a_objectTypeName, BSTSmartPointer<Object>& a_newObj) = 0;                                                                                                                                                                                                    // 17
+			virtual bool                                     CreateObject(const BSFixedString& a_objectTypeName, const BSTScrapHashMap<BSFixedString, Variable>& a_properties, BSTSmartPointer<Object>& a_newObj) = 0;                                                                                                                                      // 16
 			virtual bool                                     CreateStruct(const BSFixedString& a_structTypeName, BSTSmartPointer<Struct>& a_newStruct) = 0;                                                                                                                                                                                                 // 18
 			virtual bool                                     CreateArray(TypeInfo::RawType a_elementType, const BSFixedString& a_elementObjectTypeName, std::uint32_t a_elementCount, BSTSmartPointer<Array>& a_newArray) = 0;                                                                                                                              // 1A
 			virtual bool                                     CreateArray(const TypeInfo& a_type, std::uint32_t a_elementCount, BSTSmartPointer<Array>& a_newArray) = 0;                                                                                                                                                                                     // 19
 			virtual bool                                     BindNativeMethod(IFunction* a_function) = 0;                                                                                                                                                                                                                                                   // 1B
 			virtual void                                     SetCallableFromTasklets(const char* a_objectName, const char* a_functionName, bool a_taskletCallable) = 0;                                                                                                                                                                                     // 1D
 			virtual void                                     SetCallableFromTasklets(const char* a_objectName, const char* a_stateName, const char* a_functionName, bool a_taskletCallable) = 0;                                                                                                                                                            // 1C
-			virtual void                                     ForEachBoundObject(std::uint64_t a_objHandle, const BSTThreadScrapFunction<BSContainer::ForEachResult(Object*)>& a_functor) = 0;                                                                                                                                                               // 1E
+		private:
+			virtual void ForEachBoundObjectRaw(std::uint64_t a_objHandle, const void* a_functor) = 0; // 1E
+
+		public:
 			virtual bool                                     FindBoundObject(std::uint64_t a_objHandle, const char* a_objectTypeName, bool a_allowConst, BSTSmartPointer<Object>& a_attachedObj, bool a_exactMatch) const = 0;                                                                                                                              // 1F
 			virtual void                                     MoveBoundObjects(std::uint64_t a_sourceHandle, std::uint64_t a_destHandle) = 0;                                                                                                                                                                                                                // 20
 			virtual void                                     ResetAllBoundObjects(std::uint64_t a_objHandle) = 0;                                                                                                                                                                                                                                           // 21
@@ -88,11 +94,14 @@ namespace RE
 			virtual bool                                     AddEventRelay(std::uint64_t a_sourceObject, const BSFixedString& a_eventName, const BSTSmartPointer<Object>& a_destObj) = 0;                                                                                                                                                                   // 28
 			virtual void                                     RemoveEventRelay(std::uint64_t a_sourceObject, const BSFixedString& a_eventName, const BSTSmartPointer<Object>& a_destObj) = 0;                                                                                                                                                                // 29
 			virtual void                                     RemoveAllEventRelays(const BSTSmartPointer<Object>& a_destObj) = 0;                                                                                                                                                                                                                            // 2A
-			virtual void                                     SendEvent(std::uint64_t a_objHandle, const BSFixedString& a_eventName, const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments, const BSTThreadScrapFunction<bool(const BSTSmartPointer<Object>&)>& a_filter, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0;  // 2B
-			virtual bool                                     DispatchStaticCall(const BSFixedString& a_objName, const BSFixedString& a_funcName, const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0;                                                                   // 2C
-			virtual bool                                     DispatchMethodCall(std::uint64_t a_objHandle, const BSFixedString& a_objName, const BSFixedString& a_funcName, const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0;                                        // 2E
-			virtual bool                                     DispatchMethodCall(const BSTSmartPointer<Object>& a_self, const BSFixedString& a_funcName, const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0;                                                            // 2D
-			virtual bool                                     DispatchUnboundMethodCall(std::uint64_t a_objHandle, const BSTSmartPointer<BoundScript>& a_script, const BSFixedString& a_funcName, const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0;                   // 2F
+		private:
+			virtual void SendEventRaw(std::uint64_t a_objHandle, const BSFixedString& a_eventName, const void* a_arguments, const void* a_filter, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0; // 2B
+			virtual bool DispatchStaticCallRaw(const BSFixedString& a_objName, const BSFixedString& a_funcName, const void* a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0; // 2C
+			virtual bool DispatchMethodCallRaw(std::uint64_t a_objHandle, const BSFixedString& a_objName, const BSFixedString& a_funcName, const void* a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0; // 2E
+			virtual bool DispatchMethodCallRaw(const BSTSmartPointer<Object>& a_self, const BSFixedString& a_funcName, const void* a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0; // 2D
+			virtual bool DispatchUnboundMethodCallRaw(std::uint64_t a_objHandle, const BSTSmartPointer<BoundScript>& a_script, const BSFixedString& a_funcName, const void* a_arguments, const BSTSmartPointer<IStackCallbackFunctor>& a_callback) = 0; // 2F
+
+		public:
 			virtual bool                                     IsWaitingOnLatent(std::uint32_t a_stackID) const = 0;                                                                                                                                                                                                                                          // 30
 			virtual void                                     ReturnFromLatent(std::uint32_t a_stackID, const Variable& a_retValue) = 0;                                                                                                                                                                                                                     // 31
 			[[nodiscard]] virtual ErrorLogger&               GetErrorLogger() const = 0;                                                                                                                                                                                                                                                                    // 32
@@ -107,6 +116,76 @@ namespace RE
 			virtual void                                     UnregisterForStatsEvent(BSTEventSink<StatsEvent>* a_sink) = 0;                                                                                                                                                                                                                                 // 3B
 			virtual void                                     PostCachedErrorToLogger(const ICachedErrorMessage& a_errorFunctor, ErrorLogger::Severity a_severity) const = 0;                                                                                                                                                                                // 3D
 			virtual void                                     PostCachedErrorToLogger(const ICachedErrorMessage& a_errorFunctor, std::uint32_t a_stackID, ErrorLogger::Severity a_severity) const = 0;                                                                                                                                                       // 3C
+
+			void ForEachBoundObject(
+				std::uint64_t a_objHandle,
+				const BSTThreadScrapFunction<BSContainer::ForEachResult(Object*)>& a_functor)
+			{
+				msvc::with_native_function(REX::FModule::IsRuntimeOG(), a_functor, [&](const void* a_native) {
+					ForEachBoundObjectRaw(a_objHandle, a_native);
+				});
+			}
+
+			void SendEvent(
+				std::uint64_t a_objHandle,
+				const BSFixedString& a_eventName,
+				const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments,
+				const BSTThreadScrapFunction<bool(const BSTSmartPointer<Object>&)>& a_filter,
+				const BSTSmartPointer<IStackCallbackFunctor>& a_callback)
+			{
+				const auto legacy = REX::FModule::IsRuntimeOG();
+				msvc::with_native_function(legacy, a_arguments, [&](const void* a_nativeArguments) {
+					msvc::with_native_function(legacy, a_filter, [&](const void* a_nativeFilter) {
+						SendEventRaw(a_objHandle, a_eventName, a_nativeArguments, a_nativeFilter, a_callback);
+					});
+				});
+			}
+
+			bool DispatchStaticCall(
+				const BSFixedString& a_objName,
+				const BSFixedString& a_funcName,
+				const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments,
+				const BSTSmartPointer<IStackCallbackFunctor>& a_callback)
+			{
+				return msvc::with_native_function(REX::FModule::IsRuntimeOG(), a_arguments, [&](const void* a_native) {
+					return DispatchStaticCallRaw(a_objName, a_funcName, a_native, a_callback);
+				});
+			}
+
+			bool DispatchMethodCall(
+				std::uint64_t a_objHandle,
+				const BSFixedString& a_objName,
+				const BSFixedString& a_funcName,
+				const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments,
+				const BSTSmartPointer<IStackCallbackFunctor>& a_callback)
+			{
+				return msvc::with_native_function(REX::FModule::IsRuntimeOG(), a_arguments, [&](const void* a_native) {
+					return DispatchMethodCallRaw(a_objHandle, a_objName, a_funcName, a_native, a_callback);
+				});
+			}
+
+			bool DispatchMethodCall(
+				const BSTSmartPointer<Object>& a_self,
+				const BSFixedString& a_funcName,
+				const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments,
+				const BSTSmartPointer<IStackCallbackFunctor>& a_callback)
+			{
+				return msvc::with_native_function(REX::FModule::IsRuntimeOG(), a_arguments, [&](const void* a_native) {
+					return DispatchMethodCallRaw(a_self, a_funcName, a_native, a_callback);
+				});
+			}
+
+			bool DispatchUnboundMethodCall(
+				std::uint64_t a_objHandle,
+				const BSTSmartPointer<BoundScript>& a_script,
+				const BSFixedString& a_funcName,
+				const BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>& a_arguments,
+				const BSTSmartPointer<IStackCallbackFunctor>& a_callback)
+			{
+				return msvc::with_native_function(REX::FModule::IsRuntimeOG(), a_arguments, [&](const void* a_native) {
+					return DispatchUnboundMethodCallRaw(a_objHandle, a_script, a_funcName, a_native, a_callback);
+				});
+			}
 
 			template <class F>
 			void BindNativeMethod(

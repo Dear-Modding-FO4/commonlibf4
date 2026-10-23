@@ -58,8 +58,8 @@
 		<Expand>
 			<ArrayItems>
 				<Size>_size</Size>
-				<ValuePointer Condition="_size &gt; 0">($T1*)_data.heap</ValuePointer>
-				<ValuePointer Condition="_size &lt;= 0">($T1*)_data.local</ValuePointer>
+				<ValuePointer Condition="_size &gt; 1">($T1*)heap</ValuePointer>
+				<ValuePointer Condition="_size &lt;= 1">($T1*)&amp;local</ValuePointer>
 			</ArrayItems>
 		</Expand>
 	</Type>

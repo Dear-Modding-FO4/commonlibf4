@@ -34,6 +34,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectMISC };
 		static constexpr auto VTABLE{ VTABLE::TESObjectMISC };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMISC };
+		static constexpr auto TYPE_ID{ BSScript::kMiscObject };
 
 		// add
 		virtual void SaveImpl() { return; }                    // 67

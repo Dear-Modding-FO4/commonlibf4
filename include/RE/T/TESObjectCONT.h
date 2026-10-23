@@ -36,6 +36,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectCONT };
 		static constexpr auto VTABLE{ VTABLE::TESObjectCONT };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCONT };
+		static constexpr auto TYPE_ID{ BSScript::kContainer };
 
 		enum class Flags : std::int8_t
 		{

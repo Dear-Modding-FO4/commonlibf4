@@ -9,7 +9,7 @@ namespace RE
 	class BSSoundHandle
 	{
 	public:
-		~BSSoundHandle() noexcept {}  // NOLINT(modernize-use-equals-default)
+		~BSSoundHandle() noexcept = default;  // NOLINT(modernize-use-equals-default)
 
 		enum class ASSUMED_STATE : std::uint32_t
 		{
@@ -161,9 +161,9 @@ namespace RE
 		}
 
 		// members
-		std::uint32_t soundID;        // 0x0
-		bool          assumeSuccess;  // 0x4
-		std::uint8_t  state;          // 0x5
+		std::uint32_t soundID{ static_cast<std::uint32_t>(-1) };  // 0x0
+		bool          assumeSuccess{ false };                     // 0x4
+		std::uint8_t  state{ 0 };                                 // 0x5
 	};
 	static_assert(sizeof(BSSoundHandle) == 0x8);
 }

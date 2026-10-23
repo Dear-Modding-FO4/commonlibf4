@@ -12,6 +12,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESGlobal };
 		static constexpr auto VTABLE{ VTABLE::TESGlobal };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kGLOB };
+		static constexpr auto TYPE_ID{ BSScript::kGlobalVariable };
 
 		[[nodiscard]] float GetValue() const noexcept { return value; }
 

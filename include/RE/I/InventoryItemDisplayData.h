@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		InventoryItemDisplayData(
-			const ObjectRefHandle                a_inventoryRef,
+			const ObjectRefHandle&               a_inventoryRef,
 			const InventoryUserUIInterfaceEntry& a_entry)
 		{
 			ctor(a_inventoryRef, a_entry);
@@ -41,7 +41,7 @@ namespace RE
 
 	private:
 		InventoryItemDisplayData* ctor(
-			const ObjectRefHandle                a_inventoryRef,
+			const ObjectRefHandle&               a_inventoryRef,
 			const InventoryUserUIInterfaceEntry& a_entry)
 		{
 			using func_t = decltype(&InventoryItemDisplayData::ctor);

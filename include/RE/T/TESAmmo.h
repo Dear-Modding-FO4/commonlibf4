@@ -34,6 +34,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESAmmo };
 		static constexpr auto VTABLE{ VTABLE::TESAmmo };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kAMMO };
+		static constexpr auto TYPE_ID{ BSScript::kAmmo };
 
 		[[nodiscard]] static bool GetReloadsWithAmmoRef(const TESAmmo* a_ammo)
 		{

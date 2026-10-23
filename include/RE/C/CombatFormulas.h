@@ -38,8 +38,22 @@ namespace RE
 		[[nodiscard]] inline float CalcTargetedLimbDamage(Actor* a_target, const BGSBodyPart* a_bodyPart, float a_physicalDamage, BSTArray<BSTTuple<TESForm*, BGSTypedFormValuePair::SharedVal>, BSTArrayHeapAllocator>* a_damageTypes)
 		{
 			using func_t = decltype(&CombatFormulas::CalcTargetedLimbDamage);
-			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcWeaponDamage };
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcTargetedLimbDamage };
 			return func(a_target, a_bodyPart, a_physicalDamage, a_damageTypes);
+		}
+
+		// The damage one attack deals before the target's armour. Combat and the
+		// damage an item card shows both work it out through this.
+		//
+		// a_avOwner is the actor the damage belongs to, and a TESNPC record is
+		// taken as well, with the actor values read off that instead. a_condition
+		// is the weapon's item health, and a_rangeMult the falloff for a target
+		// past the weapon's range, 1.0 within it.
+		[[nodiscard]] inline float CalcWeaponDamage(const TESForm* a_avOwner, const TESObjectWEAP::InstanceData* a_data, const TESAmmo* a_ammo, float a_condition, float a_rangeMult)
+		{
+			using func_t = decltype(&CombatFormulas::CalcWeaponDamage);
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcWeaponDamage };
+			return func(a_avOwner, a_data, a_ammo, a_condition, a_rangeMult);
 		}
 
 		[[nodiscard]] inline std::int64_t GetNumCrippledAttackConditions(Actor* a_actor)

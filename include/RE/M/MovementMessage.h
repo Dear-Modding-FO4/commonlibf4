@@ -1,27 +1,28 @@
 #pragma once
 
+#include "RE/B/BSIntrusiveRefCounted.h"
+
 namespace RE
 {
-	/// Movement message type enum.
-	/// Used for inter-system movement commands between
-	/// ActorMover, MovementControllerNPC, and the event sink.
-	enum class MovementMessageType : std::uint32_t
-	{
-		kStop = 0,           // Stop all movement
-		kNewPath = 1,        // New path available (MovementMessageNewPath)
-		kActorCollision = 2, // Actor collision event (MovementMessageActorCollision)
-		// TODO: Additional message types unknown
-	};
+	class BSPathingNumericIDVisitor;
+	class BSPathingStreamRead;
+	class BSPathingStreamWrite;
+	class IPathFollowerAction;
 
-	/// Movement message structure.
-	///
-	/// Used for inter-system movement command communication.
-	/// Full structure layout is not yet known.
-	struct MovementMessage
+	class __declspec(novtable) MovementMessage :
+		public BSIntrusiveRefCounted  // 00
 	{
-		MovementMessageType type;      // 00 - message type
-		std::uint32_t       pad04;    // 04
-		void*               data;     // 08 - message data (type-dependent)
+	public:
+		static constexpr auto RTTI{ RTTI::MovementMessage };
+		static constexpr auto VTABLE{ VTABLE::MovementMessage };
+
+		virtual ~MovementMessage();                                                         // 00
+		virtual std::uint32_t        GetMessageType();                                      // 01
+		virtual std::uint32_t        GetType();                                             // 02
+		virtual void                 Write(BSPathingStreamWrite* a_dst);                    // 03
+		virtual void                 Read(BSPathingStreamRead* a_src);                      // 04
+		virtual void                 FixupNumericID(BSPathingNumericIDVisitor* a_visitor);  // 05
+		virtual IPathFollowerAction* GetPathFollowerActionInterface();                      // 06
 	};
 	static_assert(sizeof(MovementMessage) == 0x10);
 }

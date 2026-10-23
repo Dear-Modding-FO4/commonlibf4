@@ -16,6 +16,7 @@
 #include "RE/I/IKeywordFormBase.h"
 #include "RE/I/ITEM_REMOVE_REASON.h"
 #include "RE/M/MapMarkerData.h"
+#include "RE/M/MemoryManager.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/O/OBJ_REFR.h"
 #include "RE/T/TESForm.h"
@@ -29,6 +30,7 @@ namespace RE
 	class BGSAnimationSequencer;
 	class BGSBehaviorRootData;
 	class BGSDecalGroup;
+	class BGSLocationRefType;
 	class BipedAnim;
 	class BSActiveGraphIfInactiveEvent;
 	class BSAnimationGraphEvent;
@@ -69,20 +71,21 @@ namespace RE
 	}
 
 	class __declspec(novtable) TESObjectREFR :
-		public TESForm,                                                  // 000
-		public BSHandleRefObject,                                        // 020
-		public BSTEventSink<BSActiveGraphIfInactiveEvent>,               // 030
-		public BSTEventSink<BSAnimationGraphEvent>,                      // 038
-		public BSTEventSink<BGSInventoryListEvent::Event>,               // 040
-		public IAnimationGraphManagerHolder,                             // 048
-		public IKeywordFormBase,                                         // 050
-		public ActorValueOwner,                                          // 058
-		public BSTEventSource<ActorValueEvents::ActorValueChangedEvent>  // 060
+	    public TESForm,                                                  // 000
+	    public BSHandleRefObject,                                        // 020
+	    public BSTEventSink<BSActiveGraphIfInactiveEvent>,               // 030
+	    public BSTEventSink<BSAnimationGraphEvent>,                      // 038
+	    public BSTEventSink<BGSInventoryListEvent::Event>,               // 040
+	    public IAnimationGraphManagerHolder,                             // 048
+	    public IKeywordFormBase,                                         // 050
+	    public ActorValueOwner,                                          // 058
+	    public BSTEventSource<ActorValueEvents::ActorValueChangedEvent>  // 060
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::TESObjectREFR };
 		static constexpr auto VTABLE{ VTABLE::TESObjectREFR };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kREFR };
+		static constexpr auto TYPE_ID{ BSScript::kObjectReference };
 
 		class RemoveItemData
 		{
@@ -323,10 +326,59 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] BGSEncounterZone* GetEncounterZone() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetEncounterZone);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetEncounterZone };
+			return func(this);
+		}
+
+		[[nodiscard]] bool GetVisibleDistant() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetVisibleDistant };
+			return func(this);
+		}
+
+		[[nodiscard]] bool Is3DHighPriority() const
+		{
+			using func_t = decltype(&TESObjectREFR::Is3DHighPriority);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::Is3DHighPriority };
+			return func(this);
+		}
+
+		[[nodiscard]] bool MustBeVisibleDistant() const
+		{
+			using func_t = decltype(&TESObjectREFR::MustBeVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::MustBeVisibleDistant };
+			return func(this);
+		}
+
+		void SetVisibleDistant(bool a_visibleDistant)
+		{
+			using func_t = decltype(&TESObjectREFR::SetVisibleDistant);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::SetVisibleDistant };
+			return func(this, a_visibleDistant);
+		}
+
+		[[nodiscard]] TESWorldSpace* GetWorldSpace() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetWorldSpace);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetWorldSpace };
+			return func(this);
+		}
+
 		[[nodiscard]] const char* GetDisplayFullName()
 		{
 			using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetDisplayFullName };
+			return func(this);
+		}
+
+		[[nodiscard]] bool GetNeverFades() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetNeverFades);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetNeverFades };
 			return func(this);
 		}
 
@@ -358,11 +410,39 @@ namespace RE
 			return func(this, a_ref, a_disabled, a_sameSpace, a_diffZHeight);
 		}
 
+		[[nodiscard]] BIPED_OBJECT GetBodyObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetBodyObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetBodyObject };
+			return func(this);
+		}
+
+		[[nodiscard]] BIPED_OBJECT GetPipboyObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetPipboyObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetPipboyObject };
+			return func(this);
+		}
+
+		[[nodiscard]] BIPED_OBJECT GetShieldObject() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetShieldObject);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetShieldObject };
+			return func(this);
+		}
+
 		[[nodiscard]] bool GetEditorDead() const
 		{
 			using func_t = decltype(&TESObjectREFR::GetEditorDead);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetEditorDead };
 			return func(this);
+		}
+
+		[[nodiscard]] float GetFade(float a_baseFade) const
+		{
+			using func_t = decltype(&TESObjectREFR::GetFade);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetFade };
+			return func(this, a_baseFade);
 		}
 
 		[[nodiscard]] TESBoundObject* GetObjectReference() const noexcept { return data.objectReference; }
@@ -494,11 +574,11 @@ namespace RE
 			return func(this, a_point);
 		}
 
-		void SetLinkedRef(Actor* a_actor, BGSKeyword* a_keyword)
+		void SetLinkedRef(TESObjectREFR* a_ref, BGSKeyword* a_keyword)
 		{
 			using func_t = decltype(&TESObjectREFR::SetLinkedRef);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::SetLinkedRef };
-			return func(this, a_actor, a_keyword);
+			return func(this, a_ref, a_keyword);
 		}
 
 		void SetLocationOnReference(const NiPoint3& a_point)
@@ -592,6 +672,19 @@ namespace RE
 			return func(this);
 		}
 
+		bool HasLocationRefType(BGSLocationRefType* a_type)
+		{
+			using func_t = decltype(&TESObjectREFR::HasLocationRefType);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::HasLocationRefType };
+			return func(this, a_type);
+		}
+
+		[[nodiscard]] static TESObjectREFR* Create()
+		{
+			auto reference = static_cast<TESObjectREFR*>(aligned_alloc(0x10, sizeof(TESObjectREFR)));
+			return reference ? reference->ctor() : nullptr;
+		}
+
 		// members
 		TESObjectCELL*                 parentCell;     // 0x0B8
 		OBJ_REFR                       data;           // 0x0C0
@@ -601,6 +694,14 @@ namespace RE
 		std::uint16_t                  refScale;       // 0x018
 		std::int8_t                    modelState;     // 0x10A
 		bool                           predestroyed;   // 0x10B
+
+	private:
+		TESObjectREFR* ctor()
+		{
+			using func_t = decltype(&TESObjectREFR::ctor);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::ctor };
+			return func(this);
+		}
 	};
 	static_assert(sizeof(TESObjectREFR) == 0x110);
 }

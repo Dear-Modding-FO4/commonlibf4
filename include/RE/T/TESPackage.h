@@ -21,6 +21,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESPackage };
 		static constexpr auto VTABLE{ VTABLE::TESPackage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPACK };
+		static constexpr auto TYPE_ID{ BSScript::kPackage };
 
 		// add
 		virtual bool IsActorAtLocation(Actor* a_ctor, bool a_ignoredistance, float a_extraRadius, bool a_infurniture);                                      // 4A

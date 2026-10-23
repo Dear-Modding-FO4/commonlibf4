@@ -16,6 +16,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::Hazard };
 		static constexpr auto VTABLE{ VTABLE::Hazard };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPHZD };
+		static constexpr auto TYPE_ID{ BSScript::kHazard };
 
 		// members
 		void*              hazardDBHandle;  // 110 - TODO

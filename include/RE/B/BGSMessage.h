@@ -20,6 +20,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSMessage };
 		static constexpr auto VTABLE{ VTABLE::BGSMessage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMESG };
+		static constexpr auto TYPE_ID{ BSScript::kMessage };
 
 		enum class MessageFlag
 		{

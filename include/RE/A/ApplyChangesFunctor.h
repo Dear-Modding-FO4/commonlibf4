@@ -12,7 +12,7 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::__ApplyChangesFunctor };
 
 		// override
-		virtual void WriteDataImpl(TESBoundObject& a_baseObj, BGSInventoryItem::Stack& a_stack) override  // 01
+		virtual void WriteDataImpl(TESBoundObject& a_baseObj, BGSInventoryItem::Stack& a_stack) override  // 00
 		{
 			using func_t = decltype(&ApplyChangesFunctor::WriteDataImpl);
 			static REL::Relocation<func_t> func{ ID::ApplyChangesFunctor::WriteDataImpl };

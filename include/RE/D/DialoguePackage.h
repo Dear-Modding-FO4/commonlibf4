@@ -12,6 +12,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::DialoguePackage };
 		static constexpr auto VTABLE{ VTABLE::DialoguePackage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPACK };
+		static constexpr auto TYPE_ID{ BSScript::kPackage };
 
 		// members
 		ActorHandle     talkingActor;      // C8

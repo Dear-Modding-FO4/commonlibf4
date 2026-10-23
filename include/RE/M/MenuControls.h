@@ -27,13 +27,43 @@ namespace RE
 			return *singleton;
 		}
 
+		void ForcePauseGame() const
+		{
+			using func_t = decltype(&MenuControls::ForcePauseGame);
+			static REL::Relocation<func_t> func{ ID::MenuControls::ForcePauseGame };
+			func(this);
+		}
+
+		void ForceResumeGame() const
+		{
+			using func_t = decltype(&MenuControls::ForceResumeGame);
+			static REL::Relocation<func_t> func{ ID::MenuControls::ForceResumeGame };
+			func(this);
+		}
+
 		bool QueueScreenshot() const
 		{
 			if (!screenshotHandler || screenshotHandler->screenshotQueued) {
 				return false;
 			}
+
 			screenshotHandler->screenshotQueued = true;
+
 			return true;
+		}
+
+		void RegisterHandler(BSInputEventUser* a_handler)
+		{
+			using func_t = decltype(&MenuControls::RegisterHandler);
+			static REL::Relocation<func_t> func{ ID::MenuControls::RegisterHandler };
+			func(this, a_handler);
+		}
+
+		void UnregisterHandler(BSInputEventUser* a_handler)
+		{
+			using func_t = decltype(&MenuControls::UnregisterHandler);
+			static REL::Relocation<func_t> func{ ID::MenuControls::UnregisterHandler };
+			func(this, a_handler);
 		}
 
 		// members

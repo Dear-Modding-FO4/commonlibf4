@@ -34,6 +34,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::EffectSetting };
 		static constexpr auto VTABLE{ VTABLE::EffectSetting };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMGEF };
+		static constexpr auto TYPE_ID{ BSScript::kMagicEffect };
 
 		using FilterValidationFunction_t = bool(EffectSetting*, void*);
 

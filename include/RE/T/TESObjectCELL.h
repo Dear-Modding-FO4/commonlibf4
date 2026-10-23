@@ -36,6 +36,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectCELL };
 		static constexpr auto VTABLE{ VTABLE::TESObjectCELL };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCELL };
+		static constexpr auto TYPE_ID{ BSScript::kCell };
 
 		enum class CELL_STATE : std::uint8_t
 		{
@@ -156,6 +157,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] float GetExteriorWaterHeight() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetExteriorWaterHeight);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetExteriorWaterHeight };
+			return func(this);
+		}
+
 		[[nodiscard]] BGSLocation* GetLocation() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);
@@ -217,6 +225,13 @@ namespace RE
 			using func_t = decltype(&TESObjectCELL::UpdateAllDecals);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::UpdateAllDecals };
 			return func(this);
+		}
+
+		static bool FindLandDataInFile(TESFile* a_file)
+		{
+			using func_t = decltype(&TESObjectCELL::FindLandDataInFile);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::FindLandDataInFile };
+			return func(a_file);
 		}
 
 		EXTERIOR_DATA*              GetCoordinates() const;

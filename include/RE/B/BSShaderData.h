@@ -6,12 +6,15 @@
 #include "RE/N/NiAlphaProperty.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiPoint2.h"
+#include "RE/B/BSShaderTextureSet.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE
 {
+	class BSGeometry;
 	class BSEffectShaderPropertyColorController;
 	class BSEffectShaderPropertyFloatController;
+	class BSGeometry;
 	class BSLightingShaderPropertyColorController;
 	class BSLightingShaderPropertyFloatController;
 	class BSLightingShaderPropertyUShortController;
@@ -24,9 +27,23 @@ namespace RE
 	}
 
 	class BSShaderData :
-		public BSIntrusiveRefCounted  // 000
+	    public BSIntrusiveRefCounted  // 000
 	{
 	public:
+		static void LoadAndApplyMaterialData(BSGeometry* a_geometry)
+		{
+			using func_t = decltype(&BSShaderData::LoadAndApplyMaterialData);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::LoadAndApplyMaterialData };
+			func(a_geometry);
+		}
+
+		void ApplyMaterialData(BSGeometry* a_geometry, bool a_flag)
+		{
+			using func_t = decltype(&BSShaderData::ApplyMaterialData);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::ApplyMaterialData };
+			func(this, a_geometry, a_flag);
+		}
+
 		enum class LightingShaderEnum
 		{
 			kStandard = 0x0,
@@ -35,6 +52,23 @@ namespace RE
 			kSky = 0x3,
 			kTallGrass = 0x4
 		};
+
+		BSShaderData()
+		{
+			using func_t = void (*)(BSShaderData*);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::Ctor };
+			func(this);
+		}
+
+		~BSShaderData()
+		{
+			using func_t = void (*)(BSShaderData*);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::Dtor };
+			func(this);
+		}
+
+		BSShaderData(const BSShaderData&) = delete;
+		BSShaderData& operator=(const BSShaderData&) = delete;
 
 		// members
 		REX::TEnumSet<LightingShaderEnum, std::int32_t>             lightingShader;                                 // 004

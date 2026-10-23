@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstring>
+
 #include "RE/B/BSCriticalSection.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTAtomicValue.h"
@@ -10,20 +12,40 @@
 #include "RE/N/NiRect.h"
 #include "RE/N/NiTexture.h"
 
+#include "REX/LOG.h"
 #include "REX/W32/D3D11.h"
 
 namespace RE
 {
+	class NiParticles;
 	class BSD3DResourceCreator;
 	class BSEventFlag;
 	class NiCamera;
 
 	namespace BSGraphics
 	{
+		inline constexpr std::int32_t SHADOW_RASTER_DEPTH_BIAS_INDEX = 8;
+		inline constexpr std::int32_t SHADOW_RASTER_DEPTH_BIAS = 12;
+		inline constexpr float        SHADOW_RASTER_SLOPE_SCALED_DEPTH_BIAS = 6.0F;
+		inline constexpr float        SHADOW_RASTER_DEPTH_BIAS_CLAMP = -100.0F;
+
+		class StructuredBuffer;
 		enum class Format;
 		class Texture;
+		class TriShape;
 
-		enum class MultiSampleLevel
+		enum class AlphaBlendAlphaToCoverage : std::int32_t;
+		enum class AlphaBlendMode : std::int32_t;
+		enum class AlphaBlendWriteMode : std::int32_t;
+		enum class DepthStencilDepthMode : std::int32_t;
+		enum class DepthStencilExtraMode : std::int32_t;
+		enum class DepthStencilStencilMode : std::int32_t;
+		enum class RasterStateCullMode : std::int32_t;
+		enum class RasterStateDepthBiasMode : std::int32_t;
+		enum class RasterStateFillMode : std::int32_t;
+		enum class RasterStateScissorMode : std::int32_t;
+
+		enum class MultiSampleLevel : std::int32_t
 		{
 			kNone,
 			kTwo,
@@ -31,7 +53,7 @@ namespace RE
 			kEight
 		};
 
-		enum class SetRenderTargetMode
+		enum class SetRenderTargetMode : std::int32_t
 		{
 			kClear = 0x0,
 			kClearDepth = 0x1,
@@ -42,13 +64,74 @@ namespace RE
 			kInit = 0x5
 		};
 
-		enum class TAA_STATE
+		// Logical IDs; pooled targets must be acquired before platform lookup.
+		enum class RenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kFrameBuffer = 0,
+			kMain = 1,
+			kMainCopy = 2,
+			kSSRPrepass = 4,
+			kSSR = 5,
+			kSSRBlurred0 = 6,
+			kSSRBlurred1 = 7,
+			kSSRDepth = 8,
+			kRefractionNormals = 14,
+			kMenuBackground = 15,
+			kHUDGlass = 24,
+			kHUDGlassSwap = 25,
+			kGBufferAlbedoSpecular = 26,
+			kGBufferNormal = 27,
+			kGBufferEnvironment = 29,
+			kGBufferAmbient = 30,
+			kGBufferEmissive = 31,
+			kGBufferMotionVectors = 32,
+			kDiffuseLight = 33,
+			kDiffuseSpecular = 34,
+			kDiffuseLightTiled = 35,
+			kDiffuseSpecularTiled = 36,
+			kAmbientOcclusion = 37,
+			kAmbientOcclusionHalf = 39,
+			kSAOCameraZ = 40,
+			kPipboy = 60,
+			kPipboySwap = 61,
+			kHDRBlurSwap = 68,
+			kHDRDownsample0 = 70,
+			kRainOcclusion = 86,
+			kCount = 100
+		};
+
+		enum class DepthStencilTargetID : std::int32_t
+		{
+			kUnbound = -1,
+			kNone = 0,
+			kMain = 1,
+			kCubemapReflections = 7,
+			kRainOcclusion = 8,
+			kCount = 12
+		};
+
+		enum class CubeMapRenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kReflections = 0,
+			kCount = 1
+		};
+
+		enum class RenderTargetCreationMode : std::uint8_t
+		{
+			kPooled = 0,
+			kPersistent = 1,
+			kOnDemand = 2
+		};
+
+		enum class TAA_STATE : std::int32_t
 		{
 			kDisabled,
 			kEnabled
 		};
 
-		enum class TextureFileFormat
+		enum class TextureFileFormat : std::int32_t
 		{
 			kBMP = 0,
 			kJPG = 1,
@@ -61,7 +144,7 @@ namespace RE
 			kPFM = 8,
 		};
 
-		enum class TextureFilterMode
+		enum class TextureFilterMode : std::int32_t
 		{
 			kNearest = 0x0,
 			kBilerp = 0x1,
@@ -70,7 +153,7 @@ namespace RE
 			kCompBilerp = 0x4,
 		};
 
-		enum class TextureAddressMode
+		enum class TextureAddressMode : std::int32_t
 		{
 			kClamp_S_Clamp_T = 0x0,
 			kClamp_S_Wrap_T = 0x1,
@@ -78,7 +161,17 @@ namespace RE
 			kWrap_S_Wrap_T = 0x3,
 		};
 
-		enum class Usage
+		using SamplerStateTable = REX::W32::ID3D11SamplerState* [4][5][16];
+		static_assert(sizeof(SamplerStateTable) == 0xA00);
+
+		// Indexed by address mode, filter mode, then integral MinLOD (0..15).
+		[[nodiscard]] inline SamplerStateTable& GetSamplerStateTable()
+		{
+			static REL::Relocation<SamplerStateTable*> table{ ID::BSGraphics::SamplerStateTable };
+			return *table;
+		}
+
+		enum class Usage : std::int32_t
 		{
 			kDefault = 0x0,
 			kImmutable = 0x1,
@@ -110,14 +203,14 @@ namespace RE
 		static_assert(sizeof(Buffer) == 0x50);
 
 		class VertexBuffer :
-			public Buffer
+		    public Buffer
 		{
 		public:
 		};
 		static_assert(sizeof(VertexBuffer) == 0x50);
 
 		class IndexBuffer :
-			public Buffer
+		    public Buffer
 		{
 		public:
 		};
@@ -129,12 +222,26 @@ namespace RE
 			// members
 			std::uint16_t height = 0;    // 0
 			std::uint16_t width = 0;     // 2
-			std::uint8_t  mipCount = 0;  // 3
+			std::uint8_t  mipCount = 0;  // 4
 			std::uint8_t  format = 0;    // 5
 			std::uint8_t  flags = 0;     // 6
 			std::uint8_t  tilemode = 0;  // 7
 		};
 		static_assert(sizeof(TextureHeader) == 0x8);
+
+		class Texture
+		{
+		public:
+			// members
+			REX::W32::ID3D11ShaderResourceView*  srView;       // 00
+			REX::W32::ID3D11Texture2D*           texture;      // 08
+			REX::W32::ID3D11UnorderedAccessView* uaView;       // 10
+			std::byte                            pad18[0x10];  // 18
+			TextureHeader                        header;       // 28 - format is the created DXGI format
+			std::byte                            pad30[0x10];  // 30
+		};
+		static_assert(sizeof(Texture) == 0x40);
+		static_assert(offsetof(Texture, header) == 0x28);
 
 		class ConstantGroup
 		{
@@ -271,10 +378,111 @@ namespace RE
 		};
 		static_assert(sizeof(RendererWindow) == 0x50);
 
+		enum class ShaderFlags : std::uint32_t
+		{
+			DIRTY_RENDERTARGET = 0x1,
+			DIRTY_VIEWPORT = 0x2,
+			DIRTY_DEPTH_STENCIL_STATE = 0x4,
+			DIRTY_RASTERIZER_STATE = 0x8,
+			DIRTY_BLEND_STATE = 0x10,
+			DIRTY_INPUT_LAYOUT = 0x20,
+			DIRTY_PRIMITIVE_TOPOLOGY = 0x40,
+		};
+
+		class ViewData
+		{
+		public:
+			// members
+			NiRect<float> viewPort;                       // 000
+			NiPoint2      viewDepthRange;                 // 010
+			__m128        viewUp;                         // 020
+			__m128        viewRight;                      // 030
+			__m128        viewDir;                        // 040
+			__m128        viewMat[4];                     // 050
+			__m128        projMat[4];                     // 090
+			__m128        viewProjMat[4];                 // 0D0
+			__m128        viewProjUnjittered[4];          // 110
+			__m128        currentViewProjUnjittered[4];   // 150
+			__m128        previousViewProjUnjittered[4];  // 190
+			__m128        inv1stPersonProjMat[4];         // 1D0
+		};
+		static_assert(sizeof(ViewData) == 0x210);
+
 		class alignas(0x10) RendererShadowState
 		{
 		public:
-			std::byte pad[0x910];  // 000
+			// members
+			std::uint32_t                                stateUpdateFlags;                 // 000
+			std::uint32_t                                vsResourceModifiedBits;           // 004
+			std::uint32_t                                vsSamplerModifiedBits;            // 008
+			std::uint32_t                                dsResourceModifiedBits;           // 00C
+			std::uint32_t                                dsSamplerModifiedBits;            // 010
+			std::uint32_t                                psResourceModifiedBits;           // 014
+			std::uint32_t                                psSamplerModifiedBits;            // 018
+			std::uint32_t                                csResourceModifiedBits;           // 01C
+			std::uint32_t                                csSamplerModifiedBits;            // 020
+			std::uint32_t                                csUAVModifiedBits;                // 024
+			bool                                         readOnlyDepth;                    // 028
+			bool                                         readOnlyStencil;                  // 029
+			bool                                         usesVertexIndexBuffer;            // 02A
+			std::int32_t                                 renderTargets[8];                 // 02C
+			std::int32_t                                 depthStencil;                     // 04C
+			std::int32_t                                 depthStencilSlice;                // 050
+			std::int32_t                                 cubeMapRenderTarget;              // 054
+			std::int32_t                                 cubeMapRenderTargetView;          // 058
+			REX::TEnum<SetRenderTargetMode>              setRenderTargetMode[8];           // 05C
+			REX::TEnum<SetRenderTargetMode>              setDepthStencilMode;              // 07C
+			REX::TEnum<SetRenderTargetMode>              setCubeMapRenderTargetMode;       // 080
+			std::int32_t                                 currentRenderTargetIndex;         // 084
+			std::int32_t                                 currentDepthStencilTargetIndex;   // 088
+			std::int32_t                                 currentCubeMapRenderTargetIndex;  // 08C
+			REX::W32::D3D11_VIEWPORT                     viewPort;                         // 090
+			REX::TEnum<DepthStencilDepthMode>            depthStencilDepthMode;            // 0A8
+			REX::TEnum<DepthStencilStencilMode>          depthStencilStencilMode;          // 0AC
+			REX::TEnum<DepthStencilExtraMode>            depthStencilExtraMode;            // 0B0
+			std::uint32_t                                stencilRef;                       // 0B4
+			REX::TEnum<RasterStateFillMode>              rasterStateFillMode;              // 0B8
+			REX::TEnum<RasterStateCullMode>              rasterStateCullMode;              // 0BC
+			REX::TEnum<RasterStateDepthBiasMode>         rasterStateDepthBiasMode;         // 0C0
+			REX::TEnum<RasterStateScissorMode>           rasterStateScissorMode;           // 0C4
+			REX::TEnum<AlphaBlendMode>                   alphaBlendMode;                   // 0C8
+			REX::TEnum<AlphaBlendAlphaToCoverage>        alphaBlendAlphaToCoverage;        // 0CC
+			REX::TEnum<AlphaBlendWriteMode>              alphaBlendWriteMode;              // 0D0
+			bool                                         alphaTestEnabled;                 // 0D4
+			float                                        alphaTestRef;                     // 0D8
+			REX::TEnum<TextureAddressMode>               vsTextureAddressMode[16];         // 0DC
+			REX::TEnum<TextureFilterMode>                vsTextureFilterMode[16];          // 11C
+			REX::W32::ID3D11ShaderResourceView*          vsTexture[16];                    // 160
+			std::uint32_t                                vsTextureMinLODMode[16];          // 1E0
+			REX::TEnum<TextureAddressMode>               dsTextureAddressMode[16];         // 220
+			REX::TEnum<TextureFilterMode>                dsTextureFilterMode[16];          // 260
+			REX::W32::ID3D11ShaderResourceView*          dsTexture[16];                    // 2A0
+			std::uint32_t                                dsTextureMinLODMode[16];          // 320
+			REX::TEnum<TextureAddressMode>               psTextureAddressMode[16];         // 360
+			REX::TEnum<TextureFilterMode>                psTextureFilterMode[16];          // 3A0
+			REX::W32::ID3D11ShaderResourceView*          psTexture[16];                    // 3E0
+			std::uint32_t                                psTextureMinLODMode[16];          // 460
+			REX::TEnum<TextureAddressMode>               csTextureAddressMode[16];         // 4A0
+			REX::TEnum<TextureFilterMode>                csTextureFilterMode[16];          // 4E0
+			REX::W32::ID3D11ShaderResourceView*          csTexture[16];                    // 520
+			std::uint32_t                                csTextureMinLODMode[16];          // 5A0
+			REX::W32::ID3D11UnorderedAccessView*         csUAV[8];                         // 5E0
+			REX::W32::ID3D11Buffer*                      vertexConstantBuffers[3];         // 620
+			REX::W32::ID3D11Buffer*                      pixelConstantBuffers[3];          // 638
+			REX::W32::ID3D11Buffer*                      domainConstantBuffers[3];         // 650
+			REX::W32::ID3D11Buffer*                      hullConstantBuffers[3];           // 668
+			std::uint64_t                                vertexDesc;                       // 680
+			VertexShader*                                currentVertexShader;              // 688
+			DomainShader*                                currentDomainShader;              // 690
+			HullShader*                                  currentHullShader;                // 698
+			PixelShader*                                 currentPixelShader;               // 6A0
+			REX::TEnum<REX::W32::D3D_PRIMITIVE_TOPOLOGY> primitiveTopology;                // 6A8
+			NiPoint3A                                    posAdjust;                        // 6B0
+			NiPoint3A                                    previousPosAdjust;                // 6C0
+			ViewData                                     cameraData;                       // 6D0
+			float                                        clearColor[4];                    // 8E0
+			float                                        previousClearColor[4];            // 8F0
+			std::uint8_t                                 clearStencil;                     // 900
 		};
 		static_assert(sizeof(RendererShadowState) == 0x910);
 
@@ -316,6 +524,19 @@ namespace RE
 		public:
 			using ResetRenderTargets_t = void (*)();
 
+			[[nodiscard]] static Renderer* GetSingleton()
+			{
+				static REL::Relocation<Renderer*> singleton{ ID::BSGraphics::Renderer::Singleton };
+				return singleton.get();
+			}
+
+			[[nodiscard]] TriShape* CreateTriShape(std::uint32_t& a_dataSize, const void* a_data, std::uint64_t a_vertexDesc, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::CreateTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::CreateTriShape };
+				return func(this, a_dataSize, a_data, a_vertexDesc, a_indexBuffer);
+			}
+
 			void IncRef(Buffer* a_vertexBuffer)
 			{
 				using func_t = decltype(&BSGraphics::Renderer::IncRef);
@@ -356,6 +577,79 @@ namespace RE
 				using func_t = decltype(&BSGraphics::Renderer::Unlock);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::Unlock };
 				return func(this);
+			}
+
+			// Saves one previous color for RestorePreviousClearColor; calls do not nest.
+			void SetClearColor(float a_red, float a_green, float a_blue, float a_alpha)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetClearColor);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetClearColor };
+				return func(this, a_red, a_green, a_blue, a_alpha);
+			}
+
+			void RestorePreviousClearColor()
+			{
+				using func_t = decltype(&BSGraphics::Renderer::RestorePreviousClearColor);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RestorePreviousClearColor };
+				return func(this);
+			}
+
+			void FlushConstantGroup(ConstantGroup* a_vertex, ConstantGroup* a_pixel)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::FlushConstantGroup);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::FlushConstantGroup };
+				return func(this, a_vertex, a_pixel);
+			}
+
+			[[nodiscard]] ConstantGroup* GetShaderConstantGroup(PixelShader* a_shader, std::uint32_t a_level)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::GetShaderConstantGroup);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::GetShaderConstantGroupPS };
+				return func(this, a_shader, a_level);
+			}
+
+			void ResetWindow(std::uint32_t a_windowID)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ResetWindow);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ResetWindow };
+				return func(this, a_windowID);
+			}
+
+			void SetShaders(VertexShader* a_vertexShader, HullShader* a_hullShader, DomainShader* a_domainShader, PixelShader* a_pixelShader)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetShaders);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetShaders };
+				return func(this, a_vertexShader, a_hullShader, a_domainShader, a_pixelShader);
+			}
+
+			void RunComputeShader(ComputeShader* a_computeShader, std::uint32_t a_groupCountX, std::uint32_t a_groupCountY, std::uint32_t a_groupCountZ)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::RunComputeShader);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RunComputeShader };
+				return func(this, a_computeShader, a_groupCountX, a_groupCountY, a_groupCountZ);
+			}
+
+			// A zero count uploads the buffer's full capacity.
+			void UpdateStructuredBuffer(StructuredBuffer* a_buffer, const void* a_source,
+				std::uint32_t a_stride, std::uint32_t a_count)
+			{
+				using func_t = decltype(&Renderer::UpdateStructuredBuffer);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::UpdateStructuredBuffer };
+				func(this, a_buffer, a_source, a_stride, a_count);
+			}
+
+			bool MapTexture(Texture* a_texture, REX::W32::D3D11_MAP a_mapType, REX::W32::D3D11_MAPPED_SUBRESOURCE* a_mapped)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::MapTexture);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::MapTexture };
+				return func(this, a_texture, a_mapType, a_mapped);
+			}
+
+			void UnmapTexture(Texture* a_texture)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::UnmapTexture);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::UnmapTexture };
+				return func(this, a_texture);
 			}
 
 			// members
@@ -422,6 +716,13 @@ namespace RE
 		};
 		static_assert(sizeof(Context) == 0x2FF0);
 
+		// Fallback the engine uses when the thread has no installed context.
+		[[nodiscard]] inline Context* GetGlobalContext()
+		{
+			static REL::Relocation<Context**> ptr{ ID::BSGraphics::GlobalContext };
+			return *ptr;
+		}
+
 		class Vertex
 		{
 		public:
@@ -465,6 +766,7 @@ namespace RE
 				DESC_MASK_FLAGS = ~(DESC_MASK_OFFSET)
 			};
 		};
+		static_assert(sizeof(Vertex) == 0x1);
 
 		class VertexDesc
 		{
@@ -551,25 +853,6 @@ namespace RE
 		};
 		static_assert(sizeof(FogStateType) == 0x60);
 
-		class ViewData
-		{
-		public:
-			// members
-			NiRect<float> viewPort;                       // 000
-			NiPoint2      viewDepthRange;                 // 010
-			__m128        viewUp;                         // 020
-			__m128        viewRight;                      // 030
-			__m128        viewDir;                        // 040
-			__m128        viewMat[4];                     // 050
-			__m128        projMat[4];                     // 090
-			__m128        viewProjMat[4];                 // 0D0
-			__m128        viewProjUnjittered[4];          // 110
-			__m128        currentViewProjUnjittered[4];   // 150
-			__m128        previousViewProjUnjittered[4];  // 190
-			__m128        inv1stPersonProjMat[4];         // 1D0
-		};
-		static_assert(sizeof(ViewData) == 0x210);
-
 		class CameraStateData
 		{
 		public:
@@ -583,63 +866,111 @@ namespace RE
 		};
 		static_assert(sizeof(CameraStateData) == 0x250);
 
+		namespace detail
+		{
+			template <class T>
+			[[nodiscard]] T& RuntimeField(void* a_object, std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<T*>(static_cast<std::byte*>(a_object) + a_offset);
+			}
+
+			template <class T>
+			[[nodiscard]] const T& RuntimeField(const void* a_object, std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<const T*>(static_cast<const std::byte*>(a_object) + a_offset);
+			}
+		}
+
 		class State
 		{
 		public:
-			[[nodiscard]] static State GetSingleton()
+			[[nodiscard]] static State* GetSingleton()
 			{
 				static REL::Relocation<State*> singleton{ ID::BSGraphics::State::Singleton };
-				return *singleton;
+				return singleton.get();
 			}
 
-			// members
-			std::uint32_t                                  currentFrame;                      // 000
-			float                                          offsetX;                           // 004
-			float                                          offsetY;                           // 008
-			std::uint32_t                                  currentFrameOffset;                // 00C
-			std::uint32_t                                  previousFrameOffset;               // 010
-			FogStateType                                   fogState;                          // 014
-			REX::TEnumSet<MultiSampleLevel, std::uint32_t> multiSample;                       // 074
-			std::uint32_t                                  backBufferWidth;                   // 078
-			std::uint32_t                                  backBufferHeight;                  // 07C
-			std::uint32_t                                  screenWidth;                       // 080
-			std::uint32_t                                  screenHeight;                      // 084
-			NiRect<float>                                  frameBufferViewport;               // 088
-			std::uint32_t                                  frameCount;                        // 098
-			std::uint32_t                                  frameID;                           // 09C
-			bool                                           insideFrame;                       // 0A0
-			bool                                           letterbox;                         // 0A1
-			bool                                           allowDepthBufferAsTexture;         // 0A2
-			bool                                           shadows;                           // 0A3
-			bool                                           compiledShaderThisFrame;           // 0A4
-			REX::TEnumSet<TAA_STATE, std::uint32_t>        taaState;                          // 0A8
-			std::uint32_t                                  taaDisableCounter;                 // 0AC
-			std::uint32_t                                  trijuiceState;                     // 0B0
-			NiPointer<NiTexture>                           defaultTextureBlack;               // 0B8
-			NiPointer<NiTexture>                           defaultTextureWhite;               // 0C0
-			NiPointer<NiTexture>                           defaultTextureGrey;                // 0C8
-			NiPointer<NiTexture>                           defaultHeightMap;                  // 0D0
-			NiPointer<NiTexture>                           defaultReflectionCubeMap;          // 0D8
-			NiPointer<NiTexture>                           defaultFaceDetailMap;              // 0E0
-			NiPointer<NiTexture>                           defaultHighFreqNormalMap;          // 0E8
-			NiPointer<NiTexture>                           defaultTexEffectMap;               // 0F0
-			NiPointer<NiTexture>                           defaultTextureWhiteNoiseMap;       // 0F8
-			NiPointer<NiTexture>                           defaultTextureWhiteNoiseMapSmall;  // 100
-			NiPointer<NiTexture>                           defaultTextureNormalMap;           // 108
-			NiPointer<NiTexture>                           defaultTextureDiffuseMap;          // 110
-			NiPointer<NiTexture>                           defaultSplineMap;                  // 118
-			NiPointer<NiTexture>                           defaultTextureDissolvePattern;     // 120
-			Texture*                                       defaultImagespaceLUT;              // 128
-			NiPointer<NiTexture>                           rotatedPoissonDiscLookupMap;       // 130
-			std::uint32_t                                  presentImmediateThreshold;         // 138
-			std::uint32_t                                  presentFlag;                       // 13C
-			BSTArray<CameraStateData>                      cameraDataCache;                   // 140
-			CameraStateData                                cameraState;                       // 160
-			bool                                           commitTexturesOnCreation;          // 3B0
-			bool                                           immediateTextureLoads;             // 3B1
+			[[nodiscard]] TAA_STATE GetTAAState() const noexcept
+			{
+				return detail::RuntimeField<TAA_STATE>(this, GetTAAOffsets().taaState);
+			}
+
+			void SetTAAState(TAA_STATE a_state) noexcept
+			{
+				detail::RuntimeField<TAA_STATE>(this, GetTAAOffsets().taaState) = a_state;
+			}
+
+			[[nodiscard]] std::uint32_t GetTAADisableCounter() const noexcept
+			{
+				return detail::RuntimeField<std::uint32_t>(this, GetTAAOffsets().taaDisableCounter);
+			}
+
+		private:
+			struct TAAOffsets
+			{
+				std::size_t taaState;
+				std::size_t taaDisableCounter;
+			};
+			static_assert(sizeof(TAAOffsets) == 0x10);
+
+			[[nodiscard]] static TAAOffsets GetTAAOffsets() noexcept
+			{
+				// UpdateTemporalData reads OG [this+A8]/[AC], NG/AE [this+AC]/[B0].
+				constexpr TAAOffsets og{ 0xA8, 0xAC };
+				constexpr TAAOffsets ngae{ 0xAC, 0xB0 };
+				return REX::FModule::IsRuntimeOG() ? og : ngae;
+			}
+
+		public:
+			// members; TAA fields use OG offsets (NG/AE 0AC/0B0), use the accessors
+			std::uint32_t             currentFrame;                      // 000
+			float                     offsetX;                           // 004
+			float                     offsetY;                           // 008
+			std::uint32_t             currentFrameOffset;                // 00C
+			std::uint32_t             previousFrameOffset;               // 010
+			FogStateType              fogState;                          // 014
+			MultiSampleLevel          multiSample;                       // 074
+			std::uint32_t             backBufferWidth;                   // 078
+			std::uint32_t             backBufferHeight;                  // 07C
+			std::uint32_t             screenWidth;                       // 080
+			std::uint32_t             screenHeight;                      // 084
+			NiRect<float>             frameBufferViewport;               // 088
+			std::uint32_t             frameCount;                        // 098
+			std::uint32_t             frameID;                           // 09C
+			bool                      insideFrame;                       // 0A0
+			bool                      letterbox;                         // 0A1
+			bool                      allowDepthBufferAsTexture;         // 0A2
+			bool                      shadows;                           // 0A3
+			bool                      compiledShaderThisFrame;           // 0A4
+			TAA_STATE                 taaState;                          // 0A8
+			std::uint32_t             taaDisableCounter;                 // 0AC
+			std::uint32_t             trijuiceState;                     // 0B0
+			NiPointer<NiTexture>      defaultTextureBlack;               // 0B8
+			NiPointer<NiTexture>      defaultTextureWhite;               // 0C0
+			NiPointer<NiTexture>      defaultTextureGrey;                // 0C8
+			NiPointer<NiTexture>      defaultHeightMap;                  // 0D0
+			NiPointer<NiTexture>      defaultReflectionCubeMap;          // 0D8
+			NiPointer<NiTexture>      defaultFaceDetailMap;              // 0E0
+			NiPointer<NiTexture>      defaultHighFreqNormalMap;          // 0E8
+			NiPointer<NiTexture>      defaultTexEffectMap;               // 0F0
+			NiPointer<NiTexture>      defaultTextureWhiteNoiseMap;       // 0F8
+			NiPointer<NiTexture>      defaultTextureWhiteNoiseMapSmall;  // 100
+			NiPointer<NiTexture>      defaultTextureNormalMap;           // 108
+			NiPointer<NiTexture>      defaultTextureDiffuseMap;          // 110
+			NiPointer<NiTexture>      defaultSplineMap;                  // 118
+			NiPointer<NiTexture>      defaultTextureDissolvePattern;     // 120
+			Texture*                  defaultImagespaceLUT;              // 128
+			NiPointer<NiTexture>      rotatedPoissonDiscLookupMap;       // 130
+			std::uint32_t             presentImmediateThreshold;         // 138
+			std::uint32_t             presentFlag;                       // 13C
+			BSTArray<CameraStateData> cameraDataCache;                   // 140
+			CameraStateData           cameraState;                       // 160
+			bool                      commitTexturesOnCreation;          // 3B0
+			bool                      immediateTextureLoads;             // 3B1
 		};
 		static_assert(sizeof(State) == 0x3C0);
 
+		// Value-initialize creation properties; pool matching reads unnamed bytes.
 		class RenderTargetProperties
 		{
 		public:
@@ -647,16 +978,24 @@ namespace RE
 			std::uint32_t width;                   // 00
 			std::uint32_t height;                  // 04
 			Format        format;                  // 08
-			std::uint32_t multiSample;             // 0C
+			std::byte     pad0C[4];                // 0C
 			bool          copyable;                // 10
 			bool          supportUnorderedAccess;  // 11
 			bool          allowMipGeneration;      // 12
-			bool          forceLinear;             // 13
+			std::byte     pad13;                   // 13
 			std::int32_t  mipLevel;                // 14
 			std::uint32_t textureTarget;           // 18
-			bool          enableFastClear;         // 1C
+			std::byte     pad1C[4];                // 1C
 		};
 		static_assert(sizeof(RenderTargetProperties) == 0x20);
+		static_assert(offsetof(RenderTargetProperties, width) == 0x00);
+		static_assert(offsetof(RenderTargetProperties, height) == 0x04);
+		static_assert(offsetof(RenderTargetProperties, format) == 0x08);
+		static_assert(offsetof(RenderTargetProperties, copyable) == 0x10);
+		static_assert(offsetof(RenderTargetProperties, supportUnorderedAccess) == 0x11);
+		static_assert(offsetof(RenderTargetProperties, allowMipGeneration) == 0x12);
+		static_assert(offsetof(RenderTargetProperties, mipLevel) == 0x14);
+		static_assert(offsetof(RenderTargetProperties, textureTarget) == 0x18);
 
 		class DepthStencilTargetProperties
 		{
@@ -665,30 +1004,42 @@ namespace RE
 			std::uint32_t width;           // 00
 			std::uint32_t height;          // 04
 			std::uint32_t arraySize;       // 08
-			std::uint32_t multiSample;     // 0C
-			std::int32_t  alias;           // 10
-			bool          sampleable;      // 14
-			bool          htile;           // 15
+			std::byte     pad0C[0xA];      // 0C
 			bool          stencil;         // 16
 			bool          use16BitsDepth;  // 17
 		};
+		// Common prefix and OG stride; NG/AE append four bytes.
 		static_assert(sizeof(DepthStencilTargetProperties) == 0x18);
+		static_assert(offsetof(DepthStencilTargetProperties, width) == 0x00);
+		static_assert(offsetof(DepthStencilTargetProperties, height) == 0x04);
+		static_assert(offsetof(DepthStencilTargetProperties, arraySize) == 0x08);
+		static_assert(offsetof(DepthStencilTargetProperties, stencil) == 0x16);
+		static_assert(offsetof(DepthStencilTargetProperties, use16BitsDepth) == 0x17);
+
+		// Creation storage covers both runtime strides without extending OG views.
+		class DepthStencilTargetCreationProperties
+		{
+		public:
+			DepthStencilTargetProperties properties;  // 00
+			std::byte                    pad18[4];    // 18 - NG/AE only
+		};
+		static_assert(sizeof(DepthStencilTargetCreationProperties) == 0x1C);
+		static_assert(offsetof(DepthStencilTargetCreationProperties, properties) == 0x00);
+		static_assert(offsetof(DepthStencilTargetCreationProperties, pad18) == 0x18);
 
 		class CubeMapRenderTargetProperties
 		{
 		public:
 			// members
-			std::uint32_t width;           // 00
-			std::uint32_t height;          // 04
-			Format        format;          // 08
-			std::uint32_t multiSample;     // 0C
-			bool          sampleable;      // 10
-			std::int32_t  alias;           // 14
-			std::int32_t  _360Alias;       // 18
-			std::int32_t  _360Group;       // 1C
-			std::int32_t  _360TileHeight;  // 20
+			std::uint32_t width;        // 00
+			std::uint32_t height;       // 04
+			Format        format;       // 08
+			std::byte     pad0C[0x18];  // 0C
 		};
 		static_assert(sizeof(CubeMapRenderTargetProperties) == 0x24);
+		static_assert(offsetof(CubeMapRenderTargetProperties, width) == 0x00);
+		static_assert(offsetof(CubeMapRenderTargetProperties, height) == 0x04);
+		static_assert(offsetof(CubeMapRenderTargetProperties, format) == 0x08);
 
 		class DynamicTriShapeData
 		{
@@ -713,10 +1064,40 @@ namespace RE
 		public:
 			using Create_T = void (*)();
 
-			[[nodiscard]] static RenderTargetManager GetSingleton()
+			[[nodiscard]] static RenderTargetManager* GetSingleton()
 			{
 				static REL::Relocation<RenderTargetManager*> singleton{ ID::BSGraphics::RenderTargetManager::Singleton };
-				return *singleton;
+				return singleton.get();
+			}
+
+			void CreateRenderTarget(RenderTargetID a_logicalID, const RenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateDepthStencilTarget(DepthStencilTargetID a_logicalID, const DepthStencilTargetCreationProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateDepthStencilTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateDepthStencilTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateCubeMapRenderTarget(CubeMapRenderTargetID a_logicalID, const CubeMapRenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateCubeMapRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			// Preserve the NG/AE tail when recreating an existing depth target.
+			[[nodiscard]] DepthStencilTargetCreationProperties GetDepthStencilTargetCreationProperties(std::size_t a_logicalID) const noexcept
+			{
+				const auto                           offsets = GetRenderTargetOffsets();
+				DepthStencilTargetCreationProperties properties{};
+				std::memcpy(&properties, &GetDepthStencilTargetProperties(a_logicalID), offsets.depthStencilTargetStride);
+				return properties;
 			}
 
 			void SetEnableDynamicResolution(bool a_enableDynamicResolution)
@@ -726,11 +1107,265 @@ namespace RE
 				return func(this, a_enableDynamicResolution);
 			}
 
+			[[nodiscard]] static std::uint32_t QShadowMapArrayDepthStencil()
+			{
+				using func_t = decltype(&RenderTargetManager::QShadowMapArrayDepthStencil);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::QShadowMapArrayDepthStencil };
+				return func();
+			}
+
+			[[nodiscard]] bool IsUsingDynamicResolutionViewportAsDefaultViewport() const noexcept
+			{
+				return GetRuntimeField<bool>(GetDynamicResolutionOffsets().viewportAsDefault);
+			}
+
+			void SetUseDynamicResolutionViewportAsDefaultViewport(bool a_useDynamicResolutionViewport)
+			{
+				using func_t = decltype(&RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport };
+				return func(this, a_useDynamicResolutionViewport);
+			}
+
+			// Writes shadow state for the active Context; a_logicalID -1 unbinds the slot.
+			void SetCurrentRenderTarget(std::int32_t a_slot, std::int32_t a_logicalID, SetRenderTargetMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentRenderTarget };
+				return func(this, a_slot, a_logicalID, a_mode);
+			}
+
+			// While set, only this face RTV and the depth target are bound; a_logicalID -1,
+			// or a 2D bind that changes a slot or uses a mode other than 3, leaves cube mode.
+			void SetCurrentCubeMapRenderTarget(std::int32_t a_logicalID, SetRenderTargetMode a_mode, std::int32_t a_face)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentCubeMapRenderTarget };
+				return func(this, a_logicalID, a_mode, a_face);
+			}
+			// Maps a pooled logical target to a platform slot until ReleaseRenderTarget.
+			void AcquireRenderTarget(std::int32_t a_logicalID)
+			{
+				using func_t = decltype(&RenderTargetManager::AcquireRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::AcquireRenderTarget };
+				return func(this, a_logicalID);
+			}
+
+			void ReleaseRenderTarget(std::int32_t a_logicalID)
+			{
+				using func_t = decltype(&RenderTargetManager::ReleaseRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::ReleaseRenderTarget };
+				return func(this, a_logicalID);
+			}
+
+			// Dereferences the active Context; call only after the renderer is initialized.
+			static void SetCurrentViewportForceToRenderTargetDimensions()
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions };
+				return func();
+			}
+
+			[[nodiscard]] DepthStencilTargetProperties& GetDepthStencilTargetProperties(std::size_t a_index) noexcept
+			{
+				assert(a_index < 12);
+				const auto offsets = GetRenderTargetOffsets();
+				return GetRuntimeField<DepthStencilTargetProperties>(offsets.depthStencilTargetData + (offsets.depthStencilTargetStride * a_index));
+			}
+
+			[[nodiscard]] const DepthStencilTargetProperties& GetDepthStencilTargetProperties(std::size_t a_index) const noexcept
+			{
+				assert(a_index < 12);
+				const auto offsets = GetRenderTargetOffsets();
+				return GetRuntimeField<DepthStencilTargetProperties>(offsets.depthStencilTargetData + (offsets.depthStencilTargetStride * a_index));
+			}
+
+			[[nodiscard]] CubeMapRenderTargetProperties& GetCubeMapRenderTargetProperties(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<CubeMapRenderTargetProperties>(GetRenderTargetOffsets().cubeMapRenderTargetData + (sizeof(CubeMapRenderTargetProperties) * a_logicalID));
+			}
+
+			[[nodiscard]] const CubeMapRenderTargetProperties& GetCubeMapRenderTargetProperties(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<CubeMapRenderTargetProperties>(GetRenderTargetOffsets().cubeMapRenderTargetData + (sizeof(CubeMapRenderTargetProperties) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetRenderTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 100);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().renderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetRenderTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 100);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().renderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetDepthStencilTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 12);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().depthStencilTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetDepthStencilTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 12);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().depthStencilTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetCubeMapRenderTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().cubeMapRenderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetCubeMapRenderTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().cubeMapRenderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] RenderTarget& GetRenderTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->renderTargets));
+				return rendererData->renderTargets[platformID];
+			}
+
+			[[nodiscard]] const RenderTarget& GetRenderTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->renderTargets));
+				return rendererData->renderTargets[platformID];
+			}
+
+			[[nodiscard]] DepthStencilTarget& GetDepthStencilTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetDepthStencilTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->depthStencilTargets));
+				return rendererData->depthStencilTargets[platformID];
+			}
+
+			[[nodiscard]] const DepthStencilTarget& GetDepthStencilTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetDepthStencilTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->depthStencilTargets));
+				return rendererData->depthStencilTargets[platformID];
+			}
+
+			[[nodiscard]] CubeMapRenderTarget& GetCubeMapRenderTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetCubeMapRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->cubeMapRenderTargets));
+				return rendererData->cubeMapRenderTargets[platformID];
+			}
+
+			[[nodiscard]] const CubeMapRenderTarget& GetCubeMapRenderTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetCubeMapRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->cubeMapRenderTargets));
+				return rendererData->cubeMapRenderTargets[platformID];
+			}
+
+			[[nodiscard]] float GetDynamicWidthRatio() const noexcept
+			{
+				return GetRuntimeField<float>(GetDynamicResolutionOffsets().widthRatio);
+			}
+
+			[[nodiscard]] float GetDynamicHeightRatio() const noexcept
+			{
+				return GetRuntimeField<float>(GetDynamicResolutionOffsets().heightRatio);
+			}
+
+			[[nodiscard]] bool IsDynamicResolutionCurrentlyActivated() const noexcept
+			{
+				return GetRuntimeField<bool>(GetDynamicResolutionOffsets().isActivated);
+			}
+
+			void SetDynamicResolutionState(float a_widthRatio, float a_heightRatio, bool a_activated) noexcept
+			{
+				const auto offsets = GetDynamicResolutionOffsets();
+				GetRuntimeField<float>(offsets.widthRatio) = a_widthRatio;
+				GetRuntimeField<float>(offsets.heightRatio) = a_heightRatio;
+				GetRuntimeField<bool>(offsets.isActivated) = a_activated;
+			}
+
+		private:
+			struct RenderTargetOffsets
+			{
+				std::size_t depthStencilTargetData;
+				std::size_t depthStencilTargetStride;
+				std::size_t cubeMapRenderTargetData;
+				std::size_t renderTargetID;
+				std::size_t depthStencilTargetID;
+				std::size_t cubeMapRenderTargetID;
+			};
+			static_assert(sizeof(RenderTargetOffsets) == 0x30);
+
+			struct DynamicResolutionOffsets
+			{
+				std::size_t widthRatio;
+				std::size_t heightRatio;
+				std::size_t isActivated;
+				std::size_t viewportAsDefault;
+			};
+			static_assert(sizeof(DynamicResolutionOffsets) == 0x20);
+
+			[[nodiscard]] static RenderTargetOffsets GetRenderTargetOffsets() noexcept
+			{
+				constexpr RenderTargetOffsets og{ 0xC80, 0x18, 0xDA0, 0xDC4, 0xF54, 0xF84 };
+				constexpr RenderTargetOffsets ngae{ 0xC80, 0x1C, 0xDD0, 0xDF4, 0xF84, 0xFB4 };
+				if (REX::FModule::IsRuntimeOG()) {
+					return og;
+				}
+				if (REX::FModule::IsRuntimeAE()) {
+					return ngae;
+				}
+
+				constexpr REL::Version supportedNGVersion{ 1, 10, 984, 0 };
+				static const auto      version = REX::FModule::GetExecutingModule().GetFileVersion();
+				if (version == supportedNGVersion) {
+					return ngae;
+				}
+
+				REX::FAIL("Unverified RenderTargetManager layout for Fallout 4 {}.", version);
+				std::terminate();
+			}
+
+			[[nodiscard]] static DynamicResolutionOffsets GetDynamicResolutionOffsets() noexcept
+			{
+				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8, 0xFA7 };
+				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5, 0xFE4 };
+				return REX::FModule::IsRuntimeOG() ? og : ngae;
+			}
+
+			template <class T>
+			[[nodiscard]] T& GetRuntimeField(std::size_t a_offset) noexcept
+			{
+				return detail::RuntimeField<T>(this, a_offset);
+			}
+
+			template <class T>
+			[[nodiscard]] const T& GetRuntimeField(std::size_t a_offset) const noexcept
+			{
+				return detail::RuntimeField<T>(this, a_offset);
+			}
+
+		public:
 			// members
-			RenderTargetProperties        renderTargetData[100];       // 000
+			RenderTargetProperties renderTargetData[100];  // 000
+			// OG-only layout from this point; use matching accessors across runtimes.
 			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
 			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
-			std::byte                     padDC4[0x30];
+			// ID member offsets are OG-only; use the accessors.
 			std::uint32_t                 renderTargetID[100];                            // DC4
 			std::uint32_t                 depthStencilTargetID[12];                       // F54
 			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
@@ -751,7 +1386,13 @@ namespace RE
 			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;                      // FB4
 			Create_T                      create;                                         // FB8
 		};
-		static_assert(sizeof(RenderTargetManager) == 0xFF0);
+		static_assert(sizeof(RenderTargetManager) == 0xFC0);
+		static_assert(offsetof(RenderTargetManager, renderTargetData) == 0x000);
+		static_assert(offsetof(RenderTargetManager, depthStencilTargetData) == 0xC80);
+		static_assert(offsetof(RenderTargetManager, cubeMapRenderTargetData) == 0xDA0);
+		static_assert(offsetof(RenderTargetManager, renderTargetID) == 0xDC4);
+		static_assert(offsetof(RenderTargetManager, depthStencilTargetID) == 0xF54);
+		static_assert(offsetof(RenderTargetManager, cubeMapRenderTargetID) == 0xF84);
 
 		class OcclusionQuery
 		{
@@ -764,6 +1405,13 @@ namespace RE
 
 		namespace Utility
 		{
+			inline void PackDynamicParticleData(std::uint32_t a_count, NiParticles* a_particles, void* a_mappedVertices)
+			{
+				using func_t = decltype(&PackDynamicParticleData);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Utility::PackDynamicParticleData };
+				func(a_count, a_particles, a_mappedVertices);
+			}
+
 			inline void ConvertHALFToNiPoint3Stream(const std::uint16_t* a_src, NiPoint3* a_dst, std::uint32_t a_count, std::uint32_t a_stride)
 			{
 				using func_t = decltype(&ConvertHALFToNiPoint3Stream);

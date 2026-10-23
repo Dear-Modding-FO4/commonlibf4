@@ -20,6 +20,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESClass };
 		static constexpr auto VTABLE{ VTABLE::TESClass };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCLAS };
+		static constexpr auto TYPE_ID{ BSScript::kClass };
 
 		// members
 		CLASS_DATA data;  // 68

@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSKeyword };
 		static constexpr auto VTABLE{ VTABLE::BGSKeyword };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kKYWD };
+		static constexpr auto TYPE_ID{ BSScript::kKeyword };
 
 		[[nodiscard]] static uint16_t GetIndexForTypedKeyword(const BGSKeyword* a_keyword, KeywordType a_type)
 		{

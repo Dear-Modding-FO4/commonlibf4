@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESLevSpell };
 		static constexpr auto VTABLE{ VTABLE::TESLevSpell };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLVSP };
+		static constexpr auto TYPE_ID{ BSScript::kLeveledSpell };
 	};
 	static_assert(sizeof(TESLevSpell) == 0x98);
 }

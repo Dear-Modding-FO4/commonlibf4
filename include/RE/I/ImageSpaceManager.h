@@ -277,6 +277,13 @@ namespace RE
 			return *singleton;
 		}
 
+		void InitEffects()
+		{
+			using func_t = decltype(&ImageSpaceManager::InitEffects);
+			static REL::Relocation<func_t> func{ ID::ImageSpaceManager::InitEffects };
+			func(this);
+		}
+
 		// members
 		NiRect<std::int32_t>                 scissorRect;               // 000
 		NiTPrimitiveArray<ImageSpaceEffect*> effectList;                // 010
@@ -301,5 +308,9 @@ namespace RE
 		bool                                 saveTarget;                // 1B5
 		bool                                 useBokehDepthOfField;      // 1B6
 	};
+	static_assert(offsetof(ImageSpaceManager, screenTriShape) == 0x28);
+	static_assert(offsetof(ImageSpaceManager, screenTriShapeColors) == 0x30);
+	static_assert(offsetof(ImageSpaceManager, dynamicScreenTriShape) == 0x38);
+	static_assert(offsetof(ImageSpaceManager, partialScreenTriShape) == 0x40);
 	static_assert(sizeof(ImageSpaceManager) == 0x1B8);
 }

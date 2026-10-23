@@ -150,6 +150,20 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] inline float GetHealth(TESBoundObject* a_object)
+		{
+			using func_t = decltype(&ExtraDataList::GetHealth);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetHealth };
+			return func(this, a_object);
+		}
+
+		[[nodiscard]] inline TBO_InstanceData* GetInstanceData()
+		{
+			using func_t = decltype(&ExtraDataList::GetInstanceData);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetInstanceData };
+			return func(this);
+		}
+
 		inline void SetHealthPerc(float a_healthPerc)
 		{
 			using func_t = decltype(&ExtraDataList::SetHealthPerc);
@@ -175,6 +189,17 @@ namespace RE
 		{
 			using func_t = decltype(&ExtraDataList::IsDamaged);
 			static REL::Relocation<func_t> func{ ID::ExtraDataList::IsDamaged };
+			return func(this);
+		}
+
+		// Whether the health in this list is zero or less, which is what the game
+		// calls a broken item. The counterpart of IsDamaged above, which asks the
+		// weaker question of whether the health is anything below full. Both
+		// answer false for a list carrying no health at all.
+		inline bool IsItemBroken()
+		{
+			using func_t = decltype(&ExtraDataList::IsItemBroken);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::IsItemBroken };
 			return func(this);
 		}
 

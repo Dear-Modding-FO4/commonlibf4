@@ -67,6 +67,14 @@ namespace RE
 			return func(this, a_component);
 		}
 
+		// toggles the tag-for-search state and raises ComponentFavoriteEvent, which the Pip-Boy relies on to refresh
+		void ToggleComponentFavorite(TESBoundObject* a_component)
+		{
+			using func_t = decltype(&FavoritesManager::ToggleComponentFavorite);
+			static REL::Relocation<func_t> func{ ID::FavoritesManager::ToggleComponentFavorite };
+			return func(this, a_component);
+		}
+
 		[[nodiscard]] bool UseQuickkeyItem(std::uint32_t a_quickkeyIndex)
 		{
 			using func_t = decltype(&FavoritesManager::UseQuickkeyItem);

@@ -34,6 +34,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectLIGH };
 		static constexpr auto VTABLE{ VTABLE::TESObjectLIGH };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLIGH };
+		static constexpr auto TYPE_ID{ BSScript::kLight };
 
 		// members
 		OBJ_LIGH                data;            // 148

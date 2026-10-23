@@ -24,6 +24,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSNote };
 		static constexpr auto VTABLE{ VTABLE::BGSNote };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNOTE };
+		static constexpr auto TYPE_ID{ BSScript::kHolotape };
 
 		enum NOTE_TYPE : std::int8_t
 		{

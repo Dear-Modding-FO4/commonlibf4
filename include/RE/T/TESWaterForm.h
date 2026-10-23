@@ -21,6 +21,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESWaterForm };
 		static constexpr auto VTABLE{ VTABLE::TESWaterForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWATR };
+		static constexpr auto TYPE_ID{ BSScript::kWaterType };
 
 		// members
 		bool                    needUpdate;              // 030

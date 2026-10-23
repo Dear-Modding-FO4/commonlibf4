@@ -1,7 +1,15 @@
 #pragma once
 
+#include <RE/N/NiPointer.h>
+#include <RE/S/SkyObject.h>
+
 namespace RE
 {
+	class NiBillboardNode;
+	class BSShaderAccumulator;
+	class BSTriShape;
+	class NiDirectionalLight;
+
 	class __declspec(novtable) Sun :
 		public SkyObject
 	{

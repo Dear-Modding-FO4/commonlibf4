@@ -6,7 +6,7 @@
 #include "RE/B/BSStringT.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/N/NiPoint2.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiTMap.h"
 #include "RE/T/TESForm.h"
@@ -31,6 +31,18 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESWorldSpace };
 		static constexpr auto VTABLE{ VTABLE::TESWorldSpace };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWRLD };
+		static constexpr auto TYPE_ID{ BSScript::kWorldSpace };
+
+		enum class FLAG : std::uint8_t
+		{
+			kCantTravelFrom = 1u << 1,
+			kHasBorderRegion = 1u << 2,
+			kNoLODWater = 1u << 3,
+			kNoLand = 1u << 4,
+			kNoSky = 1u << 5,
+			kFixedDimensions = 1u << 6,
+			kNoGrass = 1u << 7
+		};
 
 		enum class PARENT_USE_FLAG
 		{
@@ -91,12 +103,33 @@ namespace RE
 			}
 		}
 
+		void ReleaseLowResMaxHeightData()
+		{
+			using func_t = decltype(&TESWorldSpace::ReleaseLowResMaxHeightData);
+			static REL::Relocation<func_t> func{ ID::TESWorldSpace::ReleaseLowResMaxHeightData };
+			return func(this);
+		}
+
+		bool FindCellInFile(TESFile* a_file, std::int32_t a_x, std::int32_t a_y)
+		{
+			using func_t = decltype(&TESWorldSpace::FindCellInFile);
+			static REL::Relocation<func_t> func{ ID::TESWorldSpace::FindCellInFile };
+			return func(this, a_file, a_x, a_y);
+		}
+
+		void AdjustMapMarkerCoord(NiPoint3* a_mapCoord, bool a_inverse)
+		{
+			using func_t = decltype(&TESWorldSpace::AdjustMapMarkerCoord);
+			static REL::Relocation<func_t> func{ ID::TESWorldSpace::AdjustMapMarkerCoord };
+			return func(this, a_mapCoord, a_inverse);
+		}
+
 		// members
 		BSTHashMap<std::int32_t, TESObjectCELL*>                       cellMap;                  // 0x040
 		TESObjectCELL*                                                 persistentCell;           // 0x070
 		BGSTerrainManager*                                             terrainManager;           // 0x078
 		TESClimate*                                                    climate;                  // 0x080
-		std::int8_t                                                    flags;                    // 0x088
+		REX::TEnumSet<FLAG, std::uint8_t>                              flags;                    // 0x088
 		REX::TEnumSet<PARENT_USE_FLAG, std::uint16_t>                  parentUseFlags;           // 0x08A
 		std::int8_t                                                    worldFlags;               // 0x08C
 		ShortPoint                                                     fixedCenter;              // 0x08E

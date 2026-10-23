@@ -322,11 +322,21 @@ namespace RE
 
 		[[nodiscard]] Setting* GetSetting(std::string_view a_name)
 		{
-			for (auto& setting : settings) {
-				if (setting->GetKey() == a_name) {
+			auto equalsIgnoreCase = [](std::string_view sv1, std::string_view sv2) {
+				if (sv1.size() != sv2.size())
+					return false;
+			
+				for (std::size_t i = 0; i < sv1.size(); ++i)
+					if (std::tolower(static_cast<unsigned char>(sv1[i])) !=
+						std::tolower(static_cast<unsigned char>(sv2[i])))
+						return false;
+				return true;
+			};
+			
+			for (auto& setting : settings)
+				if (equalsIgnoreCase(setting->GetKey(), a_name))
 					return setting;
-				}
-			}
+			
 			return nullptr;
 		}
 	};

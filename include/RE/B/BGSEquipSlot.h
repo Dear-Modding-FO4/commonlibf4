@@ -12,6 +12,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSEquipSlot };
 		static constexpr auto VTABLE{ VTABLE::BGSEquipSlot };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEQUP };
+		static constexpr auto TYPE_ID{ BSScript::kEquipSlot };
 
 		// members
 		BSTArray<BGSEquipSlot*> parentSlots;          // 20

@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSInstanceNamingRules };
 		static constexpr auto VTABLE{ VTABLE::BGSInstanceNamingRules };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kINNR };
+		static constexpr auto TYPE_ID{ BSScript::kInstanceNamingRules };
 
 		class RuleData
 		{

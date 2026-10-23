@@ -13,8 +13,18 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSSoundOutput };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundOutput };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSOPM };
+		static constexpr auto TYPE_ID{ BSScript::kOutputModel };
 
 		enum class SPEAKER_OUTPUT_MODE;
+
+		enum class FLAGS : std::uint32_t
+		{
+			kAttenuatesWithDistance = 1u << 0,
+			kUseDoppler = 1u << 2,
+			kUseSoSDelay = 1u << 3,
+			kPlayerFrequencyOverride = 1u << 4,
+			kTryPlayThroughController = 1u << 5
+		};
 
 		class DynamicAttenuationCharacteristics;
 		class SpeakerArrays;

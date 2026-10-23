@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSEncounterZone };
 		static constexpr auto VTABLE{ VTABLE::BGSEncounterZone };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kECZN };
+		static constexpr auto TYPE_ID{ BSScript::kEncounterZone };
 
 		[[nodiscard]] bool NeverResets() const noexcept { return data.flags.all(ENCOUNTER_ZONE_DATA::FLAG::kNeverReset); }
 		[[nodiscard]] bool IsWorkshop() const noexcept { return data.flags.all(ENCOUNTER_ZONE_DATA::FLAG::kWorkshopZone); }

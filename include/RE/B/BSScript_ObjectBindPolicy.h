@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSScript_BoundScript.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
@@ -12,7 +13,6 @@ namespace RE
 
 	namespace BSScript
 	{
-		class BoundScript;
 		class IHandleReaderWriter;
 		class IVirtualMachine;
 		class IVMObjectBindInterface;
@@ -60,10 +60,10 @@ namespace RE
 			}
 
 			// members
-			IVirtualMachine*                                                           vm;                   // 10
-			IVMObjectBindInterface*                                                    bindInterface;        // 18
-			BSSpinLock                                                                 attachedScriptsLock;  // 20
-			BSTHashMap<std::size_t, BSTSmallSharedArray<BSTSmartPointer<BoundScript>>> attachedScripts;      // 50
+			IVirtualMachine*                                                           vm;                   // 08
+			IVMObjectBindInterface*                                                    bindInterface;        // 10
+			BSSpinLock                                                                 attachedScriptsLock;  // 18
+			BSTHashMap<std::size_t, BSTSmallSharedArray<BSTSmartPointer<BoundScript>>> attachedScripts;      // 20
 		};
 		static_assert(sizeof(ObjectBindPolicy) == 0x50);
 	}

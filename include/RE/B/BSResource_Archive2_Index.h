@@ -19,13 +19,14 @@ namespace RE::BSResource
 		class RegisteredEvent;
 		class ClearRegistryEvent;
 
-		class __declspec(novtable) Index :
-			public BSTEventSink<RegisteredEvent>,    // 0000
-			public BSTEventSink<ClearRegistryEvent>  // 0008
+		template <typename TId = std::uint8_t, std::size_t NumEntries = 256>
+		class __declspec(novtable) TIndex :
+			public RE::BSTEventSink<RegisteredEvent>,    // 0000
+			public RE::BSTEventSink<ClearRegistryEvent>  // 0008
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::BSResource__Archive2__Index };
-			static constexpr auto VTABLE{ VTABLE::BSResource__Archive2__Index };
+			static constexpr auto RTTI{ RE::RTTI::BSResource__Archive2__Index };
+			static constexpr auto VTABLE{ RE::VTABLE::BSResource__Archive2__Index };
 
 			class Pager;
 			class NameIDAccess;
@@ -44,8 +45,8 @@ namespace RE::BSResource
 			{
 			public:
 				// members
-				Location*     location = nullptr;  // 00
-				BSFixedString nameText;            // 08
+				Location*			location = nullptr;  // 00
+				BSFixedString		nameText;            // 08
 			};
 			static_assert(sizeof(Loose) == 0x10);
 
@@ -56,12 +57,11 @@ namespace RE::BSResource
 				[[nodiscard]] bool IsLoose() const noexcept { return this->chunkOffsetOrType == 0; }
 
 				// members
-				ID            nameID;                 // 00
-				std::uint8_t  dataFileIndex = 0;      // 0C
-				std::uint8_t  chunkCount = 0;         // 0D
-				std::uint16_t chunkOffsetOrType = 0;  // 0E
+				ID					nameID;                 // 00
+				TId					dataFileIndex = 0;      // 0C
+				std::uint8_t		chunkCount = 0;         // 0E
+				std::uint16_t		chunkOffsetOrType = 0;  // 0F
 			};
-			static_assert(sizeof(EntryHeader) == 0x10);
 
 			class Entry :
 				public EntryHeader  // 00
@@ -82,29 +82,34 @@ namespace RE::BSResource
 					Chunk     chunk;
 					Loose     loose;
 					std::byte buffer[std::max(sizeof(Chunk), sizeof(Loose))] = {};
-				};  // 10
-				BSFixedString stringName;  // 20
+				};								// 10
+				BSFixedString stringName;		// 20
 			};
-			static_assert(sizeof(Entry) == 0x28);
 
 			class CursorWithEntry :
-				public BSBTreeFile::BPTree<Pager, BSBTreeFile::PGFSEDL<Entry, ID, 4096>, 16>::Cursor  // 000
+				public RE::BSBTreeFile::BPTree<Pager, RE::BSBTreeFile::PGFSEDL<Entry, RE::BSResource::ID, 4096>, 16>::Cursor  // 000
 			{
 			public:
 				// members
 				Entry e;  // 148
 			};
-			static_assert(sizeof(CursorWithEntry) == 0x170);
 
 			// members
-			BSTSmallIndexScatterTable<ID, NameIDAccess>                           nameTable;             // 0010
-			BSTSmartPointer<Stream>                                               dataFiles[256];        // 0030
-			BSTSmartPointer<AsyncStream>                                          asyncDataFiles[256];   // 0830
-			ID                                                                    dataFileNameIDs[256];  // 1030
-			std::uint32_t                                                         dataFileCount;         // 1C30
-			BSBTreeFile::BPTree<Pager, BSBTreeFile::PGFSEDL<Entry, ID, 4096>, 16> tr;                    // 1C38
-			BSReadWriteLock                                                       lock;                  // 1C58
+			RE::BSTSmallIndexScatterTable<ID, NameIDAccess>									nameTable;                    // 0010
+			RE::BSTSmartPointer<Stream>														dataFiles[NumEntries];        // 0030
+			RE::BSTSmartPointer<AsyncStream>												asyncDataFiles[NumEntries];   // ....
+			ID																				dataFileNameIDs[NumEntries];  // ....
+			std::uint32_t																	dataFileCount;                // ....
+			BSBTreeFile::BPTree<Pager, BSBTreeFile::PGFSEDL<Entry, ID, 4096>, 16>			tr;                           // ....
+			BSReadWriteLock																	lock;                         // ....
 		};
-		static_assert(sizeof(Index) == 0x1C60);
+
+		using Index256 = TIndex<>;
+		static_assert(sizeof(Index256) == 0x1C60);
+
+		using Index1024 = TIndex<std::uint16_t, 1024>;
+		static_assert(sizeof(Index1024) == 0x7060);
+
+		using Index = Index1024;
 	}
 }

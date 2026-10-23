@@ -45,6 +45,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESRace };
 		static constexpr auto VTABLE{ VTABLE::TESRace };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kRACE };
+		static constexpr auto TYPE_ID{ BSScript::kRace };
 
 		class MOVEMENT_SPEED_OVERRIDE
 		{

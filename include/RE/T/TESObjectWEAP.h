@@ -49,6 +49,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectWEAP };
 		static constexpr auto VTABLE{ VTABLE::TESObjectWEAP };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWEAP };
+		static constexpr auto TYPE_ID{ BSScript::kWeapon };
 
 		class RangedData
 		{
@@ -127,7 +128,7 @@ namespace RE
 			std::uint16_t                                                   attackDamage;           // 132
 			std::uint16_t                                                   rank;                   // 134
 			std::int8_t                                                     accuracyBonus;          // 136
-			REX::TEnumSet<WEAPON_TYPE, std::uint8_t>                        type;                   // 137
+			REX::TEnum<WEAPON_TYPE, std::uint8_t>                           type;                   // 137
 		};
 		static_assert(sizeof(InstanceData) == 0x138);
 
@@ -139,6 +140,22 @@ namespace RE
 			static constexpr auto VTABLE{ VTABLE::TESObjectWEAP__Data };
 		};
 		static_assert(sizeof(Data) == 0x138);
+
+		// What this weapon fires, or null for one that fires nothing.
+		//
+		// The instance data's own override is preferred, then the base form's,
+		// and the ammunition's projectile stands in when neither names one. A
+		// muzzle or a barrel that swaps the projectile is therefore followed,
+		// and so is a change of ammunition.
+		//
+		// a_instanceData may be null, in which case only the base form and the
+		// ammunition are consulted.
+		[[nodiscard]] static BGSProjectile* GetProjectile(const TESObjectWEAP* a_weapon, const TESAmmo* a_ammo, const InstanceData* a_instanceData)
+		{
+			using func_t = decltype(&TESObjectWEAP::GetProjectile);
+			static REL::Relocation<func_t> func{ ID::TESObjectWEAP::GetProjectile };
+			return func(a_weapon, a_ammo, a_instanceData);
+		}
 
 		[[nodiscard]] MELEE_ATTACK_SPEED GetMeleeAttackSpeed()
 		{
@@ -156,52 +173,71 @@ namespace RE
 
 		bool IsMeleeWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kOneHandSword,
-				WEAPON_TYPE::kOneHandDagger,
-				WEAPON_TYPE::kOneHandAxe,
-				WEAPON_TYPE::kOneHandMace,
-				WEAPON_TYPE::kTwoHandSword,
-				WEAPON_TYPE::kTwoHandAxe);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kOneHandSword:
+				case WEAPON_TYPE::kOneHandDagger:
+				case WEAPON_TYPE::kOneHandAxe:
+				case WEAPON_TYPE::kOneHandMace:
+				case WEAPON_TYPE::kTwoHandSword:
+				case WEAPON_TYPE::kTwoHandAxe:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsGunWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kGun);
+			return weaponData.type == WEAPON_TYPE::kGun;
 		}
 
 		bool IsThrownWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kGrenade,
-				WEAPON_TYPE::kMine);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kGrenade:
+				case WEAPON_TYPE::kMine:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsOneHandedWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kOneHandSword,
-				WEAPON_TYPE::kOneHandDagger,
-				WEAPON_TYPE::kOneHandAxe,
-				WEAPON_TYPE::kOneHandMace);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kOneHandSword:
+				case WEAPON_TYPE::kOneHandDagger:
+				case WEAPON_TYPE::kOneHandAxe:
+				case WEAPON_TYPE::kOneHandMace:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsTwoHandedWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kTwoHandSword,
-				WEAPON_TYPE::kTwoHandAxe);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kTwoHandSword:
+				case WEAPON_TYPE::kTwoHandAxe:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsRangedWeapon() const
 		{
-			return weaponData.type.any(
-				WEAPON_TYPE::kBow,
-				WEAPON_TYPE::kStaff,
-				WEAPON_TYPE::kGun,
-				WEAPON_TYPE::kGrenade,
-				WEAPON_TYPE::kMine);
+			switch (weaponData.type.get()) {
+				case WEAPON_TYPE::kBow:
+				case WEAPON_TYPE::kStaff:
+				case WEAPON_TYPE::kGun:
+				case WEAPON_TYPE::kGrenade:
+				case WEAPON_TYPE::kMine:
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		bool IsBoundWeapon() const

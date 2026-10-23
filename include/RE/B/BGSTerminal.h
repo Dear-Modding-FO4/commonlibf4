@@ -17,6 +17,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSTerminal };
 		static constexpr auto VTABLE{ VTABLE::BGSTerminal };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kTERM };
+		static constexpr auto TYPE_ID{ BSScript::kTerminal };
 
 		class BodyTextItem
 		{

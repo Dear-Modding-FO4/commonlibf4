@@ -14,6 +14,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESWordOfPower };
 		static constexpr auto VTABLE{ VTABLE::TESWordOfPower };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWOOP };
+		static constexpr auto TYPE_ID{ BSScript::kWordOfPower };
 
 		// members
 		BGSLocalizedString translation;  // 30

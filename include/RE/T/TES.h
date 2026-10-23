@@ -9,6 +9,7 @@
 
 namespace RE
 {
+	class BSCullingProcess;
 	class GridCellArray;
 	class GridDistantArray;
 	class ImageSpaceModifierInstance;
@@ -42,6 +43,20 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::TES };
 
 		using TACCallbackFunc_t = void(TESObjectCELL*, void*, void*);
+
+		void SetWorldSpace(TESWorldSpace* a_world, bool a_exterior)
+		{
+			using func_t = decltype(&TES::SetWorldSpace);
+			static REL::Relocation<func_t> func{ ID::TES::SetWorldSpace };
+			return func(this, a_world, a_exterior);
+		}
+
+		[[nodiscard]] bool IsCellLoaded(TESObjectCELL* a_cell, bool a_requireFullyLoaded)
+		{
+			using func_t = decltype(&TES::IsCellLoaded);
+			static REL::Relocation<func_t> func{ ID::TES::IsCellLoaded };
+			return func(this, a_cell, a_requireFullyLoaded);
+		}
 
 		enum class PICKWORLD_NODE
 		{
@@ -106,6 +121,13 @@ namespace RE
 		void ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
 		void ForEachReferenceInRange(const NiPoint3& a_origin, const float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
 		void ForEachReferenceInRange(const TESObjectREFR* a_ref, const float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
+
+		void UpdateMultiBoundVisibility(BSCullingProcess* a_cullingProcess)
+		{
+			using func_t = decltype(&TES::UpdateMultiBoundVisibility);
+			static REL::Relocation<func_t> func{ ID::TES::UpdateMultiBoundVisibility };
+			return func(this, a_cullingProcess);
+		}
 
 		// members
 		GridDistantArray*                                   gridDistant;                    // 010

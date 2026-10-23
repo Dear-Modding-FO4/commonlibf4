@@ -45,6 +45,13 @@ namespace RE
 			return func();
 		}
 
+		static void ClearCachedValues()
+		{
+			using func_t = decltype(&Script::ClearCachedValues);
+			static REL::Relocation<func_t> func{ ID::Script::ClearCachedValues };
+			return func();
+		}
+
 		static void SetProcessScripts(bool a_processScripts)
 		{
 			using func_t = decltype(&Script::SetProcessScripts);

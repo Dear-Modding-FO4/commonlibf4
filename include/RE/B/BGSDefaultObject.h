@@ -13,6 +13,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSDefaultObject };
 		static constexpr auto VTABLE{ VTABLE::BGSDefaultObject };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDFOB };
+		static constexpr auto TYPE_ID{ BSScript::kDefaultObject };
 
 		BGSDefaultObject(const char* a_name, ENUM_FORM_ID a_formType, const char* a_description)
 		{

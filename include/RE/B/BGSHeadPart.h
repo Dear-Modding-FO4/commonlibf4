@@ -20,6 +20,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSHeadPart };
 		static constexpr auto VTABLE{ VTABLE::BGSHeadPart };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kHDPT };
+		static constexpr auto TYPE_ID{ BSScript::kHeadPart };
 
 		enum class Flag
 		{

@@ -16,6 +16,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESTopic };
 		static constexpr auto VTABLE{ VTABLE::TESTopic };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDIAL };
+		static constexpr auto TYPE_ID{ BSScript::kTopic };
 
 		class InfoTree
 		{
