@@ -1330,6 +1330,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Initialize{ 1403529, 2284938 };
 	}
 
+	namespace BSScaleformSysMemMapper
+	{
+		inline constexpr REL::VariantID GetPageSize{ 1310500, 2287456 };
+	}
+
 	namespace BSScaleformTranslator
 	{
 		inline constexpr REL::VariantID AddTranslations{ 810671, 2295298 };
@@ -3780,6 +3785,11 @@ namespace Scaleform::ID
 		inline constexpr REL::VariantID Release{ 404814, 2287230 };
 	}
 
+	namespace GFx::Resource
+	{
+		inline constexpr REL::VariantID Release{ 570531, 2287873 };
+	}
+
 	namespace GFx::Value
 	{
 		inline constexpr REL::VariantID ObjectAddRef{ 244786, 2286228 };
@@ -3797,10 +3807,31 @@ namespace Scaleform::ID
 		inline constexpr REL::VariantID GetDisplayInfo{ 498814, 2285873 };
 	}
 
+	namespace HeapPT::FreeBin
+	{
+		inline constexpr REL::VariantID Push{ 1332259, 2295488, 4494856 };
+	}
+
+	namespace HeapPT::TreeBin
+	{
+		inline constexpr REL::VariantID FindBest{ 1031064, 2295478, 4494846 };
+		inline constexpr REL::VariantID PullNode{ 1519165, 2295487, 4494855 };
+	}
+
 	namespace Memory
 	{
 		inline constexpr REL::VariantID SetGlobalHeap{ 939898, 2707353 };
 		inline constexpr REL::VariantID GetGlobalHeap{ 939898, 2707353 };
+	}
+
+	namespace RefCountImpl
+	{
+		inline constexpr REL::VariantID Release{ 1192702, 2287366 };
+	}
+
+	namespace RefCountNTSImpl
+	{
+		inline constexpr REL::VariantID Release{ 487790, 2287367 };
 	}
 
 	namespace SysAlloc

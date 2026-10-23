@@ -13,6 +13,8 @@ namespace Scaleform
 		RefCountImplCore() = default;
 		virtual ~RefCountImplCore() = default;  // 00
 
+		[[nodiscard]] std::int32_t GetRefCount() const noexcept { return refCount; }
+
 	protected:
 		// members
 		volatile std::int32_t refCount{ 1 };  // 08
@@ -43,6 +45,23 @@ namespace Scaleform
 		}
 	};
 	static_assert(sizeof(RefCountImpl) == 0x10);
+
+	class RefCountNTSImpl :
+		public RefCountImplCore  // 00
+	{
+	public:
+		virtual ~RefCountNTSImpl() = default;  // NOLINT(modernize-use-override) 00
+
+		void AddRef() noexcept { ++refCount; }
+
+		void Release()
+		{
+			if (--refCount == 0) {
+				delete this;
+			}
+		}
+	};
+	static_assert(sizeof(RefCountNTSImpl) == 0x10);
 
 	template <class Base, std::int32_t>
 	class RefCountBaseStatImpl :

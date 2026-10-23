@@ -13,6 +13,48 @@ namespace Scaleform
 	{
 		class MemVisitor;
 		class SegVisitor;
+		struct HeapSegment;
+	}
+
+	namespace HeapPT
+	{
+		struct BinLNode
+		{
+			BinLNode*          pNext;      // 00
+			BinLNode*          pPrev;      // 08
+			Heap::HeapSegment* pSegment;   // 10
+			std::uint32_t      shortSize;  // 18
+			std::uint32_t      filler;     // 1C
+		};
+		static_assert(sizeof(BinLNode) == 0x20);
+
+		struct BinTNode :
+			public BinLNode  // 00
+		{
+			std::size_t size;       // 20
+			BinTNode*   parent;     // 28
+			BinTNode*   child[2];   // 30
+			std::size_t index;      // 40
+		};
+		static_assert(sizeof(BinTNode) == 0x48);
+
+		struct TreeBin
+		{
+			std::uint64_t mask;       // 00
+			BinTNode*     roots[64];  // 08
+		};
+		static_assert(sizeof(TreeBin) == 0x208);
+
+		struct FreeBin
+		{
+			std::uint64_t mask1;         // 000
+			BinLNode*     listBin1[64];  // 008
+			std::uint64_t mask2;         // 208
+			BinLNode*     listBin2[64];  // 210
+			TreeBin       treeBin;       // 410
+			std::size_t   freeBlocks;    // 618
+		};
+		static_assert(sizeof(FreeBin) == 0x620);
 	}
 
 	class __declspec(novtable) MemoryHeap :

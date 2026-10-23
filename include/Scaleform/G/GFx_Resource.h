@@ -30,8 +30,10 @@ namespace Scaleform::GFx
 		{
 			REX::TAtomicRef myRefCount{ refCount.value };
 			if (--myRefCount == 0) {
-				delete lib;
-				lib = nullptr;
+				if (lib) {
+					lib->RemoveResourceOnRelease(this);
+					lib = nullptr;
+				}
 				delete this;
 			}
 		}
