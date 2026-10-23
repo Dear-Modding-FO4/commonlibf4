@@ -1789,6 +1789,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Imagespace{ 587723, 2318322 };
 		inline constexpr REL::VariantID Render_PreUI{ 984743, 2318321 };
 		inline constexpr REL::VariantID Forward{ 656535, 2318315 };
+		inline constexpr REL::VariantID ForwardAlphaImpl{ 338205, 0 };  // Inlined in NG/AE Forward
 		inline constexpr REL::VariantID DeferredPrePass{ 56596, 2318301 };
 		inline constexpr REL::VariantID DeferredLightsImpl{ 1108521, 2318312 };
 		inline constexpr REL::VariantID DeferredComposite{ 728427, 2318313 };
