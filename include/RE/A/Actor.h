@@ -44,6 +44,7 @@ namespace RE
 	class bhkCharacterStateChangeEvent;
 	class bhkNonSupportContactEvent;
 	class BSMovementDataChangedEvent;
+	class BSPathingAvoidNodeArray;
 	class BSSoundHandle;
 	class BSSubGraphActivationUpdate;
 	class BSTransformDeltaEvent;
@@ -585,6 +586,30 @@ namespace RE
 			using func_t = decltype(&Actor::SetHeading);
 			static REL::Relocation<func_t> func{ ID::Actor::SetHeading };
 			return func(this, a_angle);
+		}
+
+		// Requires an initialized actor mover and movement controller.
+		void SetPathfindingGoal(TESObjectREFR* a_target, float a_speed, BSPathingAvoidNodeArray* a_avoidNodes = nullptr)
+		{
+			using func_t = void(Actor*, TESObjectREFR*, float, BSPathingAvoidNodeArray*);
+			static REL::Relocation<func_t> func{ ID::Actor::SetPathfindingGoal_REFR };
+			func(this, a_target, a_speed, a_avoidNodes);
+		}
+
+		// Requires an initialized actor mover.
+		void ClearPath()
+		{
+			using func_t = void(Actor*);
+			static REL::Relocation<func_t> func{ ID::Actor::ClearPath };
+			func(this);
+		}
+
+		// May return null; resolves interaction targets without creating a mover.
+		[[nodiscard]] ActorMover* GetCurrentActorMover()
+		{
+			using func_t = ActorMover*(Actor*);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentActorMover };
+			return func(this);
 		}
 
 		void TrespassAlarm(TESObjectREFR* a_refr, TESForm* a_owner, std::int32_t a_crime)

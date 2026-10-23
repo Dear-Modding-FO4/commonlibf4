@@ -79,6 +79,18 @@ namespace RE::ID
 		inline constexpr REL::VariantID DoHitMe{ 881215, 2231148 };
 		inline constexpr REL::VariantID SetCommandState{ 1512511, 2229916 };
 		inline constexpr REL::VariantID SetSneaking{ 400155, 2230404 };
+		inline constexpr REL::VariantID GetCurrentActorMover{ 1199471, 2230241, 2230241 };
+		inline constexpr REL::VariantID SetPathfindingGoal_REFR{ 612394, 2230246, 2230246 };
+		inline constexpr REL::VariantID ClearPath{ 927158, 2230263, 2230263 };
+	}
+
+	namespace ActorMover
+	{
+		inline constexpr REL::VariantID SetGoal{ 1438155, 2234291, 2234291 };
+		inline constexpr REL::VariantID SetGoalPos{ 1026812, 2234290, 2234290 };
+		inline constexpr REL::VariantID ClearPath{ 903222, 2234297, 2234297 };
+		inline constexpr REL::VariantID IsPathing{ 203246, 2234312, 2234312 };
+		inline constexpr REL::VariantID IsPathValid{ 800997, 2234314, 2234314 };
 	}
 
 	namespace ActorEquipManager
@@ -135,9 +147,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetCurrentAmmo{ 795983, 2232302 };
 		inline constexpr REL::VariantID SetCommandType{ 1555789, 2231826 };
 		inline constexpr REL::VariantID SetEquippedItem{ 1200276, 2231627 };
-		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231704 };
+		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231705 };
 		inline constexpr REL::VariantID SetWeaponBonesCulled{ 397172, 2232535 };
-		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231705 };
+		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231706 };
 		inline constexpr REL::VariantID SetRunOncePackage{ 155445, 2232344 };
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
@@ -2448,6 +2460,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Init{ 114988, 2208804 };
 		inline constexpr REL::VariantID Update{ 4410, 2208806 };
+	}
+
+	namespace MovementControllerNPC
+	{
+		inline constexpr REL::VariantID QueryInterface{ 1132418, 2301643, 2301643 };
 	}
 
 	namespace MovementPlannerAgentWarp

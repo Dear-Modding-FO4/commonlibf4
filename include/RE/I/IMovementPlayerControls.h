@@ -7,7 +7,7 @@ namespace RE
 	class PlayerControlsMovementData;
 
 	class __declspec(novtable) IMovementPlayerControls :
-		public IMovementInterface  // 00
+	    public IMovementInterface  // 00
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::IMovementPlayerControls };
