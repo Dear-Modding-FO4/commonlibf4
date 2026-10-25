@@ -686,6 +686,7 @@
 #include "RE/C/CellAttachDetachEventSource.h"
 #include "RE/C/CharacterEvent.h"
 #include "RE/C/ClearHUDMessagesEvent.h"
+#include "RE/C/Clouds.h"
 #include "RE/C/ColorUpdateEvent.h"
 #include "RE/C/CombatBehaviorStack.h"
 #include "RE/C/CombatFormulas.h"
