@@ -929,6 +929,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Ctor{ 941893, 2318825 };
 		inline constexpr REL::VariantID AddCubeMapScene{ 1420188, 2213983 };
+		inline constexpr REL::VariantID ClickCubeMap{ 593615, 2318829 };
 	}
 
 	namespace BSCullingGroup
@@ -1139,6 +1140,12 @@ namespace RE::ID
 	namespace BSIdleInputWatcher
 	{
 		inline constexpr REL::VariantID Singleton{ 487306, 2693716, 4801008 };
+	}
+
+	namespace BSImagespaceShader
+	{
+		inline constexpr REL::VariantID Render{ 1388477, 2319297 };
+		inline constexpr REL::VariantID Dispatch{ 656678, 2319298 };
 	}
 
 	namespace BSImagespaceShaderLensFlare
