@@ -2392,6 +2392,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID OnIdle_UpdatePlayer{ 1318162, 2228929 };
 		inline constexpr REL::VariantID PerformGameReset{ 124452, 2228945 };
 		inline constexpr REL::VariantID StartUp{ 665510, 2228907 };
+		inline constexpr REL::VariantID GetCanLoad{ 1130242, 2228953 };
 	}
 
 	namespace MapMarkerData

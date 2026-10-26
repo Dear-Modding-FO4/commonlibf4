@@ -57,6 +57,14 @@ namespace RE
 			return *singleton;
 		}
 
+		// False while game data initializes; MainMenu defers loads.
+		[[nodiscard]] static bool GetCanLoad()
+		{
+			using func_t = decltype(&Main::GetCanLoad);
+			static REL::Relocation<func_t> func{ ID::Main::GetCanLoad };
+			return func();
+		}
+
 		void SetCameraFOV(float a_fov)
 		{
 			using func_t = decltype(&Main::SetCameraFOV);
