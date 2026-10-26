@@ -2231,7 +2231,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 161743, 2712627 };
 		inline constexpr REL::VariantID RenderEffectRange{ 459505, 2316593 };
 		inline constexpr REL::VariantID InitEffects{ 889489, 2316625 };
-		inline constexpr REL::VariantID RenderEffect{ 325252, 2316595 };
+		inline constexpr REL::VariantID RenderEffect{ 1309722, 2316595 };
 	}
 
 	namespace ImageSpaceModifierInstance
