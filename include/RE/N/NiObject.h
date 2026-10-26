@@ -83,6 +83,14 @@ namespace RE
 		virtual void                       SetGroup([[maybe_unused]] NiObjectGroup*) { return; }                            // 26
 		virtual NiControllerManager*       IsNiControllerManager() { return nullptr; }                                      // 27
 
+		// Deep copy through CreateClone/ProcessClone; the caller takes the reference.
+		[[nodiscard]] NiObject* Clone()
+		{
+			using func_t = decltype(&NiObject::Clone);
+			static REL::Relocation<func_t> func{ ID::NiObject::Clone };
+			return func(this);
+		}
+
 		F4_HEAP_REDEFINE_NEW(NiObject);
 	};
 	static_assert(sizeof(NiObject) == 0x10);

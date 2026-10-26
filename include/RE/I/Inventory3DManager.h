@@ -49,6 +49,14 @@ namespace RE
 			return func(this, a_userID);
 		}
 
+		// Polls the queued load task and publishes the finished model to the renderer.
+		void Display()
+		{
+			using func_t = decltype(&Inventory3DManager::Display);
+			static REL::Relocation<func_t> func{ ID::Inventory3DManager::Display };
+			return func(this);
+		}
+
 		void EnableRendering(const BSFixedString& a_userID)
 		{
 			using func_t = decltype(&Inventory3DManager::EnableRendering);
@@ -61,6 +69,14 @@ namespace RE
 			using func_t = decltype(&Inventory3DManager::End3D);
 			static REL::Relocation<func_t> func{ ID::Inventory3DManager::End3D };
 			return func(this);
+		}
+
+		// Async and instance-aware; ignored until Begin3D creates the temp ref.
+		void LoadInventoryItem(TESForm* a_item, const ExtraDataList* a_extra, std::uint32_t a_stackCount)
+		{
+			using func_t = decltype(&Inventory3DManager::LoadInventoryItem);
+			static REL::Relocation<func_t> func{ ID::Inventory3DManager::LoadInventoryItem };
+			return func(this, a_item, a_extra, a_stackCount);
 		}
 
 		void SetModelScale(float a_scale)

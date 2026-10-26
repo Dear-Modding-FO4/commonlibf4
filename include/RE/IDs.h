@@ -2308,8 +2308,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID Begin3D{ 662659, 2249084 };
 		inline constexpr REL::VariantID ClearModel{ 63218, 2249113 };
 		inline constexpr REL::VariantID DisableRendering{ 255893, 2249099 };
+		inline constexpr REL::VariantID Display{ 475804, 2249085 };
 		inline constexpr REL::VariantID EnableRendering{ 176578, 2249098 };
 		inline constexpr REL::VariantID End3D{ 1512675, 2249086 };
+		inline constexpr REL::VariantID LoadInventoryItem{ 75489, 2249088 };
 		inline constexpr REL::VariantID SetModelScale{ 1319701, 2249097 };
 		inline constexpr REL::VariantID SetModelScreenPosition{ 2967, 2249096 };
 	}
@@ -2596,6 +2598,11 @@ namespace RE::ID
 	namespace NiNode
 	{
 		inline constexpr REL::VariantID ChildrenVTable{ 390064 };
+	}
+
+	namespace NiObject
+	{
+		inline constexpr REL::VariantID Clone{ 604942, 2269854 };
 	}
 
 	namespace NiPoint3
