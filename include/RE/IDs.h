@@ -323,7 +323,8 @@ namespace RE::ID
 
 	namespace BGSDefaultObjectManager
 	{
-		inline constexpr REL::VariantID Singleton{ 484974, 0 };  // Inlined NG/AE - old ids 2192850 this function get by type (also, the number increased by 1)
+		inline constexpr REL::VariantID GetDefaultObject{ 0, 2192850 };  // NG/AE by index; indices differ from OG DEFAULT_OBJECT
+		inline constexpr REL::VariantID Singleton{ 484974, 0 };          // Inlined NG/AE
 	}
 
 	namespace BGSDialogueEvent
@@ -3738,7 +3739,11 @@ namespace RE::ID
 
 		namespace WorkshopMenuNode
 		{
+			inline constexpr REL::VariantID AddRecipe{ 972821, 2195494 };
+			inline constexpr REL::VariantID AddRecipesForFilter{ 0, 2195247 };  // Inlined in OG into BuildChildNodes
+			inline constexpr REL::VariantID BuildChildNodes{ 934716, 2195480 };  // BGSListForm::ForEachInList callback
 			inline constexpr REL::VariantID FindAndSetSelectedNode{ 1309368, 2195022 };
+			inline constexpr REL::VariantID TryAddRecipe{ 281929, 0 };  // Inlined in NG/AE into AddRecipesForFilter
 		}
 
 		inline constexpr REL::VariantID FindNearestValidWorkshop{ 905705, 2194970 };
