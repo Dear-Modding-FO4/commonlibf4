@@ -2521,6 +2521,19 @@ namespace RE::ID
 		inline constexpr REL::VariantID UpdateLight{ 976501, 2236921 };
 	}
 
+	namespace NVGodrays
+	{
+		inline constexpr REL::VariantID Initialize{ 769858, 2318634, 2318634 };
+		inline constexpr REL::VariantID IsEnabled{ 1021830, 2318636, 2318636 };
+		inline constexpr REL::VariantID BeginAccumulation{ 51117, 2318638, 2318638 };
+		inline constexpr REL::VariantID SetupDepthPass{ 393542, 2318639, 2318639 };
+		inline constexpr REL::VariantID RenderVolume{ 1070837, 2318640, 2318640 };
+		inline constexpr REL::VariantID ApplyLighting{ 291127, 2318642, 2318642 };
+		inline constexpr REL::VariantID EnableSetting{ 80231, 2678124, 4784792 };
+		inline constexpr REL::VariantID QualitySetting{ 738612, 2678126, 4784794 };
+		inline constexpr REL::VariantID RuntimeDisabled{ 532616, 2713055, 2713055 };
+	}
+
 	namespace NavMeshObstacleCoverManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1308718, 2192470 };

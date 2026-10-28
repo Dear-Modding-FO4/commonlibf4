@@ -1165,6 +1165,7 @@
 #include "RE/M/MultiActivateUseRolloverEvent.h"
 #include "RE/N/NEW_REFR_DATA.h"
 #include "RE/N/NPC_DATA.h"
+#include "RE/N/NVGodrays.h"
 #include "RE/N/NavMesh.h"
 #include "RE/N/NavMeshInfoMap.h"
 #include "RE/N/NavMeshObstacleCoverManager.h"
