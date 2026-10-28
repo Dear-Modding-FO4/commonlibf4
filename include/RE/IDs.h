@@ -738,6 +738,7 @@ namespace RE::ID
 	namespace BGSTerrainChunk
 	{
 		inline constexpr REL::VariantID Attach{ 1118335, 2213538 };
+		inline constexpr REL::VariantID AttachWater{ 92673, 2213543, 2213543 };
 		inline constexpr REL::VariantID Detach{ 824959, 2213540 };
 		inline constexpr REL::VariantID Prepare{ 1339886, 2213552 };
 	}

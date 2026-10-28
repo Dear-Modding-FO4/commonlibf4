@@ -18,6 +18,13 @@ namespace RE
 			return func(this);
 		}
 
+		static void AttachWater(bool a_attach)
+		{
+			using func_t = decltype(&BGSTerrainChunk::AttachWater);
+			static REL::Relocation<func_t> func{ ID::BGSTerrainChunk::AttachWater };
+			return func(a_attach);
+		}
+
 		void Detach()
 		{
 			using func_t = decltype(&BGSTerrainChunk::Detach);
