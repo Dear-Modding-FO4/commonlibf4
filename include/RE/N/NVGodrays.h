@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <span>
 
+#include "RE/N/NiPoint3.h"
+
 namespace RE
 {
 	class Setting;
@@ -18,6 +20,23 @@ namespace RE
 			std::uint32_t upsampleQuality;  // 0C: 0 point, 1 bilinear, 2 bilateral
 		};
 		static_assert(sizeof(QualityPreset) == 0x10);
+
+		// Sky::GetGodraysSettings sums the weathers' BGSGodRays slots into this.
+		struct MediumSettings
+		{
+			NiPoint3 airScatter;      // 00
+			NiPoint3 forwardScatter;  // 0C
+			NiPoint3 backScatter;     // 18
+			float    phaseForward;    // 24
+			float    phaseBackward;   // 28
+		};
+		static_assert(sizeof(MediumSettings) == 0x2C);
+
+		// Only the leading field is established; the engine reads no more than this here.
+		struct PostprocessSettings
+		{
+			float intensity;  // 00
+		};
 
 		// bVolumetricLightingEnable:Display; read once when the library and its depth target are created.
 		[[nodiscard]] inline Setting* GetEnableSetting()

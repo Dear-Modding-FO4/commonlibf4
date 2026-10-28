@@ -34,6 +34,25 @@ namespace RE
 			kCount = 0x8
 		};
 
+		// Row of colorData and index of Sky::skyColor.
+		enum ColorTypes : std::size_t
+		{
+			kSkyUpper = 0,
+			kFogNear = 1,
+			kAmbient = 3,
+			kSunlight = 4,
+			kSun = 5,
+			kSkyLower = 7,
+			kHorizon = 8,
+			kEffectLighting = 9,
+			kFogFar = 12,
+			kSunGlare = 15,
+			kMoonGlare = 16,
+			kFogHighNear = 17,
+			kFogHighFar = 18,
+			kTotal = 19
+		};
+
 		enum class SpellContext
 		{
 			kApplyOnLightning = 0x0,

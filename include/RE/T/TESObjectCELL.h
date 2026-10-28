@@ -87,7 +87,10 @@ namespace RE
 		{
 			kInterior = 1u << 0,
 			kHasWater = 1u << 1,
+			// Interior sun shadows need both of these.
+			kInteriorSunShadowsA = 1u << 8,
 			kWarnToLeave = 1u << 9,
+			kInteriorSunShadowsB = 1u << 11,
 		};
 
 		enum class QUAD_HIDE_STATE
