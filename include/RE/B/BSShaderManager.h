@@ -218,6 +218,11 @@ namespace RE
 				return static_cast<eSceneGraphEnum>(sceneGraph);
 			}
 
+			// DeferredComposite reads the SSS flag; DFLight reads the character light pair.
+			[[nodiscard]] bool& GetCharacterLightEnabled() noexcept { return characterLightEnabled; }
+			[[nodiscard]] bool& GetScreenSpaceSubsurfaceScatteringEnabled() noexcept { return screenSpaceSubsurfaceScatteringEnabled; }
+			[[nodiscard]] NiColorA& GetCharacterLightParams() noexcept { return characterLightParams; }
+
 		private:
 			// members
 			ShadowSceneNode*              shadowSceneNode[5];                      // 00
