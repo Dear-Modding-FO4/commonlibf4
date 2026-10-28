@@ -566,6 +566,7 @@
 #include "RE/B/BSSimpleList.h"
 #include "RE/B/BSSkinInstance.h"
 #include "RE/B/BSSkyShader.h"
+#include "RE/B/BSSkyShaderProperty.h"
 #include "RE/B/BSSoundCategoryHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSSpinLock.h"

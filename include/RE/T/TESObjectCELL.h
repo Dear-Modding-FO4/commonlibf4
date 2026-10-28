@@ -234,6 +234,14 @@ namespace RE
 			return func(a_file);
 		}
 
+		// The local map camera's Z rotation is its negation.
+		[[nodiscard]] float GetNorthRotation() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetNorthRotation);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetNorthRotation };
+			return func(this);
+		}
+
 		EXTERIOR_DATA*              GetCoordinates() const;
 		[[nodiscard]] TESWaterForm* GetWaterType() const noexcept;
 		[[nodiscard]] bool          HasWater() const noexcept { return cellFlags.all(Flag::kHasWater); }

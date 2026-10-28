@@ -3124,12 +3124,26 @@ namespace RE::ID
 		inline constexpr REL::VariantID ResetWeather{ 6511, 2208860 };
 		inline constexpr REL::VariantID SetWeather{ 1244028, 2208859 };
 		inline constexpr REL::VariantID LoadGame{ 531797, 2208883 };
+		inline constexpr REL::VariantID Update{ 1322941, 2208846 };
+		inline constexpr REL::VariantID UpdateColors{ 1037177, 2208849 };
+		inline constexpr REL::VariantID SetColor{ 1447162, 2208855 };
+		inline constexpr REL::VariantID GetGodraysSettings{ 1156439, 2208841 };
 	}
 
 	namespace SplineUtils
 	{
 		inline constexpr REL::VariantID DisconnectSpline{ 750682, 2195074 };
 		inline constexpr REL::VariantID ConnectSpline{ 59311, 2195073 };
+	}
+
+	namespace Sun
+	{
+		inline constexpr REL::VariantID Update{ 1172487, 2208953 };
+		// Float globals Sun::Update writes and the deferred composite and sun passes read.
+		inline constexpr REL::VariantID PositionX{ 729125, 2712679 };
+		inline constexpr REL::VariantID PositionY{ 47185, 2712680 };
+		inline constexpr REL::VariantID PositionZ{ 948124, 2712681 };
+		inline constexpr REL::VariantID DiscAlpha{ 33272, 2712686 };
 	}
 
 	namespace StartMenuBase

@@ -81,6 +81,14 @@ namespace RE
 		};
 		static_assert(sizeof(SkyStaticRefData) == 0x8);
 
+		// Weather colors are packed RGBA bytes, as TESWeather::colorData stores them.
+		struct COLOR_BLEND
+		{
+			std::uint32_t colors[4];   // 00
+			float         weights[4];  // 10
+		};
+		static_assert(sizeof(COLOR_BLEND) == 0x20);
+
 		virtual ~Sky();  // 00
 
 		[[nodiscard]] static Sky* GetSingleton()
@@ -103,6 +111,14 @@ namespace RE
 				flags.set(Flags::kReleaseWeatherOverride);
 				overrideWeather = nullptr;
 			}
+		}
+
+		// Sky::SetColor; blends the packed weather colors in CIELab, then adds flash.
+		void SetColor(NiColor& a_out, const COLOR_BLEND& a_blend, float a_flash)
+		{
+			using func_t = void (*)(Sky*, NiColor&, const COLOR_BLEND*, float);
+			static REL::Relocation<func_t> func{ ID::Sky::SetColor };
+			return func(this, a_out, std::addressof(a_blend), a_flash);
 		}
 
 		void ResetWeather()
