@@ -52,7 +52,7 @@ namespace RE
 			return setting.get();
 		}
 
-		// The `gr off` flag; IsEnabled is the enable setting and not this flag.
+		// The `gr off` flag; IsEnabled is false while it is set.
 		[[nodiscard]] inline bool& GetRuntimeDisabled()
 		{
 			static REL::Relocation<bool*> flag{ ID::NVGodrays::RuntimeDisabled };
