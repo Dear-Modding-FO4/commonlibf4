@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSSpinLock.h"
+#include "RE/B/BSTArray.h"
 #include "RE/N/NiLight.h"
 #include "RE/N/NiMatrix3.h"
 #include "RE/N/NiPointer.h"
@@ -8,7 +9,11 @@
 
 namespace RE
 {
+	class BSCullingProcess;
 	class BSFadeNode;
+	class BSMultiBoundRoom;
+	class BSPortal;
+	class BSPortalGraph;
 	class NiCullingProcess;
 
 	class __declspec(novtable) BSLight : public NiRefObject
@@ -113,34 +118,39 @@ namespace RE
 			BoxShape  box;
 			ConeShape cone;
 		};  // 0A0
-		NiPointer<NiLight>    light;                      // 0B8
-		void*                 associationHead;            // 0C0
-		void*                 associationTail;            // 0C8
-		std::uint32_t         associationCount;           // 0D0
-		std::byte             unk0D4[4];                  // 0D4
-		void*                 associationAllocator;       // 0D8
-		BSSpinLock            associationLock;            // 0E0
-		std::byte             unk0E8[0x60];               // 0E8
-		NiPointer<NiAVObject> spotConeGeometry;           // 148
-		std::byte             unk150[8];                  // 150
-		void*                 projectedTexture;           // 158
-		std::byte             unk160[0x11];               // 160
-		bool                  specialList;                // 171
-		bool                  field172;                   // 172 - creation policy is unnamed
-		bool                  field173;                   // 173 - creation policy is unnamed
-		std::byte             unk174;                     // 174
-		bool                  field175;                   // 175
-		bool                  field176;                   // 176
-		bool                  field177;                   // 177
-		bool                  specular;                   // 178
-		bool                  attenuationOnly;            // 179
-		bool                  zeroRoughness;              // 17A
-		bool                  suppressRim;                // 17B
-		std::byte             unk17C[2];                  // 17C
-		bool                  excludeFromPointLuminance;  // 17E
-		std::byte             unk17F;                     // 17F
-		std::uint32_t         shape;                      // 180
-		std::byte             unk184[0xC];                // 184
+		NiPointer<NiLight>          light;                      // 0B8
+		void*                       associationHead;            // 0C0
+		void*                       associationTail;            // 0C8
+		std::uint32_t               associationCount;           // 0D0
+		std::byte                   unk0D4[4];                  // 0D4
+		void*                       associationAllocator;       // 0D8
+		BSSpinLock                  associationLock;            // 0E0
+		std::byte                   unk0E8[8];                  // 0E8
+		BSTArray<BSMultiBoundRoom*> rooms;                      // 0F0
+		BSTArray<BSPortal*>         portals;                    // 108
+		std::byte                   unk120[0x18];               // 120
+		BSPortalGraph*              portalGraph;                // 138
+		BSCullingProcess*           cullingProcess;             // 140
+		NiPointer<NiAVObject>       spotConeGeometry;           // 148
+		std::byte                   unk150[8];                  // 150
+		void*                       projectedTexture;           // 158
+		std::byte                   unk160[0x11];               // 160
+		bool                        specialList;                // 171
+		bool                        field172;                   // 172 - creation policy is unnamed
+		bool                        portalStrict;               // 173
+		std::byte                   unk174;                     // 174
+		bool                        field175;                   // 175
+		bool                        field176;                   // 176
+		bool                        field177;                   // 177
+		bool                        specular;                   // 178
+		bool                        attenuationOnly;            // 179
+		bool                        zeroRoughness;              // 17A
+		bool                        suppressRim;                // 17B
+		std::byte                   unk17C[2];                  // 17C
+		bool                        excludeFromPointLuminance;  // 17E
+		std::byte                   unk17F;                     // 17F
+		std::uint32_t               shape;                      // 180
+		std::byte                   unk184[0xC];                // 184
 	};
 	static_assert(offsetof(BSLight, currentFade) == 0x10);
 	static_assert(offsetof(BSLight, luminance) == 0x14);
@@ -157,11 +167,15 @@ namespace RE
 	static_assert(offsetof(BSLight, associationCount) == 0xD0);
 	static_assert(offsetof(BSLight, associationAllocator) == 0xD8);
 	static_assert(offsetof(BSLight, associationLock) == 0xE0);
+	static_assert(offsetof(BSLight, rooms) == 0xF0);
+	static_assert(offsetof(BSLight, portals) == 0x108);
+	static_assert(offsetof(BSLight, portalGraph) == 0x138);
+	static_assert(offsetof(BSLight, cullingProcess) == 0x140);
 	static_assert(offsetof(BSLight, spotConeGeometry) == 0x148);
 	static_assert(offsetof(BSLight, projectedTexture) == 0x158);
 	static_assert(offsetof(BSLight, specialList) == 0x171);
 	static_assert(offsetof(BSLight, field172) == 0x172);
-	static_assert(offsetof(BSLight, field173) == 0x173);
+	static_assert(offsetof(BSLight, portalStrict) == 0x173);
 	static_assert(offsetof(BSLight, field175) == 0x175);
 	static_assert(offsetof(BSLight, field176) == 0x176);
 	static_assert(offsetof(BSLight, field177) == 0x177);

@@ -9,6 +9,7 @@ namespace RE
 	class __declspec(novtable) alignas(16) BSPortal :
 		public BSOcclusionPlane  // 00
 	{
+	public:
 		inline static constexpr auto RTTI{ RTTI::BSPortal };
 		inline static constexpr auto VTABLE{ VTABLE::BSPortal };
 		inline static constexpr auto Ni_RTTI{ Ni_RTTI::BSPortal };

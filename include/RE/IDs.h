@@ -1445,6 +1445,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID CachedDirectionalBlendWidth{ 996623, 2713322 };
 		inline constexpr REL::VariantID SetEmittanceRecurse{ 857081, 2316544 };
 		inline constexpr REL::VariantID SetExternalEmittanceRecurse{ 591313, 2316545 };
+		inline constexpr REL::VariantID GetCurrentAccumulator{ 1555929, 2316563 };
+		inline constexpr REL::VariantID SetCurrentAccumulator{ 412086, 2316564 };
+		inline constexpr REL::VariantID CurrentAccumulator{ 809145, 2712471 };
 		namespace State
 		{
 			inline constexpr REL::VariantID Singleton{ 1327069, 2712479 };
