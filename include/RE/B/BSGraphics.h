@@ -1261,6 +1261,14 @@ namespace RE
 				return func(this, a_slot, a_logicalID, a_mode);
 			}
 
+			// Binds a pooled logical target as a PS texture; a_useDepth selects its depth view.
+			void SetTextureRenderTarget(std::uint32_t a_slot, std::int32_t a_logicalID, TextureAddressMode a_mode, bool a_useDepth)
+			{
+				using func_t = decltype(&RenderTargetManager::SetTextureRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetTextureRenderTarget };
+				return func(this, a_slot, a_logicalID, a_mode, a_useDepth);
+			}
+
 			// While set, only this face RTV and the depth target are bound; a_logicalID -1,
 			// or a 2D bind that changes a slot or uses a mode other than 3, leaves cube mode.
 			void SetCurrentCubeMapRenderTarget(std::int32_t a_logicalID, SetRenderTargetMode a_mode, std::int32_t a_face)

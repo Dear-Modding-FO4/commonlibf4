@@ -1105,6 +1105,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID UpdateDynamicResolution{ 1115215, 2277195 };
 			inline constexpr REL::VariantID SetCurrentViewportForceToRenderTargetDimensions{ 1208720, 2277193 };
 			inline constexpr REL::VariantID SetCurrentRenderTarget{ 1502425, 2277188 };
+			inline constexpr REL::VariantID SetTextureRenderTarget{ 1513035, 2277199 };
 			inline constexpr REL::VariantID SetCurrentCubeMapRenderTarget{ 1049522, 2277190 };
 			inline constexpr REL::VariantID CreateCubeMapRenderTarget{ 1397856, 2277178 };
 			inline constexpr REL::VariantID CreateDepthStencilTarget{ 1159619, 2277177 };
