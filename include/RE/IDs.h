@@ -2532,6 +2532,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID EnableSetting{ 80231, 2678124, 4784792 };
 		inline constexpr REL::VariantID QualitySetting{ 738612, 2678126, 4784794 };
 		inline constexpr REL::VariantID RuntimeDisabled{ 532616, 2713055, 2713055 };
+		inline constexpr REL::VariantID QualityPresets{ 1066080, 2395775, 2395775 };
 	}
 
 	namespace NavMeshObstacleCoverManager
