@@ -16,8 +16,11 @@ namespace RE
 	public:
 		enum class FLAGS : std::uint32_t  // 98
 		{
-			kFrequencyDirty = 1u << 15,
-			kStartedPlayback = 1u << 8
+			kPrepared = 1u << 4,
+			kStartedPlayback = 1u << 8,
+			kRetire = 1u << 10,
+			kFading = 1u << 11,
+			kFrequencyDirty = 1u << 15
 		};
 
 		virtual void          OutputModelChangedImpl();                                     // 00
@@ -49,6 +52,14 @@ namespace RE
 		virtual void          DoApplyReverbIndex() = 0;                                     // 1A
 		virtual void          SetEmitterPositionImpl(const NiPoint3& a_position) = 0;       // 1B
 		virtual void          Unk_1C(NiPoint3& a_out) const = 0;                            // 1C
+
+		// Stops the voice; the manager retires the sound only once kRetire is set.
+		void Stop(bool a_immediate)
+		{
+			using func_t = decltype(&BSGameSound::Stop);
+			static REL::Relocation<func_t> func{ ID::BSGameSound::Stop };
+			func(this, a_immediate);
+		}
 
 		float UpdateFrequencyModifier()
 		{

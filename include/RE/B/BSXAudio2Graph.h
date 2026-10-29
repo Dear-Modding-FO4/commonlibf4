@@ -1,5 +1,6 @@
 #pragma once
 
+#include "REX/W32/COM.h"
 #include "REX/W32/XAUDIO2.h"
 #include "REX/W32/XAUDIO2FX.h"
 
@@ -12,8 +13,8 @@ namespace RE
 		REX::W32::XAUDIO2FX_REVERB_I3DL2_PARAMETERS m_targetParams{ REX::W32::XAUDIO2FX_I3DL2_PRESET_DEFAULT };   // 0x34
 		REX::W32::IUnknown*                         m_effectAPO{ nullptr };                                       // 0x68
 		REX::W32::IXAudio27SubmixVoice*             m_reverbVoice{ nullptr };                                     // 0x70
-		std::uint64_t                               m_transitionStart{ 0 };                                       // 0x80
-		std::uint64_t                               m_transitionEnd{ 0 };                                         // 0x88
+		std::uint64_t                               m_transitionStart{ 0 };                                       // 0x78
+		std::uint64_t                               m_transitionEnd{ 0 };                                         // 0x80
 	};
 	static_assert(sizeof(ReverbSendData) == 0x88);
 
@@ -37,6 +38,14 @@ namespace RE
 			return func(this, a_protected);
 		}
 
+		// Destroys the mastering voice, unregisters callbacks, releases the engine and frees the graph.
+		static void Dtor(BSXAudio2Graph* a_graph)
+		{
+			using func_t = void(BSXAudio2Graph*, bool);
+			static REL::Relocation<func_t*> func{ ID::BSXAudio2Graph::Dtor };
+			func(a_graph, true);
+		}
+
 		// override (IXAudio2EngineCallback)
 		virtual void OnProcessingPassStart() noexcept override {}
 
@@ -55,9 +64,9 @@ namespace RE
 		std::array<ReverbSendData, 2>      m_reverbSendArray;    // 0x018
 		std::uint32_t                      m_masterChannelMask;  // 0x128
 		std::uint32_t                      m_outputChannels;     // 0x12C
-		bool                               m_reverbInitialized;  // 0x130
-		bool                               m_valid;              // 0x131
-		bool                               m_canMonitor;         // 0x132
+		bool                               m_callbacksRegistered;  // 0x130
+		bool                               m_valid;                // 0x131
+		bool                               m_monitorSendsEnabled;  // 0x132
 	};
 	static_assert(sizeof(BSXAudio2Graph) == 0x138);
 }

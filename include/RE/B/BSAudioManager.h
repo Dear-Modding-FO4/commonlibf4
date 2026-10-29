@@ -3,6 +3,7 @@
 #include "RE/B/BSAudioCallbacks.h"
 #include "RE/B/BSAudioInit.h"
 #include "RE/B/BSISoundDescriptor.h"
+#include "RE/B/BSResource_ID.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
@@ -11,6 +12,7 @@
 
 namespace RE
 {
+	class BSAudio;
 	class BSAudioManagerThread;
 	class BSGameSound;
 	class BSISoundOutputModel;
@@ -47,10 +49,18 @@ namespace RE
 			return *singleton;
 		}
 
-		[[nodiscard]] static BSAudioManager* GetPlatformSingleton()
+		[[nodiscard]] static BSAudio* GetPlatformSingleton()
 		{
-			static REL::Relocation<BSAudioManager**> singleton{ ID::BSAudioManager::PlatformSingleton };
+			static REL::Relocation<BSAudio**> singleton{ ID::BSAudioManager::Platform };
 			return *singleton;
+		}
+
+		// Releases every cached sound and its voice.
+		void ClearCache()
+		{
+			using func_t = decltype(&BSAudioManager::ClearCache);
+			static REL::Relocation<func_t> func{ ID::BSAudioManager::ClearCache };
+			func(this);
 		}
 
 		bool GetSoundHandle(BSSoundHandle& a_handle, const BSISoundDescriptor* a_descriptor, float a_distance, std::uint32_t a_usageFlags, BSISoundDescriptor::ExtraResolutionData* a_data = nullptr)

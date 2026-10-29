@@ -887,6 +887,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 1321158, 2703058 };
 		inline constexpr REL::VariantID PlatformSingleton{ 1117951, 2267094 };
+		inline constexpr REL::VariantID Platform{ 1540790, 2703059 };
 		inline constexpr REL::VariantID GetSoundHandle{ 1419045, 2267105 };
 		inline constexpr REL::VariantID GetSoundHandleByName{ 196484, 2267104 };
 		inline constexpr REL::VariantID GetSoundHandleByFile{ 37039, 2267103 };
@@ -902,6 +903,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID PlayAfter{ 1108952, 2267116 };
 		inline constexpr REL::VariantID SuspendAudioThread{ 1366970, 2267100 };
 		inline constexpr REL::VariantID ResumeAudioThread{ 1274072, 2267101 };
+		inline constexpr REL::VariantID DefaultSpeedOfSound{ 207777, 207777, 4563742 };
 	}
 
 	namespace BSAudioManagerThread
@@ -1019,6 +1021,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID UpdateFrequencyModifier{ 157156, 2267454 };
 		inline constexpr REL::VariantID CalcInitialFrequency{ 1456559, 2267475 };
+		inline constexpr REL::VariantID Stop{ 872335, 2267467 };
 	}
 
 	namespace BSGFxDisplayObject
@@ -1693,13 +1696,23 @@ namespace RE::ID
 
 	namespace BSXAudio2Audio
 	{
-		inline constexpr REL::VariantID Singleton{ 1565436, 2703127 };
+		inline constexpr REL::VariantID Singleton{ 1345596, 2703146 };
+		inline constexpr REL::VariantID MonitorLock{ 1000104, 2703125 };
+		inline constexpr REL::VariantID ActiveMonitors{ 65846, 2666254 };
+		inline constexpr REL::VariantID InactiveMonitors{ 850059, 2666257 };
+	}
+
+	namespace BSXAudio2GameSound
+	{
+		inline constexpr REL::VariantID SetupDefaultOutputMatrices{ 30463, 2267668 };
+		inline constexpr REL::VariantID FreeDefaultOutputMatrices{ 614973, 2267669 };
 	}
 
 	namespace BSXAudio2Graph
 	{
 		inline constexpr REL::VariantID Singleton{ 1219921, 2703127 };
 		inline constexpr REL::VariantID Ctor{ 799447, 2267547 };
+		inline constexpr REL::VariantID Dtor{ 796497, 2267573 };
 		inline constexpr REL::VariantID OnProcessingPassEnd{ 351273, 2267567 };
 	}
 

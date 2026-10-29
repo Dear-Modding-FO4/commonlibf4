@@ -1,5 +1,6 @@
 #pragma once
 
+#include "REX/W32/COM.h"
 #include "REX/W32/XAPO.h"
 
 #pragma pack(push, 8)
