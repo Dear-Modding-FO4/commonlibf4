@@ -1583,6 +1583,7 @@
 #include "RE/T/TESTopicInfoEvent.h"
 #include "RE/T/TESTrackedStatsEvent.h"
 #include "RE/T/TESTriggerEvent.h"
+#include "RE/T/TESUniqueIDChangeEvent.h"
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWaitStartEvent.h"
 #include "RE/T/TESWaitStopEvent.h"

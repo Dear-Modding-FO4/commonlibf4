@@ -438,6 +438,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetQuestItemCount{ 800903, 2194164 };
 		inline constexpr REL::VariantID FindItemIndex{ 2111, 2194165 };
 		inline constexpr REL::VariantID Clear{ 1080446, 2194162 };
+		inline constexpr REL::VariantID RemoveStacksIf{ 652694, 2194170 };
 	}
 
 	namespace BGSIronSights
@@ -1912,6 +1913,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Ctor{ 1329859, 2190088 };
 		inline constexpr REL::VariantID CopyList{ 561304, 2190094 };
 		inline constexpr REL::VariantID SetCount{ 1460465, 2190125 };
+		inline constexpr REL::VariantID SetUniqueID{ 459599, 2190549 };
 	}
 
 	namespace ExtraTextDisplayData
@@ -3523,6 +3525,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsLeveledCreature{ 1341859, 2202655 };
 		inline constexpr REL::VariantID MarkAsDeleted{ 192661, 2201156 };
 		inline constexpr REL::VariantID MoveRefToNewSpace{ 629658, 2201149 };
+		inline constexpr REL::VariantID CopyInventoryList{ 58209, 2200955 };
+		inline constexpr REL::VariantID RemoveAllItems{ 685531, 2200985 };
 		inline constexpr REL::VariantID RemoveKeyword{ 281170, 2200861 };
 		inline constexpr REL::VariantID SetAngleOnReference{ 1049748, 2201134 };
 		inline constexpr REL::VariantID SetLinkedRef{ 192840, 2202684 };
@@ -3663,6 +3667,11 @@ namespace RE::ID
 	namespace TESTriggerEvent
 	{
 		inline constexpr REL::VariantID GetEventSource{ 762621, 2201879 };
+	}
+
+	namespace TESUniqueIDChangeEvent
+	{
+		inline constexpr REL::VariantID Send{ 948211, 2201743 };
 	}
 
 	namespace TESValueForm

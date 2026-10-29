@@ -143,6 +143,13 @@ namespace RE
 			func(this, a_form);
 		}
 
+		inline void SetUniqueID(std::uint16_t a_uniqueID, TESFormID a_baseID)
+		{
+			using func_t = decltype(&ExtraDataList::SetUniqueID);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetUniqueID };
+			func(this, a_uniqueID, a_baseID);
+		}
+
 		inline float GetHealthPerc()
 		{
 			using func_t = decltype(&ExtraDataList::GetHealthPerc);
