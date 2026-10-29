@@ -48,7 +48,7 @@ namespace RE
 			return monitors.get();
 		}
 
-		// Released monitors kept for reuse by CreateMonitor; guarded by GetMonitorLock().
+		// Released monitors reused by CreateMonitor; guarded by GetMonitorLock().
 		[[nodiscard]] static Monitors* GetInactiveMonitors() noexcept
 		{
 			static REL::Relocation<Monitors*> monitors{ ID::BSXAudio2Audio::InactiveMonitors };

@@ -38,12 +38,12 @@ namespace RE
 			return func(this, a_disableMonitorSends);
 		}
 
-		// Destroys the mastering voice, unregisters callbacks, releases the engine and frees the graph.
-		static void Dtor(BSXAudio2Graph* a_graph)
+		// Deleting destructor: also releases the engine and frees the graph.
+		void Dtor()
 		{
-			using func_t = void(BSXAudio2Graph*, bool);
-			static REL::Relocation<func_t*> func{ ID::BSXAudio2Graph::Dtor };
-			func(a_graph, true);
+			using func_t = void (*)(BSXAudio2Graph*, bool);
+			static REL::Relocation<func_t> func{ ID::BSXAudio2Graph::Dtor };
+			func(this, true);
 		}
 
 		// override (IXAudio2EngineCallback)
