@@ -24,11 +24,23 @@ namespace RE
 			return func(this, a_id);
 		}
 
+		// Inlined by the engine on NG/AE; mirrors OG BSSpinLock::TryLock.
 		[[nodiscard]] bool try_lock()
 		{
-			using func_t = decltype(&BSSpinLock::try_lock);
-			static REL::Relocation<func_t> func{ ID::BSSpinLock::try_lock };
-			return func(this);
+			const auto      threadID = REX::W32::GetCurrentThreadId();
+			REX::TAtomicRef lockCount{ _lockCount };
+			if (_owningThread == threadID) {
+				++lockCount;
+				return true;
+			}
+
+			std::uint32_t expected{ 0 };
+			if (!lockCount.compare_exchange_strong(expected, 1))
+				return false;
+
+			_owningThread = threadID;
+			std::atomic_thread_fence(std::memory_order_seq_cst);
+			return true;
 		}
 
 		void unlock()

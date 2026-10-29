@@ -3,7 +3,6 @@
 #include "RE/B/BSAudio.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTArray.h"
-#include "REX/W32/COM.h"
 #include "REX/W32/XAUDIO2.h"
 
 #include "REX/W32/X3DAUDIO.h"

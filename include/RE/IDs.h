@@ -886,7 +886,7 @@ namespace RE::ID
 	namespace BSAudioManager
 	{
 		inline constexpr REL::VariantID Singleton{ 1321158, 2703058 };
-		inline constexpr REL::VariantID PlatformSingleton{ 1117951, 2267094 };
+		inline constexpr REL::VariantID QPlatformInstance{ 1117951, 2267094 };
 		inline constexpr REL::VariantID Platform{ 1540790, 2703059 };
 		inline constexpr REL::VariantID GetSoundHandle{ 1419045, 2267105 };
 		inline constexpr REL::VariantID GetSoundHandleByName{ 196484, 2267104 };
@@ -1573,7 +1573,6 @@ namespace RE::ID
 		}
 
 		inline constexpr REL::VariantID lock{ 1425657, 2192245 };
-		inline constexpr REL::VariantID try_lock{ 267930, 2267902 };
 	}
 
 	namespace BSStringPool

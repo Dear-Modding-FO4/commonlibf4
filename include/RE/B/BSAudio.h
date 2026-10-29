@@ -2,6 +2,7 @@
 
 #include "RE/B/BSAudioMonitor.h"
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSStringT.h"
 
 namespace RE
 {
@@ -34,7 +35,7 @@ namespace RE
 		[[nodiscard]] virtual std::uint32_t                   CreateMonitor(float a_amplitude) = 0;
 		virtual void                                          ReleaseMonitor(std::uint32_t a_monitor) = 0;
 		[[nodiscard]] virtual BSAudioMonitor::Receiver       GetReceiver(std::uint32_t a_monitor) = 0;
-		virtual void                                          GetDeviceInfo() = 0;
+		virtual void                                          GetDeviceInfo(BSString& a_info) = 0;
 
 		// members
 		BSAudioListener* m_listener;        // 0x08

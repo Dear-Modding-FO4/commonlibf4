@@ -1,6 +1,5 @@
 #pragma once
 
-#include "REX/W32/COM.h"
 #include "REX/W32/XAUDIO2.h"
 #include "REX/W32/XAUDIO2FX.h"
 
@@ -31,11 +30,12 @@ namespace RE
 			return *singleton;
 		}
 
-		[[nodiscard]] BSXAudio2Graph* Ctor(bool a_protected)
+		// Vanilla passes false; true leaves m_monitorSendsEnabled clear.
+		[[nodiscard]] BSXAudio2Graph* Ctor(bool a_disableMonitorSends)
 		{
 			using func_t = decltype(&BSXAudio2Graph::Ctor);
 			static REL::Relocation<func_t> func{ ID::BSXAudio2Graph::Ctor };
-			return func(this, a_protected);
+			return func(this, a_disableMonitorSends);
 		}
 
 		// Destroys the mastering voice, unregisters callbacks, releases the engine and frees the graph.
