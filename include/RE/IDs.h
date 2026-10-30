@@ -1992,11 +1992,13 @@ namespace RE::ID
 			inline constexpr REL::VariantID DropSaveLoadRemapData{ 647657, 2249995 };
 			inline constexpr REL::VariantID GetInventoryObjFromHandle{ 66597, 2249989 };
 			inline constexpr REL::VariantID UpdatePersistence{ 11020, 2249991 };
+			inline constexpr REL::VariantID ShouldAttemptToCleanHandle{ 75715, 2249973 };
 		}
 
 		namespace ObjectBindPolicy
 		{
 			inline constexpr REL::VariantID EndSaveLoad{ 1558837, 2250482 };
+			inline constexpr REL::VariantID ObjectNoLongerNeeded{ 1569618, 2250488 };
 		}
 
 		namespace GameVM
