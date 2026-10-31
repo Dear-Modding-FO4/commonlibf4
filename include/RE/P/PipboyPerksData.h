@@ -12,8 +12,8 @@ namespace RE
 	}
 
 	class __declspec(novtable) PipboyPerksData :
-		public PipboyDataGroup,                                      // 00
-		public BSTEventSink<PerkValueEvents::PerkValueChangedEvent>  // 98
+	    public PipboyDataGroup,                                      // 00
+	    public BSTEventSink<PerkValueEvents::PerkValueChangedEvent>  // 98
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::PipboyPerksData };
@@ -21,12 +21,12 @@ namespace RE
 
 		virtual ~PipboyPerksData() = default;
 
-		virtual BSEventNotifyControl ProcessEvent(const PerkValueEvents::PerkValueChangedEvent& a_event, BSTEventSource<PerkValueEvents::PerkValueChangedEvent>* a_source);  // 01
+		virtual BSEventNotifyControl ProcessEvent(const PerkValueEvents::PerkValueChangedEvent& a_event, BSTEventSource<PerkValueEvents::PerkValueChangedEvent>* a_source) override;  // 01
 
 		// override
-		virtual void Populate(bool a_arg1) override;  // 02
-		virtual void DoClearData() override;          // 03
-		virtual void DoClearSink() override;          // 04
+		virtual void Populate(bool a_arg1) override;  // 01
+		virtual void DoClearData() override;          // 02
+		virtual void DoClearSink() override;          // 03
 
 		PipboyArray*             perkChains;      // A0
 		BSTArray<const BGSPerk*> perkChainRoots;  // A8

@@ -11,7 +11,7 @@ namespace RE
 	class PipboyValueChangedEvent;
 
 	class PipboyDataGroup :
-		public BSTEventSource<PipboyValueChangedEvent>  // 00
+	    public BSTEventSource<PipboyValueChangedEvent>  // 00
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::PipboyDataGroup };
@@ -19,13 +19,10 @@ namespace RE
 
 		virtual ~PipboyDataGroup() = default;  // 00
 
-		// override
-		virtual BSEventNotifyControl ProcessEvent(const PipboyValueChangedEvent& a_event, BSTEventSource<PipboyValueChangedEvent>* a_source);  // 01
-
 		// add
-		virtual void Populate(bool a_arg1) = 0;  // 02
-		virtual void DoClearData() = 0;          // 03
-		virtual void DoClearSink() = 0;          // 04
+		virtual void Populate(bool a_arg1) = 0;  // 01
+		virtual void DoClearData() = 0;          // 02
+		virtual void DoClearSink() = 0;          // 03
 
 		void LockDataGroup()
 		{

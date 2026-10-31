@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		class __declspec(novtable) Stack :
-			public BSIntrusiveRefCounted  // 08
+		    public BSIntrusiveRefCounted  // 08
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__Stack };
@@ -54,7 +54,7 @@ namespace RE
 		static_assert(sizeof(StackDataCompareFunctor) == 0x8);
 
 		class alignas(0x08) CheckStackIDFunctor :
-			public StackDataCompareFunctor  // 00
+		    public StackDataCompareFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__CheckStackIDFunctor };
@@ -73,7 +73,7 @@ namespace RE
 		static_assert(sizeof(CheckStackIDFunctor) == 0x10);
 
 		class alignas(0x08) CheckExtraDataFunctor :
-			public StackDataCompareFunctor  // 00
+		    public StackDataCompareFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__CheckExtraDataFunctor };
@@ -92,7 +92,7 @@ namespace RE
 		static_assert(sizeof(CheckExtraDataFunctor) == 0x10);
 
 		class alignas(0x08) FindEquippedStackFunctor :
-			public StackDataCompareFunctor  // 00
+		    public StackDataCompareFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__FindEquippedStackFunctor };
@@ -104,7 +104,7 @@ namespace RE
 		static_assert(sizeof(FindEquippedStackFunctor) == 0x8);
 
 		class alignas(0x08) HasExtraDataFunctor :
-			public StackDataCompareFunctor  // 00
+		    public StackDataCompareFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__HasExtraDataFunctor };
@@ -123,7 +123,7 @@ namespace RE
 		static_assert(sizeof(HasExtraDataFunctor) == 0x10);
 
 		class __declspec(novtable) alignas(0x08) IsUIEquivalentStackFunctor :
-			public StackDataCompareFunctor  // 00
+		    public StackDataCompareFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__IsUIEquivalentStackFunctor };
@@ -159,7 +159,7 @@ namespace RE
 		static_assert(sizeof(StackDataWriteFunctor) == 0x10);
 
 		class __declspec(novtable) ModifyModDataFunctor :
-			public StackDataWriteFunctor  // 00
+		    public StackDataWriteFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__ModifyModDataFunctor };
@@ -191,7 +191,7 @@ namespace RE
 		static_assert(sizeof(ModifyModDataFunctor) == 0x30);
 
 		class __declspec(novtable) SetHealthFunctor :
-			public StackDataWriteFunctor  // 00
+		    public StackDataWriteFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__SetHealthFunctor };
@@ -212,7 +212,7 @@ namespace RE
 		static_assert(sizeof(SetHealthFunctor) == 0x18);
 
 		class __declspec(novtable) ClearEquipFlagsFunctor :
-			public StackDataWriteFunctor  // 00
+		    public StackDataWriteFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__ClearEquipFlagsFunctor };
@@ -229,7 +229,7 @@ namespace RE
 		static_assert(sizeof(ClearEquipFlagsFunctor) == 0x10);
 
 		class __declspec(novtable) ModCountFunctor :
-			public StackDataWriteFunctor  // 00
+		    public StackDataWriteFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__ModCountFunctor };
@@ -250,7 +250,7 @@ namespace RE
 		static_assert(sizeof(ModCountFunctor) == 0x18);
 
 		class __declspec(novtable) SetFlagFunctor :
-			public StackDataWriteFunctor  // 00
+		    public StackDataWriteFunctor  // 00
 		{
 		public:
 			static constexpr auto RTTI{ RTTI::BGSInventoryItem__SetFlagFunctor };
@@ -318,7 +318,7 @@ namespace RE
 			return func(this, a_stackID, a_scale);
 		}
 
-		ExtraDataList GetExtraDataAt(std::uint32_t a_index)
+		ExtraDataList* GetExtraDataAt(std::uint32_t a_index)
 		{
 			using func_t = decltype(&BGSInventoryItem::GetExtraDataAt);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::GetExtraDataAt };

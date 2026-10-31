@@ -12,9 +12,9 @@ namespace RE
 	}
 
 	class __declspec(novtable) PipboyRadioData :
-		public PipboyDataGroup,                                            // 00
-		public BSTEventSink<RadioManager::PipboyFrequencyDetectionEvent>,  // 98
-		public BSTEventSink<RadioManager::PipboyRadioTuningEvent>          // A0
+	    public PipboyDataGroup,                                            // 00
+	    public BSTEventSink<RadioManager::PipboyFrequencyDetectionEvent>,  // 98
+	    public BSTEventSink<RadioManager::PipboyRadioTuningEvent>          // A0
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::PipboyRadioData };
@@ -22,12 +22,12 @@ namespace RE
 
 		virtual ~PipboyRadioData() = default;
 
-		virtual BSEventNotifyControl ProcessEvent(const RadioManager::PipboyFrequencyDetectionEvent& a_event, BSTEventSource<RadioManager::PipboyFrequencyDetectionEvent>* a_source);  // 01
-		virtual BSEventNotifyControl ProcessEvent(const RadioManager::PipboyRadioTuningEvent& a_event, BSTEventSource<RadioManager::PipboyRadioTuningEvent>* a_source);                // 02
+		virtual BSEventNotifyControl ProcessEvent(const RadioManager::PipboyFrequencyDetectionEvent& a_event, BSTEventSource<RadioManager::PipboyFrequencyDetectionEvent>* a_source) override;  // 01
+		virtual BSEventNotifyControl ProcessEvent(const RadioManager::PipboyRadioTuningEvent& a_event, BSTEventSource<RadioManager::PipboyRadioTuningEvent>* a_source) override;                // 01
 
-		virtual void Populate(bool a_arg1) override;  // 03
-		virtual void DoClearData() override;          // 04
-		virtual void DoClearSink() override;          // 05
+		virtual void Populate(bool a_arg1) override;  // 01
+		virtual void DoClearData() override;          // 02
+		virtual void DoClearSink() override;          // 03
 
 		// members
 		PipboyArray* radioStations;  // A8
