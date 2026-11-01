@@ -27,6 +27,7 @@
 #include "RE/B/BSTTuple.h"
 #include "RE/B/BSTimer.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/R/RelocateMember.h"
 
 namespace RE
 {
@@ -511,6 +512,56 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::GameVM };
 		static constexpr auto VTABLE{ VTABLE::GameVM };
 
+		// BSTimer is 0x10 smaller on OG/NG, so these sit 0x10 lower there.
+		struct RuntimeData
+		{
+			GameScript::SavePatcher                                             savePatcher;                    // 0000
+			BSSpinLock                                                          freezeLock;                     // 0008
+			bool                                                                frozen;                         // 0010
+			BSSpinLock                                                          vmTimeLock;                     // 0014
+			std::uint32_t                                                       currentTime;                    // 001C
+			std::uint32_t                                                       currentMenuModeTime;            // 0020
+			std::uint32_t                                                       currentGameTime;                // 0024
+			bool                                                                updateHasBeenRun;               // 0028
+			bool                                                                saveLoad;                       // 0029
+			BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   renderSafeFunctorPool1;         // 0030
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  renderSafeFunctorQueue1;        // 2048
+			BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   renderSafeFunctorPool2;         // 2070
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  renderSafeFunctorQueue2;        // 4088
+			BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   postRenderFunctorPool1;         // 40B0
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  postRenderFunctorQueue1;        // 60C8
+			BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   postRenderFunctorPool2;         // 60F0
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  postRenderFunctorQueue2;        // 8108
+			BSSpinLock                                                          renderSafeQueueLock;            // 8130
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* renderSafeQueueToReadFrom;      // 8138
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* renderSafeQueueToWriteTo;       // 8140
+			BSSpinLock                                                          postRenderQueueLock;            // 8148
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* postRenderQueueToReadFrom;      // 8150
+			BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* postRenderQueueToWriteTo;       // 8158
+			BSSpinLock                                                          userLogLock;                    // 8160
+			BSTHashMap<BSFixedString, BSScript::ErrorLogger*>                   userLogs;                       // 8168
+			BSSpinLock                                                          statsWarningLock;               // 8198
+			std::uint32_t                                                       initialSuspendOverageTime;      // 81A0
+			std::uint32_t                                                       initialRunningOverageTime;      // 81A4
+			std::uint32_t                                                       initialStackMemoryOverageTime;  // 81A8
+			std::uint32_t                                                       lastWarningTime;                // 81AC
+			std::uint32_t                                                       overflowFlags;                  // 81B0
+		};
+		static_assert(offsetof(RuntimeData, freezeLock) == 0x8);
+		static_assert(offsetof(RuntimeData, frozen) == 0x10);
+		static_assert(offsetof(RuntimeData, saveLoad) == 0x29);
+		static_assert(sizeof(RuntimeData) == 0x81B8);
+
+		[[nodiscard]] RuntimeData& GetRuntimeData() noexcept
+		{
+			return REL::RelocateMember<RuntimeData>(this, REL::Offset{ 0x5F0, 0x5F0, 0x600 });
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData() const noexcept
+		{
+			return REL::RelocateMember<RuntimeData>(this, REL::Offset{ 0x5F0, 0x5F0, 0x600 });
+		}
+
 		[[nodiscard]] static GameVM* GetSingleton()
 		{
 			static REL::Relocation<GameVM**> singleton{ ID::GameScript::GameVM::Singleton };
@@ -562,37 +613,10 @@ namespace RE
 		BSTSmartPointer<BSScript::IStore>                                   scriptStore;                    // 0360
 		GameScript::FragmentSystem                                          fragmentSystem;                 // 0368
 		GameScript::Profiler                                                profiler;                       // 04F0
-		GameScript::SavePatcher                                             savePatcher;                    // 0600
-		BSSpinLock                                                          freezeLock;                     // 0608
-		bool                                                                frozen;                         // 0610
-		BSSpinLock                                                          vmTimeLock;                     // 0614
-		std::uint32_t                                                       currentTime;                    // 061C
-		std::uint32_t                                                       currentMenuModeTime;            // 0620
-		std::uint32_t                                                       currentGameTime;                // 0624
-		bool                                                                updateHasBeenRun;               // 0628
-		bool                                                                saveLoad;                       // 0629
-		BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   renderSafeFunctorPool1;         // 0630
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  renderSafeFunctorQueue1;        // 2648
-		BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   renderSafeFunctorPool2;         // 2670
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  renderSafeFunctorQueue2;        // 4688
-		BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   postRenderFunctorPool1;         // 46B0
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  postRenderFunctorQueue1;        // 66C8
-		BSTStaticFreeList<BSTSmartPointer<GameScript::DelayFunctor>, 512>   postRenderFunctorPool2;         // 66F0
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>  postRenderFunctorQueue2;        // 8708
-		BSSpinLock                                                          renderSafeQueueLock;            // 8730
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* renderSafeQueueToReadFrom;      // 8738
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* renderSafeQueueToWriteTo;       // 8740
-		BSSpinLock                                                          postRenderQueueLock;            // 8748
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* postRenderQueueToReadFrom;      // 8750
-		BSTCommonLLMessageQueue<BSTSmartPointer<GameScript::DelayFunctor>>* postRenderQueueToWriteTo;       // 8758
-		BSSpinLock                                                          userLogLock;                    // 8760
-		BSTHashMap<BSFixedString, BSScript::ErrorLogger*>                   userLogs;                       // 8768
-		BSSpinLock                                                          statsWarningLock;               // 8798
-		std::uint32_t                                                       initialSuspendOverageTime;      // 87A0
-		std::uint32_t                                                       initialRunningOverageTime;      // 87A4
-		std::uint32_t                                                       initialStackMemoryOverageTime;  // 87A8
-		std::uint32_t                                                       lastWarningTime;                // 87AC
-		std::uint32_t                                                       overflowFlags;                  // 87B0
+
+	private:
+		// AE storage extent; access through GetRuntimeData().
+		std::byte unk600[0x81B8];  // 0600
 	};
 	static_assert(sizeof(GameVM) == 0x87B8);
 
