@@ -5,6 +5,7 @@
 #include "RE/B/BSScript_Variable.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTArray.h"
+#include "RE/M/MemoryManager.h"
 
 namespace RE
 {
@@ -31,6 +32,8 @@ namespace RE
 
 			// Array(const TypeInfo *type_info, std::uint32_t initial_size = 0);
 			~Array();
+
+			F4_HEAP_REDEFINE_NEW(Array);
 
 			[[nodiscard]] reference       operator[](size_type a_pos);
 			[[nodiscard]] const_reference operator[](size_type a_pos) const;

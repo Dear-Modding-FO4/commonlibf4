@@ -5,6 +5,7 @@
 #include "RE/B/BSScript_Variable.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/M/MemoryManager.h"
 
 namespace RE
 {
@@ -15,6 +16,8 @@ namespace RE
 		{
 		public:
 			~Struct();
+
+			F4_HEAP_REDEFINE_NEW(Struct);
 
 			// members
 			BSSpinLock                      structLock;           // 04
