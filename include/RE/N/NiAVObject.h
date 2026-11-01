@@ -28,8 +28,9 @@ namespace RE
 		enum class Flag : std::uint64_t
 		{
 			kAppCulled = 1ull << 0,
-			kAlwaysDraw = 1ull << 11,  // BSCuller::Add keeps it visible regardless of bound
-			kMeshLOD = 1ull << 12      // set by the BSMeshLODTriShape constructor
+			kAlwaysDraw = 1ull << 11,      // BSCuller::Add keeps it visible regardless of bound
+			kMeshLOD = 1ull << 12,         // set by the BSMeshLODTriShape constructor
+			kFixedWorldBound = 1ull << 13  // NiNode::UpdateWorldBound leaves worldBound untouched
 		};
 
 		NiAVObject();
