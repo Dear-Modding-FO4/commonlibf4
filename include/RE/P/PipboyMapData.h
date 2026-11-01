@@ -56,17 +56,17 @@ namespace RE
 	}
 
 	class __declspec(novtable) PipboyMapData :
-	    public PipboyDataGroup,                                        // 00
-	    public BSTEventSink<TravelMarkerStateChange::Event>,           // 98
-	    public BSTEventSink<PlayerUpdateEvent>,                        // A0
-	    public BSTEventSink<BGSActorCellEvent>,                        // A8
-	    public BSTEventSink<TESQuestEvent::Event>,                     // B0
-	    public BSTEventSink<PlayerCharacterQuestEvent::Event>,         // B8
-	    public BSTEventSink<CustomMarkerUpdate::Event>,                // C0
-	    public BSTEventSink<LocationMarkerArrayUpdate::Event>,         // C8
-	    public BSTEventSink<LocalMapCameraUpdate::Event>,              // D0
-	    public BSTEventSink<TESLocationClearedEvent>,                  // D8
-	    public BSTEventSink<ActorValueEvents::ActorValueChangedEvent>  // E0
+		public PipboyDataGroup,                                        // 00
+		public BSTEventSink<TravelMarkerStateChange::Event>,           // 98
+		public BSTEventSink<PlayerUpdateEvent>,                        // A0
+		public BSTEventSink<BGSActorCellEvent>,                        // A8
+		public BSTEventSink<TESQuestEvent::Event>,                     // B0
+		public BSTEventSink<PlayerCharacterQuestEvent::Event>,         // B8
+		public BSTEventSink<CustomMarkerUpdate::Event>,                // C0
+		public BSTEventSink<LocationMarkerArrayUpdate::Event>,         // C8
+		public BSTEventSink<LocalMapCameraUpdate::Event>,              // D0
+		public BSTEventSink<TESLocationClearedEvent>,                  // D8
+		public BSTEventSink<ActorValueEvents::ActorValueChangedEvent>  // E0
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::PipboyMapData };
@@ -74,21 +74,21 @@ namespace RE
 
 		virtual ~PipboyMapData() = default;
 
-		virtual BSEventNotifyControl ProcessEvent(const TravelMarkerStateChange::Event& a_event, BSTEventSource<TravelMarkerStateChange::Event>* a_source) override;                      // 01
-		virtual BSEventNotifyControl ProcessEvent(const PlayerUpdateEvent& a_event, BSTEventSource<PlayerUpdateEvent>* a_source) override;                                                // 01
-		virtual BSEventNotifyControl ProcessEvent(const BGSActorCellEvent& a_event, BSTEventSource<BGSActorCellEvent>* a_source) override;                                                // 01
-		virtual BSEventNotifyControl ProcessEvent(const TESQuestEvent::Event& a_event, BSTEventSource<TESQuestEvent::Event>* a_source) override;                                          // 01
-		virtual BSEventNotifyControl ProcessEvent(const PlayerCharacterQuestEvent::Event& a_event, BSTEventSource<PlayerCharacterQuestEvent::Event>* a_source) override;                  // 01
-		virtual BSEventNotifyControl ProcessEvent(const CustomMarkerUpdate::Event& a_event, BSTEventSource<CustomMarkerUpdate::Event>* a_source) override;                                // 01
-		virtual BSEventNotifyControl ProcessEvent(const LocationMarkerArrayUpdate::Event& a_event, BSTEventSource<LocationMarkerArrayUpdate::Event>* a_source) override;                  // 01
-		virtual BSEventNotifyControl ProcessEvent(const LocalMapCameraUpdate::Event& a_event, BSTEventSource<LocalMapCameraUpdate::Event>* a_source) override;                            // 01
-		virtual BSEventNotifyControl ProcessEvent(const TESLocationClearedEvent& a_event, BSTEventSource<TESLocationClearedEvent>* a_source) override;                                    // 01
-		virtual BSEventNotifyControl ProcessEvent(const ActorValueEvents::ActorValueChangedEvent& a_event, BSTEventSource<ActorValueEvents::ActorValueChangedEvent>* a_source) override;  // 01
+		virtual BSEventNotifyControl ProcessEvent(const TravelMarkerStateChange::Event& a_event, BSTEventSource<TravelMarkerStateChange::Event>* a_source);                      // 01
+		virtual BSEventNotifyControl ProcessEvent(const PlayerUpdateEvent& a_event, BSTEventSource<PlayerUpdateEvent>* a_source);                                                // 02
+		virtual BSEventNotifyControl ProcessEvent(const BGSActorCellEvent& a_event, BSTEventSource<BGSActorCellEvent>* a_source);                                                // 03
+		virtual BSEventNotifyControl ProcessEvent(const TESQuestEvent::Event& a_event, BSTEventSource<TESQuestEvent::Event>* a_source);                                          // 04
+		virtual BSEventNotifyControl ProcessEvent(const PlayerCharacterQuestEvent::Event& a_event, BSTEventSource<PlayerCharacterQuestEvent::Event>* a_source);                  // 05
+		virtual BSEventNotifyControl ProcessEvent(const CustomMarkerUpdate::Event& a_event, BSTEventSource<CustomMarkerUpdate::Event>* a_source);                                // 06
+		virtual BSEventNotifyControl ProcessEvent(const LocationMarkerArrayUpdate::Event& a_event, BSTEventSource<LocationMarkerArrayUpdate::Event>* a_source);                  // 07
+		virtual BSEventNotifyControl ProcessEvent(const LocalMapCameraUpdate::Event& a_event, BSTEventSource<LocalMapCameraUpdate::Event>* a_source);                            // 08
+		virtual BSEventNotifyControl ProcessEvent(const TESLocationClearedEvent& a_event, BSTEventSource<TESLocationClearedEvent>* a_source);                                    // 09
+		virtual BSEventNotifyControl ProcessEvent(const ActorValueEvents::ActorValueChangedEvent& a_event, BSTEventSource<ActorValueEvents::ActorValueChangedEvent>* a_source);  // 0A
 
 		// override
-		virtual void Populate(bool a_arg1) override;  // 01
-		virtual void DoClearData() override;          // 02
-		virtual void DoClearSink() override;          // 03
+		virtual void Populate(bool a_arg1) override;  // 0B
+		virtual void DoClearData() override;          // 0C
+		virtual void DoClearSink() override;          // 0D
 
 		ObjectRefHandle GetTravelLocationRefr(ObjectRefHandle* a_result, std::uint32_t a_markerId)
 		{

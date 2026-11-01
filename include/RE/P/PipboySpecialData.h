@@ -11,8 +11,8 @@ namespace RE
 	}
 
 	class __declspec(novtable) PipboySpecialData :
-	    public PipboyDataGroup,                                        // 00
-	    public BSTEventSink<ActorValueEvents::ActorValueChangedEvent>  // 98
+		public PipboyDataGroup,                                        // 00
+		public BSTEventSink<ActorValueEvents::ActorValueChangedEvent>  // 98
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::PipboySpecialData };
@@ -25,7 +25,8 @@ namespace RE
 		virtual void DoClearData() override;          // 02
 		virtual void DoClearSink() override;          // 03
 
-		virtual BSEventNotifyControl ProcessEvent(const ActorValueEvents::ActorValueChangedEvent& a_event, BSTEventSource<ActorValueEvents::ActorValueChangedEvent>* a_source) override;  // 01
+		// add
+		virtual BSEventNotifyControl ProcessEvent(const ActorValueEvents::ActorValueChangedEvent& a_event, BSTEventSource<ActorValueEvents::ActorValueChangedEvent>* a_source);  // 04
 
 		// members
 		PipboyArray* specialsArray;  // A0

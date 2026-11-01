@@ -8,7 +8,7 @@
 namespace RE
 {
 	class MessageMenuManager :
-	    public BSTSingletonSDM<MessageMenuManager>  // 00
+		public BSTSingletonSDM<MessageMenuManager>  // 00
 	{
 	public:
 		[[nodiscard]] static MessageMenuManager* GetSingleton()
@@ -17,7 +17,6 @@ namespace RE
 			return *singleton;
 		}
 
-		// AE accepts a cancel button index; 0xFFFFFFFF disables cancellation.
 		void Create(
 			const char*          a_headerText,
 			const char*          a_bodyText,
@@ -27,16 +26,9 @@ namespace RE
 			const char*          a_button2Text = nullptr,
 			const char*          a_button3Text = nullptr,
 			const char*          a_button4Text = nullptr,
-			bool                 a_ensureUnique = false,
-			std::uint32_t        a_cancelButtonIndex = 0xFFFFFFFF)
+			bool                 a_ensureUnique = false)
 		{
-			if (REX::FModule::IsRuntimeAE()) {
-				using func_t = decltype(&MessageMenuManager::Create);
-				static REL::Relocation<func_t> func{ ID::MessageMenuManager::Create };
-				return func(this, a_headerText, a_bodyText, a_callback, a_warningContext, a_button1Text, a_button2Text, a_button3Text, a_button4Text, a_ensureUnique, a_cancelButtonIndex);
-			}
-
-			using func_t = void (*)(MessageMenuManager*, const char*, const char*, IMessageBoxCallback*, WARNING_TYPES, const char*, const char*, const char*, const char*, bool);
+			using func_t = decltype(&MessageMenuManager::Create);
 			static REL::Relocation<func_t> func{ ID::MessageMenuManager::Create };
 			return func(this, a_headerText, a_bodyText, a_callback, a_warningContext, a_button1Text, a_button2Text, a_button3Text, a_button4Text, a_ensureUnique);
 		}

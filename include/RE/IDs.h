@@ -147,9 +147,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetCurrentAmmo{ 795983, 2232302 };
 		inline constexpr REL::VariantID SetCommandType{ 1555789, 2231826 };
 		inline constexpr REL::VariantID SetEquippedItem{ 1200276, 2231627 };
-		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231704 };
+		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231705 };
 		inline constexpr REL::VariantID SetWeaponBonesCulled{ 397172, 2232535 };
-		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231705 };
+		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231706 };
 		inline constexpr REL::VariantID SetRunOncePackage{ 155445, 2232344 };
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
@@ -413,7 +413,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetDisplayFullName2{ 623232, 2194080 };
 		inline constexpr REL::VariantID GetInstanceData{ 491493, 2194072 };
 		inline constexpr REL::VariantID GetInventoryValue{ 430292, 2194099 };
-		inline constexpr REL::VariantID GetExtraDataAt{ 340277, 2194092 };
+		inline constexpr REL::VariantID GetExtraDataAt{ 851493, 2194092 };
 		inline constexpr REL::VariantID MergeStacks{ 1132179, 2194109 };
 		inline constexpr REL::VariantID IsEquipped{ 806787, 2194086 };
 		inline constexpr REL::VariantID GetStackCount{ 82050, 2194107 };
@@ -681,7 +681,7 @@ namespace RE::ID
 
 	namespace BGSSceneActionNPCResponseDialogue
 	{
-		inline constexpr REL::VariantID GetCurrentTopicInfo{ 1369299, 2196806 };
+		inline constexpr REL::VariantID GetCurrentTopicInfo{ 1369299, 2196825 };
 		inline constexpr REL::VariantID UpdateAction1{ 1439851, 2196817 };
 		inline constexpr REL::VariantID UpdateAction2{ 574707, 2196800 };
 	}
@@ -1026,7 +1026,7 @@ namespace RE::ID
 
 	namespace BSGFxDisplayObject
 	{
-		inline constexpr REL::VariantID RemoveChild{ 1229383, 2287325 };
+		inline constexpr REL::VariantID RemoveChild{ 1229383, 2287327 };
 	}
 
 	namespace BSGFxObject
@@ -1687,7 +1687,7 @@ namespace RE::ID
 
 	namespace BSUtilities
 	{
-		inline constexpr REL::VariantID ConvertFloatToHalf{ 1085643, 2212098 };
+		inline constexpr REL::VariantID ConvertFloatToHalf{ 10414, 2212098 };
 		inline constexpr REL::VariantID ConvertHalfToFloat{ 1502141, 2195843 };
 		inline constexpr REL::VariantID GetObjectByName{ 843650, 2274841 };
 		inline constexpr REL::VariantID GetFlattenedBoneTree{ 1539401, 2274858 };
@@ -1784,7 +1784,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 689441, 2690148, 4797437 };
 		inline constexpr REL::VariantID AddString{ 764, 2248593 };
-		inline constexpr REL::VariantID Print{ 799546, 2248592 };
+		inline constexpr REL::VariantID Print{ 799546, 2248591 };
 	}
 
 	namespace ContainerMenu
@@ -1846,7 +1846,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID MainAccum{ 718911, 2318292 };
 		inline constexpr REL::VariantID BuildSceneLists{ 1138818, 2318289 };
 		inline constexpr REL::VariantID Begin{ 502840, 2318286 };
-		inline constexpr REL::VariantID Imagespace{ 587723, 2318318 };
+		inline constexpr REL::VariantID Imagespace{ 587723, 2318322 };
 		inline constexpr REL::VariantID Render_PreUI{ 984743, 2318321 };
 		inline constexpr REL::VariantID Forward{ 656535, 2318315 };
 		inline constexpr REL::VariantID ForwardAlphaImpl{ 338205, 0 };  // Inlined in NG/AE Forward
@@ -2265,7 +2265,7 @@ namespace RE::ID
 
 	namespace ImageSpaceModifierInstance
 	{
-		inline constexpr REL::VariantID Stop{ 1471580, 2199897 };
+		inline constexpr REL::VariantID Stop{ 1298537, 2199897 };
 	}
 
 	namespace ImageSpaceModifierInstanceDOF
@@ -2740,7 +2740,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 553234, 2691945, 4799238 };
 		inline constexpr REL::VariantID AddMenuToPipboy{ 394568, 2225453 };
 		inline constexpr REL::VariantID ClosedownPipboy{ 731410, 2225480 };
-		inline constexpr REL::VariantID EnablePipboyShader{ 157921, 2225484 };
+		inline constexpr REL::VariantID EnablePipboyShader{ 662519, 2225484 };
 		inline constexpr REL::VariantID InitPipboy{ 1477369, 2225479 };
 		inline constexpr REL::VariantID LowerPipboy{ 1444875, 2225454 };
 		inline constexpr REL::VariantID OnPipboyCloseAnim{ 1231000, 2225457 };
@@ -3376,7 +3376,7 @@ namespace RE::ID
 
 	namespace TESHarvestEvent
 	{
-		inline constexpr REL::VariantID GetEventSource{ 693088, 2193351 };
+		inline constexpr REL::VariantID GetEventSource{ 11738, 2193351 };
 	}
 
 	namespace TESHealthForm
@@ -3796,7 +3796,7 @@ namespace RE::ID
 		namespace WorkshopMenuNode
 		{
 			inline constexpr REL::VariantID AddRecipe{ 972821, 2195494 };
-			inline constexpr REL::VariantID AddRecipesForFilter{ 0, 2195247 };   // Inlined in OG into BuildChildNodes
+			inline constexpr REL::VariantID AddRecipesForFilter{ 0, 2195247 };  // Inlined in OG into BuildChildNodes
 			inline constexpr REL::VariantID BuildChildNodes{ 934716, 2195480 };  // BGSListForm::ForEachInList callback
 			inline constexpr REL::VariantID FindAndSetSelectedNode{ 1309368, 2195022 };
 			inline constexpr REL::VariantID TryAddRecipe{ 281929, 0 };  // Inlined in NG/AE into AddRecipesForFilter
@@ -3817,12 +3817,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID ScrapReference{ 636327, 2195125 };
 		inline constexpr REL::VariantID SetSelectedEditItem{ 2562, 2195119 };
 		inline constexpr REL::VariantID StartWorkshop{ 171771, 2195134 };
-		inline constexpr REL::VariantID ToggleEditMode{ 1243386, 2195138 };
+		inline constexpr REL::VariantID ToggleEditMode{ 1243386, 2195130 };
 		inline constexpr REL::VariantID UnregisterForItemDestroyed{ 1101379, 2194931 };
 		inline constexpr REL::VariantID UnregisterForItemMoved{ 569432, 2194933 };
 		inline constexpr REL::VariantID UnregisterForItemPlaced{ 583255, 2194927 };
 		inline constexpr REL::VariantID UnregisterForWorkshopModeEvent{ 9236, 2194947 };
-		inline constexpr REL::VariantID UpdateActiveEdit{ 69261, 2195152 };
+		inline constexpr REL::VariantID UpdateActiveEdit{ 69261, 2195210 };
 		inline constexpr REL::VariantID WorkshopCanShowRecipe{ 239190, 2194978 };  // old ID wrong: 2195115
 		inline constexpr REL::VariantID CurrentPlacementItemData{ 1279207, 2689973, 4797261 };
 		inline constexpr REL::VariantID CurrentRow{ 833923, 2689868, 4797160 };

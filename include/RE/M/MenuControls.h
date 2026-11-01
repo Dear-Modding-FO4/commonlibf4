@@ -17,8 +17,8 @@ namespace RE
 	class QuickSaveLoadHandler;
 
 	class MenuControls :
-	    public BSInputEventReceiver,          // 00
-	    public BSTSingletonSDM<MenuControls>  // 10
+		public BSInputEventReceiver,          // 00
+		public BSTSingletonSDM<MenuControls>  // 10
 	{
 	public:
 		[[nodiscard]] static MenuControls* GetSingleton()
@@ -27,23 +27,11 @@ namespace RE
 			return *singleton;
 		}
 
-		// OG ignores both arguments; NG ignores the diagnostic reason.
-		void ForcePauseGame(bool a_force = false, const char* a_reason = "MenuControls::ForcePauseGame") const
+		void ForcePauseGame() const
 		{
-			if (REX::FModule::IsRuntimeOG()) {
-				using func_t = void (*)(const MenuControls*);
-				static REL::Relocation<func_t> func{ ID::MenuControls::ForcePauseGame };
-				return func(this);
-			}
-			if (REX::FModule::IsRuntimeAE()) {
-				using func_t = decltype(&MenuControls::ForcePauseGame);
-				static REL::Relocation<func_t> func{ ID::MenuControls::ForcePauseGame };
-				return func(this, a_force, a_reason);
-			}
-
-			using func_t = void (*)(const MenuControls*, bool);
+			using func_t = decltype(&MenuControls::ForcePauseGame);
 			static REL::Relocation<func_t> func{ ID::MenuControls::ForcePauseGame };
-			return func(this, a_force);
+			func(this);
 		}
 
 		void ForceResumeGame() const
