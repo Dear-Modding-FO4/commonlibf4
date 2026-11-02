@@ -262,6 +262,31 @@ namespace RE
 		};
 		static_assert(sizeof(IndexBuffer) == 0x50);
 
+		class ByteBuffer :
+		    public Buffer
+		{
+		public:
+		};
+		static_assert(sizeof(ByteBuffer) == 0x50);
+
+		class StructuredBuffer
+		{
+		public:
+			// members
+			REX::W32::ID3D11Buffer*              buffer;              // 00
+			REX::W32::ID3D11ShaderResourceView*  shaderResource;      // 08
+			REX::W32::ID3D11UnorderedAccessView* unorderedAccess;     // 10
+			REX::W32::ID3D11Buffer*              staging;             // 18
+			std::byte                            pad20[0x8];          // 20
+			BSEventFlag*                         requestEventToWait;  // 28
+			BSTAtomicValue<std::uint32_t>        pendingRequests;     // 30
+			std::uint32_t                        elementCount;        // 34
+			std::uint32_t                        refCount;            // 38
+			std::uint32_t                        pad3C;               // 3C
+		};
+		static_assert(sizeof(StructuredBuffer) == 0x40);
+		static_assert(offsetof(StructuredBuffer, pendingRequests) == 0x30);
+
 		class TextureHeader
 		{
 		public:

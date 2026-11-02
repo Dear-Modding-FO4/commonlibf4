@@ -400,6 +400,8 @@
 #include "RE/B/BSMaterialDB.h"
 #include "RE/B/BSMaterialObject.h"
 #include "RE/B/BSMemStorage.h"
+#include "RE/B/BSMergeInstancedTriShape.h"
+#include "RE/B/BSMeshLODTriShape.h"
 #include "RE/B/BSModelDB.h"
 #include "RE/B/BSMultiBound.h"
 #include "RE/B/BSMultiBoundAABB.h"
