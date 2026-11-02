@@ -1142,6 +1142,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GlobalContext{ 33539, 2704428 };
 		inline constexpr REL::VariantID SetDirtyStates{ 1557284, 2277017 };
 		inline constexpr REL::VariantID RenderZPrePass{ 901559, 2277052 };
+		inline constexpr REL::VariantID RenderAlphaTestZPrePass{ 767228, 2277053 };
 		inline constexpr REL::VariantID CreateStreamingDDSTexture{ 823682, 2277293 };
 		inline constexpr REL::VariantID CreateD3DAndSwapChain{ 224250, 2277018, 4492363 };
 	}
