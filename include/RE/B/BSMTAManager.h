@@ -8,6 +8,7 @@ namespace RE
 {
 	class BSGeometry;
 	class BSRenderPass;
+	class BSShaderAccumulator;
 
 	namespace BSMTAManager
 	{
@@ -72,5 +73,17 @@ namespace RE
 			std::uint32_t                   registerGeometryGroupPassCount;  // 34
 		};
 		static_assert(sizeof(RegisterObjectTask) == 0x38);
+
+		[[nodiscard]] inline BSTArray<RegisterObjectTask>& GetRegisterObjectTasks()
+		{
+			static REL::Relocation<BSTArray<RegisterObjectTask>*> tasks{ ID::BSMTAManager::RegisterObjectTasks };
+			return *tasks;
+		}
+
+		[[nodiscard]] inline BSShaderAccumulator* GetShaderAccumulator()
+		{
+			static REL::Relocation<BSShaderAccumulator**> accumulator{ ID::BSMTAManager::ShaderAccumulator };
+			return *accumulator;
+		}
 	}
 }

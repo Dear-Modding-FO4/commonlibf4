@@ -1208,6 +1208,8 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID EndAccumulation{ 485563, 2318474 };
 		inline constexpr REL::VariantID RegisterObjects{ 883019, 2318478 };
+		inline constexpr REL::VariantID RegisterObjectTasks{ 377203, 2712969 };
+		inline constexpr REL::VariantID ShaderAccumulator{ 1301235, 2712963 };
 	}
 
 	namespace BSPrecomputedVisibility::MultiCellVisibilityData
