@@ -658,6 +658,8 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 1247320, 2697802 };
 		inline constexpr REL::VariantID BuildSaveGameList{ 1342984, 2228053 };
+		inline constexpr REL::VariantID EndLoadGame{ 1014572, 2228097 };
+		inline constexpr REL::VariantID EndSaveGame{ 1321787, 2228095 };
 		inline constexpr REL::VariantID GetSaveDirectoryPath{ 1569549, 2228028 };
 		inline constexpr REL::VariantID QueueSaveLoadTask{ 1487308, 2228080 };
 	}
@@ -1371,6 +1373,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID ClearProperties{ 1314501, 2314644 };
 	}
 
+	namespace BSScript_Internal_CodeTasklet
+	{
+		inline constexpr REL::VariantID Process{ 614585, 2315660 };
+	}
+
 	namespace BSScript_Internal_NativeFunctionBase
 	{
 		inline constexpr REL::VariantID Call{ 571037, 2314780 };
@@ -2004,8 +2011,12 @@ namespace RE::ID
 		namespace GameVM
 		{
 			inline constexpr REL::VariantID Singleton{ 996227, 2689134, 4796420 };
+			inline constexpr REL::VariantID DumpPersistenceInformationToLog{ 1238017, 2251336 };
+			inline constexpr REL::VariantID DumpRunningStacksToLog{ 308336, 2251333 };
+			inline constexpr REL::VariantID HandleOverflows{ 857394, 2251364 };
 			inline constexpr REL::VariantID QueuePostRenderCall{ 34412, 2251314 };
 			inline constexpr REL::VariantID RegisterForAllGameEvents{ 680454, 2251353 };
+			inline constexpr REL::VariantID ReloadScripts{ 371005, 2251339 };
 			inline constexpr REL::VariantID SendEventToObjectAndRelated{ 367992, 2251344 };
 		}
 
