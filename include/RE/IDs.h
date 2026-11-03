@@ -2424,6 +2424,8 @@ namespace RE::ID
 	namespace Main
 	{
 		inline constexpr REL::VariantID Singleton{ 756304, 2698043 };
+		inline constexpr REL::VariantID InitGameData{ 407290, 2229085 };
+		inline constexpr REL::VariantID InitGameDataThreadProc{ 1085735, 2229111 };
 		inline constexpr REL::VariantID WorldRootCamera{ 384264, 2228956 };
 		inline constexpr REL::VariantID WorldRootNode{ 569647, 2698065 };
 		inline constexpr REL::VariantID QGameSystemsShouldUpdate{ 779552, 2698031 };
