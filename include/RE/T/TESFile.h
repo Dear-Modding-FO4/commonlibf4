@@ -110,6 +110,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] bool SetOffset(std::uint32_t a_offset)
+		{
+			using func_t = decltype(&TESFile::SetOffset);
+			static REL::Relocation<func_t> func{ ID::TESFile::SetOffset };
+			return func(this, a_offset);
+		}
+
 		[[nodiscard]] bool OpenTES(char* a_path, const char* a_filename, NiFile::OpenMode a_accessMode, bool a_lock)
 		{
 			using func_t = bool (TESFile::*)(char*, const char*, NiFile::OpenMode, bool);

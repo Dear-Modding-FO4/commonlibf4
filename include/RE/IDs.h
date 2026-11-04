@@ -3353,6 +3353,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID NextForm{ 644374, 2192527 };
 		inline constexpr REL::VariantID NextGroup{ 339855, 2192522 };
 		inline constexpr REL::VariantID OpenTES{ 728465, 2192490 };
+		inline constexpr REL::VariantID SetOffset{ 71020, 2192532 };
 	}
 
 	namespace TESForm
