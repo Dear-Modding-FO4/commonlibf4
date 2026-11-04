@@ -675,6 +675,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetChange{ 688165, 2227898 };
 		inline constexpr REL::VariantID InitForms{ 1370961, 2227888 };
 		inline constexpr REL::VariantID LoadGame{ 1328347, 2227920 };
+		inline constexpr REL::VariantID PrepareReferenceLoad{ 244754, 2227923 };
 	}
 
 	namespace BGSSaveLoadGlobalData
