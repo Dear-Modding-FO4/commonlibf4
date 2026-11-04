@@ -673,6 +673,13 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 177947, 2697789 };
 		inline constexpr REL::VariantID GetChange{ 688165, 2227898 };
+		inline constexpr REL::VariantID InitForms{ 1370961, 2227888 };
+		inline constexpr REL::VariantID LoadGame{ 1328347, 2227920 };
+	}
+
+	namespace BGSSaveLoadGlobalData
+	{
+		inline constexpr REL::VariantID LoadGlobalData{ 52259, 2227955 };
 	}
 
 	namespace BGSScene
@@ -2018,6 +2025,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID DumpPersistenceInformationToLog{ 1238017, 2251336 };
 			inline constexpr REL::VariantID DumpRunningStacksToLog{ 308336, 2251333 };
 			inline constexpr REL::VariantID HandleOverflows{ 857394, 2251364 };
+			inline constexpr REL::VariantID LoadGame{ 428960, 2251331 };
 			inline constexpr REL::VariantID QueuePostRenderCall{ 34412, 2251314 };
 			inline constexpr REL::VariantID RegisterForAllGameEvents{ 680454, 2251353 };
 			inline constexpr REL::VariantID ReloadScripts{ 371005, 2251339 };
