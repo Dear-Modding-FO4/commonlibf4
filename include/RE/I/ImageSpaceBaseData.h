@@ -10,14 +10,14 @@ namespace RE
 		public:
 			// members
 			float eyeAdaptSpeed;          // 00
-			float bloomBlurRadius;        // 04
+			float tonemapE;               // 04
 			float bloomThreshold;         // 08
 			float bloomScale;             // 0C
-			float receiveBloomThreshold;  // 10
-			float white;                  // 14
+			float autoExposureMax;        // 10
+			float autoExposureMin;        // 14
 			float sunlightScale;          // 18
 			float skyScale;               // 1C
-			float eyeAdaptStrength;       // 20
+			float middleGray;             // 20
 		};
 		static_assert(sizeof(HDR) == 0x24);
 
