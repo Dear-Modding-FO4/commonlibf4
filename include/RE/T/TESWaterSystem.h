@@ -82,22 +82,25 @@ namespace RE
 		}
 
 		// members
-		std::byte                                 unk00[0x8];        // 000
-		BSFixedString*                            type;              // 008
-		std::byte                                 unk10[0x8];        // 010
-		BSTArray<NiPointer<TESWaterObject>>       water;             // 018
-		BSTArray<NiPointer<TESWaterReflections>>  reflections;       // 030
-		BSTArray<NiPointer<TESWaterNormals>>      normals;           // 048
-		BSTArray<NiPointer<TESWaterDisplacement>> displacement;      // 060
-		std::byte                                 unk78[0x10];       // 078
-		NiPointer<NiNode>                         waterRoot;         // 088
-		std::byte                                 unk90[0x18];       // 090
-		bool                                      enabled;           // 0A8
-		std::byte                                 unkA9[0x7];        // 0A9
-		bool                                      underwater;        // 0B0
-		std::byte                                 unkB1[0x7];        // 0B1
-		float                                     underwaterHeight;  // 0B8
-		std::byte                                 unkBC[0x14];       // 0BC
+		std::byte                                 unk00[0x8];                // 000
+		BSFixedString*                            type;                      // 008
+		std::byte                                 unk10[0x8];                // 010
+		BSTArray<NiPointer<TESWaterObject>>       water;                     // 018
+		BSTArray<NiPointer<TESWaterReflections>>  reflections;               // 030
+		BSTArray<NiPointer<TESWaterNormals>>      normals;                   // 048
+		BSTArray<NiPointer<TESWaterDisplacement>> displacement;              // 060
+		std::byte                                 unk78[0x10];               // 078
+		NiPointer<NiNode>                         waterRoot;                 // 088
+		std::byte                                 unk90[0x18];               // 090
+		bool                                      enabled;                   // 0A8
+		std::byte                                 unkA9[0x7];                // 0A9
+		bool                                      underwater;                // 0B0
+		std::byte                                 unkB1[0x7];                // 0B1
+		float                                     underwaterHeight;          // 0B8
+		std::byte                                 unkBC[0x4];                // 0BC
+		bool                                      displacementClearPending;  // 0C0
+		std::byte                                 unkC1[0xB];                // 0C1
+		float                                     displacementIdleTime;      // 0CC
 		// Keyed by the native ActorHandle value.
 		NiTPointerMap<std::uint32_t, WadingWaterData*> wadingWaterData;                 // 0D0
 		std::byte                                      unkF0[0x18];                     // 0F0

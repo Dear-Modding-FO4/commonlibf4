@@ -62,7 +62,9 @@ namespace RE
 		std::byte                       unk1AC[0xC];            // 1AC
 		BSTArray<NiPointer<NiAVObject>> shadowCasters;          // 1B8
 		float                           shadowDepthBias;        // 1D0
-		std::byte                       unk1D4[0x8];            // 1D4
+		std::uint8_t                    unk1D4;                 // 1D4
+		std::byte                       unk1D5[0x3];            // 1D5
+		float                           unk1D8;                 // 1D8
 		bool                            godrayEmitter;          // 1DC
 		std::byte                       unk1DD[0x3];            // 1DD
 		float                           godrayIntensity;        // 1E0

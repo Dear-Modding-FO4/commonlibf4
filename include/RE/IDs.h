@@ -2266,7 +2266,7 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectRadialBlur
 	{
-		inline constexpr REL::VariantID Disable{ 1500590, 2713225 };
+		inline constexpr REL::VariantID Disable{ 1500590, 2713240 };
 	}
 
 	namespace ImageSpaceEffectTemporalAA

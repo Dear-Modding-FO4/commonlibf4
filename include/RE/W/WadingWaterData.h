@@ -6,7 +6,7 @@ namespace RE
 	{
 	public:
 		// members
-		NiPoint2 lastPlaceOffset;
+		NiPoint2 displaceOffset;
 		NiPoint2 lastDisplaceOffset;
 		NiPoint3 lastPosition;
 	};
