@@ -2641,6 +2641,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetFrustum{ 1142496, 2270782 };
 	}
 
+	namespace NiFrustumPlanes
+	{
+		inline constexpr REL::VariantID Set{ 656803, 2270323 };
+	}
+
 	namespace NiMatrix3
 	{
 		inline constexpr REL::VariantID ToEulerAnglesXYZ{ 34114, 2269806 };
