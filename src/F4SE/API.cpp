@@ -218,13 +218,12 @@ namespace F4SE
 
 	const PluginInfo* GetPluginInfo(std::string_view a_plugin) noexcept
 	{
+		// A plugin that is not loaded is a normal answer, not an error.
 		if (const auto& accessor = Impl::API::GetSingleton()->pluginInfoAccessor) {
-			if (const auto result = accessor(a_plugin.data())) {
-				return static_cast<const PluginInfo*>(result);
-			}
+			return static_cast<const PluginInfo*>(accessor(a_plugin.data()));
 		}
 
-		REX::ERROR("failed to get plugin info for {}", a_plugin);
+		REX::WARN("plugin info for {} is unavailable; F4SE 0.6.22+ is required", a_plugin);
 
 		return nullptr;
 	}
