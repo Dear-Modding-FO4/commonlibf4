@@ -139,6 +139,7 @@ namespace RE
 			kAmbientOcclusion = 37,
 			kAmbientOcclusionHalf = 39,
 			kSAOCameraZ = 40,
+			kPauseFreezeFrame = 54,
 			kPipboy = 60,
 			kPipboySwap = 61,
 			kHDRBlurSwap = 68,
