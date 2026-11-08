@@ -65,10 +65,10 @@ namespace RE
 			return func(a_func);
 		}
 
-		inline void Imagespace()
+		inline void Render_UI()
 		{
-			using func_t = decltype(&DrawWorld::Imagespace);
-			static REL::Relocation<func_t> func{ ID::DrawWorld::Imagespace };
+			using func_t = decltype(&DrawWorld::Render_UI);
+			static REL::Relocation<func_t> func{ ID::DrawWorld::Render_UI };
 			return func();
 		}
 

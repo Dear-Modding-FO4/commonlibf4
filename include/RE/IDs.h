@@ -1865,7 +1865,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID MainAccum{ 718911, 2318292 };
 		inline constexpr REL::VariantID BuildSceneLists{ 1138818, 2318289 };
 		inline constexpr REL::VariantID Begin{ 502840, 2318286 };
-		inline constexpr REL::VariantID Imagespace{ 587723, 2318322 };
+		inline constexpr REL::VariantID Render_UI{ 587723, 2318322 };
+		// OG callers go through this jmp thunk; NG/AE call Render_UI directly.
+		inline constexpr REL::VariantID Render_UICallee{ 1130087, 2318322 };
 		inline constexpr REL::VariantID Render_PreUI{ 984743, 2318321 };
 		inline constexpr REL::VariantID Forward{ 656535, 2318315 };
 		inline constexpr REL::VariantID ForwardAlphaImpl{ 338205, 0 };  // Inlined in NG/AE Forward
@@ -2450,6 +2452,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID PerformGameReset{ 124452, 2228945 };
 		inline constexpr REL::VariantID StartUp{ 665510, 2228907 };
 		inline constexpr REL::VariantID GetCanLoad{ 1130242, 2228953 };
+		inline constexpr REL::VariantID DrawWorld_And_UI{ 408683, 2228969 };
+		inline constexpr REL::VariantID DrawGamePause{ 572620, 2228977 };
 	}
 
 	namespace MapMarkerData
