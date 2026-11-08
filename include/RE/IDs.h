@@ -2287,6 +2287,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID RenderEffectRange{ 459505, 2316593 };
 		inline constexpr REL::VariantID InitEffects{ 889489, 2316625 };
 		inline constexpr REL::VariantID RenderEffect{ 1309722, 2316595 };
+		inline constexpr REL::VariantID Copy{ 1386071, 2316602 };
 	}
 
 	namespace ImageSpaceModifierInstance
@@ -2454,6 +2455,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetCanLoad{ 1130242, 2228953 };
 		inline constexpr REL::VariantID DrawWorld_And_UI{ 408683, 2228969 };
 		inline constexpr REL::VariantID DrawGamePause{ 572620, 2228977 };
+		inline constexpr REL::VariantID RunCameraPath{ 635170, 2228936 };
 	}
 
 	namespace MapMarkerData
@@ -2491,6 +2493,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID RegisterHandlers{ 548136, 2249389 };
 		inline constexpr REL::VariantID Singleton{ 520890, 2689089, 4796375 };
 		inline constexpr REL::VariantID UnregisterHandler{ 734727, 2249388 };
+		inline constexpr REL::VariantID IsScreenshotQueued{ 257450, 2249381 };
 	}
 
 	namespace MenuCursor
@@ -3063,6 +3066,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID InsertFreeBlock{ 975239, 2267993 };
 		inline constexpr REL::VariantID RemoveFreeBlock{ 84225, 2267994 };
 		inline constexpr REL::VariantID SetKeepPages{ 1255203, 2267988 };
+	}
+
+	namespace ScreenShot
+	{
+		inline constexpr REL::VariantID TakeScreenShot{ 919230, 2229158 };
 	}
 
 	namespace ScreenSplatter

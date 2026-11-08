@@ -142,6 +142,7 @@ namespace RE
 			kPauseFreezeFrame = 54,
 			kPipboy = 60,
 			kPipboySwap = 61,
+			kScreenshot = 63,
 			kHDRBlurSwap = 68,
 			kHDRDownsample0 = 70,
 			kRainOcclusion = 86,
