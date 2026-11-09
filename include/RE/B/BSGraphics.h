@@ -86,10 +86,30 @@ namespace RE
 
 		enum class DepthStencilExtraMode : std::int32_t;
 		enum class DepthStencilStencilMode : std::int32_t;
-		enum class RasterStateCullMode : std::int32_t;
-		enum class RasterStateDepthBiasMode : std::int32_t;
-		enum class RasterStateFillMode : std::int32_t;
-		enum class RasterStateScissorMode : std::int32_t;
+		enum class RasterStateCullMode : std::int32_t
+		{
+			kNone,
+			kBack,
+			kFront
+		};
+
+		enum class RasterStateDepthBiasMode : std::int32_t
+		{
+			kNone = 0,
+			kShadowDepth = 8  // DepthBias 12, slope 6.0, clamp -100
+		};
+
+		enum class RasterStateFillMode : std::int32_t
+		{
+			kSolid,
+			kWireframe
+		};
+
+		enum class RasterStateScissorMode : std::int32_t
+		{
+			kDisabled,
+			kEnabled
+		};
 
 		enum class MultiSampleLevel : std::int32_t
 		{
