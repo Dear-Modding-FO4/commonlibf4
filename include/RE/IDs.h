@@ -1154,6 +1154,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID RenderAlphaTestZPrePass{ 767228, 2277053 };
 		inline constexpr REL::VariantID CreateStreamingDDSTexture{ 823682, 2277293 };
 		inline constexpr REL::VariantID CreateD3DAndSwapChain{ 224250, 2277018, 4492363 };
+		inline constexpr REL::VariantID D3D11CreateDeviceAndSwapChainImportStub{ 438126, 2725810, 4818708 };
 	}
 
 	namespace BSIdleInputWatcher
