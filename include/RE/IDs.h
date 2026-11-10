@@ -958,6 +958,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID Process2{ 820910, 2275932 };
 	}
 
+	namespace BSDFCompositeShaderEnvmapAccumulator
+	{
+		inline constexpr REL::VariantID AssignUsedTexture{ 1396762, 2318986 };
+		inline constexpr REL::VariantID CopyPendingTexturesToArray{ 412278, 2318987 };
+	}
+
 	namespace BSDFLightShader
 	{
 		inline constexpr REL::VariantID SetupGeometry{ 976849, 2319150 };
@@ -1068,6 +1074,7 @@ namespace RE::ID
 	namespace BSGraphics
 	{
 		inline constexpr REL::VariantID CreateRasterStateObjects{ 286739, 2277495 };
+		inline constexpr REL::VariantID CreateTextureArrayHelper{ 864559, 2277031 };
 		inline constexpr REL::VariantID SamplerStateTable{ 44312, 2704455 };
 
 		namespace Renderer
@@ -1109,6 +1116,8 @@ namespace RE::ID
 			inline constexpr REL::VariantID CanTextureDegrade{ 674041, 2277274 };
 			inline constexpr REL::VariantID CreateVertexShaderFromBuffer{ 1385342, 2276944 };
 			inline constexpr REL::VariantID CreatePixelShaderFromBuffer{ 798751, 2276950 };
+			inline constexpr REL::VariantID CreateTextureArrayEmpty{ 1056734, 2276934 };  // (Texture*, uint)
+			inline constexpr REL::VariantID AddTextureToArray{ 1122439, 2276938 };
 		}
 
 		namespace RenderTargetManager
