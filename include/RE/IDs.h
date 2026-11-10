@@ -1778,6 +1778,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID CalculateProjectileLOS1{ 798616, 2240617 };
 		inline constexpr REL::VariantID CalculateProjectileLOS2{ 55339, 2240616 };
 		inline constexpr REL::VariantID CalculateProjectileTrajectory{ 1575156, 2240611 };
+		inline constexpr REL::VariantID FindValidNavmeshLocation{ 783474, 2240643 };
 		inline constexpr REL::VariantID WorldGravity{ 1378547, 2700340 };
 		inline constexpr REL::VariantID IsActorUsingMelee{ 858050, 2240626 };
 		inline constexpr REL::VariantID IsActorUsingUnarmed{ 1483696, 2240625 };
