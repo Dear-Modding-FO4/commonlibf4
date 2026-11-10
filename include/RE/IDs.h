@@ -2390,6 +2390,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID JetpackStop{ 446875, 2226250 };
 	}
 
+	namespace JobListManager::ServingThread
+	{
+		inline constexpr REL::VariantID ThreadProc{ 1166392, 2227631 };
+	}
+
 	namespace LevelIncrease
 	{
 		inline constexpr REL::VariantID GetEventSource{ 349120, 2233736 };
@@ -2404,6 +2409,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID StartTestingLoadMenu{ 933696, 2249224 };
 		inline constexpr REL::VariantID PopulateLoadScreens{ 316170, 2249232 };
+		inline constexpr REL::VariantID ProcessMessage{ 0, 2249217 };  // NG/AE only
 		inline constexpr REL::VariantID Render{ 135719, 2249225 };
 	}
 
