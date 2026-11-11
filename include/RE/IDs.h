@@ -699,6 +699,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID PrepareReferenceLoad{ 244754, 2227923 };
 	}
 
+	namespace BGSSaveLoadInitialData
+	{
+		inline constexpr REL::VariantID SaveInitialData{ 662910, 2228015 };
+	}
+
 	namespace BGSSaveLoadGlobalData
 	{
 		inline constexpr REL::VariantID LoadGlobalData{ 52259, 2227955 };
