@@ -2450,6 +2450,13 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsTakingRadDamageFromActiveEffect{ 1079111, 2226398 };
 	}
 
+	namespace MagicItem
+	{
+		inline constexpr REL::VariantID CurrentLoadEffect{ 902242, 2688964, 4796254 };  // CTDA chunks attach to this item
+		inline constexpr REL::VariantID Load{ 0, 2189827 };  // OG calls LoadEffectItemList instead of inlining it
+		inline constexpr REL::VariantID LoadEffectItemList{ 282300, 2189830 };
+	}
+
 	namespace Main
 	{
 		inline constexpr REL::VariantID Singleton{ 756304, 2698043 };
