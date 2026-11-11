@@ -2585,6 +2585,11 @@ namespace RE::ID
 	namespace MoviePlayer
 	{
 		inline constexpr REL::VariantID Singleton{ 1429717, 2710691 };
+		inline constexpr REL::VariantID VertexShader{ 67091, 2710692 };
+		inline constexpr REL::VariantID PixelShader{ 286285, 2710693 };
+		inline constexpr REL::VariantID VertexShaderData{ 571231, 2384579 };  // DXBC, 0x27C bytes
+		inline constexpr REL::VariantID PixelShaderData{ 716718, 2384580 };   // DXBC, 0x2B8 bytes
+		inline constexpr REL::VariantID CreateShaders{ 527640, 0 };           // Inlined in NG/AE
 		inline constexpr REL::VariantID Play{ 1044086, 2300558 };
 		inline constexpr REL::VariantID PlayBackground{ 59594, 2300559 };
 		inline constexpr REL::VariantID Update{ 830178, 2300560 };
