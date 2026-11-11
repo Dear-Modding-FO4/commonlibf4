@@ -315,6 +315,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID EventIndex{ 920813, 2663412 };
 	}
 
+	namespace BGSDecalManager
+	{
+		inline constexpr REL::VariantID AddDecal{ 550968, 2193648 };
+	}
+
 	namespace BGSDefaultObject
 	{
 		inline constexpr REL::VariantID Singleton{ 561749, 2690473, 4797762 };
@@ -372,6 +377,14 @@ namespace RE::ID
 	namespace BGSFlatterNPCEvent
 	{
 		inline constexpr REL::VariantID EventIndex{ 1014013, 2663419 };
+	}
+
+	namespace BGSFootIkRaycastInterfaceDB
+	{
+		inline constexpr REL::VariantID Ctor{ 1220813, 2214351 };  // NG/AE InitSDM inlines it
+		inline constexpr REL::VariantID InitSDM{ 926963, 2214354 };
+		inline constexpr REL::VariantID RequestImpl{ 446730, 2214360 };
+		inline constexpr REL::VariantID Singleton{ 1127541, 2690997, 4798290 };
 	}
 
 	namespace BGSHackTerminal
@@ -621,6 +634,14 @@ namespace RE::ID
 	namespace BGSPrimitive
 	{
 		inline constexpr REL::VariantID CreateAbstract{ 1095144, 2194290 };
+	}
+
+	namespace BGSProcedureBase
+	{
+		namespace ParameterArray
+		{
+			inline constexpr REL::VariantID SetParamByUID{ 1037347, 2210484 };
+		}
 	}
 
 	namespace BGSProjectile
@@ -1636,6 +1657,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID UncacheAll{ 40925, 2268797 };
 	}
 
+	namespace BSTArray
+	{
+		inline constexpr REL::VariantID SetSize_CachedRaycastData{ 1185655, 2214385 };
+	}
+
 	namespace BSTempEffectDebris
 	{
 		inline constexpr REL::VariantID ctor{ 1075623, 2212059 };
@@ -1720,6 +1746,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID ConvertHalfToFloat{ 1502141, 2195843 };
 		inline constexpr REL::VariantID GetObjectByName{ 843650, 2274841 };
 		inline constexpr REL::VariantID GetFlattenedBoneTree{ 1539401, 2274858 };
+	}
+
+	namespace BSVisit
+	{
+		inline constexpr REL::VariantID TraverseScenegraphAVObjects_DoAddDecal{ 122910, 2193686 };
 	}
 
 	namespace BSXAudio2Audio
@@ -3368,6 +3399,11 @@ namespace RE::ID
 	namespace TESContainerChangedEvent
 	{
 		inline constexpr REL::VariantID GetEventSource{ 242538, 2201832 };
+	}
+
+	namespace TESCustomPackageData
+	{
+		inline constexpr REL::VariantID BuildWarnToLeaveProcedureTree{ 399038, 2211790 };
 	}
 
 	namespace TESDataHandler
