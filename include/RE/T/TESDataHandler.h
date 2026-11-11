@@ -8,6 +8,7 @@
 #include "RE/E/ENUM_FORM_ID.h"
 #include "RE/N/NiTArray.h"
 #include "RE/N/NiTList.h"
+#include "RE/R/RelocateMember.h"
 #include "RE/T/TESFileCollection.h"
 #include "RE/T/TESForm.h"
 
@@ -171,6 +172,36 @@ namespace RE
 			return func(this, a_formID);
 		}
 
+		struct RuntimeData
+		{
+			BSTArray<std::uint32_t> releasedFormIDArray;    // 00
+			bool                    masterSave;             // 18
+			bool                    blockSave;              // 19
+			bool                    saveLoadGame;           // 1A
+			bool                    autoSaving;             // 1B
+			bool                    exportingPlugin;        // 1C
+			bool                    clearingData;           // 1D
+			bool                    hasDesiredFiles;        // 1E
+			bool                    checkingModels;         // 1F
+			bool                    loadingFiles;           // 20
+			bool                    dontRemoveIDs;          // 21
+			char                    gameSettingsLoadState;  // 22
+			TESRegionDataManager*   regionDataManager;      // 28
+		};
+		static_assert(offsetof(RuntimeData, masterSave) == 0x18);
+		static_assert(offsetof(RuntimeData, regionDataManager) == 0x28);
+		static_assert(sizeof(RuntimeData) == 0x30);
+
+		[[nodiscard]] RuntimeData& GetRuntimeData() noexcept
+		{
+			return REL::RelocateMember<RuntimeData>(this, REL::Offset{ 0xFF0, 0xFF8, 0xFF8 });
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData() const noexcept
+		{
+			return REL::RelocateMember<RuntimeData>(this, REL::Offset{ 0xFF0, 0xFF8, 0xFF8 });
+		}
+
 		// members
 		TESObjectList*                    objectList;                                            // 0060
 		BSTArray<TESForm*>                formArrays[std::to_underlying(ENUM_FORM_ID::kTotal)];  // 0068
@@ -182,19 +213,11 @@ namespace RE
 		TESFile*                          activeFile;                                            // 0FA8
 		BSSimpleList<TESFile*>            files;                                                 // 0FB0
 		TESFileCollection                 compiledFileCollection;                                // 0FC0
-		BSTArray<std::uint32_t>           releasedFormIDArray;                                   // 0FF0
-		bool                              masterSave;                                            // 1008
-		bool                              blockSave;                                             // 1009
-		bool                              saveLoadGame;                                          // 100A
-		bool                              autoSaving;                                            // 100B
-		bool                              exportingPlugin;                                       // 100C
-		bool                              clearingData;                                          // 100D
-		bool                              hasDesiredFiles;                                       // 100E
-		bool                              checkingModels;                                        // 100F
-		bool                              loadingFiles;                                          // 1010
-		bool                              dontRemoveIDs;                                         // 1011
-		char                              gameSettingsLoadState;                                 // 1012
-		TESRegionDataManager*             regionDataManager;                                     // 1018
+
+	private:
+		// Preserve the OG storage extent; NG/AE insert a byte flag at 0FF0.
+		std::byte unkFF0[0x30];  // 0FF0
 	};
+	static_assert(offsetof(TESDataHandler, compiledFileCollection) == 0xFC0);
 	static_assert(sizeof(TESDataHandler) == 0x1020);
 }
