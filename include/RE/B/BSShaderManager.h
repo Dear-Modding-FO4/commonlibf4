@@ -22,6 +22,14 @@ namespace RE
 			func();
 		}
 
+		// demand=false only looks up the cache; missing paths yield engine default textures.
+		static void GetTexture(const char* a_path, bool a_demand, NiPointer<NiTexture>& a_texture, bool a_cube, bool a_srgb, bool a_allowDegrade)
+		{
+			using func_t = decltype(&BSShaderManager::GetTexture);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::GetTexture };
+			func(a_path, a_demand, a_texture, a_cube, a_srgb, a_allowDegrade);
+		}
+
 		[[nodiscard]] static std::int32_t& GetCachedShadowMapResolution()
 		{
 			static REL::Relocation<std::int32_t*> value{ ID::BSShaderManager::CachedShadowMapResolution };

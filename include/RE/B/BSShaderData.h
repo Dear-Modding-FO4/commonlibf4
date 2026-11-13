@@ -15,6 +15,7 @@ namespace RE
 	class BSEffectShaderPropertyColorController;
 	class BSEffectShaderPropertyFloatController;
 	class BSGeometry;
+	class BSLightingShaderProperty;
 	class BSLightingShaderPropertyColorController;
 	class BSLightingShaderPropertyFloatController;
 	class BSLightingShaderPropertyUShortController;
@@ -42,6 +43,21 @@ namespace RE
 			using func_t = decltype(&BSShaderData::ApplyMaterialData);
 			static REL::Relocation<func_t> func{ ID::BSShaderData::ApplyMaterialData };
 			func(this, a_geometry, a_flag);
+		}
+
+		// Copies a_source's template into this.
+		void CopyTemplateData(const BSShaderData& a_source)
+		{
+			using func_t = void (*)(BSShaderData*, const BSShaderData&);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::CopyTemplateData };
+			func(this, a_source);
+		}
+
+		void SetupDataLightingShader(BSLightingShaderProperty* a_property)
+		{
+			using func_t = decltype(&BSShaderData::SetupDataLightingShader);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::SetupDataLightingShader };
+			func(this, a_property);
 		}
 
 		enum class LightingShaderEnum
@@ -186,4 +202,5 @@ namespace RE
 		REX::TEnumSet<BSGraphics::TextureAddressMode, std::int32_t> clampMode;                                      // 1D8
 	};
 	static_assert(sizeof(BSShaderData) == 0x1E0);
+	static_assert(offsetof(BSShaderData, textureSet) == 0x1D0);
 }

@@ -180,4 +180,6 @@ namespace RE
 		BSNonReentrantSpinLock                            clearRenderPassesLock;  // 68
 	};
 	static_assert(sizeof(BSShaderProperty) == 0x70);
+	static_assert(offsetof(BSShaderProperty, flags) == 0x30);
+	static_assert(offsetof(BSShaderProperty, material) == 0x58);
 }

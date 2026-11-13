@@ -32,4 +32,7 @@ namespace RE
 		BSShaderData   materialData;       // 170
 	};
 	static_assert(sizeof(BGSTextureSet) == 0x350);
+	static_assert(offsetof(BGSTextureSet, materialName) == 0x78);
+	static_assert(offsetof(BGSTextureSet, textures) == 0x80);
+	static_assert(offsetof(BGSTextureSet, materialData) == 0x170);
 }

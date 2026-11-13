@@ -318,6 +318,7 @@ namespace RE::ID
 	namespace BGSDecalManager
 	{
 		inline constexpr REL::VariantID AddDecal{ 550968, 2193648 };
+		inline constexpr REL::VariantID InitializeNonSkinnedDecal{ 1228078, 2193650 };
 	}
 
 	namespace BGSDefaultObject
@@ -762,6 +763,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID Activate{ 178045, 2197778 };
 	}
 
+	namespace BGSTextureSet
+	{
+		inline constexpr REL::VariantID GetTexturesFromMaterial{ 408513, 2203682 };
+		inline constexpr REL::VariantID CreateShaderTextureSet{ 650360, 2203689 };
+	}
+
 	namespace BGSTrespassEvent
 	{
 		inline constexpr REL::VariantID EventIndex{ 90057, 2663425 };
@@ -837,18 +844,45 @@ namespace RE::ID
 	namespace BSLightingShaderProperty
 	{
 		inline constexpr REL::VariantID Ctor{ 174980, 2316416 };
+		inline constexpr REL::VariantID CreateClone{ 84568, 2316407 };
 		inline constexpr REL::VariantID LoadTextureSet{ 410015, 2316425 };
+		inline constexpr REL::VariantID SetLandscapeTextureSet{ 969591, 2316424 };
+	}
+
+	namespace BSLightingShaderMaterialBase
+	{
+		inline constexpr REL::VariantID Dtor{ 750151, 2317656 };
+		inline constexpr REL::VariantID CopyMembers{ 736452, 2317657 };
+		inline constexpr REL::VariantID ReceiveValuesFromRootMaterial{ 1531257, 2317660 };
 	}
 
 	namespace BSMaterialDB
 	{
 		inline constexpr REL::VariantID Demand{ 1007580, 2274963 };
+
+		namespace DBTraits
+		{
+			inline constexpr REL::VariantID Create{ 931226, 2274954 };
+		}
+	}
+
+	namespace BSMaterialManager
+	{
+		inline constexpr REL::VariantID RegisterMaterial{ 571316, 2318458 };
 	}
 
 	namespace BSShaderData
 	{
 		inline constexpr REL::VariantID Ctor{ 60728, 2316334 };
 		inline constexpr REL::VariantID Dtor{ 287580, 2203699 };
+		inline constexpr REL::VariantID CopyTemplateData{ 1570304, 2316354 };
+		inline constexpr REL::VariantID LoadBinary{ 621998, 2316346 };
+		inline constexpr REL::VariantID SetupDataLightingShader{ 559354, 2316342 };
+	}
+
+	namespace BSShaderMaterial
+	{
+		inline constexpr REL::VariantID CopyMembers{ 572328, 2318089 };
 	}
 
 	namespace hknpBodyCinfo
@@ -984,6 +1018,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Process2{ 820910, 2275932 };
 	}
 
+	namespace BSDeferredDecal::BSDFDecal
+	{
+		inline constexpr REL::VariantID Ctor{ 186253, 2317450 };  // creation-data overload
+	}
+
 	namespace BSDFCompositeShaderEnvmapAccumulator
 	{
 		inline constexpr REL::VariantID AssignUsedTexture{ 1396762, 2318986 };
@@ -998,7 +1037,9 @@ namespace RE::ID
 
 	namespace BSDFPrePassShader
 	{
+		inline constexpr REL::VariantID SetupGeometry{ 478025, 2318500 };
 		inline constexpr REL::VariantID CreateCommandBuffer{ 1285447, 2318501 };
+		inline constexpr REL::VariantID RestoreGeometry{ 1424400, 2318502 };
 	}
 
 	namespace BSDFTiledLighting
@@ -1122,6 +1163,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID DrawDynamicTriShape{ 891634, 2276857 };
 			inline constexpr REL::VariantID DrawParticleShaderTriShape{ 611952, 2276858 };
 			inline constexpr REL::VariantID ProcessCommandBuffer{ 673619, 2276979 };
+			inline constexpr REL::VariantID CleanupCommandBuffer{ 1544902, 2276988 };
 			inline constexpr REL::VariantID RunComputeShader{ 1108829, 2276940 };
 			inline constexpr REL::VariantID SetShaders{ 894905, 2276942 };
 			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904 };
@@ -1499,6 +1541,7 @@ namespace RE::ID
 	namespace BSShaderManager
 	{
 		inline constexpr REL::VariantID Initialize{ 545406, 2316538 };
+		inline constexpr REL::VariantID GetTexture{ 1375091, 2316549 };
 		inline constexpr REL::VariantID CachedShadowMapResolution{ 1239715, 2713317 };
 		inline constexpr REL::VariantID CachedLocalShadowDistance{ 558248, 2713318 };
 		inline constexpr REL::VariantID CachedLocalShadowDistanceSquared{ 1458999, 2713319 };
@@ -1519,6 +1562,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID SetMaterial{ 706318, 2316285 };
 		inline constexpr REL::VariantID SetFlag{ 1251793, 2316281 };
+		inline constexpr REL::VariantID CopyMembers{ 791618, 2316259 };
 
 		namespace RenderPassArray
 		{

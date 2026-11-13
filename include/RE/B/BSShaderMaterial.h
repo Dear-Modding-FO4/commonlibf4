@@ -67,4 +67,6 @@ namespace RE
 		std::uint32_t uniqueCode;         // 30
 	};
 	static_assert(sizeof(BSShaderMaterial) == 0x38);
+	static_assert(offsetof(BSShaderMaterial, hashKey) == 0x2C);
+	static_assert(offsetof(BSShaderMaterial, uniqueCode) == 0x30);
 }
