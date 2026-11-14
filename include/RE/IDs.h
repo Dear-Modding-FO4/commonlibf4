@@ -1340,6 +1340,8 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 787073, 2689095, 4796381 };
 		inline constexpr REL::VariantID IsCellVisibilityActive{ 708710, 2317378 };
+		inline constexpr REL::ID        RegisterDynamicObject{ 272586, 2317373, 2317373 };
+		inline constexpr REL::ID        UnregisterDynamicObject{ 697930, 2317374, 2317374 };
 	}
 
 	namespace BSPreCulledObjects
