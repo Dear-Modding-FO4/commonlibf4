@@ -7,6 +7,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/N/NiNode.h"
 #include "RE/N/NiPointer.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
@@ -126,6 +127,29 @@ namespace RE
 			std::uint32_t accumulateTime;      // 18
 		};
 		static_assert(sizeof(RENDER_DATA) == 0x20);
+
+		[[nodiscard]] NiNode* Get3D() const
+		{
+			using func_t = decltype(&TESObjectCELL::Get3D);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::Get3D };
+			return func(this);
+		}
+
+		[[nodiscard]] NiAVObject* GetChildNode(CELLNODE a_node) const
+		{
+			const auto* root = Get3D();
+			const auto  index = static_cast<std::uint32_t>(a_node);
+			if (!root || index >= root->children.end_index()) {
+				return nullptr;
+			}
+			return root->children[static_cast<std::uint16_t>(index)].get();
+		}
+
+		[[nodiscard]] NiNode* GetDynamicNode() const
+		{
+			auto* child = GetChildNode(CELLNODE::kDynamic);
+			return child ? child->IsNode() : nullptr;
+		}
 
 		[[nodiscard]] bhkWorldM* GetbhkWorld() const
 		{

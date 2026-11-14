@@ -1296,6 +1296,13 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetRenderPasses_ShadowMapOrMask{ 757582, 2316434 };
 	}
 
+	namespace BSSkin::Instance
+	{
+		inline constexpr REL::ID GetFlattenedBoneReference{ 73083, 2270469, 2270469 };
+		inline constexpr REL::ID MakeBonesReal{ 497936, 2270470, 2270470 };
+		inline constexpr REL::ID UpdateModelBound{ 1084965, 2270467, 2270467 };
+	}
+
 	namespace BSModelDB
 	{
 		inline constexpr REL::VariantID Demand1{ 1066398, 2275153 };
@@ -1963,6 +1970,8 @@ namespace RE::ID
 
 	namespace DrawWorld
 	{
+		inline constexpr REL::ID QGeometryListCullingProcess{ 1302830, 2318325, 2318325 };
+
 		inline constexpr REL::VariantID SetDoTiledLighting{ 716351, 2318370 };
 		inline constexpr REL::VariantID LightUpdate{ 102390, 2318287 };
 		inline constexpr REL::VariantID MainAccum{ 718911, 2318292 };
@@ -2567,6 +2576,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID LandLODRoot{ 1208715, 2698035 };
 		inline constexpr REL::VariantID ObjectLODRoot{ 1115209, 2698036 };
 		inline constexpr REL::VariantID OnIdle{ 633524, 2228917 };
+
+		inline constexpr REL::ID OnIdle_MultiBoundCulling{ 1013897, 2228923, 2228923 };
+
 		inline constexpr REL::VariantID Run{ 1125396, 2718225, 4484191 };
 		inline constexpr REL::VariantID Run_WindowsMessageLoop{ 847266, 2228915 };
 		inline constexpr REL::VariantID Swap{ 1075087, 2228913 };
@@ -3626,6 +3638,7 @@ namespace RE::ID
 
 	namespace TESObjectCELL
 	{
+		inline constexpr REL::ID        Get3D{ 485340, 2200234, 2200234 };
 		inline constexpr REL::VariantID DecQueuedDistantRefCount{ 865141, 2200424 };
 		inline constexpr REL::VariantID FindLandDataInFile{ 898709, 2200370 };
 		inline constexpr REL::VariantID GetbhkWorld{ 1326073, 2200260 };
