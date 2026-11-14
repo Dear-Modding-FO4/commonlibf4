@@ -10,6 +10,7 @@
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkSimdFloat32.h"
 #include "RE/H/hkVector4.h"
+#include "RE/H/hkcdRayQueryFlags.h"
 #include "RE/H/hknpBodyManager.h"
 #include "RE/H/hknpCollisionFlags.h"
 #include "RE/H/hknpConstraintManager.h"

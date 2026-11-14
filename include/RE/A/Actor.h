@@ -116,6 +116,15 @@ namespace RE
 		}
 
 		[[nodiscard]] bool IsInRagdollState() const;
+		[[nodiscard]] TESPackage* GetCurrentPackage() const
+		{
+			using func_t = decltype(&Actor::GetCurrentPackage);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentPackage };
+			return func(this);
+		}
+
+		// Synchronous engine placement; call on the game thread.
+		[[nodiscard]] bool MoveToNearestNavmesh();
 
 		[[nodiscard]] bhkCharacterController* GetCharController() const
 		{

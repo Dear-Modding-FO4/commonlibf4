@@ -31,6 +31,7 @@ namespace RE
 		[[nodiscard]] KNOCK_STATE_ENUM GetKnockState() const noexcept { return static_cast<KNOCK_STATE_ENUM>(knockState); }
 		[[nodiscard]] SIT_SLEEP_STATE  GetSitSleepState() const { return DoGetSitSleepState(); }
 		[[nodiscard]] bool             IsFlying() const { return DoGetCharacterState() == CHARACTER_STATE::kFlying; }
+		[[nodiscard]] bool             IsUnconscious() const noexcept { return GetLifeState() == ACTOR_LIFE_STATE::kUnconscious; }
 		[[nodiscard]] bool IsSwimming() const noexcept { return DoGetMoveModeBits(0x400); }
 
 		// members

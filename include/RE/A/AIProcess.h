@@ -26,6 +26,23 @@ namespace RE
 	class AIProcess
 	{
 	public:
+		enum class PROCESS_LEVEL : std::uint8_t
+		{
+			kHigh = 0,
+			kMiddleHigh = 1,
+			kMiddleLow = 2,
+			kLow = 3
+		};
+
+		enum class LowProcessFlags : std::uint8_t
+		{
+			kFollower = 1 << 4
+		};
+
+		[[nodiscard]] PROCESS_LEVEL GetProcessLevel() const noexcept { return static_cast<PROCESS_LEVEL>(processLevel); }
+		[[nodiscard]] bool          InHighProcess() const noexcept { return GetProcessLevel() == PROCESS_LEVEL::kHigh; }
+		[[nodiscard]] bool          IsAFollower() const noexcept { return (lowProcessFlags & static_cast<std::uint8_t>(LowProcessFlags::kFollower)) != 0; }
+
 		enum class FADE_STATE
 		{
 			kNormal = 0x0,

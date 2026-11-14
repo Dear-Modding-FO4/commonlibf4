@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "RE/B/BSAnimationGraphVariableCache.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
@@ -8,6 +10,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSTTuple.h"
+#include "RE/B/BShkbAnimationGraph.h"
 
 namespace RE
 {
@@ -26,14 +29,27 @@ namespace RE
 			BSAutoLock guard{ updateLock };
 			for (const auto& entry : graph) {
 				if (auto* animationGraph = entry.get()) {
-					using func_t = bool (*)(BShkbAnimationGraph*);
-					const auto vtable = *reinterpret_cast<std::uintptr_t**>(animationGraph);
-					if (reinterpret_cast<func_t>(vtable[0x1])(animationGraph)) {
+					if (animationGraph->HasRagdoll()) {
 						return true;
 					}
 				}
 			}
 			return false;
+		}
+
+		// Retain systems under the graph lock. World/body access still requires the physics lock.
+		[[nodiscard]] std::vector<hkRefPtr<hknpRagdoll>> GetRagdolls() const
+		{
+			BSAutoLock                         guard{ updateLock };
+			std::vector<hkRefPtr<hknpRagdoll>> result;
+			for (const auto& entry : graph) {
+				if (entry) {
+					if (auto* ragdoll = entry->GetRagdoll()) {
+						result.emplace_back(ragdoll);
+					}
+				}
+			}
+			return result;
 		}
 
 		class DependentManagerSmartPtr

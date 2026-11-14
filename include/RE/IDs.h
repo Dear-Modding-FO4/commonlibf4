@@ -9,6 +9,22 @@ namespace RE::ID
 		inline constexpr REL::VariantID EvaluateConditions{ 1228998, 2226003 };
 	}
 
+	namespace BSPathingLocation
+	{
+		inline constexpr REL::ID ResolveToClosestNavmeshAndTriangle{ 725364, 2300658, 2300658 };
+	}
+
+	namespace FindTriangleForLocationTraversableFilter
+	{
+		inline constexpr REL::ID Ctor{ 523393, 2300685, 2300685 };
+	}
+
+	namespace Pathing
+	{
+		inline constexpr REL::ID Singleton{ 358426, 2688746, 4796010 };
+		inline constexpr REL::ID MakePathingLocation{ 689281, 2212578, 2212578 };
+	}
+
 	namespace BSNavmesh
 	{
 		inline constexpr REL::ID FindClosestTriangleForLocation{ 527088, 2301042, 2301042 };
@@ -16,6 +32,7 @@ namespace RE::ID
 
 	namespace Actor
 	{
+		inline constexpr REL::ID        GetCurrentPackage{ 1578278, 2230164, 2230164 };
 		inline constexpr REL::ID        GetMoving{ 825392, 2230406, 2230406 };
 		inline constexpr REL::ID        AddFaction{ 1407968, 2230113, 2230113 };
 		inline constexpr REL::ID        GetRunSpeed{ 640308, 2230018, 2230018 };
