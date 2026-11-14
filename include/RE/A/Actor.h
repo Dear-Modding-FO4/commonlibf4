@@ -15,7 +15,9 @@
 #include "RE/C/CFilter.h"
 #include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicTarget.h"
+#include "RE/M/MiddleHighProcessData.h"
 #include "RE/M/Modifiers.h"
+#include "RE/M/MovementControllerNPC.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiTFlags.h"
 #include "RE/O/ObjectEquipParams.h"
@@ -94,6 +96,75 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::Actor };
 		static constexpr auto VTABLE{ VTABLE::Actor };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kACHR };
+
+		[[nodiscard]] ActorState*       AsActorState() noexcept { return this; }
+		[[nodiscard]] const ActorState* AsActorState() const noexcept { return this; }
+		[[nodiscard]] TESRace*          GetRace() const noexcept { return race; }
+		[[nodiscard]] bool              GetPlayerControls() const noexcept { return movementController && movementController->GetControlsDriven(); }
+		[[nodiscard]] bool              IsInKillMove() const noexcept { return boolFlags.any(BOOL_FLAGS::kIsInKillMove); }
+		[[nodiscard]] bool              IsAllowRotation() const
+		{
+			bool value = false;
+			return GetGraphVariableBool("bAllowRotation", value) && value;
+		}
+
+		[[nodiscard]] bool IsMoving() const
+		{
+			using func_t = decltype(&Actor::IsMoving);
+			static REL::Relocation<func_t> func{ ID::Actor::GetMoving };
+			return func(this);
+		}
+
+		[[nodiscard]] bool IsInRagdollState() const;
+
+		[[nodiscard]] bhkCharacterController* GetCharController() const
+		{
+			return currentProcess && currentProcess->middleHigh ? currentProcess->middleHigh->charController.get() : nullptr;
+		}
+
+		[[nodiscard]] float GetRunSpeed() const
+		{
+			using func_t = decltype(&Actor::GetRunSpeed);
+			static REL::Relocation<func_t> func{ ID::Actor::GetRunSpeed };
+			return func(this);
+		}
+
+		[[nodiscard]] float GetWalkSpeed() const
+		{
+			using func_t = decltype(&Actor::GetWalkSpeed);
+			static REL::Relocation<func_t> func{ ID::Actor::GetWalkSpeed };
+			return func(this);
+		}
+
+		[[nodiscard]] bool IsAnimationDriven() const
+		{
+			using func_t = decltype(&Actor::IsAnimationDriven);
+			static REL::Relocation<func_t> func{ ID::Actor::IsAnimationDriven };
+			return func(this);
+		}
+
+		void AddToFaction(TESFaction* a_faction, std::int32_t a_rank)
+		{
+			using func_t = decltype(&Actor::AddToFaction);
+			static REL::Relocation<func_t> func{ ID::Actor::AddFaction };
+			func(this, a_faction, a_rank);
+		}
+
+		void SetFactionRank(TESFaction* a_faction, std::int8_t a_rank)
+		{
+			using func_t = decltype(&Actor::SetFactionRank);
+			static REL::Relocation<func_t> func{ ID::Actor::SetFactionRank };
+			func(this, a_faction, a_rank);
+		}
+
+		[[nodiscard]] std::int32_t GetFactionRank(TESFaction* a_faction, bool a_baseOnly = false)
+		{
+			using func_t = decltype(&Actor::GetFactionRank);
+			static REL::Relocation<func_t> func{ ID::Actor::GetFactionRank };
+			return func(this, a_faction, a_baseOnly);
+		}
+
+		void RemoveFromFaction(TESFaction* a_faction) { SetFactionRank(a_faction, -1); }
 
 		enum class BOOL_FLAGS
 		{

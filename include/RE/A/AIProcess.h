@@ -165,6 +165,13 @@ namespace RE
 			return func(this, a_actor, a_instant, a_killFlavor);
 		}
 
+		void UpdateKnockState(Actor& a_actor)
+		{
+			using func_t = decltype(&AIProcess::UpdateKnockState);
+			static REL::Relocation<func_t> func{ ID::AIProcess::UpdateKnockState };
+			func(this, a_actor);
+		}
+
 		void SetRunOncePackage(TESPackage* a_package, Actor* a_actor)
 		{
 			using func_t = decltype(&AIProcess::SetRunOncePackage);

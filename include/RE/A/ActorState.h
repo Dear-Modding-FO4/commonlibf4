@@ -1,6 +1,8 @@
 #pragma once
 
+#include "RE/A/ACTOR_LIFE_STATE.h"
 #include "RE/I/IMovementState.h"
+#include "RE/K/KNOCK_STATE_ENUM.h"
 #include "RE/W/WEAPON_STATE.h"
 
 namespace RE
@@ -25,6 +27,10 @@ namespace RE
 		virtual void            SetReloadingImpl(bool a_reloading);               // 26
 
 		[[nodiscard]] bool GetWeaponMagicDrawn() const noexcept { return weaponState >= WEAPON_STATE::kDrawn; }
+		[[nodiscard]] ACTOR_LIFE_STATE GetLifeState() const noexcept { return static_cast<ACTOR_LIFE_STATE>(lifeState); }
+		[[nodiscard]] KNOCK_STATE_ENUM GetKnockState() const noexcept { return static_cast<KNOCK_STATE_ENUM>(knockState); }
+		[[nodiscard]] SIT_SLEEP_STATE  GetSitSleepState() const { return DoGetSitSleepState(); }
+		[[nodiscard]] bool             IsFlying() const { return DoGetCharacterState() == CHARACTER_STATE::kFlying; }
 		[[nodiscard]] bool IsSwimming() const noexcept { return DoGetMoveModeBits(0x400); }
 
 		// members

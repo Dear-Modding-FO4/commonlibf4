@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/N/NavMeshArray.h"
+
 #include "RE/B/BSContainer.h"
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTArray.h"

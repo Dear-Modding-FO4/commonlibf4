@@ -41,6 +41,9 @@ namespace RE
 
 		F4_HEAP_REDEFINE_ALIGNED_NEW(NiNode);
 
+		[[nodiscard]] auto&       GetChildren() noexcept { return children; }
+		[[nodiscard]] const auto& GetChildren() const noexcept { return children; }
+
 		// members
 		NiTObjectArray<NiPointer<NiAVObject>> children;                   // 120
 		BSTAtomicValue<std::uint32_t>         dirtyState;                 // 138

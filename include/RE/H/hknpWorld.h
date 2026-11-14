@@ -24,6 +24,11 @@
 namespace RE
 {
 	class hkBlockStreamAllocator;
+	class hkRotationf;
+	class hkTransformf;
+	class hknpClosestPointsQuery;
+	class hknpCollisionQueryCollector;
+	class hknpShapeCastQuery;
 	class hknpActionManager;
 	class hknpBodyQualityLibrary;
 	class hknpBroadPhase;
@@ -81,6 +86,45 @@ namespace RE
 		using AdditionFlagsEnum = hkcdRayQueryFlags::Enum;
 		using LeavingBroadPhaseBehavior = hknpWorldCinfo::LeavingBroadPhaseBehavior;
 		using SimulationType = hknpWorldCinfo::SimulationType;
+
+		[[nodiscard]] const hknpBody* GetBody(hknpBodyId a_bodyId) const noexcept
+		{
+			const auto  index = a_bodyId.m_value;
+			const auto& bodies = m_bodyManager.m_bodies;
+			if (!bodies.m_data || index >= static_cast<std::uint32_t>(bodies.capacity())) {
+				return nullptr;
+			}
+			const auto& body = bodies.m_data[index];
+			return body.m_flags.any(hknpCollisionFlags::kIsStatic, hknpCollisionFlags::kIsDynamic) ? &body : nullptr;
+		}
+
+		void ApplyBodyLinearImpulse(hknpBodyId a_bodyId, const hkVector4f& a_impulse)
+		{
+			using func_t = decltype(&hknpWorld::ApplyBodyLinearImpulse);
+			static REL::Relocation<func_t> func{ ID::hknpWorld::ApplyBodyLinearImpulse };
+			func(this, a_bodyId, a_impulse);
+		}
+
+		void CastShape(const hknpShapeCastQuery& a_query, const hkRotationf& a_rotation, hknpCollisionQueryCollector* a_collector, hknpCollisionQueryCollector* a_startCollector = nullptr) const
+		{
+			using func_t = decltype(&hknpWorld::CastShape);
+			static REL::Relocation<func_t> func{ ID::hknpWorld::CastShape };
+			func(this, a_query, a_rotation, a_collector, a_startCollector);
+		}
+
+		[[nodiscard]] const hkVector4f& GetBodyLinearVelocity(hknpBodyId a_bodyId) const
+		{
+			using func_t = decltype(&hknpWorld::GetBodyLinearVelocity);
+			static REL::Relocation<func_t> func{ ID::hknpWorld::GetBodyLinearVelocity };
+			return func(this, a_bodyId);
+		}
+
+		void GetClosestPoints(const hknpClosestPointsQuery& a_query, const hkTransformf& a_transform, hknpCollisionQueryCollector* a_collector) const
+		{
+			using func_t = decltype(&hknpWorld::GetClosestPoints);
+			static REL::Relocation<func_t> func{ ID::hknpWorld::GetClosestPoints };
+			func(this, a_query, a_transform, a_collector);
+		}
 
 		void AddBodies(hknpBodyId* a_ids, std::uint32_t a_idCount, AdditionMode a_additionMode, hkFlags<AdditionFlagsEnum, std::uint8_t> a_additionFlags)
 		{

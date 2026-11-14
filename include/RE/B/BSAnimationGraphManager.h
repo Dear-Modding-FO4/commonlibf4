@@ -20,6 +20,15 @@ namespace RE
 		public BSIntrusiveRefCounted                 //08
 	{
 	public:
+		[[nodiscard]] bool HasRagdoll() const
+		{
+			using func_t = void(const BSAnimationGraphManager*, bool&);
+			static REL::Relocation<func_t> func{ ID::BSAnimationGraphManager::HasRagdoll };
+			bool                           result = false;
+			func(this, result);
+			return result;
+		}
+
 		class DependentManagerSmartPtr
 		{
 		public:
@@ -41,4 +50,5 @@ namespace RE
 		std::uint32_t                                          generateDepth;         // DC
 	};
 	static_assert(sizeof(BSAnimationGraphManager) == 0xE0);
+	using BSAnimationGraphManagerPtr = BSTSmartPointer<BSAnimationGraphManager>;
 }

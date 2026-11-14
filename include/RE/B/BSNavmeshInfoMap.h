@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/B/BSNavmeshInfo.h"
+
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSingleton.h"
 
