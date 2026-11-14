@@ -1810,6 +1810,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID InactiveMonitors{ 850059, 2666257 };
 	}
 
+	namespace BSXAudio2DataSrc
+	{
+		inline constexpr REL::VariantID DoQueuedSyncOpen{ 363610, 2267597 };
+		inline constexpr REL::VariantID DoTestAsyncOpenReady{ 1079185, 2267599 };
+	}
+
 	namespace BSXAudio2GameSound
 	{
 		inline constexpr REL::VariantID SetupDefaultOutputMatrices{ 30463, 2267668 };
