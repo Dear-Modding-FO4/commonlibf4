@@ -175,7 +175,16 @@ namespace RE
 			return func(this, a_actor, a_stateToSet, a_weaponCullType);
 		}
 
-		void StopCurrentIdle(Actor* a_actor, bool a_instant, bool a_killFlavor)
+		// The engine predicate reports a queued instant-interaction animation.
+		// Also check ActorState::IsInteractionInProgress() for the active/entry/exit phases.
+		[[nodiscard]] bool IsInstantInteractionInProgress() const
+		{
+			using func_t = decltype(&AIProcess::IsInstantInteractionInProgress);
+			static REL::Relocation<func_t> func{ ID::AIProcess::IsInstantInteractionInProgress };
+			return func(this);
+		}
+
+		bool StopCurrentIdle(Actor* a_actor, bool a_instant, bool a_killFlavor)
 		{
 			using func_t = decltype(&AIProcess::StopCurrentIdle);
 			static REL::Relocation<func_t> func{ ID::AIProcess::StopCurrentIdle };

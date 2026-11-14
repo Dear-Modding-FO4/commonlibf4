@@ -164,6 +164,7 @@ namespace RE::ID
 
 	namespace AIProcess
 	{
+		inline constexpr REL::ID        IsInstantInteractionInProgress{ 1656, 2231751, 2231751 };
 		inline constexpr REL::ID        UpdateKnockState{ 706171, 2232385, 2232385 };
 		inline constexpr REL::VariantID GetCurrentAmmo{ 1154936, 2232300 };
 		inline constexpr REL::VariantID GetCommandType{ 678523, 2231825 };
@@ -176,9 +177,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetCurrentAmmo{ 795983, 2232302 };
 		inline constexpr REL::VariantID SetCommandType{ 1555789, 2231826 };
 		inline constexpr REL::VariantID SetEquippedItem{ 1200276, 2231627 };
-		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231705 };
+		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231704, 2231704 };
 		inline constexpr REL::VariantID SetWeaponBonesCulled{ 397172, 2232535 };
-		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231706 };
+		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231705, 2231705 };
 		inline constexpr REL::VariantID SetRunOncePackage{ 155445, 2232344 };
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };

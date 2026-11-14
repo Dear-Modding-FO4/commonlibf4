@@ -11,7 +11,7 @@ namespace RE
 	public:
 		// members
 		BSTSmartPointer<BSPathingDoor> door;           // 00
-		std::uint16_t                  iriangleIndex;  // 08
+		std::uint16_t                  triangleIndex;  // 08
 	};
 	static_assert(sizeof(BSNavmeshClosedDoorInfo) == 0x10);
 }

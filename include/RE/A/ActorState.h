@@ -2,13 +2,13 @@
 
 #include "RE/A/ACTOR_LIFE_STATE.h"
 #include "RE/I/IMovementState.h"
+#include "RE/I/INTERACTING_STATE.h"
 #include "RE/K/KNOCK_STATE_ENUM.h"
 #include "RE/W/WEAPON_STATE.h"
 
 namespace RE
 {
 	enum class GUN_STATE : std::uint32_t;
-	enum class INTERACTING_STATE : std::uint32_t;
 	enum class SIT_SLEEP_STATE;
 
 	class __declspec(novtable) ActorState :
@@ -29,6 +29,9 @@ namespace RE
 		[[nodiscard]] bool GetWeaponMagicDrawn() const noexcept { return weaponState >= WEAPON_STATE::kDrawn; }
 		[[nodiscard]] ACTOR_LIFE_STATE GetLifeState() const noexcept { return static_cast<ACTOR_LIFE_STATE>(lifeState); }
 		[[nodiscard]] KNOCK_STATE_ENUM GetKnockState() const noexcept { return static_cast<KNOCK_STATE_ENUM>(knockState); }
+		[[nodiscard]] INTERACTING_STATE GetInteractingState() const noexcept { return interactingState; }
+		// Includes entry/exit waits as well as the active interaction.
+		[[nodiscard]] bool             IsInteractionInProgress() const noexcept { return GetInteractingState() != INTERACTING_STATE::kNotInteracting; }
 		[[nodiscard]] SIT_SLEEP_STATE  GetSitSleepState() const { return DoGetSitSleepState(); }
 		[[nodiscard]] bool             IsFlying() const { return DoGetCharacterState() == CHARACTER_STATE::kFlying; }
 		[[nodiscard]] bool             IsUnconscious() const noexcept { return GetLifeState() == ACTOR_LIFE_STATE::kUnconscious; }
