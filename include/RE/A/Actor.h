@@ -115,7 +115,25 @@ namespace RE
 			return func(this);
 		}
 
-		[[nodiscard]] bool IsInRagdollState() const;
+		// Native mobility policy: life/knock state, race, and furniture/mount restrictions.
+		[[nodiscard]] bool IsMobile() const
+		{
+			using func_t = decltype(&Actor::IsMobile);
+			static REL::Relocation<func_t> func{ ID::Actor::IsMobile };
+			return func(this);
+		}
+
+		// Adds the native moving-support restriction for NPCs; does not acquire movement control.
+		[[nodiscard]] bool CanMove() const
+		{
+			using func_t = decltype(&Actor::CanMove);
+			static REL::Relocation<func_t> func{ ID::Actor::CanMove };
+			return func(this);
+		}
+
+		// True when an animation ragdoll has a non-keyframed dynamic body.
+		// Call on the game thread outside physics callbacks; acquires a world read lock.
+		[[nodiscard]] bool        IsInRagdollState() const;
 		[[nodiscard]] TESPackage* GetCurrentPackage() const
 		{
 			using func_t = decltype(&Actor::GetCurrentPackage);

@@ -23,6 +23,7 @@ namespace RE
 		public BSIntrusiveRefCounted                 //08
 	{
 	public:
+		// Ragdoll availability, including the keyframed bodies of an animated actor.
 		[[nodiscard]] bool HasRagdoll() const
 		{
 			// The engine inlines this visitor on NG/AE. The graph predicate is slot 1 on all runtimes.

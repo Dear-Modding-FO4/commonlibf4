@@ -38,6 +38,8 @@ namespace RE::ID
 		inline constexpr REL::ID        GetRunSpeed{ 640308, 2230018, 2230018 };
 		inline constexpr REL::ID        GetWalkSpeed{ 108143, 2230019, 2230019 };
 		inline constexpr REL::ID        IsAnimationDriven{ 610409, 2229907, 2229907 };
+		inline constexpr REL::ID        IsMobile{ 292085, 2229900, 2229900 };
+		inline constexpr REL::ID        CanMove{ 810723, 2229901, 2229901 };
 		inline constexpr REL::ID        SetFactionRank{ 1545897, 2230101, 2230101 };
 		inline constexpr REL::VariantID AddPerk{ 187096, 2230121 };
 		inline constexpr REL::VariantID CanUseIdle{ 1223707, 2229592 };

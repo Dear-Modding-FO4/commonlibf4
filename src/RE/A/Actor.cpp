@@ -2,7 +2,9 @@
 
 #include "RE/B/BSAnimationGraphManager.h"
 #include "RE/F/FindTriangleForLocationTraversableFilter.h"
+#include "RE/H/hknpBSWorld.h"
 #include "RE/P/Pathing.h"
+#include "RE/RTTI.h"
 
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESNPC.h"
@@ -12,7 +14,32 @@ namespace RE
 	bool Actor::IsInRagdollState() const
 	{
 		BSAnimationGraphManagerPtr manager;
-		return GetAnimationGraphManager(manager) && manager && manager->HasRagdoll();
+		if (!GetAnimationGraphManager(manager) || !manager) {
+			return false;
+		}
+
+		// Release the graph lock before acquiring any physics-world lock.
+		for (const auto& ragdoll : manager->GetRagdolls()) {
+			hkRefPtr<hknpWorld> world{ ragdoll->m_world };
+			auto*               physicsWorld = fallout_cast<hknpBSWorld*>(world.get());
+			if (!physicsWorld) {
+				continue;
+			}
+
+			BSAutoReadLock guard{ physicsWorld->m_worldLock };
+			if (ragdoll->m_world.get() != world.get()) {
+				continue;
+			}
+			for (const auto bodyID : ragdoll->m_bodyIds) {
+				const auto* body = physicsWorld->GetBody(bodyID);
+				// Keyframed bodies also carry kIsDynamic; ordinary animated actors use them.
+				if (body && body->m_flags.any(hknpCollisionFlags::kIsDynamic) &&
+					!body->m_flags.any(hknpCollisionFlags::kIsKeyframed)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	bool Actor::MoveToNearestNavmesh()

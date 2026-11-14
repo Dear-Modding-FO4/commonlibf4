@@ -85,7 +85,7 @@ namespace RE
 		bool                                       directControl;         // 1A2
 		bool                                       plannerDirectControl;  // 1A3
 		std::byte                                  unk1A4;                // 1A4
-		bool                                       motionDriven;          // 1A5
+		bool                                       motionDriven;          // 1A5 - legacy name for native high-processing state
 		std::byte                                  unk1A6;                // 1A6
 		std::byte                                  unk1A7;                // 1A7
 	};
