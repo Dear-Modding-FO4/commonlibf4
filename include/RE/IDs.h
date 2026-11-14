@@ -9,24 +9,19 @@ namespace RE::ID
 		inline constexpr REL::VariantID EvaluateConditions{ 1228998, 2226003 };
 	}
 
-	namespace BSAnimationGraphManager
-	{
-		inline constexpr REL::ID HasRagdoll{ 378824, 0, 0 };
-	}
-
 	namespace BSNavmesh
 	{
-		inline constexpr REL::ID FindClosestTriangleForLocation{ 527088, 0, 0 };
+		inline constexpr REL::ID FindClosestTriangleForLocation{ 527088, 2301042, 2301042 };
 	}
 
 	namespace Actor
 	{
-		inline constexpr REL::ID        GetMoving{ 825392, 0, 0 };
-		inline constexpr REL::ID        AddFaction{ 1407968, 0, 0 };
-		inline constexpr REL::ID        GetRunSpeed{ 640308, 0, 0 };
-		inline constexpr REL::ID        GetWalkSpeed{ 108143, 0, 0 };
-		inline constexpr REL::ID        IsAnimationDriven{ 610409, 0, 0 };
-		inline constexpr REL::ID        SetFactionRank{ 1545897, 0, 0 };
+		inline constexpr REL::ID        GetMoving{ 825392, 2230406, 2230406 };
+		inline constexpr REL::ID        AddFaction{ 1407968, 2230113, 2230113 };
+		inline constexpr REL::ID        GetRunSpeed{ 640308, 2230018, 2230018 };
+		inline constexpr REL::ID        GetWalkSpeed{ 108143, 2230019, 2230019 };
+		inline constexpr REL::ID        IsAnimationDriven{ 610409, 2229907, 2229907 };
+		inline constexpr REL::ID        SetFactionRank{ 1545897, 2230101, 2230101 };
 		inline constexpr REL::VariantID AddPerk{ 187096, 2230121 };
 		inline constexpr REL::VariantID CanUseIdle{ 1223707, 2229592 };
 		inline constexpr REL::VariantID ClearAttackStates{ 1525555, 2229773 };
@@ -152,7 +147,7 @@ namespace RE::ID
 
 	namespace AIProcess
 	{
-		inline constexpr REL::ID        UpdateKnockState{ 706171, 0, 0 };
+		inline constexpr REL::ID        UpdateKnockState{ 706171, 2232385, 2232385 };
 		inline constexpr REL::VariantID GetCurrentAmmo{ 1154936, 2232300 };
 		inline constexpr REL::VariantID GetCommandType{ 678523, 2231825 };
 		inline constexpr REL::VariantID GetOccupiedFurniture{ 1162965, 2232401 };
@@ -2257,10 +2252,10 @@ namespace RE::ID
 
 	namespace hknpWorld
 	{
-		inline constexpr REL::ID        ApplyBodyLinearImpulse{ 654985, 0, 0 };
-		inline constexpr REL::ID        CastShape{ 110287, 0, 0 };
-		inline constexpr REL::ID        GetBodyLinearVelocity{ 1203631, 0, 0 };
-		inline constexpr REL::ID        GetClosestPoints{ 1053489, 0, 0 };
+		inline constexpr REL::ID        ApplyBodyLinearImpulse{ 654985, 2255620, 2255620 };
+		inline constexpr REL::ID        CastShape{ 110287, 2256243, 2256243 };
+		inline constexpr REL::ID        GetBodyLinearVelocity{ 1203631, 2255613, 2255613 };
+		inline constexpr REL::ID        GetClosestPoints{ 1053489, 2256245, 2256245 };
 		inline constexpr REL::VariantID AddBodies{ 1454855, 2255681 };
 		inline constexpr REL::VariantID CreateBody{ 72830, 2255680 };
 		inline constexpr REL::VariantID CreateMotion{ 1574333, 2255688 };
@@ -3682,7 +3677,7 @@ namespace RE::ID
 
 	namespace TESObjectREFR
 	{
-		inline constexpr REL::ID        MoveToImpl{ 1332434, 0, 0 };
+		inline constexpr REL::ID        MoveToImpl{ 1332434, 2254251, 2254251 };
 		inline constexpr REL::VariantID GetNeverFades{ 689506, 2200779 };
 		inline constexpr REL::VariantID ctor{ 198196, 2200719 };
 		inline constexpr REL::VariantID ActivateRef{ 753531, 2201147 };

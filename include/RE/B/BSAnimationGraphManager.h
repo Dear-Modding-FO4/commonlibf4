@@ -22,11 +22,18 @@ namespace RE
 	public:
 		[[nodiscard]] bool HasRagdoll() const
 		{
-			using func_t = void(const BSAnimationGraphManager*, bool&);
-			static REL::Relocation<func_t> func{ ID::BSAnimationGraphManager::HasRagdoll };
-			bool                           result = false;
-			func(this, result);
-			return result;
+			// The engine inlines this visitor on NG/AE. The graph predicate is slot 1 on all runtimes.
+			BSAutoLock guard{ updateLock };
+			for (const auto& entry : graph) {
+				if (auto* animationGraph = entry.get()) {
+					using func_t = bool (*)(BShkbAnimationGraph*);
+					const auto vtable = *reinterpret_cast<std::uintptr_t**>(animationGraph);
+					if (reinterpret_cast<func_t>(vtable[0x1])(animationGraph)) {
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 
 		class DependentManagerSmartPtr
@@ -44,11 +51,13 @@ namespace RE
 		BSTArray<DependentManagerSmartPtr>                     subManagers;           // 58
 		BSTArray<BSTTuple<BSFixedString, BSFixedString>>       eventQueuea;           // 70
 		BSAnimationGraphVariableCache                          variableCache;         // 88
-		BSSpinLock                                             updateLock;            // C8
+		mutable BSSpinLock                                     updateLock;            // C8
 		BSSpinLock                                             dependentManagerLock;  // D0
 		std::uint32_t                                          activeGraph;           // D8
 		std::uint32_t                                          generateDepth;         // DC
 	};
+	static_assert(offsetof(BSAnimationGraphManager, graph) == 0x40);
+	static_assert(offsetof(BSAnimationGraphManager, updateLock) == 0xC8);
 	static_assert(sizeof(BSAnimationGraphManager) == 0xE0);
 	using BSAnimationGraphManagerPtr = BSTSmartPointer<BSAnimationGraphManager>;
 }
