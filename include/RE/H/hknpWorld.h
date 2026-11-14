@@ -15,6 +15,7 @@
 #include "RE/H/hknpCollisionFlags.h"
 #include "RE/H/hknpConstraintManager.h"
 #include "RE/H/hknpContactSolverType.h"
+#include "RE/H/hknpModifierManager.h"
 #include "RE/H/hknpMotionManager.h"
 #include "RE/H/hknpShapeManager.h"
 #include "RE/H/hknpSolverInfo.h"
@@ -42,7 +43,6 @@ namespace RE
 	class hknpEventDispatcher;
 	class hknpInternalCommandProcessor;
 	class hknpMaterialLibrary;
-	class hknpModifierManager;
 	class hknpMotionPropertiesLibrary;
 	class hknpNullShapeTagCodec;
 	class hknpPostCollideTask;
@@ -87,6 +87,12 @@ namespace RE
 		using AdditionFlagsEnum = hkcdRayQueryFlags::Enum;
 		using LeavingBroadPhaseBehavior = hknpWorldCinfo::LeavingBroadPhaseBehavior;
 		using SimulationType = hknpWorldCinfo::SimulationType;
+
+		// Borrowed engine-owned filter; access with the appropriate world synchronization.
+		[[nodiscard]] hknpCollisionFilter* GetCollisionFilter() const noexcept
+		{
+			return m_modifierManager ? m_modifierManager->m_collisionFilter.get() : nullptr;
+		}
 
 		[[nodiscard]] const hknpBody* GetBody(hknpBodyId a_bodyId) const noexcept
 		{
@@ -241,5 +247,6 @@ namespace RE
 		hkEnum<hknpWorldCinfo::LeavingBroadPhaseBehavior, std::uint8_t> m_leavingBroadPhaseBehavior;         // 0x68A
 		hknpThreadSafetyCheck                                           m_threadSafetyCheck;                 // 0x690
 	};
+	static_assert(offsetof(hknpWorld, m_modifierManager) == 0x150);
 	static_assert(sizeof(hknpWorld) == 0x6D0);
 }

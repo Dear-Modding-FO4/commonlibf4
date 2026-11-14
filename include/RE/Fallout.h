@@ -993,6 +993,7 @@
 #include "RE/H/hknpDefaultViewerColorScheme.h"
 #include "RE/H/hknpDynamicCompoundShape.h"
 #include "RE/H/hknpMaterialId.h"
+#include "RE/H/hknpModifierManager.h"
 #include "RE/H/hknpMotion.h"
 #include "RE/H/hknpMotionCinfo.h"
 #include "RE/H/hknpMotionId.h"
