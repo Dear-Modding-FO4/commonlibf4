@@ -76,6 +76,15 @@ namespace RE
 		virtual void          ReloadShaders(bool a_clear);                                                                // 0B
 		virtual std::uint32_t GetBonesVertexConstant() const { return 0; }                                                // 0C
 
+		// Uploads prepared skin matrices to VS b10/b9; does not calculate them.
+		// OG requires a non-null skin instance on a_geometry.
+		void SetBoneMatrices(BSGeometry* a_geometry)
+		{
+			using func_t = decltype(&BSShader::SetBoneMatrices);
+			static REL::Relocation<func_t> func{ ID::BSShader::SetBoneMatrices };
+			func(this, a_geometry);
+		}
+
 		[[nodiscard]] std::byte* BuildCommandBuffer(BuildCommandBufferParam& a_param)
 		{
 			using func_t = decltype(&BSShader::BuildCommandBuffer);

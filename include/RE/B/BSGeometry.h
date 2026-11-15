@@ -42,6 +42,14 @@ namespace RE
 
 		[[nodiscard]] NiAlphaProperty* GetAlphaProperty() const noexcept { return static_cast<NiAlphaProperty*>(properties[0].get()); }
 
+		// Requires a skin instance; refreshes current/previous matrices once per engine frame.
+		void CalculateBoneMatrices()
+		{
+			using func_t = decltype(&BSGeometry::CalculateBoneMatrices);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::Utility::CalculateBoneMatrices };
+			func(this);
+		}
+
 		// Use after direct world-transform edits; UpdateWorldData would recompute from local transforms.
 		void MarkWorldTransformChanged() noexcept
 		{

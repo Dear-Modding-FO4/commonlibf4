@@ -42,6 +42,16 @@ namespace RE
 				return func(this, a_index, a_reference);
 			}
 
+			// The index is in this skin instance's palette, not the flattened tree.
+			[[nodiscard]] BSFixedString GetBoneName(std::uint32_t a_index) const
+			{
+				BSFlattenedBoneRef reference;
+				if (!GetFlattenedBoneReference(a_index, reference)) {
+					return {};
+				}
+				return reference.GetName();
+			}
+
 			void MakeBonesReal()
 			{
 				using func_t = decltype(&Instance::MakeBonesReal);
@@ -67,7 +77,7 @@ namespace RE
 			NiPoint4*              boneMatrices;              // A0 - three float4 rows per bone
 			NiPoint4*              previousBoneMatrices;      // A8
 			std::uint32_t          boneMatrixCount;           // B0
-			std::uint32_t          boneMatrixRows;            // B4
+			std::uint32_t          boneMatrixRows;            // B4 - rows per bone (3), not total palette rows
 			std::uint32_t          allocatedBoneMatrixBytes;  // B8
 			std::uint32_t          lastUpdatedFrame;          // BC
 		};
@@ -77,6 +87,10 @@ namespace RE
 		static_assert(offsetof(Instance, rootNode) == 0x48);
 		static_assert(offsetof(Instance, matrixLock) == 0x58);
 		static_assert(offsetof(Instance, boneMatrices) == 0xA0);
+		static_assert(offsetof(Instance, previousBoneMatrices) == 0xA8);
+		static_assert(offsetof(Instance, boneMatrixCount) == 0xB0);
+		static_assert(offsetof(Instance, boneMatrixRows) == 0xB4);
+		static_assert(offsetof(Instance, allocatedBoneMatrixBytes) == 0xB8);
 		static_assert(offsetof(Instance, lastUpdatedFrame) == 0xBC);
 		static_assert(sizeof(Instance) == 0xC0);
 	}

@@ -1551,6 +1551,7 @@ namespace RE::ID
 
 	namespace BSShader
 	{
+		inline constexpr REL::ID SetBoneMatrices{ 595476, 2318868, 2318868 };
 		inline constexpr REL::VariantID BuildCommandBuffer{ 833764, 2318870 };
 		inline constexpr REL::VariantID Load{ 101507, 2318873 };
 		inline constexpr REL::VariantID BeginTechnique{ 1041640, 2318876 };

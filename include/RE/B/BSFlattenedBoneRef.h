@@ -9,6 +9,21 @@ namespace RE
 	class BSFlattenedBoneRef
 	{
 	public:
+		[[nodiscard]] BSFixedString GetName() const
+		{
+			if (!root) {
+				return {};
+			}
+			if (boneIndex < 0) {
+				return root->name;
+			}
+			const auto* tree = static_cast<const BSFlattenedBoneTree*>(root.get());
+			if (!tree->bone || boneIndex >= tree->boneCount) {
+				return {};
+			}
+			return tree->bone[boneIndex].name;
+		}
+
 		[[nodiscard]] const NiTransform& GetWorldTransform() const noexcept
 		{
 			if (!root) {
