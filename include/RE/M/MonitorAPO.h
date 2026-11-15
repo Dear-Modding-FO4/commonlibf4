@@ -18,9 +18,9 @@ namespace RE
 
 		// members
 		std::uint32_t m_numChannels;  // 0x30
-		float         m_peak;         // 0x34
+		float         m_amplitude;    // 0x34
 		float         m_decay;        // 0x38
-		float         m_amplitude;    // 0x3C
+		float         m_decayTime;    // 0x3C
 	};
 	static_assert(sizeof(MonitorAPO) == 0x40);
 }
