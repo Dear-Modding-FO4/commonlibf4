@@ -168,6 +168,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID        IsInstantInteractionInProgress{ 1656, 2231751, 2231751 };
 		inline constexpr REL::ID        UpdateKnockState{ 706171, 2232385, 2232385 };
+		inline constexpr REL::ID        QueueAnimationAction{ 1128871, 2231778, 2231778 };
 		inline constexpr REL::VariantID GetCurrentAmmo{ 1154936, 2232300 };
 		inline constexpr REL::VariantID GetCommandType{ 678523, 2231825 };
 		inline constexpr REL::VariantID GetOccupiedFurniture{ 1162965, 2232401 };

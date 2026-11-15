@@ -1047,6 +1047,7 @@
 #include "RE/I/IMovementPlayerControlsFilter.h"
 #include "RE/I/IMovementQueryPathingState.h"
 #include "RE/I/IMovementQueryState.h"
+#include "RE/I/IMovementSelectIdle.h"
 #include "RE/I/IMovementSetGoal.h"
 #include "RE/I/IMovementSetSprinting.h"
 #include "RE/I/IMovementState.h"

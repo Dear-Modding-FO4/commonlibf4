@@ -7,6 +7,7 @@
 #include "RE/I/IMovementDirectControl.h"
 #include "RE/I/IMovementMotionDrivenControl.h"
 #include "RE/I/IMovementPlannerDirectControl.h"
+#include "RE/I/IMovementSelectIdle.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/M/MovementControllerAI.h"
 #include "RE/M/MovementMessage.h"
@@ -53,6 +54,16 @@ namespace RE
 		[[nodiscard]] const IMovementPlannerDirectControl* GetIMovementPlannerDirectControl() const
 		{
 			return reinterpret_cast<const IMovementPlannerDirectControl*>(unk120 + 0x20);
+		}
+
+		[[nodiscard]] IMovementSelectIdle* GetIMovementSelectIdle()
+		{
+			return reinterpret_cast<IMovementSelectIdle*>(unk120 + 0x10);
+		}
+
+		[[nodiscard]] const IMovementSelectIdle* GetIMovementSelectIdle() const
+		{
+			return reinterpret_cast<const IMovementSelectIdle*>(unk120 + 0x10);
 		}
 
 		[[nodiscard]] Actor* GetActor() const { return actor; }

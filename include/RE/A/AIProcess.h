@@ -133,6 +133,15 @@ namespace RE
 			return func(this, a_actor);
 		}
 
+		// Queue for the actor's normal action processing; no-op without high-process data.
+		void QueueAnimationAction(DEFAULT_OBJECT a_action)
+		{
+			// The native entry receives the enum by reference and copies it into the queue.
+			using func_t = void (*)(AIProcess*, DEFAULT_OBJECT&);
+			static REL::Relocation<func_t> func{ ID::AIProcess::QueueAnimationAction };
+			func(this, a_action);
+		}
+
 		void SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_refr)
 		{
 			using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
