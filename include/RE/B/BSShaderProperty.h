@@ -32,13 +32,16 @@ namespace RE
 			kNormal = 0x1,
 			kGlow = 0x2,
 			kHeight = 0x3,
+			kGreyscale = kHeight,
 			kEnv = 0x4,
 			kWrinkles = 0x5,
 			kMultilayer = 0x6,
 			kBacklightMask = 0x7,
 			kSmoothSpec = kBacklightMask,
 
-			kTotal
+			kTotal,
+
+			kDisplacement = 0x8  // texture-set index past kTotal
 		};
 
 		enum class EShaderPropertyFlag : std::uint64_t
