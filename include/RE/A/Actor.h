@@ -96,6 +96,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::Actor };
 		static constexpr auto VTABLE{ VTABLE::Actor };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kACHR };
+		static constexpr auto TYPE_ID{ BSScript::kActor };
 
 		[[nodiscard]] ActorState*       AsActorState() noexcept { return this; }
 		[[nodiscard]] const ActorState* AsActorState() const noexcept { return this; }
