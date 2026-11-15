@@ -577,6 +577,7 @@
 #include "RE/B/BSStorage.h"
 #include "RE/B/BSStorageDefs.h"
 #include "RE/B/BSStreamHeader.h"
+#include "RE/B/BSStreamer.h"
 #include "RE/B/BSStreamParser.h"
 #include "RE/B/BSStreamParserData.h"
 #include "RE/B/BSStringPool.h"

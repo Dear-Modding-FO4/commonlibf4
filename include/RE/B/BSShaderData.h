@@ -2,6 +2,8 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/B/BSShaderManager.h"
+#include "RE/B/BSStreamer.h"
 #include "RE/B/BSTArray.h"
 #include "RE/N/NiAlphaProperty.h"
 #include "RE/N/NiColor.h"
@@ -51,6 +53,14 @@ namespace RE
 			using func_t = void (*)(BSShaderData*, const BSShaderData&);
 			static REL::Relocation<func_t> func{ ID::BSShaderData::CopyTemplateData };
 			func(this, a_source);
+		}
+
+		// Reads a BGSM body from an in-memory stream, advancing its cursor.
+		void LoadBinary(BSStreamer::ScrapStreamer& a_stream, BSShaderManager::ShaderEnum a_shader)
+		{
+			using func_t = void (*)(BSShaderData*, BSStreamer::ScrapStreamer&, BSShaderManager::ShaderEnum);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::LoadBinary };
+			func(this, a_stream, a_shader);
 		}
 
 		void SetupDataLightingShader(BSLightingShaderProperty* a_property)
