@@ -62,9 +62,7 @@ namespace RE
 		NiPointer& operator=(const NiPointer& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = a_rhs._ptr;
-				TryAttach();
+				reset(a_rhs._ptr);
 			}
 			return *this;
 		}
@@ -74,9 +72,7 @@ namespace RE
 		NiPointer& operator=(const NiPointer<Y>& a_rhs)
 			requires(std::convertible_to<Y*, element_type*>)
 		{
-			TryDetach();
-			_ptr = static_cast<element_type*>(a_rhs._ptr);
-			TryAttach();
+			reset(static_cast<element_type*>(a_rhs._ptr));
 			return *this;
 		}
 
@@ -84,8 +80,8 @@ namespace RE
 		NiPointer& operator=(NiPointer&& a_rhs) noexcept
 		{
 			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = std::exchange(a_rhs._ptr, nullptr);
+				NiPointer replacement{ std::move(a_rhs) };
+				std::swap(_ptr, replacement._ptr);
 			}
 			return *this;
 		}
@@ -95,8 +91,8 @@ namespace RE
 		NiPointer& operator=(NiPointer<Y>&& a_rhs) noexcept
 			requires(std::convertible_to<Y*, element_type*>)
 		{
-			TryDetach();
-			_ptr = std::exchange(a_rhs._ptr, nullptr);
+			NiPointer replacement{ std::move(a_rhs) };
+			std::swap(_ptr, replacement._ptr);
 			return *this;
 		}
 
@@ -109,9 +105,8 @@ namespace RE
 			requires(std::convertible_to<Y*, element_type*>)
 		{
 			if (_ptr != a_ptr) {
-				TryDetach();
-				_ptr = static_cast<element_type*>(a_ptr);
-				TryAttach();
+				NiPointer replacement{ static_cast<element_type*>(a_ptr) };
+				std::swap(_ptr, replacement._ptr);
 			}
 		}
 
