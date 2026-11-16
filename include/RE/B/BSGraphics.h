@@ -331,10 +331,13 @@ namespace RE
 			REX::W32::ID3D11UnorderedAccessView* uaView;       // 10
 			std::byte                            pad18[0x10];  // 18
 			TextureHeader                        header;       // 28 - format is the created DXGI format
-			std::byte                            pad30[0x10];  // 30
+			std::byte                            pad30[0xC];   // 30
+			std::uint8_t                         minLOD;       // 3C - streamed mip floor, read by SetTexture
+			std::byte                            pad3D[0x3];   // 3D
 		};
 		static_assert(sizeof(Texture) == 0x40);
 		static_assert(offsetof(Texture, header) == 0x28);
+		static_assert(offsetof(Texture, minLOD) == 0x3C);
 
 		class ConstantGroup
 		{
