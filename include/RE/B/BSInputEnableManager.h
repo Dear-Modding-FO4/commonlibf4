@@ -87,6 +87,7 @@ namespace RE
 		}
 
 		// members
+		std::uint32_t                                                    pad10C;                           // 10C
 		BSSpinLock                                                       cacheLock;                        // 110
 		REX::TEnumSet<UserEvents::USER_EVENT_FLAG, std::uint32_t>        cachedInputUserEventsFlags;       // 118
 		REX::TEnumSet<OtherInputEvents::OTHER_EVENT_FLAG, std::uint32_t> cachedOtherInputEventsFlags;      // 11C
