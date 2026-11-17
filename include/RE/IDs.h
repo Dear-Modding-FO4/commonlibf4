@@ -1702,6 +1702,7 @@ namespace RE::ID
 
 	namespace BSSystemFileStreamer
 	{
+		inline constexpr REL::VariantID GetEntry{ 1308512, 2268844 };  // NG/AE inline it into Streamer::RequestAt
 		inline constexpr REL::VariantID Signal{ 1450714, 2268796 };
 		inline constexpr REL::VariantID UncacheAll{ 40925, 2268797 };
 	}
