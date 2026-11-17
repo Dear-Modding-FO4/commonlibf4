@@ -1133,6 +1133,18 @@ namespace RE::ID
 		inline constexpr REL::VariantID CustomizationTextureHeight{ 626669, 2666740 };
 	}
 
+	namespace BSFile
+	{
+		inline constexpr REL::VariantID Dtor{ 1313661, 2268934 };
+		inline constexpr REL::VariantID SetReadThroughStreamer{ 515710, 2268935 };
+	}
+
+	namespace BSFile_PageCache
+	{
+		inline constexpr REL::VariantID Dtor{ 719458, 2268928 };
+		inline constexpr REL::VariantID PrefetchAt{ 491130, 2268930 };
+	}
+
 	namespace BSFlattenedBoneTree
 	{
 		inline constexpr REL::ID UpdateBoneArray{ 1421730, 2270082 };
@@ -1750,6 +1762,7 @@ namespace RE::ID
 
 	namespace BSSystemFileStreamer
 	{
+		inline constexpr REL::VariantID GetEntry{ 1308512, 2268844 };  // NG/AE inline it into Streamer::RequestAt
 		inline constexpr REL::VariantID Signal{ 1450714, 2268796 };
 		inline constexpr REL::VariantID UncacheAll{ 40925, 2268797 };
 	}
@@ -2989,6 +3002,7 @@ namespace RE::ID
 	namespace PipboyMenu
 	{
 		inline constexpr REL::VariantID Ctor{ 712982, 2224179 };
+		inline constexpr REL::VariantID CurrentPage{ 1287022, 2696944, 4804316 };
 		inline constexpr REL::VariantID Dtor{ 405150, 2224180 };
 		inline constexpr REL::VariantID ProcessMessage{ 643948, 2224181 };
 		inline constexpr REL::VariantID RefreshCursor{ 1533778, 2224196 };
@@ -3982,6 +3996,8 @@ namespace RE::ID
 	namespace UIUtils
 	{
 		inline constexpr REL::VariantID GetComparisonItems{ 593818, 0 };  // Inlined in NG/AE
+		inline constexpr REL::VariantID GetScreenPickRefraction{ 847311, 2249728 };
+		inline constexpr REL::VariantID GetScreenPickUV{ 236009, 2249727 };
 		inline constexpr REL::VariantID PlayPipboySound{ 1320952, 2249706 };
 		inline constexpr REL::VariantID PlayMenuSound{ 1227993, 2249707 };
 		inline constexpr REL::VariantID UpdateGamepadDependentButtonCodes{ 190238, 2249714, 4483350 };
