@@ -2932,6 +2932,7 @@ namespace RE::ID
 	namespace PipboyMenu
 	{
 		inline constexpr REL::VariantID Ctor{ 712982, 2224179 };
+		inline constexpr REL::VariantID CurrentPage{ 1287022, 2696944, 4804316 };
 		inline constexpr REL::VariantID Dtor{ 405150, 2224180 };
 		inline constexpr REL::VariantID ProcessMessage{ 643948, 2224181 };
 		inline constexpr REL::VariantID RefreshCursor{ 1533778, 2224196 };
