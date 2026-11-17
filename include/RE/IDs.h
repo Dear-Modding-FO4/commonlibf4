@@ -3924,6 +3924,8 @@ namespace RE::ID
 	namespace UIUtils
 	{
 		inline constexpr REL::VariantID GetComparisonItems{ 593818, 0 };  // Inlined in NG/AE
+		inline constexpr REL::VariantID GetScreenPickRefraction{ 847311, 2249728 };
+		inline constexpr REL::VariantID GetScreenPickUV{ 236009, 2249727 };
 		inline constexpr REL::VariantID PlayPipboySound{ 1320952, 2249706 };
 		inline constexpr REL::VariantID PlayMenuSound{ 1227993, 2249707 };
 		inline constexpr REL::VariantID UpdateGamepadDependentButtonCodes{ 190238, 2249714, 4483350 };
