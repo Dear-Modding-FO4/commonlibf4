@@ -1100,6 +1100,18 @@ namespace RE::ID
 		inline constexpr REL::VariantID CustomizationTextureHeight{ 626669, 2666740 };
 	}
 
+	namespace BSFile
+	{
+		inline constexpr REL::VariantID Dtor{ 1313661, 2268934 };
+		inline constexpr REL::VariantID SetReadThroughStreamer{ 515710, 2268935 };
+	}
+
+	namespace BSFile_PageCache
+	{
+		inline constexpr REL::VariantID Dtor{ 719458, 2268928 };
+		inline constexpr REL::VariantID PrefetchAt{ 491130, 2268930 };
+	}
+
 	namespace BSGameSound
 	{
 		inline constexpr REL::VariantID UpdateFrequencyModifier{ 157156, 2267454 };
