@@ -47,6 +47,9 @@ namespace RE
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kRACE };
 		static constexpr auto TYPE_ID{ BSScript::kRace };
 
+		[[nodiscard]] bool IsImmobile() const noexcept { return data.HasFlag(RACE_DATA::Flag::kImmobile); }
+		[[nodiscard]] bool AllowsKnockdown() const noexcept { return !data.HasFlag(RACE_DATA::Flag::kNoKnockdowns); }
+
 		class MOVEMENT_SPEED_OVERRIDE
 		{
 		public:

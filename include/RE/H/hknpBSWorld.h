@@ -3,6 +3,7 @@
 #include "RE/B/BSSpinLock.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/H/hkMap.h"
+#include "RE/H/hkMultiMap.h"
 #include "RE/H/hknpBodyId.h"
 #include "RE/H/hknpWorld.h"
 
@@ -73,5 +74,6 @@ namespace RE
 		BSSpinLock                m_activateBodyPostCollideLock;     // 0x710
 		hkMultiMap<std::uint32_t> m_constrainedBodyFromBody;         // 0x718
 	};
+	static_assert(offsetof(hknpBSWorld, m_worldLock) == 0x6D8);
 	static_assert(sizeof(hknpBSWorld) == 0x730);
 }

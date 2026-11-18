@@ -28,6 +28,10 @@ namespace RE
 		inline static constexpr auto VTABLE{ VTABLE::bhkWorld };
 		inline static constexpr auto Ni_RTTI{ Ni_RTTI::bhkWorld };
 
+		[[nodiscard]] static constexpr float GetWorldScale() noexcept { return 1.0F / 69.99125F; }
+		[[nodiscard]] static constexpr float GetWorldScaleInverse() noexcept { return 69.99125F; }
+		[[nodiscard]] hknpBSWorld*           GetWorld() const noexcept { return m_worldNP.get(); }
+
 		virtual ~bhkWorld();  // 00
 
 		// add

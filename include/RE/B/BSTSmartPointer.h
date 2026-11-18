@@ -109,9 +109,7 @@ namespace RE
 		BSTSmartPointer& operator=(const BSTSmartPointer& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = a_rhs._ptr;
-				TryAttach();
+				reset(a_rhs._ptr);
 			}
 			return *this;
 		}
@@ -126,9 +124,7 @@ namespace RE
 				int> = 0>
 		BSTSmartPointer& operator=(const BSTSmartPointer<Y>& a_rhs)
 		{
-			TryDetach();
-			_ptr = a_rhs._ptr;
-			TryAttach();
+			reset(a_rhs._ptr);
 			return *this;
 		}
 
@@ -136,9 +132,8 @@ namespace RE
 		BSTSmartPointer& operator=(BSTSmartPointer&& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = a_rhs._ptr;
-				a_rhs._ptr = nullptr;
+				BSTSmartPointer replacement{ std::move(a_rhs) };
+				std::swap(_ptr, replacement._ptr);
 			}
 			return *this;
 		}
@@ -153,9 +148,8 @@ namespace RE
 				int> = 0>
 		BSTSmartPointer& operator=(BSTSmartPointer<Y>&& a_rhs)
 		{
-			TryDetach();
-			_ptr = a_rhs._ptr;
-			a_rhs._ptr = nullptr;
+			BSTSmartPointer replacement{ std::move(a_rhs) };
+			std::swap(_ptr, replacement._ptr);
 			return *this;
 		}
 
@@ -171,9 +165,8 @@ namespace RE
 		void reset(Y* a_ptr)
 		{
 			if (_ptr != a_ptr) {
-				TryDetach();
-				_ptr = a_ptr;
-				TryAttach();
+				BSTSmartPointer replacement{ a_ptr };
+				std::swap(_ptr, replacement._ptr);
 			}
 		}
 

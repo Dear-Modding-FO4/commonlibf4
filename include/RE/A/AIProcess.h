@@ -26,6 +26,23 @@ namespace RE
 	class AIProcess
 	{
 	public:
+		enum class PROCESS_LEVEL : std::uint8_t
+		{
+			kHigh = 0,
+			kMiddleHigh = 1,
+			kMiddleLow = 2,
+			kLow = 3
+		};
+
+		enum class LowProcessFlags : std::uint8_t
+		{
+			kFollower = 1 << 4
+		};
+
+		[[nodiscard]] PROCESS_LEVEL GetProcessLevel() const noexcept { return static_cast<PROCESS_LEVEL>(processLevel); }
+		[[nodiscard]] bool          InHighProcess() const noexcept { return GetProcessLevel() == PROCESS_LEVEL::kHigh; }
+		[[nodiscard]] bool          IsAFollower() const noexcept { return (lowProcessFlags & static_cast<std::uint8_t>(LowProcessFlags::kFollower)) != 0; }
+
 		enum class FADE_STATE
 		{
 			kNormal = 0x0,
@@ -116,6 +133,15 @@ namespace RE
 			return func(this, a_actor);
 		}
 
+		// Queue for the actor's normal action processing; no-op without high-process data.
+		void QueueAnimationAction(DEFAULT_OBJECT a_action)
+		{
+			// The native entry receives the enum by reference and copies it into the queue.
+			using func_t = void (*)(AIProcess*, DEFAULT_OBJECT&);
+			static REL::Relocation<func_t> func{ ID::AIProcess::QueueAnimationAction };
+			func(this, a_action);
+		}
+
 		void SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_refr)
 		{
 			using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
@@ -158,11 +184,27 @@ namespace RE
 			return func(this, a_actor, a_stateToSet, a_weaponCullType);
 		}
 
-		void StopCurrentIdle(Actor* a_actor, bool a_instant, bool a_killFlavor)
+		// The engine predicate reports a queued instant-interaction animation.
+		// Also check ActorState::IsInteractionInProgress() for the active/entry/exit phases.
+		[[nodiscard]] bool IsInstantInteractionInProgress() const
+		{
+			using func_t = decltype(&AIProcess::IsInstantInteractionInProgress);
+			static REL::Relocation<func_t> func{ ID::AIProcess::IsInstantInteractionInProgress };
+			return func(this);
+		}
+
+		bool StopCurrentIdle(Actor* a_actor, bool a_instant, bool a_killFlavor)
 		{
 			using func_t = decltype(&AIProcess::StopCurrentIdle);
 			static REL::Relocation<func_t> func{ ID::AIProcess::StopCurrentIdle };
 			return func(this, a_actor, a_instant, a_killFlavor);
+		}
+
+		void UpdateKnockState(Actor& a_actor)
+		{
+			using func_t = decltype(&AIProcess::UpdateKnockState);
+			static REL::Relocation<func_t> func{ ID::AIProcess::UpdateKnockState };
+			func(this, a_actor);
 		}
 
 		void SetRunOncePackage(TESPackage* a_package, Actor* a_actor)

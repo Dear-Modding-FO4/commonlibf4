@@ -76,9 +76,7 @@ namespace Scaleform
 		Ptr& operator=(const Ptr& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = a_rhs._ptr;
-				TryAttach();
+				reset(a_rhs._ptr);
 			}
 			return *this;
 		}
@@ -93,9 +91,7 @@ namespace Scaleform
 				int> = 0>
 		Ptr& operator=(const Ptr<Y>& a_rhs)
 		{
-			TryDetach();
-			_ptr = a_rhs._ptr;
-			TryAttach();
+			reset(a_rhs._ptr);
 			return *this;
 		}
 
@@ -103,9 +99,8 @@ namespace Scaleform
 		Ptr& operator=(Ptr&& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = a_rhs._ptr;
-				a_rhs._ptr = nullptr;
+				Ptr replacement{ std::move(a_rhs) };
+				std::swap(_ptr, replacement._ptr);
 			}
 			return *this;
 		}
@@ -120,9 +115,8 @@ namespace Scaleform
 				int> = 0>
 		Ptr& operator=(Ptr<Y>&& a_rhs)
 		{
-			TryDetach();
-			_ptr = a_rhs._ptr;
-			a_rhs._ptr = nullptr;
+			Ptr replacement{ std::move(a_rhs) };
+			std::swap(_ptr, replacement._ptr);
 			return *this;
 		}
 
@@ -138,9 +132,8 @@ namespace Scaleform
 		void reset(Y* a_ptr)
 		{
 			if (_ptr != a_ptr) {
-				TryDetach();
-				_ptr = a_ptr;
-				TryAttach();
+				Ptr replacement{ a_ptr };
+				std::swap(_ptr, replacement._ptr);
 			}
 		}
 

@@ -458,6 +458,12 @@ namespace RE
 
 		[[nodiscard]] NiPoint3 GetPosition() const noexcept { return data.location; }
 
+		[[nodiscard]] NiPoint3 GetAngle() const noexcept { return data.angle; }
+		[[nodiscard]] float    GetAngleX() const noexcept { return data.angle.x; }
+		[[nodiscard]] float    GetAngleY() const noexcept { return data.angle.y; }
+		[[nodiscard]] float    GetAngleZ() const noexcept { return data.angle.z; }
+		[[nodiscard]] bool     Is3DLoaded() const { return Get3D() != nullptr; }
+
 		[[nodiscard]] float GetPositionX() const noexcept { return data.location.x; }
 
 		[[nodiscard]] float GetPositionY() const noexcept { return data.location.y; }
@@ -476,6 +482,20 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::GetHandle);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetHandle };
 			return func(this);
+		}
+
+		void MoveTo(TESObjectREFR* a_target)
+		{
+			assert(a_target);
+			auto handle = a_target->GetHandle();
+			MoveToImpl(handle, a_target->GetParentCell(), a_target->GetWorldSpace(), a_target->GetPosition(), a_target->data.angle);
+		}
+
+		void MoveToImpl(ObjectRefHandle& a_target, TESObjectCELL* a_cell, TESWorldSpace* a_worldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation)
+		{
+			using func_t = decltype(&TESObjectREFR::MoveToImpl);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::MoveToImpl };
+			func(this, a_target, a_cell, a_worldSpace, a_position, a_rotation);
 		}
 
 		[[nodiscard]] bool GetHasOwner()

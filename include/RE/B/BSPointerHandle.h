@@ -136,6 +136,8 @@ namespace RE
 		template <class, class>
 		friend class BSPointerHandle;
 
+		void get_handle(T* a_ptr);
+
 		Handle _handle;  // 00
 	};
 
@@ -193,4 +195,14 @@ namespace RE
 	extern template class BSPointerHandleManagerInterface<Actor>;
 	extern template class BSPointerHandleManagerInterface<Projectile>;
 	extern template class BSPointerHandleManagerInterface<TESObjectREFR>;
+
+	template <class T, class Handle>
+	void BSPointerHandle<T, Handle>::get_handle(T* a_ptr)
+	{
+		if (a_ptr) {
+			_handle = BSPointerHandleManagerInterface<T>::GetHandle(a_ptr).get_handle();
+		} else {
+			reset();
+		}
+	}
 }

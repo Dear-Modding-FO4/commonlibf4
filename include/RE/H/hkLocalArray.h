@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
+#include "RE/H/hkBool.h"
 
 namespace RE
 {

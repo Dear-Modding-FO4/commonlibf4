@@ -176,6 +176,8 @@ namespace RE
 		[[nodiscard]] bool      empty() const noexcept { return size() == 0; }
 		[[nodiscard]] size_type size() const noexcept { return _size; }
 		[[nodiscard]] size_type capacity() const noexcept { return _capacity; }
+		// Indexed traversal uses the slot high-water mark; size() counts non-null entries.
+		[[nodiscard]] size_type end_index() const noexcept { return _freeIdx; }
 
 	private:
 		template <class U>

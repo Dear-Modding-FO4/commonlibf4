@@ -48,6 +48,9 @@ namespace RE
 			return func(this, a_hostileActorArray);
 		}
 
+		// Call on the game thread; the callback must not modify the process lists.
+		void ForEachHighActor(std::function<BSContainer::ForEachResult(Actor*)> a_callback);
+
 		void ForEachMagicTempEffect(std::function<BSContainer::ForEachResult(BSTempEffect*)> a_callback)
 		{
 			BSAutoLock locker(magicEffectsLock);

@@ -53,6 +53,11 @@ namespace RE
 			return func(this, a_variable, a_var);
 		};
 
+		[[nodiscard]] bool GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_manager) const { return GetAnimationGraphManagerImpl(a_manager); }
+		[[nodiscard]] bool GetGraphVariableBool(const BSFixedString& a_variable, bool& a_value) const { return GetGraphVariableImplBool(a_variable, a_value); }
+		[[nodiscard]] bool GetGraphVariableFloat(const BSFixedString& a_variable, float& a_value) const { return GetGraphVariableImplFloat(a_variable, a_value); }
+		[[nodiscard]] bool GetGraphVariableInt(const BSFixedString& a_variable, std::int32_t& a_value) const { return GetGraphVariableImplInt(a_variable, a_value); }
+
 		bool SetGraphVariableFloat(const BSFixedString& a_variable, float a_var)
 		{
 			using func_t = decltype(&IAnimationGraphManagerHolder::SetGraphVariableFloat);
