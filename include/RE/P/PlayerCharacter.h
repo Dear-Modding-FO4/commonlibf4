@@ -243,7 +243,7 @@ namespace RE
 			return func(this, a_holotape);
 		}
 
-		void QueueFastTravel(ObjectRefHandle a_marker, bool a_allowAutoSave)
+		void QueueFastTravel(const ObjectRefHandle& a_marker, bool a_allowAutoSave)
 		{
 			using func_t = decltype(&PlayerCharacter::QueueFastTravel);
 			static REL::Relocation<func_t> func{ ID::PlayerCharacter::QueueFastTravel };

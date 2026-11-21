@@ -1,25 +1,28 @@
 #pragma once
 
 #include "RE/H/hknpPhysicsSystem.h"
+#include "RE/H/hkArray.h"
+#include "RE/H/hkRefPtr.h"
 
 namespace RE
 {
 	class hkaSkeleton;
 
 	class __declspec(novtable) hknpRagdoll :
-		public hknpPhysicsSystem
+		public hknpPhysicsSystem  // 0x00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::hknpRagdoll };
-		static constexpr auto VTABLE{ VTABLE::hknpRagdoll };
+		inline static constexpr auto RTTI{ RTTI::hknpRagdoll };
+		inline static constexpr auto VTABLE{ VTABLE::hknpRagdoll };
 
 		hknpRagdoll() = delete;
 		virtual ~hknpRagdoll() override;  // 00
 
 		// members
-		hkRefPtr<hkaSkeleton> m_skeleton;   // 40
-		std::byte             unk48[0x10];  // 48
+		hkRefPtr<const hkaSkeleton> m_skeleton;       // 0x40
+		hkArray<std::int32_t>       m_boneToBodyMap;  // 0x48
 	};
-	static_assert(offsetof(hknpRagdoll, m_skeleton) == 0x40);
 	static_assert(sizeof(hknpRagdoll) == 0x58);
+	static_assert(offsetof(hknpRagdoll, m_skeleton) == 0x40);
+	static_assert(offsetof(hknpRagdoll, m_boneToBodyMap) == 0x48);
 }

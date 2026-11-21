@@ -5,11 +5,11 @@
 namespace RE
 {
 	class __declspec(novtable) hkbRagdollInterface :
-		public hkReferencedObject
+		public hkReferencedObject  // 0x00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::hkbRagdollInterface };
-		static constexpr auto VTABLE{ VTABLE::hkbRagdollInterface };
+		inline static constexpr auto RTTI{ RTTI::hkbRagdollInterface };
+		inline static constexpr auto VTABLE{ VTABLE::hkbRagdollInterface };
 
 		hkbRagdollInterface() = delete;
 		virtual ~hkbRagdollInterface() override;  // 00
