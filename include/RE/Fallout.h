@@ -920,6 +920,7 @@
 #include "RE/H/hkcdStaticTreeTree_DynamicStorage6.h"
 #include "RE/H/hkLocalFrame.h"
 #include "RE/H/hkMeshBoneIndexMapping.h"
+#include "RE/H/hkMultiThreadCheck.h"
 #include "RE/H/hkp2dAngConstraintAtom.h"
 #include "RE/H/hkp3dAngConstraintAtom.h"
 #include "RE/H/hkpAngConstraintAtom.h"
