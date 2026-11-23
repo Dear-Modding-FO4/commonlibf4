@@ -684,6 +684,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID EndSaveGame{ 1321787, 2228095 };
 		inline constexpr REL::VariantID GetSaveDirectoryPath{ 1569549, 2228028 };
 		inline constexpr REL::VariantID QueueSaveLoadTask{ 1487308, 2228080 };
+		inline constexpr REL::VariantID SaveGame{ 954817, 2228036 };
+		inline constexpr REL::VariantID Autosave{ 1280471, 2228043 };
 	}
 
 	namespace BGSSaveLoadUtilities
@@ -2137,6 +2139,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID Singleton{ 996227, 2689134, 4796420 };
 			inline constexpr REL::VariantID DumpPersistenceInformationToLog{ 1238017, 2251336 };
 			inline constexpr REL::VariantID DumpRunningStacksToLog{ 308336, 2251333 };
+			inline constexpr REL::VariantID ForceFullUpdate{ 438003, 2251307 };
 			inline constexpr REL::VariantID HandleOverflows{ 857394, 2251364 };
 			inline constexpr REL::VariantID LoadGame{ 428960, 2251331 };
 			inline constexpr REL::VariantID QueuePostRenderCall{ 34412, 2251314 };
@@ -2432,6 +2435,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID RefreshPlatform{ 1071829, 2287374 };
 	}
 
+	namespace IOManager
+	{
+		inline constexpr REL::VariantID LoadQueuedPriority{ 1310667, 2275043 };
+	}
+
 	namespace Interface3D
 	{
 		inline constexpr REL::VariantID Create{ 88488, 2222519 };
@@ -2470,6 +2478,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID Display{ 475804, 2249085 };
 		inline constexpr REL::VariantID EnableRendering{ 176578, 2249098 };
 		inline constexpr REL::VariantID End3D{ 1512675, 2249086 };
+		inline constexpr REL::VariantID PerformQueuedCellAttachDetach{ 833533, 2194587 };
 		inline constexpr REL::VariantID LoadInventoryItem{ 75489, 2249088 };
 		inline constexpr REL::VariantID SetModelScale{ 1319701, 2249097 };
 		inline constexpr REL::VariantID SetModelScreenPosition{ 2967, 2249096 };
@@ -3387,6 +3396,10 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID SetWorldSpace{ 1217659, 2192046 };
 		inline constexpr REL::VariantID IsCellLoaded{ 1566182, 2192040 };
+		inline constexpr REL::VariantID LoadInterior{ 1096651, 2192047 };
+		inline constexpr REL::VariantID LeaveInterior{ 1386854, 2192048 };
+		inline constexpr REL::VariantID ShowLoadingMenu{ 370540, 2192090 };
+		inline constexpr REL::VariantID HideLoadingMenu{ 874976, 2192091 };
 		inline constexpr REL::VariantID Singleton{ 1194835, 2698044 };
 		inline constexpr REL::VariantID UpdateMultiBoundVisibility{ 1281872, 2192134 };
 	}
