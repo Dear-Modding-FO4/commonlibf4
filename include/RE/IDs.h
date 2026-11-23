@@ -3599,6 +3599,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetFile{ 1376557, 2193103 };
 		inline constexpr REL::VariantID GetFormByNumericID{ 796114, 2193092 };
 		inline constexpr REL::VariantID GetFormEnumString{ 1309967 };  // Same
+		inline constexpr REL::VariantID GetFormTypeFromFormString{ 1535959, 2193107 };  // Signature to form type through a one-entry cache
 		inline constexpr REL::VariantID GetFormTypeFromString{ 565203, 2193108 };
 		inline constexpr REL::VariantID SetTemporary{ 482454, 2193125 };
 	}
