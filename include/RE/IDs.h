@@ -1089,6 +1089,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID CheckNPCUsesPreCalcFace{ 969238, 2209308 };
 		inline constexpr REL::VariantID OverrideHeadPartTextures{ 1158923, 2209306 };
 		inline constexpr REL::VariantID OnFinishUpdateCustomization{ 1215801, 2209318 };
+		inline constexpr REL::VariantID UpdatePendingCustomizationTextures{ 1221878, 2209309 };
+		inline constexpr REL::VariantID QueueCustomizationTexturesForNPC{ 1336045, 2209317 };
 	}
 
 	namespace BSFaceGenUtils
