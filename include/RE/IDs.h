@@ -1284,6 +1284,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID EnableOtherEvent{ 1419268, 2268265 };
 	}
 
+	namespace BSJobs::JobListLocal
+	{
+		inline constexpr REL::VariantID Submit{ 1579633, 2268895 };
+		inline constexpr REL::VariantID RunJobsInternal{ 329005, 2268897 };
+	}
+
 	namespace BSLight
 	{
 		inline constexpr REL::VariantID Ctor{ 604564, 2318412 };
