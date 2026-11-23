@@ -1437,6 +1437,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID Ctor2{ 306612, 2269831 };
 	}
 
+	namespace BSPathManager
+	{
+		// Static object whose first qword is the PathManagerImpl*
+		inline constexpr REL::VariantID Singleton{ 265402, 2688750, 4796014 };
+	}
+
 	namespace BSScaleformManager
 	{
 		inline constexpr REL::VariantID Singleton{ 106578, 2689600, 4796889 };
@@ -2437,6 +2443,7 @@ namespace RE::ID
 
 	namespace IOManager
 	{
+		inline constexpr REL::VariantID Singleton{ 510460, 2704140 };
 		inline constexpr REL::VariantID LoadQueuedPriority{ 1310667, 2275043 };
 	}
 
@@ -2665,6 +2672,11 @@ namespace RE::ID
 	namespace MissileProjectile
 	{
 		inline constexpr REL::VariantID UpdateImpl{ 1470408, 2236880 };
+	}
+
+	namespace ModelLoader
+	{
+		inline constexpr REL::VariantID Singleton{ 1349853, 2688870, 4796161 };
 	}
 
 	namespace Moon
