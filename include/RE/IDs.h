@@ -1379,6 +1379,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID Int{ 1212543, 2267952 };
 	}
 
+	namespace BSRenderPass
+	{
+		inline constexpr REL::VariantID New{ 0, 2318685 };     // NG/AE only; pool-locked allocation
+		inline constexpr REL::VariantID Delete{ 0, 2318686 };  // NG/AE only; pool-locked free
+	}
+
 	namespace BSResource_Archive2_AsyncReaderStream
 	{
 		inline constexpr REL::VariantID DoOpen{ 1401160, 2269387 };
