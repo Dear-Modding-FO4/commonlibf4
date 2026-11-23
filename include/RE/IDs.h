@@ -160,6 +160,15 @@ namespace RE::ID
 		inline constexpr REL::VariantID Clear3DUpdateFlag{ 1113891, 2232390 };
 		inline constexpr REL::VariantID ClearAll3DUpdateFlags{ 409001, 2232391 };
 		inline constexpr REL::VariantID GetAll3DUpdateFlags{ 582098, 2232393 };
+		inline constexpr REL::VariantID Update{ 941936, 2232097 };
+		inline constexpr REL::VariantID UpdateDetection{ 45687, 2231992 };
+	}
+
+	namespace BGSAIOperationsMeter
+	{
+		inline constexpr REL::VariantID CheckPermissionForUpdateDetection{ 115493, 2209760 };
+		inline constexpr REL::VariantID NewFrame{ 129252, 2209753 };
+		inline constexpr REL::VariantID Singleton{ 1424821, 2692861, 4800153 };
 	}
 
 	namespace AITimer
@@ -3208,6 +3217,7 @@ namespace RE::ID
 	namespace ProcessLists
 	{
 		inline constexpr REL::VariantID Singleton{ 1569706, 2688869, 4796160 };
+		inline constexpr REL::VariantID RunActorUpdates{ 578132, 2234075 };
 		inline constexpr REL::VariantID AreHostileActorsNear{ 1053584, 2234105 };
 		inline constexpr REL::VariantID IsActorTargetingREFinPackage{ 559542, 2234033 };
 		inline constexpr REL::VariantID RequestHighestDetectionLevelAgainstActor{ 1036693, 2234111 };
