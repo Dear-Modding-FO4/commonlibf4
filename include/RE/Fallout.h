@@ -878,6 +878,7 @@
 #include "RE/G/GameMenuBase.h"
 #include "RE/G/GamePlayFormulas.h"
 #include "RE/G/GameScript.h"
+#include "RE/G/GameScriptTimerEventHandler.h"
 #include "RE/G/GameUIModel.h"
 #include "RE/G/GetCurrentPositionFunctor.h"
 #include "RE/G/GrassParam.h"

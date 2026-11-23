@@ -2154,6 +2154,11 @@ namespace RE::ID
 			inline constexpr REL::VariantID SendEventToObjectAndRelated{ 367992, 2251344 };
 		}
 
+		namespace TimerEventHandler
+		{
+			inline constexpr REL::VariantID Singleton{ 1202884, 2692010, 4799303 };
+		}
+
 		inline constexpr REL::VariantID LogFormError{ 1081933, 2251028 };
 		inline constexpr REL::VariantID BindCObject{ 81787, 2249771 };
 	}
