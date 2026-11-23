@@ -2542,6 +2542,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID JetpackStop{ 446875, 2226250 };
 	}
 
+	namespace JobListManager
+	{
+		// Per-frame job list thread count; OG is a lazily initialized static
+		inline constexpr REL::VariantID ListThreadCount{ 212659, 2664028 };
+	}
+
 	namespace JobListManager::ServingThread
 	{
 		inline constexpr REL::VariantID ThreadProc{ 1166392, 2227631 };
