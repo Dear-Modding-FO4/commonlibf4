@@ -1443,6 +1443,21 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 265402, 2688750, 4796014 };
 	}
 
+	namespace PathManagerImpl
+	{
+		inline constexpr REL::VariantID BuildPath{ 1214536, 2300926 };
+	}
+
+	namespace PathManagerServer
+	{
+		inline constexpr REL::VariantID ThreadProc{ 382823, 2300968 };
+	}
+
+	namespace PathingTaskData
+	{
+		inline constexpr REL::VariantID Process{ 877770, 2300915 };
+	}
+
 	namespace BSScaleformManager
 	{
 		inline constexpr REL::VariantID Singleton{ 106578, 2689600, 4796889 };
@@ -2148,6 +2163,8 @@ namespace RE::ID
 			inline constexpr REL::VariantID ForceFullUpdate{ 438003, 2251307 };
 			inline constexpr REL::VariantID HandleOverflows{ 857394, 2251364 };
 			inline constexpr REL::VariantID LoadGame{ 428960, 2251331 };
+			// ProcessEvent(PositionPlayerEvent&), the only caller of ForceFullUpdate
+			inline constexpr REL::VariantID ProcessPositionPlayerEvent{ 857169, 2251320 };
 			inline constexpr REL::VariantID QueuePostRenderCall{ 34412, 2251314 };
 			inline constexpr REL::VariantID RegisterForAllGameEvents{ 680454, 2251353 };
 			inline constexpr REL::VariantID ReloadScripts{ 371005, 2251339 };
