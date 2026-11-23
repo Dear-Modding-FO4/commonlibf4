@@ -2196,6 +2196,7 @@ namespace RE::ID
 	namespace GridCellArray
 	{
 		inline constexpr REL::VariantID Get{ 1330136, 2194566 };
+		inline constexpr REL::VariantID PerformQueuedCellAttachDetach{ 833533, 2194587 };
 	}
 
 	namespace hkbBehaviorGraph
@@ -2513,7 +2514,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID Display{ 475804, 2249085 };
 		inline constexpr REL::VariantID EnableRendering{ 176578, 2249098 };
 		inline constexpr REL::VariantID End3D{ 1512675, 2249086 };
-		inline constexpr REL::VariantID PerformQueuedCellAttachDetach{ 833533, 2194587 };
 		inline constexpr REL::VariantID LoadInventoryItem{ 75489, 2249088 };
 		inline constexpr REL::VariantID SetModelScale{ 1319701, 2249097 };
 		inline constexpr REL::VariantID SetModelScreenPosition{ 2967, 2249096 };
