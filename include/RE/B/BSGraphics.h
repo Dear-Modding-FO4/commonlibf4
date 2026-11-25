@@ -160,6 +160,8 @@ namespace RE
 			kAmbientOcclusionHalf = 39,
 			kSAOCameraZ = 40,
 			kPauseFreezeFrame = 54,
+			kTemporalAAHistory0 = 58,
+			kTemporalAAHistory1 = 59,
 			kPipboy = 60,
 			kPipboySwap = 61,
 			kScreenshot = 63,
