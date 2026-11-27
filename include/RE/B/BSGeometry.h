@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSGraphics.h"
+#include "RE/B/BSShaderProperty.h"
 #include "RE/N/NiAVObject.h"
 #include "RE/N/NiAlphaProperty.h"
 #include "RE/N/NiPointer.h"
@@ -40,6 +41,22 @@ namespace RE
 		virtual std::uint32_t             GetRenderableTris(std::uint32_t a_LODMode);       // 41
 
 		[[nodiscard]] NiAlphaProperty* GetAlphaProperty() const noexcept { return static_cast<NiAlphaProperty*>(properties[0].get()); }
+
+		// Requires a skin instance; refreshes current/previous matrices once per engine frame.
+		void CalculateBoneMatrices()
+		{
+			using func_t = decltype(&BSGeometry::CalculateBoneMatrices);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::Utility::CalculateBoneMatrices };
+			func(this);
+		}
+
+		// Use after direct world-transform edits; UpdateWorldData would recompute from local transforms.
+		void MarkWorldTransformChanged() noexcept
+		{
+			if (auto* shader = static_cast<BSShaderProperty*>(properties[1].get())) {
+				shader->flags.set(BSShaderProperty::EShaderPropertyFlag::kTransformChanged);
+			}
+		}
 
 		// members
 		NiBound                     modelBound;     // 120

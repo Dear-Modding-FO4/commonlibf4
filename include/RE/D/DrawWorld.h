@@ -10,6 +10,13 @@ namespace RE
 
 	namespace DrawWorld
 	{
+		[[nodiscard]] inline BSGeometryListCullingProcess* QGeometryListCullingProcess()
+		{
+			using func_t = decltype(&QGeometryListCullingProcess);
+			static REL::Relocation<func_t> func{ ID::DrawWorld::QGeometryListCullingProcess };
+			return func();
+		}
+
 		// ToggleEOFImageSpace (teofis) controls full effects versus gamma only.
 		[[nodiscard]] inline bool& GetEndOfFrameImagespaceEffectsEnabled()
 		{

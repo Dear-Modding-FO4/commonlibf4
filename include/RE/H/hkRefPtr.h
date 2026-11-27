@@ -1,5 +1,8 @@
 #pragma once
 
+#include <memory>
+#include <utility>
+
 #include "RE/H/hkReferencedObject.h"
 
 namespace RE
@@ -24,17 +27,34 @@ namespace RE
 			TryAddReference();
 		}
 
+		hkRefPtr(hkRefPtr&& a_other) noexcept :
+			m_ptr(std::exchange(a_other.m_ptr, nullptr))
+		{}
+
 		~hkRefPtr() noexcept
 		{
 			TryRemoveReference();
 		}
 
+		hkRefPtr& operator=(const hkRefPtr& a_other)
+		{
+			return *this = a_other.m_ptr;
+		}
+
+		hkRefPtr& operator=(hkRefPtr&& a_other) noexcept
+		{
+			if (this != std::addressof(a_other)) {
+				hkRefPtr replacement{ std::move(a_other) };
+				std::swap(m_ptr, replacement.m_ptr);
+			}
+			return *this;
+		}
+
 		hkRefPtr& operator=(T* a_ptr)
 		{
 			if (m_ptr != a_ptr) {
-				TryRemoveReference();
-				m_ptr = a_ptr;
-				TryAddReference();
+				hkRefPtr replacement{ a_ptr };
+				std::swap(m_ptr, replacement.m_ptr);
 			}
 
 			return *this;
@@ -64,14 +84,15 @@ namespace RE
 	private:
 		void TryAddReference()
 		{
-			if (m_ptr)
-				reinterpret_cast<hkReferencedObject*>(m_ptr)->AddReference();
+			if (m_ptr) {
+				const_cast<hkReferencedObject*>(reinterpret_cast<const hkReferencedObject*>(m_ptr))->AddReference();
+			}
 		}
 
 		void TryRemoveReference()
 		{
 			if (m_ptr) {
-				reinterpret_cast<hkReferencedObject*>(m_ptr)->RemoveReference();
+				const_cast<hkReferencedObject*>(reinterpret_cast<const hkReferencedObject*>(m_ptr))->RemoveReference();
 				m_ptr = nullptr;
 			}
 		}

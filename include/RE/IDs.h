@@ -9,8 +9,38 @@ namespace RE::ID
 		inline constexpr REL::VariantID EvaluateConditions{ 1228998, 2226003 };
 	}
 
+	namespace BSPathingLocation
+	{
+		inline constexpr REL::VariantID ResolveToClosestNavmeshAndTriangle{ 725364, 2300658 };
+	}
+
+	namespace FindTriangleForLocationTraversableFilter
+	{
+		inline constexpr REL::VariantID Ctor{ 523393, 2300685 };
+	}
+
+	namespace Pathing
+	{
+		inline constexpr REL::VariantID Singleton{ 358426, 2688746, 4796010 };
+		inline constexpr REL::VariantID MakePathingLocation{ 689281, 2212578 };
+	}
+
+	namespace BSNavmesh
+	{
+		inline constexpr REL::VariantID FindClosestTriangleForLocation{ 527088, 2301042 };
+	}
+
 	namespace Actor
 	{
+		inline constexpr REL::VariantID GetCurrentPackage{ 1578278, 2230164 };
+		inline constexpr REL::VariantID GetMoving{ 825392, 2230406 };
+		inline constexpr REL::VariantID AddFaction{ 1407968, 2230113 };
+		inline constexpr REL::VariantID GetRunSpeed{ 640308, 2230018 };
+		inline constexpr REL::VariantID GetWalkSpeed{ 108143, 2230019 };
+		inline constexpr REL::VariantID IsAnimationDriven{ 610409, 2229907 };
+		inline constexpr REL::VariantID IsMobile{ 292085, 2229900 };
+		inline constexpr REL::VariantID CanMove{ 810723, 2229901 };
+		inline constexpr REL::VariantID SetFactionRank{ 1545897, 2230101 };
 		inline constexpr REL::VariantID AddPerk{ 187096, 2230121 };
 		inline constexpr REL::VariantID CanUseIdle{ 1223707, 2229592 };
 		inline constexpr REL::VariantID ClearAttackStates{ 1525555, 2229773 };
@@ -136,6 +166,9 @@ namespace RE::ID
 
 	namespace AIProcess
 	{
+		inline constexpr REL::VariantID IsInstantInteractionInProgress{ 1656, 2231751 };
+		inline constexpr REL::VariantID UpdateKnockState{ 706171, 2232385 };
+		inline constexpr REL::VariantID QueueAnimationAction{ 1128871, 2231778 };
 		inline constexpr REL::VariantID GetCurrentAmmo{ 1154936, 2232300 };
 		inline constexpr REL::VariantID GetCommandType{ 678523, 2231825 };
 		inline constexpr REL::VariantID GetOccupiedFurniture{ 1162965, 2232401 };
@@ -147,9 +180,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetCurrentAmmo{ 795983, 2232302 };
 		inline constexpr REL::VariantID SetCommandType{ 1555789, 2231826 };
 		inline constexpr REL::VariantID SetEquippedItem{ 1200276, 2231627 };
-		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231705 };
+		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231704 };
 		inline constexpr REL::VariantID SetWeaponBonesCulled{ 397172, 2232535 };
-		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231706 };
+		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231705 };
 		inline constexpr REL::VariantID SetRunOncePackage{ 155445, 2232344 };
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
@@ -1125,6 +1158,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID PrefetchAt{ 491130, 2268930 };
 	}
 
+	namespace BSFlattenedBoneTree
+	{
+		inline constexpr REL::VariantID UpdateBoneArray{ 1421730, 2270082 };
+	}
+
 	namespace BSGameSound
 	{
 		inline constexpr REL::VariantID UpdateFrequencyModifier{ 157156, 2267454 };
@@ -1315,6 +1353,13 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetRenderPasses_ShadowMapOrMask{ 757582, 2316434 };
 	}
 
+	namespace BSSkin::Instance
+	{
+		inline constexpr REL::VariantID GetFlattenedBoneReference{ 73083, 2270469 };
+		inline constexpr REL::VariantID MakeBonesReal{ 497936, 2270470 };
+		inline constexpr REL::VariantID UpdateModelBound{ 1084965, 2270467 };
+	}
+
 	namespace BSModelDB
 	{
 		inline constexpr REL::VariantID Demand1{ 1066398, 2275153 };
@@ -1334,6 +1379,8 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 787073, 2689095, 4796381 };
 		inline constexpr REL::VariantID IsCellVisibilityActive{ 708710, 2317378 };
+		inline constexpr REL::VariantID RegisterDynamicObject{ 272586, 2317373 };
+		inline constexpr REL::VariantID UnregisterDynamicObject{ 697930, 2317374 };
 	}
 
 	namespace BSPreCulledObjects
@@ -1567,6 +1614,7 @@ namespace RE::ID
 
 	namespace BSShader
 	{
+		inline constexpr REL::VariantID SetBoneMatrices{ 595476, 2318868 };
 		inline constexpr REL::VariantID BuildCommandBuffer{ 833764, 2318870 };
 		inline constexpr REL::VariantID Load{ 101507, 2318873 };
 		inline constexpr REL::VariantID BeginTechnique{ 1041640, 2318876 };
@@ -2016,6 +2064,8 @@ namespace RE::ID
 
 	namespace DrawWorld
 	{
+		inline constexpr REL::VariantID QGeometryListCullingProcess{ 1302830, 2318325 };
+
 		inline constexpr REL::VariantID SetDoTiledLighting{ 716351, 2318370 };
 		inline constexpr REL::VariantID LightUpdate{ 102390, 2318287 };
 		inline constexpr REL::VariantID MainAccum{ 718911, 2318292 };
@@ -2314,6 +2364,10 @@ namespace RE::ID
 
 	namespace hknpWorld
 	{
+		inline constexpr REL::VariantID ApplyBodyLinearImpulse{ 654985, 2255620 };
+		inline constexpr REL::VariantID CastShape{ 110287, 2256243 };
+		inline constexpr REL::VariantID GetBodyLinearVelocity{ 1203631, 2255613 };
+		inline constexpr REL::VariantID GetClosestPoints{ 1053489, 2256245 };
 		inline constexpr REL::VariantID AddBodies{ 1454855, 2255681 };
 		inline constexpr REL::VariantID CreateBody{ 72830, 2255680 };
 		inline constexpr REL::VariantID CreateMotion{ 1574333, 2255688 };
@@ -2637,6 +2691,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID LandLODRoot{ 1208715, 2698035 };
 		inline constexpr REL::VariantID ObjectLODRoot{ 1115209, 2698036 };
 		inline constexpr REL::VariantID OnIdle{ 633524, 2228917 };
+
+		inline constexpr REL::VariantID OnIdle_MultiBoundCulling{ 1013897, 2228923 };
+
 		inline constexpr REL::VariantID Run{ 1125396, 2718225, 4484191 };
 		inline constexpr REL::VariantID Run_WindowsMessageLoop{ 847266, 2228915 };
 		inline constexpr REL::VariantID Swap{ 1075087, 2228913 };
@@ -3708,6 +3765,7 @@ namespace RE::ID
 
 	namespace TESObjectCELL
 	{
+		inline constexpr REL::VariantID Get3D{ 485340, 2200234 };
 		inline constexpr REL::VariantID DecQueuedDistantRefCount{ 865141, 2200424 };
 		inline constexpr REL::VariantID FindLandDataInFile{ 898709, 2200370 };
 		inline constexpr REL::VariantID GetbhkWorld{ 1326073, 2200260 };
@@ -3759,6 +3817,7 @@ namespace RE::ID
 
 	namespace TESObjectREFR
 	{
+		inline constexpr REL::VariantID MoveToImpl{ 1332434, 2254251 };
 		inline constexpr REL::VariantID GetNeverFades{ 689506, 2200779 };
 		inline constexpr REL::VariantID ctor{ 198196, 2200719 };
 		inline constexpr REL::VariantID ActivateRef{ 753531, 2201147 };

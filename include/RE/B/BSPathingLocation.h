@@ -9,10 +9,18 @@ namespace RE
 {
 	class BSNavmeshInfo;
 	class BSPathingCell;
+	class FindTriangleForLocationFilter;
 
 	class BSPathingLocation
 	{
 	public:
+		[[nodiscard]] bool ResolveToClosestNavmeshAndTriangle(FindTriangleForLocationFilter& a_filter)
+		{
+			using func_t = decltype(&BSPathingLocation::ResolveToClosestNavmeshAndTriangle);
+			static REL::Relocation<func_t> func{ ID::BSPathingLocation::ResolveToClosestNavmeshAndTriangle };
+			return func(this, a_filter);
+		}
+
 		// members
 		NiPoint3                              location;    // 00
 		const BSNavmeshInfo*                  navMesh;     // 10

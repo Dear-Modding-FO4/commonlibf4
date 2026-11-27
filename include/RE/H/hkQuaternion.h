@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/H/hkVector4.h"
+
 namespace RE
 {
 	class hkQuaternionf

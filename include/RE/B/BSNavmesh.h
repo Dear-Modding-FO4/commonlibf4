@@ -20,6 +20,7 @@ namespace RE
 	class BSNavmeshVertex;
 	class BSNavmeshWaypoint;
 	class BSPathingCell;
+	class NiPoint3;
 
 	class __declspec(novtable) BSNavmesh :
 		public BSIntrusiveRefCounted  // 008
@@ -27,6 +28,13 @@ namespace RE
 	public:
 		static constexpr auto RTTI{ RTTI::BSNavmesh };
 		static constexpr auto VTABLE{ VTABLE::BSNavmesh };
+
+		[[nodiscard]] bool FindClosestTriangleForLocation(const NiPoint3& a_location, std::uint16_t& a_triangle, bool& a_inTriangle, float* a_distance = nullptr)
+		{
+			using func_t = decltype(&BSNavmesh::FindClosestTriangleForLocation);
+			static REL::Relocation<func_t> func{ ID::BSNavmesh::FindClosestTriangleForLocation };
+			return func(this, a_location, a_triangle, a_inTriangle, a_distance);
+		}
 
 		class DisabledLink
 		{

@@ -10,6 +10,14 @@ namespace RE
 	class RACE_DATA
 	{
 	public:
+		enum class Flag : std::uint32_t
+		{
+			kImmobile = 1 << 9,
+			kNoKnockdowns = 1 << 22
+		};
+
+		[[nodiscard]] bool HasFlag(Flag a_flag) const noexcept { return (static_cast<std::uint32_t>(flags) & static_cast<std::uint32_t>(a_flag)) != 0; }
+
 		// members
 		float             height[2];                    // 000
 		NiPoint3          weight[2];                    // 008

@@ -43,6 +43,15 @@ namespace RE
 
 		F4_HEAP_REDEFINE_ALIGNED_NEW(BSFlattenedBoneTree);
 
+		// Refreshes the bones' world transforms from their nodes
+		// The engine only calls this after its own downward passes.
+		void UpdateBoneArray()
+		{
+			using func_t = decltype(&BSFlattenedBoneTree::UpdateBoneArray);
+			static REL::Relocation<func_t> func{ ID::BSFlattenedBoneTree::UpdateBoneArray };
+			func(this);
+		}
+
 		// members
 		std::int32_t                            boneCount{ 0 };
 		std::int32_t                            boneCountExpanded{ 0 };
